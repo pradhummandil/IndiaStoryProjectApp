@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>India Story Project - Explore</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-container": "#735a00",
+                    "secondary-fixed-dim": "#ecc246",
+                    "secondary": "#755b00",
+                    "on-background": "#1b1b1c",
+                    "surface": "#FFFFFF",
+                    "error": "#ba1a1a",
+                    "outline-variant": "#dfbfbc",
+                    "text-secondary": "#5F6368",
+                    "on-primary-container": "#ff9d95",
+                    "on-secondary-fixed-variant": "#584400",
+                    "on-surface": "#1b1b1c",
+                    "madder-light": "#F2E8E8",
+                    "surface-dim": "#dcd9d9",
+                    "outline": "#8b716e",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed-dim": "#95ceef",
+                    "tertiary-fixed": "#c3e8ff",
+                    "tertiary-container": "#004e6a",
+                    "background": "#F8F5EF",
+                    "on-secondary-fixed": "#241a00",
+                    "surface-container-highest": "#e5e2e1",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-container": "#86bedf",
+                    "surface-tint": "#aa3531",
+                    "primary-fixed-dim": "#ffb3ad",
+                    "secondary-fixed": "#ffe08e",
+                    "on-tertiary": "#ffffff",
+                    "gold-light": "#FAF6E9",
+                    "on-primary-fixed-variant": "#891c1d",
+                    "primary": "#6a020a",
+                    "secondary-container": "#fed255",
+                    "on-error": "#ffffff",
+                    "inverse-on-surface": "#f3f0ef",
+                    "surface-variant": "#e5e2e1",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#ffdad6",
+                    "surface-container": "#f0eded",
+                    "tertiary": "#00364b",
+                    "on-surface-variant": "#58413f",
+                    "inverse-primary": "#ffb3ad",
+                    "inverse-surface": "#303030",
+                    "on-error-container": "#93000a",
+                    "border": "#E8E2D8",
+                    "on-tertiary-fixed-variant": "#004c68",
+                    "on-tertiary-fixed": "#001e2c",
+                    "surface-bright": "#fcf9f8",
+                    "on-primary-fixed": "#410003",
+                    "on-secondary": "#ffffff",
+                    "surface-container-low": "#f6f3f2",
+                    "surface-container-high": "#eae7e7",
+                    "primary-container": "#8b1e1e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "64px",
+                    "stack-md": "16px",
+                    "stack-lg": "32px",
+                    "section-gap": "120px",
+                    "margin-mobile": "20px",
+                    "stack-sm": "8px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "label-md": [
+                            "Inter"
+                    ],
+                    "headline-sm": [
+                            "EB Garamond"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "headline-lg": [
+                            "EB Garamond"
+                    ],
+                    "display-lg": [
+                            "EB Garamond"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "caption": [
+                            "Inter"
+                    ],
+                    "display-lg-mobile": [
+                            "EB Garamond"
+                    ]
+            },
+            "fontSize": {
+                    "label-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-sm": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "display-lg": [
+                            "64px",
+                            {
+                                    "lineHeight": "72px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "caption": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "display-lg-mobile": [
+                            "40px",
+                            {
+                                    "lineHeight": "48px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "500"
+                            }
+                    ]
+            }
+          },
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            font-weight: 300;
+        }
+
+        /* Subtle scrollbar for horizontal lists */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        .editorial-shadow {
+            box-shadow: 0 10px 30px rgba(30, 30, 30, 0.03);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col pb-24 md:pb-0">
+<!-- TopAppBar (Hidden on mobile, visible on desktop) -->
+<header class="hidden md:flex justify-between items-center w-full px-margin-desktop py-4 bg-background z-50 sticky top-0">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:opacity-80 transition-opacity duration-300">arrow_back</span>
+<h1 class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold">India Story Project</h1>
+</div>
+<nav class="flex gap-8 items-center">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Home</a>
+<a class="font-label-md text-label-md text-primary font-bold" href="#">Explore</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Share</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Saved</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Profile</a>
+</nav>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:opacity-80 transition-opacity duration-300">share</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg md:py-margin-desktop space-y-section-gap">
+<!-- Search & Map Hero Section -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<!-- Search Area (Takes 5 cols on large screens) -->
+<div class="lg:col-span-5 space-y-stack-lg">
+<div class="space-y-stack-sm">
+<h2 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-primary tracking-tight">Discover<br/>India's Narrative</h2>
+<p class="font-body-lg text-body-lg text-text-secondary max-w-md">Journey through centuries of heritage, art, and innovation across the subcontinent.</p>
+</div>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-text-secondary group-focus-within:text-primary transition-colors duration-300">search</span>
+</div>
+<input class="w-full bg-surface border-b-2 border-border focus:border-primary text-on-background py-4 pl-12 pr-4 font-body-md text-body-md transition-colors duration-300 rounded-t-lg focus:outline-none focus:ring-0 placeholder:text-text-secondary bg-opacity-80 backdrop-blur-sm shadow-sm" placeholder="Search stories, authors, regions..." type="text"/>
+<div class="absolute inset-y-0 right-0 pr-2 flex items-center">
+<button class="bg-primary text-white p-2 rounded-lg hover:bg-primary-container transition-colors duration-300 shadow-sm flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 pt-2">
+<span class="font-label-md text-label-md text-secondary-fixed-dim bg-gold-light px-3 py-1 rounded-full border border-secondary-fixed-dim/20 cursor-pointer hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-colors duration-300">ARCHITECTURE</span>
+<span class="font-label-md text-label-md text-secondary-fixed-dim bg-gold-light px-3 py-1 rounded-full border border-secondary-fixed-dim/20 cursor-pointer hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-colors duration-300">TEXTILES</span>
+<span class="font-label-md text-label-md text-secondary-fixed-dim bg-gold-light px-3 py-1 rounded-full border border-secondary-fixed-dim/20 cursor-pointer hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-colors duration-300">FOLKLORE</span>
+</div>
+</div>
+<!-- Map Teaser (Takes 7 cols on large screens) -->
+<div class="lg:col-span-7 h-96 md:h-[500px] relative rounded-xl overflow-hidden editorial-shadow group cursor-pointer mt-stack-lg lg:mt-0">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A highly stylized, minimalist topographical map of India rendered in elegant light-mode colors. The map uses subtle shades of warm beige, soft gold, and pristine white, resembling a high-end editorial illustration or antique parchment updated for modern digital design. Fine, delicate lines delineate borders and rivers. Soft, ambient light illuminates the scene, giving it a premium, cinematic feel." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA1gECdsFenB0o-oisEao2d15Vupls483YsSjtq09-7P_9iUTnyDF0_nc6lGBzKw7g-VDHLbqivCJBotw60MA3R1QWetoSlvXW10HWC1K92cKDkhgv6Dr4tmkZXnDWS1DztYemoXWNhFfnb5KfwOlJdBRsjbmnLsWoTrXyIY8HLLV__KfTVKCSqVpfZIYmLQgK6-XeEQTLpndz1ZAYBWcmPeljkwnEHaCIIJBBLpaKrqmTeA-o-qO47Ig')">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-stack-lg w-full">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">map</span>
+<span class="font-label-md text-label-md text-white uppercase tracking-widest">Interactive Experience</span>
+</div>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-white mb-2">The Cartography of Culture</h3>
+<p class="font-body-md text-body-md text-surface-dim max-w-lg mb-4 hidden md:block">Explore India region by region, uncovering the unique narratives that shape each state's identity.</p>
+<button class="font-label-md text-label-md text-white border border-white/50 rounded-lg px-6 py-2 hover:bg-white hover:text-primary transition-all duration-300">
+                        Explore Map
+                    </button>
+</div>
+</div>
+</section>
+<!-- Themes Bento Grid -->
+<section class="space-y-stack-lg">
+<div class="flex justify-between items-end border-b border-border pb-4">
+<h2 class="font-headline-lg text-headline-lg text-primary font-medium">Curated Themes</h2>
+<a class="font-label-md text-label-md text-primary hover:opacity-80 transition-opacity flex items-center gap-1" href="#">
+                    View All <span class="material-symbols-outlined text-sm">chevron_right</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-gutter auto-rows-[240px]">
+<!-- Large Item (Spans 2 cols, 2 rows) -->
+<a class="md:col-span-2 md:row-span-2 relative rounded-xl overflow-hidden group editorial-shadow block" href="#">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A breathtaking, cinematic photograph of an ancient Indian stepwell (like Chand Baori) capturing its intricate geometric architecture. The image is bathed in warm, soft, golden hour light, casting delicate shadows that emphasize the depth and symmetry of the structure. The aesthetic is high-end editorial, with a serene and timeless mood, perfectly suited for a premium storytelling platform." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBulmVDywRmfPfyhMqkcfmkZrjUiz-PVpu8oygbi85w_57BILROkNT6Y6a4JHV16Eh74M6ZHCN-TA-bAfeKVuGCUH8qfyMVfMeTi-LXRdOElEl0cbh7ZcTdCpogUmww1A7tsOtOxZ-6jOaCS33Pk-j9mgmQQYV3XGvcHH2u9p6nin6oEnULNHD0gHsp1cz3O3NLmOGUKoQmvIChvs7F3yClTUmZeBQD8iXazH8bFy-w2cJsn0-uQYwsGQ')">
+</div>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors duration-300"></div>
+<div class="absolute inset-0 p-stack-lg flex flex-col justify-end">
+<span class="font-label-md text-label-md text-gold-light bg-black/30 w-fit px-3 py-1 rounded-full backdrop-blur-md mb-3 border border-white/20">HERITAGE</span>
+<h3 class="font-headline-lg text-headline-lg text-white mb-2">Monumental Echoes</h3>
+<p class="font-body-md text-body-md text-surface-dim line-clamp-2 max-w-md">Discover the architectural marvels that have withstood the test of time, telling stories of empires past.</p>
+</div>
+</a>
+<!-- Standard Item 1 -->
+<a class="relative rounded-xl overflow-hidden group editorial-shadow block" href="#">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A stunning, macro photograph of vibrant, intricately woven Indian silk textiles (like Banarasi or Kanjeevaram). The fabric features rich, deep reds and shimmering gold threads. The lighting is soft and directional, highlighting the texture and sheen of the silk. The mood is luxurious, artisanal, and culturally rich, fitting a minimalist editorial design style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBuHUtmko79R7dbj5kIQyQKmMMRB9TovL5QPPnLXUaVr5QZiuyEyzauTrWxg0lPwMvVkYuwOO0MfKYhKG2HhhpPeayUT1ph54IOueEdL2Y1BlPwy01Hfv0ptMQNTjDYn_eMJEkcMbcoKZXoBZ0lGq1nldASIeHJatsq1es-889Ftp3oTx_bmkakiuRmDPL4pSBQoM73_uZadSEoDNt0HiYRhb6Sdz6qZqCug3OK1S6tyDa713NfLLUNPQ')">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent"></div>
+<div class="absolute inset-0 p-stack-md flex flex-col justify-end">
+<h3 class="font-headline-sm text-headline-sm text-white mb-1">Textiles</h3>
+<p class="font-caption text-caption text-surface-dim">The Fabric of India</p>
+</div>
+</a>
+<!-- Standard Item 2 -->
+<a class="relative rounded-xl overflow-hidden group editorial-shadow block" href="#">
+<div class="absolute inset-0 bg-surface flex flex-col items-center justify-center p-stack-md border border-border group-hover:border-primary/30 transition-colors duration-300 text-center">
+<div class="w-16 h-16 rounded-full bg-secondary-container/20 flex items-center justify-center mb-4 text-primary group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'wght' 200;">science</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">Science</h3>
+<p class="font-caption text-caption text-text-secondary">Ancient Innovations</p>
+</div>
+</a>
+<!-- Standard Item 3 -->
+<a class="relative rounded-xl overflow-hidden group editorial-shadow block" href="#">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A vibrant, editorial-style portrait of a classical Indian dancer (like Bharatanatyam) captured in mid-motion. The focus is on the intricate jewelry, expressive eyes, and dynamic pose. The background is a soft, dark studio setting that makes the subject pop. The lighting is dramatic yet elegant, emphasizing the cultural depth and passion of the art form." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDcysbfhOor7UvhbKIaOyyQaMEYxgZR0HM9Ep4vkyr0Ze0z8l2NPI90OqK2OUoGXIafm7szApcUdFHjHgQicKwVxA7o1JD4FXBdVwuGO0itFaAuyTvkkDdyDNNsnR1-vxk4W0BVDclF1KEJsePvzfQryVGmWwXzMEBcnxfa_86yiUKfYjJJVWB24Yt6-tbtLeCKZW85pY5lbXsXEDCzBJKt09NnhzI_U7blenerB55ux5dsD3kTeiLCoA')">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-tertiary-container/90 to-transparent"></div>
+<div class="absolute inset-0 p-stack-md flex flex-col justify-end">
+<h3 class="font-headline-sm text-headline-sm text-white mb-1">Performing Arts</h3>
+<p class="font-caption text-caption text-tertiary-fixed">Rhythm &amp; Soul</p>
+</div>
+</a>
+<!-- Standard Item 4 -->
+<a class="md:col-span-2 relative rounded-xl overflow-hidden group editorial-shadow block bg-surface border border-border" href="#">
+<div class="flex h-full flex-col md:flex-row">
+<div class="md:w-1/2 p-stack-lg flex flex-col justify-center">
+<span class="font-label-md text-label-md text-secondary-fixed-dim tracking-widest mb-2">MODERN ERA</span>
+<h3 class="font-headline-sm text-headline-sm text-on-background mb-3">Contemporary Innovations</h3>
+<p class="font-body-md text-body-md text-text-secondary">How modern India is reshaping technology, design, and sustainability globally.</p>
+<div class="mt-4 flex items-center gap-2 text-primary font-label-md text-label-md group-hover:translate-x-2 transition-transform duration-300">
+                                Explore <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
+<div class="md:w-1/2 h-48 md:h-full bg-cover bg-center" data-alt="A modern, abstract architectural detail of a contemporary building in India, featuring clean lines, sustainable design elements, and a play of light and shadow. The image is high-contrast, minimalist, and forward-looking, utilizing the sophisticated light-mode palette of warm whites and subtle grays, reflecting a sleek, editorial aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDZiGj8sm7vKrxrIxB03AZCd-lZAerokZjcwhl2xihB6v70odGaV78Cl8XJYoBQKfzP8N4-GdI2eCL0J6caDAHqNygIMtp5404zbvvFHzgWii0so0Fyj8JJCq9uxZWSlh-rjaGX86h12CsDbGIM3PKRALex1WRbte9PlszJMxV1yyImaCzfgGyP0f2cpyuo953GLETTrNPMLxiHZ7cCz9DGgkLVxRs_cSUM6mJa566bSZEcO8uuzv9__Q')">
+</div>
+</div>
+</a>
+</div>
+</section>
+<!-- Recent Collections (Glassmorphism / Editorial Cards) -->
+<section class="space-y-stack-lg">
+<div class="flex justify-between items-end border-b border-border pb-4">
+<h2 class="font-headline-lg text-headline-lg text-primary font-medium">Recent Collections</h2>
+</div>
+<div class="flex overflow-x-auto hide-scrollbar gap-gutter pb-8 snap-x snap-mandatory">
+<!-- Collection Card 1 -->
+<div class="min-w-[300px] md:min-w-[400px] flex-shrink-0 snap-start bg-surface rounded-xl border border-border p-4 editorial-shadow group cursor-pointer hover:-translate-y-1 transition-transform duration-300">
+<div class="h-48 rounded-lg overflow-hidden mb-4 relative">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A beautifully composed, serene landscape of the backwaters of Kerala during early morning mist. Traditional wooden houseboats glide gently on the calm water. The lighting is soft, ethereal, and slightly warm, creating a tranquil, timeless mood. The color palette emphasizes muted greens, soft blues, and warm earth tones, fitting an elegant travel journal aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBp5NDJj_X6WdwTqgyXAD9LLFyO8A5ttWxDAI8tgUVab5spLbIfwuMXP2mUyLhLVMFMJdTyCS-SP1LjadgMiFrJjXDl0CNwBTqVlEmxawTUI2552uwmqFKzNzE1Y25jV2VB6ZzM-E5m-CwTNwTfjIv9m25Uo-W8Qov3mDbgRgc1ntltERhSsby3nMfyAEzC3xaT-l6wYOezl0ULJwAvnlOomYdG5Ca0ewXEw__W13Ye3YY_aPY4C80Txw')">
+</div>
+</div>
+<span class="font-label-md text-label-md text-secondary-fixed-dim uppercase tracking-wider mb-2 block">Photo Essay</span>
+<h3 class="font-headline-sm text-headline-sm text-on-background mb-2 group-hover:text-primary transition-colors">The Serene Waters of the South</h3>
+<p class="font-body-md text-body-md text-text-secondary line-clamp-2 mb-4">A visual journey through the intricate waterways that define life in Kerala.</p>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-border/50">
+<div class="flex items-center gap-2">
+<img class="w-6 h-6 rounded-full object-cover" data-alt="A small, circular black and white portrait of an elegant Indian photographer, looking directly at the camera with a gentle expression. The portrait is high-contrast and minimalist, with a clean white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJvcB-dz6BPQTJpUKuYufrvYD-QsY7GQX9E-5GJoBhbnzqDbUHLEnxf2rbfsPL3lQZbgoTxuAkTznbbk1ffSfioBXxFYNVLw_h4jPtutt7yACx390cYtpZFdWmLwUdcDdJyMZOyBgsJSxpmEMDYaBOAkB-jXTNI789CsOnzZ1AJhEYT_2w5SpgOnKq88ON4wczAsVWNxav36kV7Hj7OJQxavRf9MYZ5ZzgvnyPLL2852FXUJ5wyGuf4w"/>
+<span class="font-caption text-caption text-text-secondary">By Anil Kumar</span>
+</div>
+<span class="font-caption text-caption text-text-secondary">8 min read</span>
+</div>
+</div>
+<!-- Collection Card 2 -->
+<div class="min-w-[300px] md:min-w-[400px] flex-shrink-0 snap-start bg-surface rounded-xl border border-border p-4 editorial-shadow group cursor-pointer hover:-translate-y-1 transition-transform duration-300">
+<div class="h-48 rounded-lg overflow-hidden mb-4 relative">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A close-up, highly detailed photograph of antique brass utensils and spices arranged beautifully on a rustic wooden table. The spices include vibrant turmeric, deep red chilies, and aromatic cardamom. The lighting is moody, directional, and reminiscent of a Dutch still-life painting, evoking a sense of culinary heritage and warmth within a minimalist editorial framework." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBNCK57oxWx8uj08voXDnB4U2gLRmygWeZEAT8JWLfFBCl8OuN1or3r3hNxRSmP9wQOdNGpacspeg3tLcPMce8bUvWbZMW8PCQBpYGqpGDZKYXpYlYCcT5HgAYZs6KBbLOE7bjM4aV287h1QOu3CIQOPzoACJKS9AyZgT1Vmj0okL9zkol8wUHPqgxKv54Z7FLr9-iOHhuOC3GN8NN-IWVOBGXGHn17ZZmVWBXE4OI_EzqrPSqleKWARQ')">
+</div>
+</div>
+<span class="font-label-md text-label-md text-secondary-fixed-dim uppercase tracking-wider mb-2 block">Culinary History</span>
+<h3 class="font-headline-sm text-headline-sm text-on-background mb-2 group-hover:text-primary transition-colors">Spices that Built Empires</h3>
+<p class="font-body-md text-body-md text-text-secondary line-clamp-2 mb-4">Tracing the trade routes and the bold flavors that attracted the world to India's shores.</p>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-border/50">
+<div class="flex items-center gap-2">
+<img class="w-6 h-6 rounded-full object-cover" data-alt="A small, circular portrait of an elegant Indian food historian with a warm smile, wearing a simple linen shirt. The portrait is softly lit with a warm, inviting background, maintaining a premium editorial feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1wRrSSZPejZ7NmySlvgbAgeMtQW3BBqwEv0c7xmRO3p4Wh9JjGxyQTrAe7O_yYyvzL-iAingXRfBN8-hkw1OGNiSjQNuzjcTkRhJurBYk9nQa95LkwIGFqo7FhsVDJi2av42odBIGKUZCE5xt461MvWyEJcxfFQfiHdoUpSSnqFX9O4QZ5U0_z_ZWn4Qv9k25YyvqvqURwdJlQEMXKn57VW_sTguSyBe-ixJ7B37krPlIW6KA2fB_6A"/>
+<span class="font-caption text-caption text-text-secondary">By Priya Desai</span>
+</div>
+<span class="font-caption text-caption text-text-secondary">12 min read</span>
+</div>
+</div>
+<!-- Collection Card 3 -->
+<div class="min-w-[300px] md:min-w-[400px] flex-shrink-0 snap-start bg-surface rounded-xl border border-border p-4 editorial-shadow group cursor-pointer hover:-translate-y-1 transition-transform duration-300">
+<div class="h-48 rounded-lg overflow-hidden mb-4 relative">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="An atmospheric, cinematic shot of a bustling, colorful Indian street market (bazaar) at dusk. Glowing lanterns illuminate stalls selling vibrant marigold flowers and brass wares. The focus is selective, blurring the background to create depth. The mood is energetic yet romantic, utilizing a sophisticated palette of warm golds, deep shadows, and subtle reds." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBQoFpK2AevxKJFxaXrZpoPRfRyDmrvzNSaXfZDKDWlBslnblDAhIIwLcKnM5lFmY0MeC2FaXEPZqttJp_GjsbMAwixdMlGmUjpmAyPUzNYI_Vmy_s3C3z6mje8GjTLWoyZbEm7Q-ApU_1NaV7x1K0rG690zf-aBHQDVSxxexRUVPeDE1Y0bWKDkyKx-T2WtTnucbZrXOxoiFZZWCT9-JtRWAemul-QJDex4y43x1zHbvT4r7GNAs7rPA')">
+</div>
+</div>
+<span class="font-label-md text-label-md text-secondary-fixed-dim uppercase tracking-wider mb-2 block">Urban Lore</span>
+<h3 class="font-headline-sm text-headline-sm text-on-background mb-2 group-hover:text-primary transition-colors">The Bazaars of Old Delhi</h3>
+<p class="font-body-md text-body-md text-text-secondary line-clamp-2 mb-4">Navigating the labyrinthine lanes where commerce, history, and community intertwine daily.</p>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-border/50">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-label-md text-[10px]">ISP</div>
+<span class="font-caption text-caption text-text-secondary">Editorial Team</span>
+</div>
+<span class="font-caption text-caption text-text-secondary">5 min read</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Visible on mobile, hidden on desktop) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-surface dark:bg-surface-container-low border-t border-border dark:border-outline-variant shadow-sm">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300 gap-1 w-16" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-[10px] md:text-label-md">Home</span>
+</a>
+<!-- Active Tab: Explore -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed bg-secondary-container/20 rounded-xl px-3 py-1 scale-90 transition-transform duration-200 gap-1 w-16" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-label-md text-[10px] md:text-label-md">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300 gap-1 w-16" href="#">
+<span class="material-symbols-outlined">share</span>
+<span class="font-label-md text-[10px] md:text-label-md">Share</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300 gap-1 w-16" href="#">
+<span class="material-symbols-outlined">bookmark</span>
+<span class="font-label-md text-[10px] md:text-label-md">Saved</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300 gap-1 w-16" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-[10px] md:text-label-md">Profile</span>
+</a>
+</nav>
+</body></html>

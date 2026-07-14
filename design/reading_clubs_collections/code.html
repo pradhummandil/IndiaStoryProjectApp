@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reading Clubs &amp; Collections - Discovery Community</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;1,500;1,600&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "text-secondary": "#5F6368",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e5e2e1",
+                        "surface": "#FFFFFF",
+                        "surface-container": "#f0eded",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#004e6a",
+                        "surface-dim": "#dcd9d9",
+                        "tertiary-fixed-dim": "#95ceef",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed": "#ffe08e",
+                        "on-background": "#1b1b1c",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#001e2c",
+                        "inverse-surface": "#303030",
+                        "primary-container": "#8b1e1e",
+                        "border": "#E8E2D8",
+                        "surface-container-high": "#eae7e7",
+                        "secondary-container": "#fed255",
+                        "tertiary": "#00364b",
+                        "outline-variant": "#dfbfbc",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e5e2e1",
+                        "on-secondary-fixed-variant": "#584400",
+                        "tertiary-fixed": "#c3e8ff",
+                        "outline": "#8b716e",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#58413f",
+                        "primary": "#6a020a",
+                        "on-primary-container": "#ff9d95",
+                        "on-secondary-fixed": "#241a00",
+                        "primary-fixed-dim": "#ffb3ad",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#ecc246",
+                        "primary-fixed": "#ffdad6",
+                        "on-surface": "#1b1b1c",
+                        "inverse-on-surface": "#f3f0ef",
+                        "gold-light": "#FAF6E9",
+                        "on-tertiary-fixed-variant": "#004c68",
+                        "on-error": "#ffffff",
+                        "secondary": "#755b00",
+                        "on-primary-fixed-variant": "#891c1d",
+                        "on-primary-fixed": "#410003",
+                        "surface-container-low": "#f6f3f2",
+                        "madder-light": "#F2E8E8",
+                        "on-tertiary-container": "#86bedf",
+                        "surface-bright": "#fcf9f8",
+                        "surface-tint": "#aa3531",
+                        "background": "#F8F5EF",
+                        "inverse-primary": "#ffb3ad",
+                        "on-secondary-container": "#735a00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "section-gap": "120px",
+                        "margin-mobile": "20px",
+                        "stack-md": "16px",
+                        "stack-lg": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["EB Garamond"],
+                        "caption": ["Inter"],
+                        "headline-sm": ["EB Garamond"],
+                        "body-lg": ["Inter"],
+                        "display-lg-mobile": ["EB Garamond"],
+                        "display-lg": ["EB Garamond"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "500" }],
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "headline-sm": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+                        "display-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "500" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #F8F5EF; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+        .icon-fill { font-variation-settings: 'FILL' 1; }
+        .smooth-shadow { box-shadow: 0 10px 30px rgba(30, 30, 30, 0.05); }
+        .card-border { border: 1px solid #E8E2D8; }
+        /* Hide scrollbar for clean horizontal scrolls */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-background font-body-md antialiased pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-background dark:bg-on-background border-b border-border dark:border-outline-variant transition-all duration-300">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 max-w-7xl mx-auto">
+<button class="text-primary dark:text-primary-fixed hover:text-primary transition-colors duration-300 scale-95 active:duration-150 flex items-center justify-center">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline-sm text-headline-sm md:font-headline-lg md:text-headline-lg text-primary dark:text-primary-fixed italic font-bold tracking-tight">
+                Discovery Community
+            </h1>
+<button class="text-primary dark:text-primary-fixed hover:text-primary transition-colors duration-300 scale-95 active:duration-150 flex items-center justify-center">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-24 md:pt-32 px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto min-h-screen pb-section-gap">
+<!-- Page Header -->
+<div class="mb-16 md:mb-24 md:w-8/12 mx-auto text-center">
+<h2 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-on-background mb-stack-md">Clubs &amp; Collections</h2>
+<p class="font-body-lg text-body-lg text-text-secondary">Immerse yourself in curated discussions and definitive reading lists exploring the depths of culture, science, and heritage.</p>
+</div>
+<!-- Featured Collection Carousel (Bento-ish) -->
+<section class="mb-section-gap">
+<div class="flex items-center justify-between mb-stack-lg">
+<h3 class="font-headline-sm text-headline-sm text-on-background">Featured Curations</h3>
+<button class="font-label-md text-label-md text-primary uppercase tracking-widest hover:underline flex items-center gap-1">
+                    View All <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Large Featured -->
+<div class="md:col-span-8 group cursor-pointer">
+<div class="relative w-full h-[400px] md:h-[500px] rounded-lg overflow-hidden bg-surface card-border smooth-shadow transition-transform duration-300 group-hover:-translate-y-1">
+<img class="absolute inset-0 w-full h-full object-cover opacity-90 transition-transform duration-700 group-hover:scale-105" data-alt="A beautifully photographed, high-resolution still life of ancient, ornate manuscripts resting on a dark polished wooden table, illuminated by warm, dramatic shaft of sunlight creating an ethereal, academic mood. The color palette is rich in deep golds, dark woods, and pristine parchment whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIK9aJ50vpOmObrD-AmiVTkrkTP555KB4rmcf34yYoAG_hbgEgL5vkh123EWBx7cusRrfOrqDzC_P2Eo5zDgBWhYrhsoB22GZ8eAz718JVmwKPr1_jCPVCJGUiIAPk03f_QhazLAayZweTk0u1aK0SDoomYpYdGoqG_0ufkNCSBmeBLAnwS-vJNWhenj_Z-JlsLEMQcWtbW02RVB-piB3knpKHLK4ElkdGv3JXHV8AuuRaSu_aqfRz9Q"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-stack-lg w-full">
+<span class="inline-block px-3 py-1 bg-gold-light text-secondary font-label-md text-caption uppercase tracking-wider rounded-full mb-stack-sm backdrop-blur-sm bg-opacity-90">Vedic Science</span>
+<h4 class="font-headline-lg text-headline-lg text-white mb-2 leading-tight">The Geometry of the Heavens</h4>
+<p class="font-body-md text-body-md text-white/80 line-clamp-2 md:w-3/4">An exploration of ancient astronomical texts and their staggering precision. Curated by Dr. S. Ramanujan.</p>
+</div>
+</div>
+</div>
+<!-- Secondary Featured Stack -->
+<div class="md:col-span-4 flex flex-col gap-gutter">
+<!-- Card 1 -->
+<div class="flex-1 relative rounded-lg overflow-hidden bg-surface card-border smooth-shadow group cursor-pointer transition-transform duration-300 group-hover:-translate-y-1 h-[200px] md:h-auto">
+<img class="absolute inset-0 w-full h-full object-cover opacity-80 transition-transform duration-700 group-hover:scale-105" data-alt="A detailed, macro photograph of intricate Islamic geometric tilework in muted blues, teals, and golds, soft natural lighting highlighting the texture of the ceramic and the precision of the design, elegant and timeless aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb0nGQgWHE5czOJcQZ5eFQXE67qCmimGnCfl5odEF8QMT5_xBTYg7xkbav8OXQN5QwjNP0dN_XGlNyyNoxY40xZxb9Tkj10Qp95gpaflNWcSv_Z5eDR9MINVTjKZeVOw09pMfes59nI9ZqDFfDXyDN2VjzUa0POQKnnEtHBK2cG_x9AUu43cw1zKsvXm-P2ZozkB0iNTgSUuexak6zhUKtgVAUJBqquH-uHit-uAoccPDW4YgsuR4h2A"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-stack-md w-full">
+<span class="inline-block px-2 py-0.5 bg-madder-light text-primary font-label-md text-caption uppercase tracking-wider rounded-full mb-stack-sm">Mughal Aesthetics</span>
+<h4 class="font-headline-sm text-headline-sm text-white leading-tight">Symmetry &amp; Spirit</h4>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="flex-1 relative rounded-lg overflow-hidden bg-surface card-border smooth-shadow group cursor-pointer transition-transform duration-300 group-hover:-translate-y-1 h-[200px] md:h-auto">
+<img class="absolute inset-0 w-full h-full object-cover opacity-80 transition-transform duration-700 group-hover:scale-105" data-alt="A cinematic shot of a modern, minimalist library interior with soaring ceilings, warm timber shelving, and soft diffuse natural light pouring through large clerestory windows. The scene is quiet, scholarly, and serene." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKKBQfEAjRggVz8ps1Z-I_nxoaCp-iXYG6TnlCxG5D1JFr2UPYP0PBFO2pVkLgBMHrpp82l0p-eL8Oh33cfWfPEfl1Rd8YXizUXUbG0cw8HmYczybJYG8_RsQ1kEytWh-lJlplZcw_ZHQ4JFe2UrDRXeT-n1EXTRuY9zuCq_qiqGMQYFZupCKRJFLF9H4_beFVGDyMDQZnvpCNKhfkMHFNDi1tboq1KyQT7lGR0YiWMAwMfbIxThn_hg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-stack-md w-full">
+<span class="inline-block px-2 py-0.5 bg-surface-container-high text-on-surface font-label-md text-caption uppercase tracking-wider rounded-full mb-stack-sm">Verified Authors</span>
+<h4 class="font-headline-sm text-headline-sm text-white leading-tight">The Modern Archivists</h4>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface dark:bg-inverse-surface border-t border-border dark:border-outline-variant shadow-sm flex justify-around items-center py-2 px-4 pb-safe md:hidden transition-all duration-300">
+<!-- Feed -->
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-surface-variant hover:bg-gold-light dark:hover:bg-on-tertiary-fixed-variant transition-all ease-in-out duration-300 transform active:scale-90 px-4 py-1 rounded-full" href="#">
+<span class="material-symbols-outlined">auto_stories</span>
+<span class="font-label-md text-caption mt-1">Feed</span>
+</a>
+<!-- Clubs (Active) -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-secondary-fixed font-bold bg-madder-light dark:bg-tertiary-container hover:bg-gold-light dark:hover:bg-on-tertiary-fixed-variant transition-all ease-in-out duration-300 transform active:scale-90 px-4 py-1 rounded-full" href="#">
+<span class="material-symbols-outlined icon-fill">groups</span>
+<span class="font-label-md text-caption mt-1">Clubs</span>
+</a>
+<!-- Challenges -->
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-surface-variant hover:bg-gold-light dark:hover:bg-on-tertiary-fixed-variant transition-all ease-in-out duration-300 transform active:scale-90 px-4 py-1 rounded-full" href="#">
+<span class="material-symbols-outlined">emoji_events</span>
+<span class="font-label-md text-caption mt-1">Challenges</span>
+</a>
+<!-- Activity -->
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-on-surface-variant hover:bg-gold-light dark:hover:bg-on-tertiary-fixed-variant transition-all ease-in-out duration-300 transform active:scale-90 px-4 py-1 rounded-full" href="#">
+<span class="material-symbols-outlined">history_edu</span>
+<span class="font-label-md text-caption mt-1">Activity</span>
+</a>
+</nav>
+<!-- Desktop SideNav (Hidden on Mobile, shown on md up) - Simulated as a fixed left bar if needed, but per prompt constraints we rely on top app bar for web and bottom for mobile unless specified. The prompt provided NavigationDrawer json. I will render a hidden-on-mobile drawer. -->
+<aside class="hidden md:flex flex-col h-full w-80 rounded-r-lg bg-background dark:bg-on-background border-r border-border dark:border-outline-variant shadow-lg p-stack-md fixed left-0 top-16 z-40 transition-transform duration-300 ease-out transform -translate-x-full lg:translate-x-0">
+<div class="flex items-center gap-4 mb-8 p-4">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary/20">
+<img class="w-full h-full object-cover" data-alt="A refined, professional portrait photograph of a mature storyteller with kind eyes, softly lit in a warm, library-like setting. The aesthetic is sophisticated, timeless, and approachable, using a rich, warm color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAu9HBP8NY71iXb4EkIkGu7spOSAiLeiApHeOqUKIorCBK0mUzAXgP3OoN2kwVUkvVPYPr7PwNXQb7eReXVY2RFSB08hVL853WclH0t6thHGPoVFLL-4QUaMCdlcXUq7_9eaPHjdxa-rgbqq1Y57lRXklizEiwQGyKbwJAbnb8YP2rmC-ND_lsAi2Lu3HIlSbkNrTv6Ynrq1PPz_SFXr3FpBQHZ1CR5oB_J3dVj0p_WPZHe_qF404CIsQ"/>
+</div>
+<div>
+<h3 class="font-body-md text-body-md text-on-background font-semibold">Storyteller Name</h3>
+<p class="font-caption text-caption text-text-secondary">Master Contributor</p>
+<p class="font-caption text-caption text-primary font-medium">1,240 XP</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-text-secondary dark:text-on-surface-variant hover:bg-surface-container-low transition-colors ease-out duration-300" href="#">
+<span class="material-symbols-outlined">museum</span>
+<span class="font-body-md text-body-md">Heritage Archives</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-text-secondary dark:text-on-surface-variant hover:bg-surface-container-low transition-colors ease-out duration-300" href="#">
+<span class="material-symbols-outlined">biotech</span>
+<span class="font-body-md text-body-md">Science Logs</span>
+</a>
+<!-- Active State Simulated (Clubs isn't in this specific drawer list, but Member Perks is closest generic active or just inactive for all. Let's make none active here as 'Clubs' is the main view) -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-text-secondary dark:text-on-surface-variant hover:bg-surface-container-low transition-colors ease-out duration-300" href="#">
+<span class="material-symbols-outlined">stars</span>
+<span class="font-body-md text-body-md">Member Perks</span>
+</a>
+<hr class="my-4 border-border"/>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-text-secondary dark:text-on-surface-variant hover:bg-surface-container-low transition-colors ease-out duration-300" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-text-secondary dark:text-on-surface-variant hover:bg-surface-container-low transition-colors ease-out duration-300" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+<span class="font-body-md text-body-md">Help</span>
+</a>
+</nav>
+</aside>
+</body></html>

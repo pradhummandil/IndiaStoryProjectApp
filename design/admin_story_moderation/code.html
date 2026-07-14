@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Heritage Portal - Story Moderation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-container": "#735a00",
+                      "text-secondary": "#5F6368",
+                      "background": "#F8F5EF",
+                      "error-container": "#ffdad6",
+                      "surface": "#FFFFFF",
+                      "surface-container-high": "#eae7e7",
+                      "secondary-fixed-dim": "#ecc246",
+                      "on-surface": "#1b1b1c",
+                      "on-tertiary-container": "#86bedf",
+                      "inverse-surface": "#303030",
+                      "surface-container-low": "#f6f3f2",
+                      "secondary-fixed": "#ffe08e",
+                      "primary-fixed-dim": "#ffb3ad",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-variant": "#e5e2e1",
+                      "outline-variant": "#dfbfbc",
+                      "on-tertiary": "#ffffff",
+                      "surface-dim": "#dcd9d9",
+                      "surface-container-highest": "#e5e2e1",
+                      "border": "#E8E2D8",
+                      "tertiary-fixed-dim": "#95ceef",
+                      "on-surface-variant": "#58413f",
+                      "on-secondary-fixed-variant": "#584400",
+                      "on-secondary": "#ffffff",
+                      "surface-tint": "#aa3531",
+                      "inverse-primary": "#ffb3ad",
+                      "tertiary-container": "#004e6a",
+                      "on-tertiary-fixed": "#001e2c",
+                      "surface-bright": "#fcf9f8",
+                      "primary-fixed": "#ffdad6",
+                      "on-primary-fixed": "#410003",
+                      "on-tertiary-fixed-variant": "#004c68",
+                      "gold-light": "#FAF6E9",
+                      "secondary": "#755b00",
+                      "on-primary-fixed-variant": "#891c1d",
+                      "primary-container": "#8b1e1e",
+                      "error": "#ba1a1a",
+                      "on-primary": "#ffffff",
+                      "outline": "#8b716e",
+                      "madder-light": "#F2E8E8",
+                      "primary": "#6a020a",
+                      "on-background": "#1b1b1c",
+                      "inverse-on-surface": "#f3f0ef",
+                      "tertiary-fixed": "#c3e8ff",
+                      "on-primary-container": "#ff9d95",
+                      "on-error-container": "#93000a",
+                      "on-error": "#ffffff",
+                      "tertiary": "#00364b",
+                      "surface-container": "#f0eded",
+                      "on-secondary-fixed": "#241a00",
+                      "secondary-container": "#fed255"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "20px",
+                      "margin-desktop": "64px",
+                      "stack-lg": "32px",
+                      "stack-md": "16px",
+                      "gutter": "24px",
+                      "stack-sm": "8px",
+                      "section-gap": "120px"
+              },
+              "fontFamily": {
+                      "display-lg": [
+                              "EB Garamond"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "EB Garamond"
+                      ],
+                      "headline-sm": [
+                              "EB Garamond"
+                      ],
+                      "caption": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "display-lg-mobile": [
+                              "EB Garamond"
+                      ]
+              },
+              "fontSize": {
+                      "display-lg": [
+                              "64px",
+                              {
+                                      "lineHeight": "72px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-sm": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "caption": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "40px",
+                              {
+                                      "lineHeight": "48px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+            }
+          }
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-light {
+          font-variation-settings: 'wght' 200;
+        }
+        .icon-fill {
+          font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Ambient shadow for cards */
+        .ambient-shadow {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        }
+      </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col md:flex-row">
+<!-- NavigationDrawer (Desktop) -->
+<nav class="hidden md:flex flex-col p-stack-md gap-stack-lg bg-background h-screen w-80 fixed left-0 top-0 border-r border-border z-40">
+<!-- Header -->
+<div class="flex items-center gap-4 px-4 py-2">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-high border border-border flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a curator in a well-lit studio. Warm natural light illuminates their face, giving a sophisticated and approachable editorial look. Soft, neutral background in cream and beige tones, perfectly matching a high-end magazine aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7mVw3myEDmp4gof1E84xjsgUa658IuMVGKdW1xmuXvb4qaxSCUrKhnDJQRhGXW31SwpS9oRCXGPkOiaeIzNaCBnTEuBWFPyKnWGXZtZtA-sA_BwT5LHzNbwtpmAgphDZtVxZUCkdTMA0x709GeuSsXfjFITnp-XTcFmIyR0uHllfYA40gYUBM3PVCfGP-x2-uXv398bfnFDwVAQneDwPoEUbuetcTqvhwmY0lxEMEof1gTAPZsQgO8Q"/>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface tracking-tight">Curation Lead</h2>
+<p class="font-caption text-caption text-text-secondary">Administrator</p>
+<p class="font-caption text-caption text-primary">Premium Tier</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="flex flex-col gap-2 mt-4">
+<!-- Dashboard -->
+<a class="flex items-center gap-3 px-4 py-3 text-text-secondary hover:bg-surface-container-high hover:bg-madder-light transition-all duration-300 ease-in-out rounded-lg group" href="#">
+<span class="material-symbols-outlined icon-light group-hover:text-primary">dashboard</span>
+<span class="font-label-md text-label-md uppercase tracking-wider group-hover:text-primary">Dashboard</span>
+</a>
+<!-- Stories (Active) -->
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-lg transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined icon-fill">auto_stories</span>
+<span class="font-label-md text-label-md uppercase tracking-wider font-bold">Stories</span>
+</a>
+<!-- Users -->
+<a class="flex items-center gap-3 px-4 py-3 text-text-secondary hover:bg-surface-container-high hover:bg-madder-light transition-all duration-300 ease-in-out rounded-lg group" href="#">
+<span class="material-symbols-outlined icon-light group-hover:text-primary">group</span>
+<span class="font-label-md text-label-md uppercase tracking-wider group-hover:text-primary">Users</span>
+</a>
+<!-- Settings -->
+<a class="flex items-center gap-3 px-4 py-3 text-text-secondary hover:bg-surface-container-high hover:bg-madder-light transition-all duration-300 ease-in-out rounded-lg group" href="#">
+<span class="material-symbols-outlined icon-light group-hover:text-primary">settings</span>
+<span class="font-label-md text-label-md uppercase tracking-wider group-hover:text-primary">Settings</span>
+</a>
+</div>
+</nav>
+<!-- TopAppBar (Desktop) -->
+<header class="hidden md:flex w-full top-0 sticky bg-surface border-b border-border z-30 h-20 items-center justify-between px-margin-desktop md:ml-80">
+<div class="flex items-center gap-4">
+<!-- Leading Icon hidden on desktop as nav drawer is persistent -->
+<h1 class="font-display-lg text-headline-sm tracking-tight text-primary">Heritage Portal</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-text-secondary hover:text-primary transition-colors duration-300 cursor-pointer active:scale-95 transition-transform p-2">
+<span class="material-symbols-outlined icon-light">notifications</span>
+</button>
+</div>
+</header>
+<!-- TopAppBar (Mobile) -->
+<header class="md:hidden flex w-full top-0 sticky bg-surface border-b border-border z-30 h-20 items-center justify-between px-margin-mobile">
+<div class="flex items-center gap-4">
+<button class="text-text-secondary hover:text-primary transition-colors duration-300 cursor-pointer active:scale-95 transition-transform p-2">
+<span class="material-symbols-outlined icon-light">menu</span>
+</button>
+<h1 class="font-display-lg text-headline-sm tracking-tight text-primary">Heritage Portal</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-text-secondary hover:text-primary transition-colors duration-300 cursor-pointer active:scale-95 transition-transform p-2">
+<span class="material-symbols-outlined icon-light">notifications</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 w-full md:ml-80 px-margin-mobile md:px-margin-desktop py-stack-lg pb-32 md:pb-stack-lg flex flex-col gap-section-gap">
+<!-- Header & Filters Section -->
+<section class="flex flex-col gap-stack-md">
+<div>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-2">Story Moderation</h1>
+<p class="font-body-lg text-body-lg text-text-secondary max-w-2xl">Review and manage submitted narratives. Ensure all stories adhere to editorial standards before publication.</p>
+</div>
+<!-- Tabs -->
+<div class="flex flex-wrap gap-2 mt-stack-md border-b border-border pb-4">
+<button class="px-4 py-2 bg-secondary-container text-on-secondary-container rounded-full font-label-md text-label-md transition-colors">Pending Review</button>
+<button class="px-4 py-2 text-text-secondary hover:bg-surface hover:text-primary rounded-full font-label-md text-label-md transition-colors border border-transparent hover:border-border">Approved</button>
+<button class="px-4 py-2 text-text-secondary hover:bg-surface hover:text-primary rounded-full font-label-md text-label-md transition-colors border border-transparent hover:border-border">Rejected</button>
+<button class="px-4 py-2 text-text-secondary hover:bg-surface hover:text-primary rounded-full font-label-md text-label-md transition-colors border border-transparent hover:border-border flex items-center gap-2">
+                    Flagged <span class="material-symbols-outlined text-[16px] text-error">flag</span>
+</button>
+</div>
+</section>
+<!-- List Section (Pending Review) -->
+<section class="flex flex-col gap-4">
+<!-- List Header (Desktop Only) -->
+<div class="hidden md:grid grid-cols-12 gap-gutter px-6 py-3 border-b border-border text-text-secondary font-label-md text-label-md uppercase tracking-wider">
+<div class="col-span-6">Story Details</div>
+<div class="col-span-3">Submission</div>
+<div class="col-span-3 text-right">Actions</div>
+</div>
+<!-- Item 1 -->
+<div class="bg-surface rounded-lg p-6 border border-border ambient-shadow transition-shadow duration-300 hover:shadow-md flex flex-col md:grid md:grid-cols-12 gap-gutter items-start md:items-center">
+<!-- Details -->
+<div class="md:col-span-6 flex flex-col gap-2 w-full">
+<div class="flex items-center gap-2 mb-1">
+<span class="inline-block px-2 py-1 bg-gold-light text-on-secondary-container font-caption text-caption uppercase rounded">Premium</span>
+<span class="inline-block px-2 py-1 bg-surface-container text-text-secondary font-caption text-caption uppercase rounded">Architecture</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-1">The Forgotten Arches of Byzantium</h3>
+<p class="font-body-md text-body-md text-text-secondary">By <span class="text-primary">Eleanor Vance</span></p>
+</div>
+<!-- Date -->
+<div class="md:col-span-3 text-text-secondary font-body-md text-body-md w-full my-4 md:my-0">
+<p>Submitted: Oct 24, 2023</p>
+<p class="font-caption text-caption mt-1 flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 12 mins ago</p>
+</div>
+<!-- Actions -->
+<div class="md:col-span-3 flex justify-start md:justify-end gap-3 w-full">
+<button class="px-4 py-2 rounded-lg border border-error text-error hover:bg-error-container transition-colors duration-300 font-label-md text-label-md flex items-center gap-2 bg-surface">
+<span class="material-symbols-outlined text-[18px]">close</span> Reject
+                    </button>
+<button class="px-4 py-2 rounded-lg border border-[#2e7d32] text-[#2e7d32] hover:bg-[#e8f5e9] transition-colors duration-300 font-label-md text-label-md flex items-center gap-2 bg-surface">
+<span class="material-symbols-outlined text-[18px]">check</span> Approve
+                    </button>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="bg-surface rounded-lg p-6 border border-border ambient-shadow transition-shadow duration-300 hover:shadow-md flex flex-col md:grid md:grid-cols-12 gap-gutter items-start md:items-center">
+<!-- Details -->
+<div class="md:col-span-6 flex flex-col gap-2 w-full">
+<div class="flex items-center gap-2 mb-1">
+<span class="inline-block px-2 py-1 bg-surface-container text-text-secondary font-caption text-caption uppercase rounded">Cultural Heritage</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-1">Echoes of the Silk Road: A Tapestry of Trade</h3>
+<p class="font-body-md text-body-md text-text-secondary">By <span class="text-primary">Marcus Thorne</span></p>
+</div>
+<!-- Date -->
+<div class="md:col-span-3 text-text-secondary font-body-md text-body-md w-full my-4 md:my-0">
+<p>Submitted: Oct 23, 2023</p>
+<p class="font-caption text-caption mt-1 flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 1 day ago</p>
+</div>
+<!-- Actions -->
+<div class="md:col-span-3 flex justify-start md:justify-end gap-3 w-full">
+<button class="px-4 py-2 rounded-lg border border-error text-error hover:bg-error-container transition-colors duration-300 font-label-md text-label-md flex items-center gap-2 bg-surface">
+<span class="material-symbols-outlined text-[18px]">close</span> Reject
+                    </button>
+<button class="px-4 py-2 rounded-lg border border-[#2e7d32] text-[#2e7d32] hover:bg-[#e8f5e9] transition-colors duration-300 font-label-md text-label-md flex items-center gap-2 bg-surface">
+<span class="material-symbols-outlined text-[18px]">check</span> Approve
+                    </button>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="bg-surface rounded-lg p-6 border border-border ambient-shadow transition-shadow duration-300 hover:shadow-md flex flex-col md:grid md:grid-cols-12 gap-gutter items-start md:items-center">
+<!-- Details -->
+<div class="md:col-span-6 flex flex-col gap-2 w-full">
+<div class="flex items-center gap-2 mb-1">
+<span class="inline-block px-2 py-1 bg-gold-light text-on-secondary-container font-caption text-caption uppercase rounded">Premium</span>
+<span class="inline-block px-2 py-1 bg-surface-container text-text-secondary font-caption text-caption uppercase rounded">Science</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-1">Restoring the Amber Room: New Techniques</h3>
+<p class="font-body-md text-body-md text-text-secondary">By <span class="text-primary">Dr. Aris Thorne</span></p>
+</div>
+<!-- Date -->
+<div class="md:col-span-3 text-text-secondary font-body-md text-body-md w-full my-4 md:my-0">
+<p>Submitted: Oct 21, 2023</p>
+<p class="font-caption text-caption mt-1 flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 3 days ago</p>
+</div>
+<!-- Actions -->
+<div class="md:col-span-3 flex justify-start md:justify-end gap-3 w-full">
+<button class="px-4 py-2 rounded-lg border border-error text-error hover:bg-error-container transition-colors duration-300 font-label-md text-label-md flex items-center gap-2 bg-surface">
+<span class="material-symbols-outlined text-[18px]">close</span> Reject
+                    </button>
+<button class="px-4 py-2 rounded-lg border border-[#2e7d32] text-[#2e7d32] hover:bg-[#e8f5e9] transition-colors duration-300 font-label-md text-label-md flex items-center gap-2 bg-surface">
+<span class="material-symbols-outlined text-[18px]">check</span> Approve
+                    </button>
+</div>
+</div>
+</section>
+<!-- Empty State Example (Visually hidden, but structure provided) -->
+<section class="hidden flex-col items-center justify-center py-20 text-center gap-6">
+<div class="w-64 h-64 rounded-full overflow-hidden border-4 border-surface shadow-sm mb-4">
+<img class="w-full h-full object-cover" data-alt="A serene, minimalist illustration of an empty gallery space or a blank sheet of artisanal paper on a desk, bathed in soft, warm morning light. The color palette is composed of creamy whites, subtle golds, and muted beiges, conveying a sense of calm readiness and premium quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDtDbGv0-xr2_OhHuIlh_ORByMvTuXpXCOKS5WArwrmbPjBBF-oydmdIBY2DZRQyaYWMf2VLMUG3_tUCFmkJSQnOOrIxy4E3tvAMk6eVI8_zWcd73Jpvb3C38YWsBWvqpZ-fUFFvuvRC_Gp6FuPWDmaouRerqh6-zgU4CK7PfIdaKRdKnr5I-_JR-diKVnQPD-eID8ADcroVGHKE_xtakIfN1GNi8UX5OpRwOvBFJHe0DIeYUuKeJZGg"/>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">The Queue is Clear</h3>
+<p class="font-body-lg text-body-lg text-text-secondary max-w-md">All submitted stories have been reviewed. Enjoy the silence, or explore published narratives.</p>
+<button class="mt-4 px-6 py-3 bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:bg-primary-container transition-colors shadow-sm">Explore Stories</button>
+</section>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe-area bg-surface border-t border-border shadow-sm md:hidden">
+<!-- Dashboard -->
+<a class="flex flex-col items-center justify-center text-text-secondary active:scale-95 transition-transform duration-200 py-1 px-4 rounded-full active:bg-madder-light" href="#">
+<span class="material-symbols-outlined icon-light mb-1">dashboard</span>
+<span class="font-caption text-[10px]">Dashboard</span>
+</a>
+<!-- Stories (Active) -->
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-6 py-1 active:scale-95 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined icon-fill mb-1">auto_stories</span>
+<span class="font-caption text-[10px] font-bold">Stories</span>
+</a>
+<!-- Users -->
+<a class="flex flex-col items-center justify-center text-text-secondary active:scale-95 transition-transform duration-200 py-1 px-4 rounded-full active:bg-madder-light" href="#">
+<span class="material-symbols-outlined icon-light mb-1">group</span>
+<span class="font-caption text-[10px]">Users</span>
+</a>
+<!-- Settings -->
+<a class="flex flex-col items-center justify-center text-text-secondary active:scale-95 transition-transform duration-200 py-1 px-4 rounded-full active:bg-madder-light" href="#">
+<span class="material-symbols-outlined icon-light mb-1">settings</span>
+<span class="font-caption text-[10px]">Settings</span>
+</a>
+</nav>
+</body></html>

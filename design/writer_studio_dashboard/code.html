@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Writer Studio Dashboard - India Story Project</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "border": "#E8E2D8",
+                    "surface-tint": "#aa3531",
+                    "surface-container-high": "#eae7e7",
+                    "secondary-fixed": "#ffe08e",
+                    "on-surface": "#1b1b1c",
+                    "on-tertiary-fixed-variant": "#004c68",
+                    "on-secondary-fixed-variant": "#584400",
+                    "background": "#F8F5EF",
+                    "surface-container-highest": "#e5e2e1",
+                    "on-surface-variant": "#58413f",
+                    "tertiary-fixed": "#c3e8ff",
+                    "tertiary": "#00364b",
+                    "on-secondary-fixed": "#241a00",
+                    "surface-container-low": "#f6f3f2",
+                    "on-secondary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-dim": "#dcd9d9",
+                    "on-primary-container": "#ff9d95",
+                    "secondary-container": "#fed255",
+                    "outline": "#8b716e",
+                    "madder-light": "#F2E8E8",
+                    "on-primary-fixed": "#410003",
+                    "outline-variant": "#dfbfbc",
+                    "inverse-surface": "#303030",
+                    "primary-fixed": "#ffdad6",
+                    "on-tertiary": "#ffffff",
+                    "primary": "#6a020a",
+                    "tertiary-container": "#004e6a",
+                    "primary-fixed-dim": "#ffb3ad",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#ecc246",
+                    "surface-variant": "#e5e2e1",
+                    "tertiary-fixed-dim": "#95ceef",
+                    "surface-bright": "#fcf9f8",
+                    "on-tertiary-fixed": "#001e2c",
+                    "on-background": "#1b1b1c",
+                    "inverse-on-surface": "#f3f0ef",
+                    "on-secondary-container": "#735a00",
+                    "error-container": "#ffdad6",
+                    "surface": "#FFFFFF",
+                    "surface-container": "#f0eded",
+                    "on-error-container": "#93000a",
+                    "secondary": "#755b00",
+                    "on-primary-fixed-variant": "#891c1d",
+                    "on-tertiary-container": "#86bedf",
+                    "gold-light": "#FAF6E9",
+                    "error": "#ba1a1a",
+                    "inverse-primary": "#ffb3ad",
+                    "primary-container": "#8b1e1e",
+                    "text-secondary": "#5F6368",
+                    "on-error": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-sm": "8px",
+                    "stack-lg": "32px",
+                    "margin-desktop": "64px",
+                    "section-gap": "120px",
+                    "gutter": "24px",
+                    "stack-md": "16px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "headline-sm": [
+                            "EB Garamond"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "display-lg-mobile": [
+                            "EB Garamond"
+                    ],
+                    "label-md": [
+                            "Inter"
+                    ],
+                    "display-lg": [
+                            "EB Garamond"
+                    ],
+                    "headline-lg": [
+                            "EB Garamond"
+                    ],
+                    "caption": [
+                            "Inter"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "headline-sm": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "display-lg-mobile": [
+                            "40px",
+                            {
+                                    "lineHeight": "48px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "label-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "display-lg": [
+                            "64px",
+                            {
+                                    "lineHeight": "72px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "caption": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex selection:bg-primary-container selection:text-on-primary-container">
+<!-- NavigationDrawer (Desktop) -->
+<aside class="hidden md:flex flex-col h-screen w-80 fixed left-0 top-0 bg-surface border-r border-border p-stack-md gap-stack-sm z-40">
+<div class="flex items-center gap-4 mb-8 px-4">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-headline-sm">
+                EL
+            </div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-primary">Editorial Lead</h2>
+<p class="font-caption text-caption text-on-surface-variant">Cultural Storytelling</p>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-2">
+<!-- Active: Dashboard -->
+<a class="flex items-center gap-3 px-4 py-3 bg-madder-light text-primary rounded-lg cursor-pointer transition-all duration-300" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-gold-light hover:text-surface-tint rounded-lg cursor-pointer transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">auto_stories</span>
+<span class="font-label-md text-label-md">Stories</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-gold-light hover:text-surface-tint rounded-lg cursor-pointer transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">monitoring</span>
+<span class="font-label-md text-label-md">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-gold-light hover:text-surface-tint rounded-lg cursor-pointer transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">auto_awesome</span>
+<span class="font-label-md text-label-md">AI Assistant</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-gold-light hover:text-surface-tint rounded-lg cursor-pointer transition-colors duration-300 mt-auto" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-80 flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-background border-b border-border flex justify-between items-center px-margin-mobile md:px-margin-desktop py-stack-md z-30 ease-in-out transition-all duration-300">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-primary hover:text-surface-tint transition-colors duration-300">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline-lg text-headline-lg text-primary">Writer Studio</h1>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-md text-label-md hover:bg-primary-container transition-colors shadow-[0_4px_14px_0_rgba(106,2,10,0.1)]">
+                Publish
+            </button>
+</header>
+<!-- Dashboard Content -->
+<div class="p-margin-mobile md:p-margin-desktop flex-1 pb-32 md:pb-margin-desktop max-w-7xl mx-auto w-full">
+<!-- Welcome Header -->
+<div class="mb-stack-lg">
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-2">Good morning, Writer.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Here is a summary of your stories documenting India's heritage.</p>
+</div>
+<!-- Bento Grid Overview -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-section-gap">
+<!-- Analytics Card 1 -->
+<div class="bg-surface border border-border p-6 rounded-xl shadow-[0_10px_30px_rgba(30,30,30,0.02)] hover:shadow-[0_10px_30px_rgba(30,30,30,0.05)] transition-all duration-300">
+<div class="flex items-center gap-2 mb-4 text-on-surface-variant">
+<span class="material-symbols-outlined text-surface-tint">visibility</span>
+<span class="font-label-md text-label-md uppercase tracking-wider">Total Reads</span>
+</div>
+<div class="font-headline-lg text-headline-lg text-on-surface mb-1">124,592</div>
+<div class="font-caption text-caption text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+                        +14% this month
+                    </div>
+</div>
+<!-- Analytics Card 2 -->
+<div class="bg-surface border border-border p-6 rounded-xl shadow-[0_10px_30px_rgba(30,30,30,0.02)] hover:shadow-[0_10px_30px_rgba(30,30,30,0.05)] transition-all duration-300">
+<div class="flex items-center gap-2 mb-4 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary-fixed-dim">schedule</span>
+<span class="font-label-md text-label-md uppercase tracking-wider">Avg. Read Time</span>
+</div>
+<div class="font-headline-lg text-headline-lg text-on-surface mb-1">4m 12s</div>
+<div class="font-caption text-caption text-on-surface-variant flex items-center gap-1">
+                        Solid engagement
+                    </div>
+</div>
+<!-- Quick Actions (Spans 1 col) -->
+<div class="bg-gold-light border border-secondary-fixed p-6 rounded-xl shadow-[0_10px_30px_rgba(30,30,30,0.02)] flex flex-col justify-center">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-4">Quick Actions</h3>
+<div class="flex flex-col gap-3">
+<button class="w-full flex items-center justify-center gap-2 bg-primary text-on-primary px-4 py-3 rounded-lg font-label-md text-label-md hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined">edit_square</span>
+                            New Story
+                        </button>
+<button class="w-full flex items-center justify-center gap-2 border border-primary text-primary px-4 py-3 rounded-lg font-label-md text-label-md hover:bg-madder-light transition-colors">
+<span class="material-symbols-outlined">auto_awesome</span>
+                            AI Brainstorm
+                        </button>
+</div>
+</div>
+</div>
+<!-- Active Projects Section -->
+<div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-stack-md border-b border-border pb-4">Active Projects</h3>
+<!-- Tab Headers (Simulated) -->
+<div class="flex gap-8 mb-stack-lg border-b border-border">
+<button class="pb-3 border-b-2 border-primary text-primary font-label-md text-label-md">Drafts (2)</button>
+<button class="pb-3 text-on-surface-variant hover:text-surface-tint font-label-md text-label-md transition-colors">Published</button>
+<button class="pb-3 text-on-surface-variant hover:text-surface-tint font-label-md text-label-md transition-colors">Scheduled</button>
+</div>
+<!-- Story List -->
+<div class="flex flex-col gap-stack-lg">
+<!-- Story Item 1 -->
+<div class="group flex flex-col md:flex-row gap-6 bg-surface p-4 rounded-xl border border-border hover:shadow-[0_10px_30px_rgba(30,30,30,0.05)] transition-all duration-300">
+<img class="w-full md:w-64 h-40 object-cover rounded-lg bg-surface-variant" data-alt="A striking digital installation art piece featuring glowing, generative geometric shapes suspended in a vast, minimalist gallery space. The room is illuminated by high-key, soft white lighting that creates a bright, modern light-mode aesthetic. The artwork relies on a sophisticated palette of deep blacks and pristine whites, punctuated by intense accents of vibrant red. The mood is serene yet technologically advanced." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSu1s5t28h-7P7D6JiL5KzKKfvH6-8GHGgsMCoVVLhB8ubc-xuaMUycTkcCabn8Y_DDq0MeaJAsmYkKMjEYUZsXCk-efKWCNSGjS21dafT5mA_a8aqjJ2_1y7b7czH7SEUmPkWDAkTVWStKfyJIqIF3MoS9Bb4Bd1tBclxINlj5c0s-2vB8FGKAE_kM8v1eLhBXBO_iii8FkxiPC6WakafCYCOUAcDxmpgbi8TRBlcM8pmw2hnLXgK1A"/>
+<div class="flex-1 flex flex-col justify-between py-2">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="bg-madder-light text-primary px-2 py-1 rounded text-[10px] font-bold tracking-wider uppercase">Draft</span>
+<span class="font-caption text-caption text-on-surface-variant">Last edited 2 hours ago</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-2 group-hover:text-primary transition-colors">The Lost Weavers of Varanasi</h4>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 max-w-2xl">Exploring the hidden alleyways where master craftsmen continue centuries-old traditions of silk weaving, facing modern challenges with resilience.</p>
+</div>
+<div class="mt-4 flex gap-4">
+<button class="text-primary font-label-md text-label-md hover:underline underline-offset-4 decoration-primary flex items-center gap-1">
+                                    Continue Writing <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Story Item 2 -->
+<div class="group flex flex-col md:flex-row gap-6 bg-surface p-4 rounded-xl border border-border hover:shadow-[0_10px_30px_rgba(30,30,30,0.05)] transition-all duration-300">
+<img class="w-full md:w-64 h-40 object-cover rounded-lg bg-surface-variant" data-alt="A serene photographic composition showcasing ancient temple architecture in South India bathed in golden hour light. The intricately carved stone pillars cast long, dramatic shadows across the polished courtyard floor. The image uses a warm, editorial color palette with rich earth tones and bright, clear skies, reflecting a premium, timeless discovery aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHuF-lf45xFUA29skvvxHhVy3nLSavLTxiukPFMHu5z_DEB7O9Orcg6T3bqoJb6_LIc0UEuFNHfgPDsmi58coUmuBHF30v1HqptN6RB5BC7nO9KgFoHJqy-eAhOZ5cY4ckGPIVYde2RmL2tueNz1Bq60uTHpPGe9O7Ep0jo2L_m18HbpmEmVYseUZ1jVjAkUlnlXZLj0Iz3DcJ3sAiINIh_cu91BTIRywGqHVOYpOPiclZH5VT8rPqlw"/>
+<div class="flex-1 flex flex-col justify-between py-2">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="bg-madder-light text-primary px-2 py-1 rounded text-[10px] font-bold tracking-wider uppercase">Draft</span>
+<span class="font-caption text-caption text-on-surface-variant">Last edited 2 days ago</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-2 group-hover:text-primary transition-colors">Echoes of Hampi</h4>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 max-w-2xl">A visual journey through the ruins of the Vijayanagara Empire, capturing the monumental scale and poetic decay of its stone chariots and temples.</p>
+</div>
+<div class="mt-4 flex gap-4">
+<button class="text-primary font-label-md text-label-md hover:underline underline-offset-4 decoration-primary flex items-center gap-1">
+                                    Continue Writing <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Decorative spacing before mobile nav -->
+<div class="h-24 md:h-0"></div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface border-t border-border shadow-sm flex justify-around items-center px-margin-mobile py-stack-sm pb-safe">
+<!-- Active: Drafts (Mapped to intent of dashboard active projects) -->
+<a class="flex flex-col items-center justify-center text-primary font-semibold active:scale-95 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">edit_note</span>
+<span class="font-label-md text-label-md text-[10px]">Drafts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-surface-tint active:scale-95 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">history_edu</span>
+<span class="font-label-md text-label-md text-[10px]">Published</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-surface-tint active:scale-95 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">schedule</span>
+<span class="font-label-md text-label-md text-[10px]">Scheduled</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-surface-tint active:scale-95 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">analytics</span>
+<span class="font-label-md text-label-md text-[10px]">SEO</span>
+</a>
+</nav>
+</body></html>

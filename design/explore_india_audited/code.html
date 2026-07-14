@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>India's Discovery Engine - Explore</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "surface-bright": "#fff8f7",
+                "primary-fixed-dim": "#ffb3ad",
+                "surface-dim": "#ebd5d3",
+                "on-tertiary-fixed": "#1f1b15",
+                "on-background": "#251917",
+                "secondary-fixed": "#e9e1dc",
+                "surface-tint": "#aa3531",
+                "inverse-on-surface": "#ffedeb",
+                "tertiary-fixed": "#eae1d6",
+                "surface-container-highest": "#f4dddb",
+                "on-secondary-fixed-variant": "#4b4642",
+                "on-primary-fixed-variant": "#891c1d",
+                "surface-container-high": "#fae3e1",
+                "background": "#fff8f7",
+                "tertiary": "#36312a",
+                "secondary-container": "#e6ded9",
+                "on-secondary-fixed": "#1e1b18",
+                "inverse-primary": "#ffb3ad",
+                "on-primary-container": "#ff9d95",
+                "surface": "#fff8f7",
+                "primary": "#6a020a",
+                "inverse-surface": "#3b2d2c",
+                "surface-container": "#ffe9e7",
+                "secondary-fixed-dim": "#cdc5c0",
+                "on-primary": "#ffffff",
+                "tertiary-container": "#4d4740",
+                "secondary": "#635d5a",
+                "on-error-container": "#93000a",
+                "on-surface-variant": "#58413f",
+                "outline-variant": "#dfbfbc",
+                "on-primary-fixed": "#410003",
+                "on-secondary": "#ffffff",
+                "error": "#ba1a1a",
+                "outline": "#8b716e",
+                "on-tertiary-container": "#beb6ac",
+                "tertiary-fixed-dim": "#cec5bb",
+                "on-surface": "#251917",
+                "surface-container-low": "#fff0ef",
+                "on-tertiary-fixed-variant": "#4b463e",
+                "surface-variant": "#f4dddb",
+                "primary-fixed": "#ffdad6",
+                "primary-container": "#8b1e1e",
+                "on-error": "#ffffff",
+                "on-secondary-container": "#67625e",
+                "error-container": "#ffdad6",
+                "on-tertiary": "#ffffff",
+                "surface-container-lowest": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem",
+                      "ROUND_EIGHT": "8px"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "gutter": "24px",
+                      "margin-tablet": "32px",
+                      "unit": "8px",
+                      "container-max-width": "1280px",
+                      "margin-desktop": "64px"
+              },
+              "fontFamily": {
+                      "title-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "EB Garamond"
+                      ],
+                      "display-md": [
+                              "EB Garamond"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "EB Garamond"
+                      ],
+                      "headline-lg": [
+                              "EB Garamond"
+                      ],
+                      "label-lg": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "title-lg": [
+                              "22px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "36px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-md": [
+                              "45px",
+                              {
+                                      "lineHeight": "52px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "letterSpacing": "0.5px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.25px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "57px",
+                              {
+                                      "lineHeight": "64px",
+                                      "letterSpacing": "-0.25px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-lg": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.1px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-sm": [
+                              "11px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.5px",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: #fff8f7; /* Matching surface */
+        }
+        /* Custom scrollbar for horizontal scrolling areas */
+        .hide-scroll::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scroll {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="text-on-background font-body-md antialiased pb-20 pt-16 md:pt-20 md:pb-0 bg-background">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface border-b border-outline-variant flex justify-between items-center px-margin-mobile h-16 md:hidden">
+<button class="p-2 text-on-surface hover:text-primary transition-colors duration-300 active:opacity-80 transition-all">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary tracking-widest uppercase">HERITAGE</h1>
+<button class="p-2 text-on-surface hover:text-primary transition-colors duration-300 active:opacity-80 transition-all">
+<span class="material-symbols-outlined">search</span>
+</button>
+</header>
+<!-- Desktop Navigation Shell -->
+<header class="hidden md:flex fixed top-0 w-full z-50 bg-surface border-b border-outline-variant justify-between items-center px-margin-desktop h-20 shadow-sm">
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface hover:text-primary transition-colors duration-300">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary tracking-widest uppercase">HERITAGE</h1>
+</div>
+<nav class="flex gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-label-lg text-label-lg flex flex-col items-center group" href="#">
+<span class="material-symbols-outlined mb-1">home</span>
+                Home
+                <div class="h-0.5 w-0 group-hover:w-full bg-primary transition-all duration-300 mt-1"></div>
+</a>
+<a class="text-primary font-bold font-label-lg text-label-lg flex flex-col items-center border-b-2 border-primary pb-1" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">explore</span>
+                Explore
+            </a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-label-lg text-label-lg flex flex-col items-center group" href="#">
+<span class="material-symbols-outlined mb-1">share</span>
+                Share
+                <div class="h-0.5 w-0 group-hover:w-full bg-primary transition-all duration-300 mt-1"></div>
+</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-label-lg text-label-lg flex flex-col items-center group" href="#">
+<span class="material-symbols-outlined mb-1">bookmark</span>
+                Saved
+                <div class="h-0.5 w-0 group-hover:w-full bg-primary transition-all duration-300 mt-1"></div>
+</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-label-lg text-label-lg flex flex-col items-center group" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+                Profile
+                <div class="h-0.5 w-0 group-hover:w-full bg-primary transition-all duration-300 mt-1"></div>
+</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface hover:text-primary transition-colors duration-300 bg-surface-container-lowest rounded-full border border-outline-variant">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</header>
+<main class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop py-8 flex flex-col gap-12 md:gap-24">
+<!-- Header Section -->
+<section class="flex flex-col gap-4 text-center items-center pt-4 md:pt-12">
+<h2 class="font-display-md text-display-md md:font-display-lg md:text-display-lg text-primary">India's Discovery Engine</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Traverse thousands of years of cultural heritage, architectural marvels, and natural history through our curated digital museum.</p>
+</section>
+<!-- Discover by Era Timeline -->
+<section class="flex flex-col gap-6">
+<div class="flex justify-between items-end border-b border-outline-variant pb-2">
+<h3 class="font-title-lg text-title-lg text-on-background">Discover by Era</h3>
+<button class="text-primary font-label-sm text-label-sm uppercase tracking-widest hover:underline flex items-center gap-1 font-bold">
+                    View Full Timeline <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="relative w-full h-48 md:h-64 bg-surface-container-lowest rounded-ROUND_EIGHT border border-outline-variant overflow-hidden shadow-sm">
+<!-- Decorative Timeline Track -->
+<div class="absolute top-1/2 left-0 w-full h-0.5 bg-tertiary-fixed-dim -translate-y-1/2 z-0"></div>
+<div class="flex h-full items-center overflow-x-auto hide-scroll px-8 relative z-10 snap-x snap-mandatory">
+<!-- Prehistoric -->
+<div class="flex-shrink-0 w-48 flex flex-col items-center gap-4 snap-center group cursor-pointer">
+<div class="w-4 h-4 rounded-full bg-surface border-2 border-primary group-hover:bg-primary transition-colors"></div>
+<div class="text-center transition-transform group-hover:-translate-y-2">
+<h4 class="font-label-lg text-label-lg font-bold text-on-surface group-hover:text-primary transition-colors tracking-[0.1px]">Prehistoric</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant tracking-[0.5px]">c. 2M - 3300 BCE</p>
+</div>
+</div>
+<!-- spacer line -->
+<div class="flex-shrink-0 w-16 h-px bg-transparent"></div>
+<!-- Ancient -->
+<div class="flex-shrink-0 w-48 flex flex-col items-center gap-4 snap-center group cursor-pointer">
+<div class="w-6 h-6 rounded-full bg-primary border-2 border-primary flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.1)] group-hover:scale-110 transition-transform">
+<div class="w-2 h-2 rounded-full bg-on-primary"></div>
+</div>
+<div class="text-center transition-transform group-hover:-translate-y-2">
+<h4 class="font-label-lg text-label-lg font-bold text-primary tracking-[0.1px]">Ancient</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant tracking-[0.5px]">c. 3300 BCE - 500 CE</p>
+</div>
+</div>
+<!-- spacer line -->
+<div class="flex-shrink-0 w-16 h-px bg-transparent"></div>
+<!-- Medieval -->
+<div class="flex-shrink-0 w-48 flex flex-col items-center gap-4 snap-center group cursor-pointer">
+<div class="w-4 h-4 rounded-full bg-surface border-2 border-primary group-hover:bg-primary transition-colors"></div>
+<div class="text-center transition-transform group-hover:-translate-y-2">
+<h4 class="font-label-lg text-label-lg font-bold text-on-surface group-hover:text-primary transition-colors tracking-[0.1px]">Medieval</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant tracking-[0.5px]">c. 500 CE - 1526 CE</p>
+</div>
+</div>
+<!-- spacer line -->
+<div class="flex-shrink-0 w-16 h-px bg-transparent"></div>
+<!-- Colonial -->
+<div class="flex-shrink-0 w-48 flex flex-col items-center gap-4 snap-center group cursor-pointer">
+<div class="w-4 h-4 rounded-full bg-surface border-2 border-primary group-hover:bg-primary transition-colors"></div>
+<div class="text-center transition-transform group-hover:-translate-y-2">
+<h4 class="font-label-lg text-label-lg font-bold text-on-surface group-hover:text-primary transition-colors tracking-[0.1px]">Colonial</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant tracking-[0.5px]">1526 CE - 1947 CE</p>
+</div>
+</div>
+<!-- spacer line -->
+<div class="flex-shrink-0 w-16 h-px bg-transparent"></div>
+<!-- Modern -->
+<div class="flex-shrink-0 w-48 flex flex-col items-center gap-4 snap-center group cursor-pointer">
+<div class="w-4 h-4 rounded-full bg-surface border-2 border-primary group-hover:bg-primary transition-colors"></div>
+<div class="text-center transition-transform group-hover:-translate-y-2">
+<h4 class="font-label-lg text-label-lg font-bold text-on-surface group-hover:text-primary transition-colors tracking-[0.1px]">Modern</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant tracking-[0.5px]">1947 CE - Present</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Theme Discovery Grid -->
+<section class="flex flex-col gap-6">
+<div class="flex justify-between items-end border-b border-outline-variant pb-2">
+<h3 class="font-title-lg text-title-lg text-on-background">Explore by Theme</h3>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-gutter">
+<div class="bg-surface-container-low rounded-ROUND_EIGHT border border-outline-variant p-4 flex flex-col gap-2 hover:bg-surface-container transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">account_balance</span>
+<h4 class="font-label-lg text-label-lg font-bold text-on-surface tracking-[0.1px]">UNESCO Sites</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">40+ locations</p>
+</div>
+<div class="bg-surface-container-low rounded-ROUND_EIGHT border border-outline-variant p-4 flex flex-col gap-2 hover:bg-surface-container transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">pets</span>
+<h4 class="font-label-lg text-label-lg font-bold text-on-surface tracking-[0.1px]">Wildlife</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">National Parks</p>
+</div>
+<div class="bg-surface-container-low rounded-ROUND_EIGHT border border-outline-variant p-4 flex flex-col gap-2 hover:bg-surface-container transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">palette</span>
+<h4 class="font-label-lg text-label-lg font-bold text-on-surface tracking-[0.1px]">Arts &amp; Crafts</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Traditional</p>
+</div>
+<div class="bg-surface-container-low rounded-ROUND_EIGHT border border-outline-variant p-4 flex flex-col gap-2 hover:bg-surface-container transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">restaurant</span>
+<h4 class="font-label-lg text-label-lg font-bold text-on-surface tracking-[0.1px]">Culinary</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Regional Tastes</p>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center py-2 bg-surface-container-lowest border-t border-outline-variant z-50 md:hidden shadow-[0_-2px_8px_rgba(0,0,0,0.05)] pb-safe">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-all p-2 rounded-lg active:scale-95" href="#">
+<span class="material-symbols-outlined mb-1">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold bg-secondary-container bg-opacity-30 rounded-2xl px-4 py-1 hover:bg-surface-container-low transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-label-sm text-label-sm">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-all p-2 rounded-lg active:scale-95" href="#">
+<span class="material-symbols-outlined mb-1">share</span>
+<span class="font-label-sm text-label-sm">Share</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-all p-2 rounded-lg active:scale-95" href="#">
+<span class="material-symbols-outlined mb-1">bookmark</span>
+<span class="font-label-sm text-label-sm">Saved</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-all p-2 rounded-lg active:scale-95" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+</body></html>

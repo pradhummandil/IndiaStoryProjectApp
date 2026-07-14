@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Media Library - Heritage Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-container": "#735a00",
+                      "text-secondary": "#5F6368",
+                      "background": "#F8F5EF",
+                      "error-container": "#ffdad6",
+                      "surface": "#FFFFFF",
+                      "surface-container-high": "#eae7e7",
+                      "secondary-fixed-dim": "#ecc246",
+                      "on-surface": "#1b1b1c",
+                      "on-tertiary-container": "#86bedf",
+                      "inverse-surface": "#303030",
+                      "surface-container-low": "#f6f3f2",
+                      "secondary-fixed": "#ffe08e",
+                      "primary-fixed-dim": "#ffb3ad",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-variant": "#e5e2e1",
+                      "outline-variant": "#dfbfbc",
+                      "on-tertiary": "#ffffff",
+                      "surface-dim": "#dcd9d9",
+                      "surface-container-highest": "#e5e2e1",
+                      "border": "#E8E2D8",
+                      "tertiary-fixed-dim": "#95ceef",
+                      "on-surface-variant": "#58413f",
+                      "on-secondary-fixed-variant": "#584400",
+                      "on-secondary": "#ffffff",
+                      "surface-tint": "#aa3531",
+                      "inverse-primary": "#ffb3ad",
+                      "tertiary-container": "#004e6a",
+                      "on-tertiary-fixed": "#001e2c",
+                      "surface-bright": "#fcf9f8",
+                      "primary-fixed": "#ffdad6",
+                      "on-primary-fixed": "#410003",
+                      "on-tertiary-fixed-variant": "#004c68",
+                      "gold-light": "#FAF6E9",
+                      "secondary": "#755b00",
+                      "on-primary-fixed-variant": "#891c1d",
+                      "primary-container": "#8b1e1e",
+                      "error": "#ba1a1a",
+                      "on-primary": "#ffffff",
+                      "outline": "#8b716e",
+                      "madder-light": "#F2E8E8",
+                      "primary": "#6a020a",
+                      "on-background": "#1b1b1c",
+                      "inverse-on-surface": "#f3f0ef",
+                      "tertiary-fixed": "#c3e8ff",
+                      "on-primary-container": "#ff9d95",
+                      "on-error-container": "#93000a",
+                      "on-error": "#ffffff",
+                      "tertiary": "#00364b",
+                      "surface-container": "#f0eded",
+                      "on-secondary-fixed": "#241a00",
+                      "secondary-container": "#fed255"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "20px",
+                      "margin-desktop": "64px",
+                      "stack-lg": "32px",
+                      "stack-md": "16px",
+                      "gutter": "24px",
+                      "stack-sm": "8px",
+                      "section-gap": "120px"
+              },
+              "fontFamily": {
+                      "display-lg": [
+                              "EB Garamond"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "EB Garamond"
+                      ],
+                      "headline-sm": [
+                              "EB Garamond"
+                      ],
+                      "caption": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "display-lg-mobile": [
+                              "EB Garamond"
+                      ]
+              },
+              "fontSize": {
+                      "display-lg": [
+                              "64px",
+                              {
+                                      "lineHeight": "72px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-sm": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "caption": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "40px",
+                              {
+                                      "lineHeight": "48px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for an editorial feel */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e5e2e1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8b716e;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex">
+<!-- NavigationDrawer (Desktop) -->
+<nav class="hidden md:flex flex-col p-stack-md gap-stack-lg bg-background h-screen w-80 fixed left-0 top-0 border-r border-border z-50">
+<!-- Header -->
+<div class="flex flex-col mb-stack-lg pl-2">
+<span class="font-display-lg text-headline-lg text-primary tracking-tight mb-stack-md">Heritage</span>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden border border-border">
+<img class="w-full h-full object-cover" data-alt="A sophisticated black and white portrait photo of an archivist or curator, soft studio lighting, professional and thoughtful expression, editorial style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfQT_vqOi29n8AuNAIUKgZqpvebMZH9YLhJZaDKm8_KGPeCEwC4dZBpVN-ngw5C-eKVLRrgdwBade4ytdgK_HD2WtMdrZnaLwXH-cYz6InWtbzgfaFlyGtOQeNTZcODyeq5a3uAVXhDbEi9TOi-oRVH6wixE3RUQuzWCAIGHJthI0PdpUDkE-8CnJQpBtJAIJhr96QcH_aBN2o58dtNfqVKTYQTJMOgfQrV6yHgiL678DuNCcDm-iKWA"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Curation Lead</span>
+<span class="font-caption text-caption text-text-secondary">Administrator</span>
+</div>
+</div>
+</div>
+<!-- Links -->
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-text-secondary hover:bg-surface-container-high hover:bg-madder-light transition-all duration-300 ease-in-out font-label-md text-label-md uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+<!-- Active State: Stories mapped to Media Library intent -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-secondary-container text-on-secondary-container transition-all duration-300 ease-in-out font-label-md text-label-md uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined fill">auto_stories</span>
+                Stories
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-text-secondary hover:bg-surface-container-high hover:bg-madder-light transition-all duration-300 ease-in-out font-label-md text-label-md uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined">group</span>
+                Users
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-text-secondary hover:bg-surface-container-high hover:bg-madder-light transition-all duration-300 ease-in-out font-label-md text-label-md uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 md:ml-80 flex flex-col min-h-screen relative w-full">
+<!-- TopAppBar -->
+<header class="bg-surface text-primary font-headline-sm text-headline-sm w-full top-0 sticky border-b border-border flex items-center justify-between px-margin-mobile md:px-margin-desktop h-20 z-40">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-text-secondary cursor-pointer active:scale-95 transition-transform">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="font-display-lg text-headline-sm tracking-tight text-primary font-bold">Heritage Portal</span>
+</div>
+<button class="text-text-secondary hover:text-primary transition-colors duration-300 cursor-pointer active:scale-95">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 p-margin-mobile md:p-margin-desktop pb-32 md:pb-margin-desktop max-w-7xl mx-auto w-full">
+<!-- Top Section: Header & Actions -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-stack-lg mb-section-gap">
+<div class="flex flex-col gap-stack-sm max-w-2xl">
+<h1 class="font-headline-lg text-headline-lg md:text-display-lg text-on-surface tracking-tight">Media Archive</h1>
+<p class="font-body-lg text-body-lg text-text-secondary">Manage and organize visual assets for editorial stories.</p>
+<!-- Storage Quota -->
+<div class="mt-stack-md flex flex-col gap-2">
+<div class="flex justify-between items-center font-caption text-caption text-text-secondary uppercase tracking-widest">
+<span>Storage Usage</span>
+<span>45GB / 100GB</span>
+</div>
+<div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[45%] rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 px-6 py-3 rounded-lg text-primary font-label-md text-label-md uppercase tracking-wider hover:bg-madder-light transition-colors duration-300">
+<span class="material-symbols-outlined">select_check_box</span>
+                        Select
+                    </button>
+<button class="flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider hover:bg-primary-container hover:text-on-primary-container shadow-[0_10px_30px_rgba(106,2,10,0.15)] transition-all duration-300">
+<span class="material-symbols-outlined">cloud_upload</span>
+                        Upload New
+                    </button>
+</div>
+</div>
+<!-- Filters / Tags -->
+<div class="flex overflow-x-auto gap-3 pb-4 mb-stack-lg no-scrollbar border-b border-border">
+<button class="px-4 py-1.5 rounded-full bg-surface-container text-on-surface font-caption text-caption uppercase tracking-wider whitespace-nowrap">All Media</button>
+<button class="px-4 py-1.5 rounded-full bg-transparent border border-border text-text-secondary hover:border-primary hover:text-primary transition-colors font-caption text-caption uppercase tracking-wider whitespace-nowrap">Photography</button>
+<button class="px-4 py-1.5 rounded-full bg-transparent border border-border text-text-secondary hover:border-primary hover:text-primary transition-colors font-caption text-caption uppercase tracking-wider whitespace-nowrap">Illustrations</button>
+<button class="px-4 py-1.5 rounded-full bg-transparent border border-border text-text-secondary hover:border-primary hover:text-primary transition-colors font-caption text-caption uppercase tracking-wider whitespace-nowrap">Video</button>
+<button class="px-4 py-1.5 rounded-full bg-transparent border border-border text-text-secondary hover:border-primary hover:text-primary transition-colors font-caption text-caption uppercase tracking-wider whitespace-nowrap">Documents</button>
+</div>
+<!-- Media Grid -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-gutter">
+<!-- Asset Card 1 -->
+<div class="group relative flex flex-col bg-surface border border-border rounded-lg overflow-hidden hover:shadow-[0_10px_30px_rgba(30,30,30,0.05)] transition-shadow duration-300 cursor-pointer">
+<div class="absolute top-2 left-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="w-5 h-5 rounded border border-surface bg-surface/50 backdrop-blur-sm flex items-center justify-center">
+<!-- Hidden checkbox state -->
+</div>
+</div>
+<div class="aspect-square bg-surface-container-low overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="A breathtaking landscape photograph of rugged Scottish highlands at dawn, misty valleys, rich muted greens and deep browns, dramatic lighting, high-resolution editorial style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2Gj4mdrTx2beTMsF4F2JMi86NAkgqqATUB8jginmr92G95iHJ3OaiLu4yqyLlqqtdsjaglYPQsjXjfSRQojDKNJFQ1iOcGSdnjvRVbnW7D7dKY0SQrg8UFTvVLBLh60GxiZwYM4I-hC5MLqDqXat1hSIYYSECXGt88hZswZuZAXY0ZLds6RNiGQGGy7bjz-_-CP5MDkUvtwuOg615NYswQgMXlJG2MWG4eiDeqoocDUqcSgVAEzLyjQ"/>
+<div class="absolute bottom-2 right-2 bg-surface/80 backdrop-blur-md px-2 py-1 rounded text-[10px] font-caption text-on-surface uppercase">JPG</div>
+</div>
+<div class="p-3 flex flex-col gap-1">
+<span class="font-label-md text-label-md text-on-surface truncate">Highlands_Dawn_Final.jpg</span>
+<span class="font-caption text-caption text-text-secondary">4.2 MB • 3200x2400</span>
+</div>
+</div>
+<!-- Asset Card 2 -->
+<div class="group relative flex flex-col bg-surface border border-border rounded-lg overflow-hidden hover:shadow-[0_10px_30px_rgba(30,30,30,0.05)] transition-shadow duration-300 cursor-pointer">
+<div class="absolute top-2 left-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="w-5 h-5 rounded border border-surface bg-surface/50 backdrop-blur-sm flex items-center justify-center"></div>
+</div>
+<div class="aspect-square bg-surface-container-low overflow-hidden relative flex items-center justify-center">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="A close up macro shot of an ancient Roman coin resting on rough parchment paper, warm side lighting highlighting the textures, rich gold and sepia tones, historical museum catalog style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkYYvfcum9_TZuKble72E5018OlFsQeoyqF_Wh76JyD183pNhOlyEwy-JOXcJPKc10kyXyGUet_WXeGF5KTEfjoWV6cVY0fUna6ytjgs0gzT5OP-2Z1ikjnTq236Q4nSv3uQuUngSg1YiL4CT4RIWOFKzWb0xnN6W_AMGKZhRev_IqbC66K6YP51pWAWrlW0ftmvJJcJKBg49-8k3HS8W6hG9E-GNEtjYXFHaxv-tAbFz17YQvpm3XPg"/>
+<div class="absolute bottom-2 right-2 bg-surface/80 backdrop-blur-md px-2 py-1 rounded text-[10px] font-caption text-on-surface uppercase">PNG</div>
+</div>
+<div class="p-3 flex flex-col gap-1">
+<span class="font-label-md text-label-md text-on-surface truncate">Roman_Aureus_Macro.png</span>
+<span class="font-caption text-caption text-text-secondary">8.1 MB • 4000x4000</span>
+</div>
+</div>
+<!-- Asset Card 3 (Video) -->
+<div class="group relative flex flex-col bg-surface border border-border rounded-lg overflow-hidden hover:shadow-[0_10px_30px_rgba(30,30,30,0.05)] transition-shadow duration-300 cursor-pointer">
+<div class="absolute top-2 left-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="w-5 h-5 rounded border border-surface bg-surface/50 backdrop-blur-sm flex items-center justify-center"></div>
+</div>
+<div class="aspect-square bg-surface-container-low overflow-hidden relative flex items-center justify-center">
+<img class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="A still frame from a documentary video showing a bustling 1920s street scene in Paris, sepia-toned, slight film grain, vintage aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIqXU1zPyBGtheemsIpO2lpIzhUcNBMYy04R2cXSlYzC5hBBkNkZUNZtr4qCGzDGxr6hNGSYXZugCXhk4VN5jQpYw2TAp2CRO9_Py5THTssOgQMs8dYQGasAshNBgbgpGms8AsNPJcgELabHjxXcwdY7i4lx06WeFUsj-T-TafOji6br3Go-lFNw6CIYnkDsNGeze7rlCEQ7i3n6vPaYzvLmZqkKnQuaszaxkCNC4P8JcgC6C_JNKn-g"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-surface drop-shadow-md text-3xl">play_circle</span>
+</div>
+<div class="absolute bottom-2 right-2 bg-surface/80 backdrop-blur-md px-2 py-1 rounded text-[10px] font-caption text-on-surface uppercase">MP4</div>
+</div>
+<div class="p-3 flex flex-col gap-1">
+<span class="font-label-md text-label-md text-on-surface truncate">Paris_Archive_1920.mp4</span>
+<span class="font-caption text-caption text-text-secondary">145 MB • 02:34</span>
+</div>
+</div>
+<!-- Skeleton Loaders (Demonstrating Loading State) -->
+<div class="flex flex-col bg-surface border border-border rounded-lg overflow-hidden">
+<div class="aspect-square bg-surface-container-high animate-pulse"></div>
+<div class="p-3 flex flex-col gap-2">
+<div class="h-4 bg-surface-variant rounded w-3/4 animate-pulse"></div>
+<div class="h-3 bg-surface-variant rounded w-1/2 animate-pulse"></div>
+</div>
+</div>
+<div class="flex flex-col bg-surface border border-border rounded-lg overflow-hidden hidden md:flex">
+<div class="aspect-square bg-surface-container-high animate-pulse" style="animation-delay: 150ms;"></div>
+<div class="p-3 flex flex-col gap-2">
+<div class="h-4 bg-surface-variant rounded w-5/6 animate-pulse" style="animation-delay: 150ms;"></div>
+<div class="h-3 bg-surface-variant rounded w-2/5 animate-pulse" style="animation-delay: 150ms;"></div>
+</div>
+</div>
+<div class="flex flex-col bg-surface border border-border rounded-lg overflow-hidden hidden lg:flex">
+<div class="aspect-square bg-surface-container-high animate-pulse" style="animation-delay: 300ms;"></div>
+<div class="p-3 flex flex-col gap-2">
+<div class="h-4 bg-surface-variant rounded w-2/3 animate-pulse" style="animation-delay: 300ms;"></div>
+<div class="h-3 bg-surface-variant rounded w-1/3 animate-pulse" style="animation-delay: 300ms;"></div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (Mobile) -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe-area bg-surface md:hidden border-t-0 shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
+<a class="flex flex-col items-center justify-center text-text-secondary active:bg-madder-light scale-100 active:scale-95 transition-transform duration-200 p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-[10px] mt-1 uppercase">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-6 py-1 scale-100 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined fill">auto_stories</span>
+<span class="font-label-md text-[10px] mt-1 uppercase">Stories</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary active:bg-madder-light scale-100 active:scale-95 transition-transform duration-200 p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-[10px] mt-1 uppercase">Users</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary active:bg-madder-light scale-100 active:scale-95 transition-transform duration-200 p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-[10px] mt-1 uppercase">Settings</span>
+</a>
+</nav>
+</body></html>

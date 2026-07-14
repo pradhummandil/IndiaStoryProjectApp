@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Community Challenges - Discovery</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "text-secondary": "#5F6368",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-highest": "#e5e2e1",
+                    "surface": "#FFFFFF",
+                    "surface-container": "#f0eded",
+                    "error": "#ba1a1a",
+                    "tertiary-container": "#004e6a",
+                    "surface-dim": "#dcd9d9",
+                    "tertiary-fixed-dim": "#95ceef",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed": "#ffe08e",
+                    "on-background": "#1b1b1c",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed": "#001e2c",
+                    "inverse-surface": "#303030",
+                    "primary-container": "#8b1e1e",
+                    "border": "#E8E2D8",
+                    "surface-container-high": "#eae7e7",
+                    "secondary-container": "#fed255",
+                    "tertiary": "#00364b",
+                    "outline-variant": "#dfbfbc",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e5e2e1",
+                    "on-secondary-fixed-variant": "#584400",
+                    "tertiary-fixed": "#c3e8ff",
+                    "outline": "#8b716e",
+                    "on-secondary": "#ffffff",
+                    "on-surface-variant": "#58413f",
+                    "primary": "#6a020a",
+                    "on-primary-container": "#ff9d95",
+                    "on-secondary-fixed": "#241a00",
+                    "primary-fixed-dim": "#ffb3ad",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#ecc246",
+                    "primary-fixed": "#ffdad6",
+                    "on-surface": "#1b1b1c",
+                    "inverse-on-surface": "#f3f0ef",
+                    "gold-light": "#FAF6E9",
+                    "on-tertiary-fixed-variant": "#004c68",
+                    "on-error": "#ffffff",
+                    "secondary": "#755b00",
+                    "on-primary-fixed-variant": "#891c1d",
+                    "on-primary-fixed": "#410003",
+                    "surface-container-low": "#f6f3f2",
+                    "madder-light": "#F2E8E8",
+                    "on-tertiary-container": "#86bedf",
+                    "surface-bright": "#fcf9f8",
+                    "surface-tint": "#aa3531",
+                    "background": "#F8F5EF",
+                    "inverse-primary": "#ffb3ad",
+                    "on-secondary-container": "#735a00"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-sm": "8px",
+                    "margin-desktop": "64px",
+                    "gutter": "24px",
+                    "section-gap": "120px",
+                    "margin-mobile": "20px",
+                    "stack-md": "16px",
+                    "stack-lg": "32px"
+            },
+            "fontFamily": {
+                    "headline-lg": [
+                            "EB Garamond"
+                    ],
+                    "caption": [
+                            "Inter"
+                    ],
+                    "headline-sm": [
+                            "EB Garamond"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "display-lg-mobile": [
+                            "EB Garamond"
+                    ],
+                    "display-lg": [
+                            "EB Garamond"
+                    ],
+                    "label-md": [
+                            "Inter"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "caption": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-sm": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "display-lg-mobile": [
+                            "40px",
+                            {
+                                    "lineHeight": "48px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "display-lg": [
+                            "64px",
+                            {
+                                    "lineHeight": "72px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "label-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    }
+            }
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* Soft Ambient Occlusion utility */
+        .ambient-shadow {
+            box-shadow: 0 10px 30px rgba(30, 30, 30, 0.05);
+        }
+        .icon-light {
+            font-variation-settings: 'wght' 200, 'FILL' 0;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+<!-- TopAppBar (Web Desktop) -->
+<!-- Applying Shell Border Ban: Replaced border-b with a subtle tonal background shift via shadow -->
+<nav class="hidden md:flex fixed top-0 w-full z-50 bg-background justify-between items-center px-margin-desktop h-16 shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
+<div class="flex items-center gap-4">
+<button class="text-primary hover:text-primary transition-colors duration-300 scale-95 active:duration-150 p-2">
+<span class="material-symbols-outlined icon-light">menu</span>
+</button>
+<span class="font-headline-lg text-headline-lg text-primary font-bold tracking-tight italic">Discovery Community</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-text-secondary hover:text-primary transition-colors duration-300 scale-95 active:duration-150 p-2">
+<span class="material-symbols-outlined icon-light">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-variant border border-border overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A small, elegant profile portrait of a contributor, softly lit against a neutral warm background, suitable for a luxury editorial platform avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCU0bQSrRQKicsM-HZ9RyU_Yq5JPiYJHXdi1KksH6boMZ_8wfhvZuo-Ge8WpxFM3MF58Fx53LouDnaL21f6a4K7oiDrcEg-YHS0qF48q7-mKJpFq1MgaTwgzZy7p7wyhxhD-McG3r2guiIAS6uJAoLMw4vKtWfKPAus0Mb8NBB84Nk3KZxp7psCzP4CiCTjrre61WQXfINC7Mk616NfvwIrR0Dx_dITAdCEitOZDI8xPfA6i-Dmx1S7CA"/>
+</div>
+</div>
+</nav>
+<!-- BottomNavBar (Mobile) -->
+<!-- Applying Shell Border Ban: Replaced border-t with a subtle shadow. Active item resolved to 'Challenges' -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 rounded-t-xl bg-surface shadow-[0_-4px_20px_rgba(0,0,0,0.03)] flex justify-around items-center py-2 px-4 pb-safe">
+<!-- Feed (Inactive) -->
+<a class="flex flex-col items-center justify-center text-text-secondary hover:text-primary transition-all ease-in-out duration-300 transform active:scale-90 w-16" href="#">
+<span class="material-symbols-outlined icon-light mb-1">auto_stories</span>
+<span class="font-label-md text-[10px] leading-tight">Feed</span>
+</a>
+<!-- Clubs (Inactive) -->
+<a class="flex flex-col items-center justify-center text-text-secondary hover:text-primary transition-all ease-in-out duration-300 transform active:scale-90 w-16" href="#">
+<span class="material-symbols-outlined icon-light mb-1">groups</span>
+<span class="font-label-md text-[10px] leading-tight">Clubs</span>
+</a>
+<!-- Challenges (Active) -->
+<a class="flex flex-col items-center justify-center text-primary font-bold bg-madder-light rounded-full px-4 py-1 ease-in-out duration-300 transform active:scale-90 min-w-16" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1, 'wght' 300;">emoji_events</span>
+<span class="font-label-md text-[10px] leading-tight mt-1">Challenges</span>
+</a>
+<!-- Activity (Inactive) -->
+<a class="flex flex-col items-center justify-center text-text-secondary hover:text-primary transition-all ease-in-out duration-300 transform active:scale-90 w-16" href="#">
+<span class="material-symbols-outlined icon-light mb-1">history_edu</span>
+<span class="font-label-md text-[10px] leading-tight">Activity</span>
+</a>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-8 pb-32 md:pt-24 md:pb-40 flex flex-col items-center w-full overflow-hidden">
+<!-- Fluid Editorial Grid Container -->
+<div class="w-full max-w-[1440px] px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- HERO SECTION (The Golden Thread: spanning central 10 columns) -->
+<section class="col-span-1 md:col-start-2 md:col-span-10 flex flex-col items-center text-center mt-8 md:mt-12">
+<span class="font-label-md text-label-md text-primary tracking-[0.15em] uppercase mb-stack-md">Current Monthly Theme</span>
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-on-background mb-stack-lg max-w-4xl mx-auto">
+                    Architecture of Devotion
+                </h1>
+<div class="w-full aspect-[4/3] md:aspect-[21/9] rounded-xl overflow-hidden relative ambient-shadow">
+<img class="w-full h-full object-cover" data-alt="A monumental, ancient temple interior bathed in golden hour light, captured with an editorial, minimalist aesthetic. The space features towering stone columns and intricate archways, embodying the theme 'Architecture of Devotion'. High-end travel journal style photography with a subtle warm paper tint, deep contrast, and profound negative space. The atmosphere is serene and intellectually inspiring." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE7rWR07SzCV3sUV63G1OQbha0VQrCxf_hWTSCMjC-GiiZNH6cqJT1Q8sZn2b_RhimRJrQjtcOSafr_Mh1Gmry6xt9nvELGqkgbxsxKSwMlz_fLR6v9A4Mg4S0RnnA6C__T2VW77WEWRSfFoO8POQVi0qka7U77JUSdMB9K6hplUmRty9j1NIAO1xVxRm_pcrlwulTcrVfzLQ3HPMOX_LtTGlNaUzhd88oU9PHVLYeAwuSwfSVy7AUTg"/>
+</div>
+</section>
+<!-- GUIDELINES & BRIEF (The Golden Thread narrowed: central 6 columns for text readability) -->
+<section class="col-span-1 md:col-start-4 md:col-span-6 mt-section-gap flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-border text-4xl mb-stack-md icon-light">history_edu</span>
+<h2 class="font-headline-sm text-headline-sm text-on-background mb-stack-md">The Creative Brief</h2>
+<p class="font-body-lg text-body-lg text-text-secondary mb-stack-lg leading-relaxed">
+                    This month, we invite our community to document the spaces where humanity has sought meaning. From austere modernist chapels to ancient monolithic ruins, capture the structural manifestations of faith, philosophy, and collective purpose. Submissions will be evaluated on narrative depth, technical mastery, and adherence to our minimalist editorial standards.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+<button class="bg-primary text-on-primary font-label-md text-label-md px-8 py-4 rounded-lg hover:bg-on-primary-fixed-variant transition-colors duration-300 ambient-shadow">
+                        Submit Entry
+                    </button>
+<button class="bg-transparent border border-primary text-primary font-label-md text-label-md px-8 py-4 rounded-lg hover:bg-madder-light transition-colors duration-300">
+                        Read Full Guidelines
+                    </button>
+</div>
+</section>
+<!-- GALLERY: TOP ENTRIES (Bento Grid breaking slightly wider, spanning 12 cols) -->
+<section class="col-span-1 md:col-span-12 mt-section-gap">
+<div class="flex flex-col items-center mb-stack-lg">
+<h3 class="font-headline-lg text-headline-lg text-on-background text-center mb-stack-sm">Curator's Highlights</h3>
+<p class="font-body-md text-body-md text-text-secondary text-center">Exemplary early submissions defining the standard.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Featured Large Entry -->
+<article class="col-span-1 md:col-span-7 group cursor-pointer relative bg-surface border border-border rounded-lg overflow-hidden transition-all duration-500 hover:shadow-[0_20px_40px_rgba(30,30,30,0.08)]">
+<div class="aspect-[4/5] md:aspect-auto md:h-[600px] w-full relative">
+<img class="w-full h-full object-cover mix-blend-multiply opacity-95 group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="A striking, minimalist architectural photograph capturing a modern concrete chapel's soaring ceiling as it intersects with a sharp skylight. Beautifully harsh, precise geometric shadows play against stark, textured white surfaces. The composition blends contemporary architectural design with a sense of profound spiritual reverence. Shot in a pristine, luxury magazine editorial style, the image maintains a very subtle warm undertone that complements a clean, light-mode interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKlr-9wKV3nZV_aw9-D9p9Nrc4CpFhKZVU68LQD2LLW25V-BvgJlKv8NxOBcJ_R2tuoFVkMpGoRxfljT5PR9ANo89MeZT6KUI6qsYmVnw7Jzgvti3sxubgFcd10UW8jJyBHoLXc_axoANq4M9yl5tJEevTooCLR6FvEJVCasNJ3hOUC_VI8sD2MtmYrbvGLeLHUQIbZe_OXLJBeOgFAf1O60aE-pyKVia3mIny0gedSN75UM0aKST3Xg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/80 via-transparent to-transparent opacity-60"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full">
+<div class="inline-block bg-gold-light text-secondary font-label-md text-[10px] tracking-wider uppercase px-3 py-1 rounded-sm mb-4 border border-secondary-fixed">
+                                    Top Selection
+                                </div>
+<h4 class="font-headline-sm text-headline-sm text-surface mb-2">The Silence of Concrete</h4>
+<p class="font-body-md text-body-md text-surface-container-high opacity-90">By Elena Rostova</p>
+</div>
+</div>
+</article>
+<!-- Secondary Column -->
+<div class="col-span-1 md:col-span-5 flex flex-col gap-gutter h-full">
+<!-- Secondary Card 1 -->
+<article class="flex-1 group cursor-pointer bg-surface border border-border rounded-lg overflow-hidden transition-all duration-300 hover:shadow-[0_10px_30px_rgba(30,30,30,0.05)]">
+<div class="aspect-[16/9] w-full relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="A close-up, high-end editorial photograph of intricately carved wooden doors on a historical monastery. The lighting is soft and ambient, highlighting the craftsmanship and texture of the wood. Shot in a minimalist style with a warm, desaturated color palette to fit a premium cultural heritage platform. The mood is timeless and contemplative." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVyWplcn03h0si6XfUABLJp-bARRtmMY9_Gz_xSZ1lFgNDZPd-J_-5zXEv_r7jQM7cnjLvpmHiYFKknHaJcI4zH32MhM8CrRl_eicT_DdGEq-_lkhMD1yjLlTr8RUMjDa-5zqtKN9uk9PHjleT-LwVfRqFraR2JxivbUOku01wdYaJ-8RIGiwzqDHKAO6YFL3eRKLf9FR3R5Tgt_8n44QKFlMDvhe5W56BzPbQhJuBO9mKmfvSyjVASQ"/>
+</div>
+<div class="p-6">
+<h4 class="font-headline-sm text-body-lg text-on-background mb-1">Thresholds of Antiquity</h4>
+<p class="font-body-md text-caption text-text-secondary">By Marcus Wei</p>
+</div>
+</article>
+<!-- Secondary Card 2 -->
+<article class="flex-1 group cursor-pointer bg-surface border border-border rounded-lg overflow-hidden transition-all duration-300 hover:shadow-[0_10px_30px_rgba(30,30,30,0.05)]">
+<div class="aspect-[16/9] w-full relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="An expansive, low-angle shot of a majestic Gothic cathedral facade against a pale, clear sky. The intricate stonework and flying buttresses are captured in delicate, crisp detail, resembling a fine-art lithograph. The lighting is exceptionally soft, producing a flat, painterly quality that enhances the structure's intellectual and cultural significance. Designed for a premium storytelling layout." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHbVruCEv_7raz7nmfKIFw7M64oJLwe9fCwuZF7NqaLBej3TzJfLAjNuVGo-r6Ir-oAQZbgP-8rQmwPI160ry1mJOkURGN70mQDbi1t5ZHwX-dEnmlFmBYxhufSvOttfOa3tbYFbp4Li65OghpokYcq3Y_REWKDTK8U3tIigu5fioQXVF7Ih6C2U0JMBOU4NB3uzQOWRLhSa9ffwDf3mhLG2_8kCCiY4zDxVU3daOWSyxNbfKHiuhSzA"/>
+</div>
+<div class="p-6">
+<h4 class="font-headline-sm text-body-lg text-on-background mb-1">Ascension in Stone</h4>
+<p class="font-body-md text-caption text-text-secondary">By Sarah Jenkins</p>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- ACHIEVEMENT BADGES (Horizontal showcase) -->
+<section class="col-span-1 md:col-span-12 mt-section-gap pt-section-gap border-t border-border">
+<div class="text-center mb-stack-lg">
+<h3 class="font-headline-sm text-headline-sm text-on-background mb-2">Available Honors</h3>
+<p class="font-body-md text-body-md text-text-secondary max-w-2xl mx-auto">Participating in this cycle contributes to your global standing within the Discovery Community.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8 md:gap-16">
+<!-- Badge 1 -->
+<div class="flex flex-col items-center w-32 group">
+<div class="w-24 h-24 rounded-full bg-surface border border-border flex items-center justify-center mb-4 transition-all duration-500 group-hover:border-primary group-hover:bg-madder-light ambient-shadow">
+<span class="material-symbols-outlined text-4xl text-primary icon-light group-hover:scale-110 transition-transform duration-300">museum</span>
+</div>
+<span class="font-label-md text-label-md text-on-background text-center">Heritage Custodian</span>
+</div>
+<!-- Badge 2 -->
+<div class="flex flex-col items-center w-32 group">
+<div class="w-24 h-24 rounded-full bg-surface border border-border flex items-center justify-center mb-4 transition-all duration-500 group-hover:border-secondary group-hover:bg-gold-light ambient-shadow relative">
+<div class="absolute inset-2 border border-secondary border-dashed rounded-full opacity-30"></div>
+<span class="material-symbols-outlined text-4xl text-secondary icon-light group-hover:scale-110 transition-transform duration-300">stars</span>
+</div>
+<span class="font-label-md text-label-md text-on-background text-center">Master Storyteller</span>
+</div>
+<!-- Badge 3 -->
+<div class="flex flex-col items-center w-32 group">
+<div class="w-24 h-24 rounded-full bg-surface border border-border flex items-center justify-center mb-4 transition-all duration-500 group-hover:border-tertiary group-hover:bg-tertiary-fixed-dim ambient-shadow">
+<span class="material-symbols-outlined text-4xl text-tertiary icon-light group-hover:scale-110 transition-transform duration-300">account_balance</span>
+</div>
+<span class="font-label-md text-label-md text-on-background text-center">Architectural Eye</span>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>

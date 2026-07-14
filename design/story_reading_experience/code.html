@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Architectural Marvels of Hampi - India Story Project</title>
+<!-- Google Fonts & Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Design System Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-container": "#735a00",
+                    "secondary-fixed-dim": "#ecc246",
+                    "secondary": "#755b00",
+                    "on-background": "#1b1b1c",
+                    "surface": "#FFFFFF",
+                    "error": "#ba1a1a",
+                    "outline-variant": "#dfbfbc",
+                    "text-secondary": "#5F6368",
+                    "on-primary-container": "#ff9d95",
+                    "on-secondary-fixed-variant": "#584400",
+                    "on-surface": "#1b1b1c",
+                    "madder-light": "#F2E8E8",
+                    "surface-dim": "#dcd9d9",
+                    "outline": "#8b716e",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed-dim": "#95ceef",
+                    "tertiary-fixed": "#c3e8ff",
+                    "tertiary-container": "#004e6a",
+                    "background": "#F8F5EF",
+                    "on-secondary-fixed": "#241a00",
+                    "surface-container-highest": "#e5e2e1",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-container": "#86bedf",
+                    "surface-tint": "#aa3531",
+                    "primary-fixed-dim": "#ffb3ad",
+                    "secondary-fixed": "#ffe08e",
+                    "on-tertiary": "#ffffff",
+                    "gold-light": "#FAF6E9",
+                    "on-primary-fixed-variant": "#891c1d",
+                    "primary": "#6a020a",
+                    "secondary-container": "#fed255",
+                    "on-error": "#ffffff",
+                    "inverse-on-surface": "#f3f0ef",
+                    "surface-variant": "#e5e2e1",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#ffdad6",
+                    "surface-container": "#f0eded",
+                    "tertiary": "#00364b",
+                    "on-surface-variant": "#58413f",
+                    "inverse-primary": "#ffb3ad",
+                    "inverse-surface": "#303030",
+                    "on-error-container": "#93000a",
+                    "border": "#E8E2D8",
+                    "on-tertiary-fixed-variant": "#004c68",
+                    "on-tertiary-fixed": "#001e2c",
+                    "surface-bright": "#fcf9f8",
+                    "on-primary-fixed": "#410003",
+                    "on-secondary": "#ffffff",
+                    "surface-container-low": "#f6f3f2",
+                    "surface-container-high": "#eae7e7",
+                    "primary-container": "#8b1e1e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "64px",
+                    "stack-md": "16px",
+                    "stack-lg": "32px",
+                    "section-gap": "120px",
+                    "margin-mobile": "20px",
+                    "stack-sm": "8px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "headline-sm": ["EB Garamond"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["EB Garamond"],
+                    "display-lg": ["EB Garamond"],
+                    "body-md": ["Inter"],
+                    "caption": ["Inter"],
+                    "display-lg-mobile": ["EB Garamond"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                    "display-lg": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "display-lg-mobile": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "500"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Reading Progress Bar */
+        #progress-bar {
+            transform-origin: left;
+            transform: scaleX(0);
+            transition: transform 0.1s ease-out;
+        }
+        
+        /* Smooth scrolling for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- Reading Progress Bar -->
+<div class="fixed top-0 left-0 w-full h-1 z-[60] bg-surface-variant">
+<div class="h-full bg-primary w-full" id="progress-bar"></div>
+</div>
+<!-- TopAppBar (Shared Component) -->
+<!-- Suppressed active navigation as this is a detail page, but maintaining the shell structure for navigation back -->
+<nav class="fixed docked full-width top-0 z-50 bg-background dark:bg-background border-b border-border/50">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4">
+<button aria-label="Go back" class="text-primary dark:text-primary-fixed hover:opacity-80 transition-opacity duration-300 p-2 -ml-2">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="font-headline-sm text-headline-sm text-primary dark:text-primary-fixed tracking-tight">
+                India Story Project
+            </div>
+<button aria-label="Share" class="text-primary dark:text-primary-fixed hover:opacity-80 transition-opacity duration-300 p-2 -mr-2">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+</button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-[72px] pb-section-gap">
+<!-- Hero Section -->
+<header class="relative w-full h-[70vh] min-h-[500px] overflow-hidden">
+<div class="absolute inset-0 bg-black/20 z-10"></div>
+<div class="absolute inset-0 bg-cover bg-center bg-no-repeat w-full h-full transform transition-transform duration-[20000ms] hover:scale-105 parallax-bg" data-alt="A breathtaking, cinematic wide shot of the Virupaksha Temple in Hampi at sunrise. Warm, golden hour light casts long, dramatic shadows across the intricately carved stone chariots and ruins. The scene feels timeless and majestic, with a soft, warm mist in the background. High-end editorial photography style, emphasizing the massive scale and rich terracotta and gold tones of the ancient architecture." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAGHW4UPY-Yx39MCkxXtfGG7ZBnS6z2CRBVPBsBGwQyw41TCVaoh6qVIZ0kjHtqlBrtuTPLj6M8_qBLcySjYNNDJ0D4rTQZD7InhiIdbGLsh47jEhAXb44Wo5coBL29oHvs54RBdQPe55TNdmP1IRiZnGWonvSqKmfdyagHBEhnbeHDzrG5nSNvolScOjXCrbrzgbk1IT_rIaiWbHBuGvoz7cYHye0svfKhAzVDfsMuCuKGotLTqrB-kg')"></div>
+<div class="absolute bottom-0 left-0 w-full z-20 px-margin-mobile md:px-margin-desktop pb-12 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+<div class="max-w-4xl mx-auto text-white">
+<span class="inline-block px-3 py-1 bg-secondary/80 backdrop-blur-sm text-gold-light font-label-md text-caption uppercase tracking-wider rounded-sm mb-6">Heritage</span>
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-white mb-6 drop-shadow-lg">The Architectural Marvels of Hampi</h1>
+<div class="flex items-center gap-4 font-body-md text-surface-dim">
+<span>By Aranya Sen</span>
+<span class="w-1 h-1 rounded-full bg-surface-dim"></span>
+<span>Oct 12, 2023</span>
+<span class="w-1 h-1 rounded-full bg-surface-dim"></span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 8 min read</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Editorial Content -->
+<article class="max-w-3xl mx-auto px-margin-mobile md:px-0 mt-section-gap">
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-8 first-letter:text-6xl first-letter:font-headline-lg first-letter:text-primary first-letter:float-left first-letter:mr-4 first-letter:mt-2">
+                Nestled amidst a surreal landscape of boulders and lush banana plantations, the ruins of Hampi stand as a silent testament to the grandeur of the Vijayanagara Empire. To walk through this UNESCO World Heritage site is to step into a frozen epoch where stone was coaxed into poetry, and architecture reflected the zenith of South Indian artistry.
+            </p>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-12">
+                The city, which flourished between the 14th and 16th centuries, was once described by Persian and European travelers as one of the most magnificent and wealthy cities in the world. Today, its skeletal remains spread across 4,100 hectares still command awe, demanding that we look closer at the intricate marriage of function, faith, and formidable engineering.
+            </p>
+<!-- Pull Quote -->
+<figure class="my-16 pl-6 border-l-2 border-primary py-2 relative">
+<span class="material-symbols-outlined absolute -left-4 -top-4 text-4xl text-surface-variant bg-background rounded-full px-1">format_quote</span>
+<blockquote class="font-headline-lg text-headline-lg italic text-tertiary-container leading-snug">
+                    "Hampi is not merely a collection of ruins; it is an open-air museum where every carved pillar and monolithic deity whispers tales of an empire that dared to build its dreams in granite."
+                </blockquote>
+</figure>
+<h2 class="font-headline-sm text-headline-sm text-on-background mt-16 mb-6">The Stone Chariot: A Masterpiece in Monolith</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-8">
+                Perhaps the most iconic structure within the complex is the Stone Chariot in the Vittala Temple courtyard. Often mistaken for a single piece of rock, it is actually built from multiple granite blocks whose joints are cleverly hidden by elaborate carvings. The chariot is a shrine dedicated to Garuda, the eagle mount of Lord Vishnu.
+            </p>
+<!-- Inline Image -->
+<figure class="my-12 w-full md:w-[120%] md:-ml-[10%]">
+<img class="w-full rounded-sm shadow-sm border border-border" data-alt="A close-up, highly detailed shot of the intricate carvings on the Stone Chariot in Hampi. The warm morning light highlights the texture of the granite, showing delicate floral and mythological motifs. The background is softly blurred to emphasize the craftsmanship. Minimalist editorial aesthetic, warm earth tones, deep shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqCul1-f9dwYoTyrXn2ejeUhJnBCm_yDljArpwtUUMJlhUS-lb7xPl7f9MGmpYgDVupQuw0TB0MxuL1G7zSZym_oM_bcZw32VhOPHjm4vg4pFcOOFfvPQS94X1XCOPZlbmUN8xfROVQtK_RIYMPoKQv408b38fD3dz-2r2ttZf9v03SgSgNZY73mpYSpK8InzmWFXq6_sSpR5O6nO5tHaRM9SfKbUKEMQFlWdKZYsFu9kEm1WQcgg3_g"/>
+<figcaption class="mt-3 font-caption text-caption text-text-secondary text-center">The intricately carved wheels of the Stone Chariot, which once freely rotated on their axles.</figcaption>
+</figure>
+<h2 class="font-headline-sm text-headline-sm text-on-background mt-16 mb-6">A Symphony in Stone: The Musical Pillars</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-8">
+                The Vittala Temple complex houses another engineering marvel—the musical pillars. Fifty-six composite pillars, known as the SAREGAMA pillars, produce musical notes when struck gently. British officers were so perplexed by this phenomenon that they reportedly cut two pillars open, only to find them hollow, revealing the sophisticated acoustics achieved by ancient sculptors.
+            </p>
+</article>
+<!-- Bento Grid / Masonry Gallery -->
+<section class="max-w-6xl mx-auto px-margin-mobile md:px-margin-desktop mt-section-gap mb-section-gap">
+<h3 class="font-label-md text-label-md uppercase tracking-widest text-secondary mb-8 text-center">Visual Archive</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[250px]">
+<!-- Large Feature Image -->
+<div class="md:col-span-2 md:row-span-2 rounded-sm overflow-hidden relative group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A sweeping panoramic view of the Hampi landscape, showing the juxtaposition of ancient temple ruins against a backdrop of massive, precarious boulder formations. Lush green banana plantations provide a striking contrast to the warm terracotta stones. Photographed at golden hour with a soft, ethereal light filtering through the dust." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBkyi1mDNsfWlZy89bkwfqw8hI-a9we6Sb12vt_EK-qvmZxxn8dtQxQHbnvjgdhvggXAYUc-7iDorAbt3NcRQ-L3tggiGjdwlOZ8ImimdBHP6rKP2SNXfazOxGudgn47GDmh-jr2ZPEwrzACQtsYsK_aA1KyefyHf_JsXjRKFyhnDmwIgxKEPi9kbBOfOCErEeDLYqJ9NQrTgLfq_sHr_46VOihDPOHEO8tinfuSpYXdJUTsyrRxeKpfg')"></div>
+<div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
+</div>
+<!-- Smaller Images -->
+<div class="rounded-sm overflow-hidden relative group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Detail shot of a monolithic Narasimha statue in Hampi. The imposing stone figure is captured with dramatic side-lighting, emphasizing the fierce expression and massive scale of the carving. The background is a clean, bright sky, adhering to a minimalist, high-contrast aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCLzDnc1Uc2OqSXyq15WLhsf2GGG52FYkSYFvd3wVBnyivxtiZKvLeAxGm4Gic76uc1TgVuaBxewfz0fCrN4IUrl7jye-I-zfipze7ahe885u-oT7o00uziFjwnjIA1skUzmjiC_46qTGfhlbzRJ1lZHh6IemHkS5uGTmPbaqMXCIaqkHyq-MuYlp0Tm30Yd_PrHnCRIlwNUgy2-G6wRF8jmFruVm5Wg5xP0GvBbcTGBJcWAwAYsqD9AQ')"></div>
+</div>
+<div class="rounded-sm overflow-hidden relative group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A serene view down a long, colonnaded bazaar street in Hampi. The rhythmic repetition of the stone pillars creates a strong leading line towards a distant temple structure. The lighting is soft and diffuse, creating a calm, archival mood. Warm, desaturated color palette." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDoxGr0GYWkp3SEbt9hOFMhoX24yborZhiU903VSy8v5c5Y_LJaQqhCUL_Aw8Zw5XAlZBIRyFbkPS9US0s4UwKbHkov2vf-PX8qn_xoFyo4mv2Z7-XBPjpE-fGFm4YF_XvoCbTnBLSvwnAW8ZOW-SpxFZlTRyQg1ewV3ODkfmv4p003x30QdrxZ9dExGveZffJagmwVSe_suvqwzJirbRbJx6hhzuGpcu6yDtMOQWgIYpM0pOS-pThGRw')"></div>
+</div>
+</div>
+</section>
+<!-- Related Stories -->
+<section class="max-w-5xl mx-auto px-margin-mobile md:px-margin-desktop mt-section-gap border-t border-border pt-16">
+<h3 class="font-headline-sm text-headline-sm text-on-background mb-8">Further Discovery</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Card 1 -->
+<a class="group block bg-surface rounded-lg overflow-hidden border border-border hover:shadow-lg transition-shadow duration-300" href="#">
+<div class="h-48 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="An atmospheric photo of the stepwells (baoris) in Rajasthan, India. The mesmerizing geometric patterns of the stairs descend into dark water. Captured from a high angle to emphasize symmetry. Cool, blueish shadows contrast with warm sunlight hitting the top steps. Clean, minimal editorial style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCZ7NhNBslY5ObaQ9cj39EebsnK6Q7vqAj8WYuuDkVMcBFX6Gw8sGnxFGjmcAe8xRSkKhjhyTrmCPSD2_NunCRl1vLjKJubnUE2GuNNAKsV1dZFW9FRN4zWqAfhktS-NpjO7-vGKq5LtFyfXvfDQkwCDrfVizcQ3mELNpg2JH29lSB4FLUU37XA6oPDl5PtLVoNcU5v8zcqF26UgMz0FeLfHFLdO-HQELQjN3vtB7bsBYmUtoqQgb0ZQw')"></div>
+</div>
+<div class="p-6">
+<span class="inline-block px-2 py-1 bg-gold-light text-secondary font-label-md text-caption uppercase tracking-wider rounded-sm mb-3">Architecture</span>
+<h4 class="font-headline-sm text-[20px] leading-tight text-on-background group-hover:text-primary transition-colors">The Geometry of Water: India's Stepwells</h4>
+<p class="font-body-md text-text-secondary mt-2 line-clamp-2">Exploring the subterranean architectural wonders designed to capture monsoon rains in arid landscapes.</p>
+</div>
+</a>
+<!-- Card 2 -->
+<a class="group block bg-surface rounded-lg overflow-hidden border border-border hover:shadow-lg transition-shadow duration-300" href="#">
+<div class="h-48 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A close-up of vibrant, natural dyes being mixed in small clay bowls. The powders are rich reds, deep indigos, and bright marigolds. A hand reaches into the frame, demonstrating the traditional dyeing process. The lighting is soft and natural, emphasizing the texture of the pigments. Warm, tactile aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDsHXbKOFvqJuYZr31-4t9nd7hKKydam64dBwGcVPMK689QDbduIgWInbNqdi3DXSqHsuIKWLQKOCJMQ-t_zs5FJRdsJcHpeFgrLZ8FfI3na8o6V-5Kwr20mUBaOhECmRNZf57f38xhhSTbR2pVoxkKpTTinjLdUkyJhlgXK3iTxlNh9U75_9Nbfh2czupNyngQlbb_QVB_r7ruyCQWIR6zhtfGwYQRV0L9UBwdfkxAN4xFY13u_1rJig')"></div>
+</div>
+<div class="p-6">
+<span class="inline-block px-2 py-1 bg-gold-light text-secondary font-label-md text-caption uppercase tracking-wider rounded-sm mb-3">Culture</span>
+<h4 class="font-headline-sm text-[20px] leading-tight text-on-background group-hover:text-primary transition-colors">The Colors of Kutch: A Dyeing Tradition</h4>
+<p class="font-body-md text-text-secondary mt-2 line-clamp-2">How ancient techniques and natural pigments continue to weave the cultural fabric of Gujarat.</p>
+</div>
+</a>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Shared Component) - Rendered only on mobile as a shell fallback -->
+<!-- Suppressed active state as this is a detail page (dead end in nav hierarchy) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-surface dark:bg-surface-container-low border-t border-border dark:border-outline-variant shadow-sm rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-[10px] mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-label-md text-[10px] mt-1">Explore</span>
+</a>
+<!-- Action integrated into nav for mobile reading context -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300 relative -top-4 bg-primary text-white rounded-full p-3 shadow-lg">
+<span class="material-symbols-outlined filled text-white" data-icon="bookmark">bookmark</span>
+</button>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+<span class="font-label-md text-[10px] mt-1">Share</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-[10px] mt-1">Profile</span>
+</a>
+</nav>
+<!-- Desktop Floating Action Buttons -->
+<div class="hidden md:flex fixed right-8 bottom-8 flex-col gap-4 z-50">
+<button aria-label="Save story" class="w-12 h-12 bg-surface border border-border rounded-full flex items-center justify-center text-secondary hover:bg-gold-light hover:text-primary transition-all duration-300 shadow-sm hover:shadow-md">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+</button>
+<button aria-label="Share story" class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white hover:bg-primary-container transition-all duration-300 shadow-sm hover:shadow-md">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+</button>
+</div>
+<!-- Scripts for Micro-interactions -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Reading Progress Bar Logic
+            const progressBar = document.getElementById('progress-bar');
+            
+            window.addEventListener('scroll', () => {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                progressBar.style.transform = `scaleX(${scrolled / 100})`;
+            });
+
+            // Parallax effect for Hero Image
+            const heroBg = document.querySelector('.parallax-bg');
+            window.addEventListener('scroll', () => {
+                const scroll = window.scrollY;
+                if (scroll < window.innerHeight) {
+                    heroBg.style.transform = `translateY(${scroll * 0.3}px) scale(${1 + scroll * 0.0005})`;
+                }
+            });
+        });
+    </script>
+</body></html>

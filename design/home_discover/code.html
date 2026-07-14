@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>India Story Project - Discover</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#735a00",
+                        "secondary-fixed-dim": "#ecc246",
+                        "secondary": "#755b00",
+                        "on-background": "#1b1b1c",
+                        "surface": "#FFFFFF",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#dfbfbc",
+                        "text-secondary": "#5F6368",
+                        "on-primary-container": "#ff9d95",
+                        "on-secondary-fixed-variant": "#584400",
+                        "on-surface": "#1b1b1c",
+                        "madder-light": "#F2E8E8",
+                        "surface-dim": "#dcd9d9",
+                        "outline": "#8b716e",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#95ceef",
+                        "tertiary-fixed": "#c3e8ff",
+                        "tertiary-container": "#004e6a",
+                        "background": "#F8F5EF",
+                        "on-secondary-fixed": "#241a00",
+                        "surface-container-highest": "#e5e2e1",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#86bedf",
+                        "surface-tint": "#aa3531",
+                        "primary-fixed-dim": "#ffb3ad",
+                        "secondary-fixed": "#ffe08e",
+                        "on-tertiary": "#ffffff",
+                        "gold-light": "#FAF6E9",
+                        "on-primary-fixed-variant": "#891c1d",
+                        "primary": "#6a020a",
+                        "secondary-container": "#fed255",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f3f0ef",
+                        "surface-variant": "#e5e2e1",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#ffdad6",
+                        "surface-container": "#f0eded",
+                        "tertiary": "#00364b",
+                        "on-surface-variant": "#58413f",
+                        "inverse-primary": "#ffb3ad",
+                        "inverse-surface": "#303030",
+                        "on-error-container": "#93000a",
+                        "border": "#E8E2D8",
+                        "on-tertiary-fixed-variant": "#004c68",
+                        "on-tertiary-fixed": "#001e2c",
+                        "surface-bright": "#fcf9f8",
+                        "on-primary-fixed": "#410003",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-container-high": "#eae7e7",
+                        "primary-container": "#8b1e1e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "stack-md": "16px",
+                        "stack-lg": "32px",
+                        "section-gap": "120px",
+                        "margin-mobile": "20px",
+                        "stack-sm": "8px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "headline-sm": ["EB Garamond"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["EB Garamond"],
+                        "display-lg": ["EB Garamond"],
+                        "body-md": ["Inter"],
+                        "caption": ["Inter"],
+                        "display-lg-mobile": ["EB Garamond"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-sm": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "500" }],
+                        "display-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom, 20px); }
+        .pt-safe { padding-top: env(safe-area-inset-top, 20px); }
+        
+        /* Hide scrollbar for chips */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 z-50 flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 bg-background dark:bg-background docked full-width top-0">
+<button class="text-primary dark:text-primary-fixed hover:opacity-80 transition-opacity duration-300">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">arrow_back</span>
+</button>
+<div class="font-headline-sm text-headline-sm text-primary dark:text-primary-fixed tracking-tight">
+            India Story Project
+        </div>
+<button class="text-primary dark:text-primary-fixed hover:opacity-80 transition-opacity duration-300">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">share</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-24 pb-32">
+<!-- Hero Section -->
+<section class="px-margin-mobile md:px-margin-desktop mb-section-gap">
+<div class="relative w-full h-[60vh] rounded-xl overflow-hidden shadow-sm group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-in-out group-hover:scale-105" data-alt="A breathtaking cinematic photograph of a magnificent ancient Indian temple bathed in warm, golden hour sunlight. The intricate stone carvings are highlighted against a clear sky. The overall tone is 'Timeless Discovery', fitting a premium editorial platform. Warm color palette, high contrast, elegant composition." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAg7ld75ecC7X_HjQVbna7jT2HhKd3_Ne39jThDBhmvJ9Gwrw-pgbuJ3EZOmRscyqYGv6XPlVGOAPB7w-L8h_CbnKp_vD88KAByJJJEh0FTfdLFYMDnptwr04DdeTU-Hnl6Mh_vY-z2nZmMzI6rD0qfinyf03QJZnvKiFWyuk9wWp1wDh5ItLaWGzusElx5CM5tZu9OB-GUlegefxiWJr_3fqi4wnkBLfWIq3Ti0iLllD5FTjpW9QOU1A')">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full md:w-2/3">
+<span class="inline-block bg-gold-light text-secondary-fixed-dim px-3 py-1 font-label-md text-label-md rounded uppercase tracking-wider mb-4">Architecture</span>
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-surface mb-4 leading-tight">The Geometry of Devotion: Secrets of Ellora</h1>
+<p class="font-body-md text-body-md text-surface/90 line-clamp-2 md:line-clamp-3">Carved from a single massive rock face, the Kailasa temple stands as a testament to human endurance and architectural genius that defies modern comprehension.</p>
+</div>
+</div>
+</section>
+<!-- Explore by Theme (Chips) -->
+<section class="mb-stack-lg px-margin-mobile md:px-margin-desktop overflow-hidden">
+<div class="flex overflow-x-auto no-scrollbar gap-4 pb-4">
+<button class="flex-shrink-0 px-6 py-2 bg-primary text-on-primary rounded-full font-label-md text-label-md uppercase shadow-sm transition-all duration-300 hover:opacity-90 hover:-translate-y-1">Heritage</button>
+<button class="flex-shrink-0 px-6 py-2 bg-gold-light text-on-secondary-container border border-border rounded-full font-label-md text-label-md uppercase transition-all duration-300 hover:shadow-sm hover:-translate-y-1">Science</button>
+<button class="flex-shrink-0 px-6 py-2 bg-gold-light text-on-secondary-container border border-border rounded-full font-label-md text-label-md uppercase transition-all duration-300 hover:shadow-sm hover:-translate-y-1">History</button>
+<button class="flex-shrink-0 px-6 py-2 bg-gold-light text-on-secondary-container border border-border rounded-full font-label-md text-label-md uppercase transition-all duration-300 hover:shadow-sm hover:-translate-y-1">Art</button>
+<button class="flex-shrink-0 px-6 py-2 bg-gold-light text-on-secondary-container border border-border rounded-full font-label-md text-label-md uppercase transition-all duration-300 hover:shadow-sm hover:-translate-y-1">Nature</button>
+<button class="flex-shrink-0 px-6 py-2 bg-gold-light text-on-secondary-container border border-border rounded-full font-label-md text-label-md uppercase transition-all duration-300 hover:shadow-sm hover:-translate-y-1">Culture</button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-surface dark:bg-surface-container-low border-t border-border dark:border-outline-variant shadow-sm docked full-width bottom-0 rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed bg-secondary-container/20 rounded-xl px-3 py-1 scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1, 'wght' 400;">home</span>
+<span class="font-label-md text-[10px] leading-tight">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'wght' 300;">explore</span>
+<span class="font-label-md text-[10px] leading-tight">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'wght' 300;">share</span>
+<span class="font-label-md text-[10px] leading-tight">Share</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'wght' 300;">bookmark</span>
+<span class="font-label-md text-[10px] leading-tight">Saved</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'wght' 300;">person</span>
+<span class="font-label-md text-[10px] leading-tight">Profile</span>
+</a>
+</nav>
+</body></html>

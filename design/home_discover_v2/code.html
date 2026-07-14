@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>India Story Project - Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=EB+Garamond:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#58413f",
+                        "surface-container-low": "#f8f2f2",
+                        "inverse-surface": "#323030",
+                        "on-tertiary-fixed-variant": "#584419",
+                        "on-secondary-fixed-variant": "#5d3f3c",
+                        "on-secondary": "#ffffff",
+                        "surface": "#fef8f8",
+                        "surface-variant": "#e7e1e1",
+                        "on-tertiary-container": "#d0b37e",
+                        "primary-fixed": "#ffdad6",
+                        "surface-dim": "#ded9d9",
+                        "tertiary": "#402f05",
+                        "background": "#fef8f8",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#ece7e7",
+                        "surface-tint": "#aa3531",
+                        "on-primary-fixed": "#410003",
+                        "outline-variant": "#dfbfbc",
+                        "secondary-fixed": "#ffdad5",
+                        "inverse-on-surface": "#f5efef",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#59451a",
+                        "surface-bright": "#fef8f8",
+                        "inverse-primary": "#ffb3ad",
+                        "on-surface": "#1d1b1b",
+                        "on-primary-container": "#ff9d95",
+                        "on-primary-fixed-variant": "#891c1d",
+                        "outline": "#8b716e",
+                        "tertiary-fixed": "#fddfa6",
+                        "primary": "#6a020a",
+                        "tertiary-fixed-dim": "#e0c38c",
+                        "surface-container-highest": "#e7e1e1",
+                        "on-secondary-fixed": "#2c1512",
+                        "secondary": "#775652",
+                        "error": "#ba1a1a",
+                        "secondary-fixed-dim": "#e7bdb7",
+                        "on-secondary-container": "#7a5955",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#f2edec",
+                        "primary-container": "#8b1e1e",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#1d1b1b",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#ffb3ad",
+                        "secondary-container": "#ffd3cd",
+                        "on-tertiary-fixed": "#261900"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px",
+                        "2xl": "1.125rem" // 18dp approx
+                    },
+                    "spacing": {
+                        "margin-desktop": "5rem",
+                        "unit": "4px",
+                        "margin-tablet": "2.5rem",
+                        "gutter": "1.5rem",
+                        "margin-mobile": "1rem"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["EB Garamond", "serif"],
+                        "title-lg": ["EB Garamond", "serif"],
+                        "headline-lg-mobile": ["EB Garamond", "serif"],
+                        "body-lg": ["Inter", "sans-serif"],
+                        "label-md": ["Inter", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"],
+                        "display-lg": ["EB Garamond", "serif"],
+                        "headline-lg": ["EB Garamond", "serif"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "500" }],
+                        "title-lg": ["22px", { "lineHeight": "28px", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["57px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill-1 {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased relative min-h-screen">
+<!-- Animated Shader Background -->
+<div class="fixed inset-0 z-[-1] pointer-events-none opacity-30">
+
+</div>
+<!-- TopAppBar (Desktop / Web) -->
+<header class="fixed top-0 w-full z-50 bg-surface/60 dark:bg-on-surface/60 backdrop-blur-xl shadow-[0_8px_32px_0_rgba(139,30,30,0.08)] hidden md:block">
+<div class="flex justify-between items-center px-margin-tablet lg:px-margin-desktop h-16 w-full mx-auto max-w-[1440px]">
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:opacity-80 transition-opacity duration-300">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+<!-- Desktop Nav Links -->
+<nav class="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+<a class="font-label-md text-label-md uppercase tracking-widest text-primary border-b-2 border-primary pb-1" href="#">Home</a>
+<a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="#">Explore</a>
+<a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="#">Share</a>
+<a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="#">Saved</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:opacity-80 transition-opacity duration-300">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</div>
+</header>
+<!-- TopAppBar (Mobile) -->
+<header class="fixed top-0 w-full z-50 bg-surface/60 backdrop-blur-md shadow-[0_8px_32px_0_rgba(139,30,30,0.08)] md:hidden">
+<div class="flex justify-between items-center px-margin-mobile h-16 w-full">
+<button class="p-2 text-on-surface-variant hover:opacity-80 transition-opacity duration-300">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-display-lg-mobile text-display-lg-mobile tracking-tight text-primary">HERITAGE</h1>
+<button class="p-2 text-on-surface-variant hover:opacity-80 transition-opacity duration-300">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="pt-20 pb-24 md:pt-24 md:pb-12 max-w-[1440px] mx-auto px-margin-mobile md:px-margin-tablet lg:px-margin-desktop min-h-screen space-y-[80px]">
+<!-- Hero Section -->
+<section class="relative w-full h-[60vh] md:h-[70vh] rounded-2xl overflow-hidden shadow-lg group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-[10s] ease-out scale-105 group-hover:scale-110" data-alt="A breathtaking, cinematic wide shot of the Ellora Caves carved out of rock at golden hour. Warm sunlight casts deep, dramatic shadows emphasizing the intricate geometry and ancient architecture. The scene feels monumental, historical, and deeply atmospheric, with a luxurious editorial photography style emphasizing warm earthy tones and a touch of primary red in the styling." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCvniNso3rwL6rtdAWAqEiQssYvcOx_kfFLaF-6-CMcdK8a3ZuV__tz_h7jiNH7fgb2bfwg8yS4NQnfbqOw2cTT9v8BaAY_AM3EIISK4T2lby1DUnK3pTEEfz2Onxrk8IzM7cdfiMg6NCtRygYhrWM2DJNma4I6kql6wWl7aAhpt8OzfgB1arEOM0EfDyzhg02qukDBXbNZ9snMgM1NmK56iJPpANA9zQJ3dupYC9e47FskLmvJT7pLFw')"></div>
+<!-- Glassmorphism Overlay -->
+<div class="absolute bottom-0 left-0 w-full p-6 md:p-10 bg-gradient-to-t from-surface-container-lowest/90 via-surface-container-lowest/50 to-transparent backdrop-blur-[2px]">
+<div class="max-w-3xl">
+<span class="inline-block px-3 py-1 bg-primary text-on-primary font-label-md text-label-md uppercase tracking-widest rounded-full mb-4">Architecture</span>
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-2">The Geometry of Devotion: Secrets of Ellora</h2>
+<p class="font-body-md text-body-md text-on-surface-variant md:max-w-xl">Discover the mathematical precision hidden within ancient rock-cut architecture.</p>
+</div>
+</div>
+</section>
+<!-- Reading Streak Widget -->
+<section class="flex justify-center -mt-10 relative z-10">
+<div class="bg-surface-container-lowest rounded-2xl p-4 shadow-[0_8px_32px_0_rgba(139,30,30,0.08)] border border-surface-variant flex items-center gap-6">
+<div class="flex items-center justify-center w-12 h-12 bg-primary-container text-on-primary-container rounded-full">
+<span class="material-symbols-outlined fill-1">local_fire_department</span>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-on-surface">5 Day Streak</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">You're exploring consistently!</p>
+</div>
+</div>
+</section>
+<!-- Continue Reading -->
+<section>
+<h3 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-6">Continue Reading</h3>
+<div class="flex gap-4 overflow-x-auto no-scrollbar pb-4 -mx-margin-mobile px-margin-mobile md:mx-0 md:px-0">
+<div class="min-w-[280px] md:min-w-[320px] bg-surface-container-low rounded-2xl p-4 flex flex-col gap-4 shadow-sm hover:-translate-y-1 transition-transform duration-300 cursor-pointer">
+<div class="flex gap-4">
+<div class="w-16 h-16 rounded-lg bg-cover bg-center shrink-0" data-alt="A macro shot of a vibrant Indian textile pattern, focusing on complex embroidery in rich golds, reds, and deep blues. Lighting is soft and directional, highlighting the texture of the threads. Editorial, luxurious feel." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAfKh6pQ4KcsmW3RjHu3JzyeiwHW8cr0q05yEqJLj6N1pR8BMkaHs6qvXmB03yr3s6WzMllpb70slr_92yUfRu2Ivf97nDtJtrSlcBAa6sBEygLcx-hzSYoa_Ynkq7hBx-X83NQr_Q-qoDx8GIjWwMF1d9JsqHd18DI8MbkUjGaipMw3HU2FL3XI9kD06heAXhVaZoLuU1dNchvGx9bT9H_fkeeMzmfI8CYi5EGegXnzb1GH3IiVXrabg')"></div>
+<div>
+<h4 class="font-title-lg text-title-lg text-on-surface line-clamp-2 text-base leading-tight">Threads of Time: Kanjeevaram Legacy</h4>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1">60% Complete</p>
+</div>
+</div>
+<div class="w-full bg-surface-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[60%] rounded-full"></div>
+</div>
+</div>
+<div class="min-w-[280px] md:min-w-[320px] bg-surface-container-low rounded-2xl p-4 flex flex-col gap-4 shadow-sm hover:-translate-y-1 transition-transform duration-300 cursor-pointer">
+<div class="flex gap-4">
+<div class="w-16 h-16 rounded-lg bg-cover bg-center shrink-0" data-alt="A hazy, atmospheric morning view of the ghats of Varanasi. Boats in the foreground, ancient steps leading up to temples, with a soft misty light illuminating the scene. Serene, historical, and culturally rich visual style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAFsFcF0b27ANUlz_gmw_QhU2Qn5h0-0GdtSTuscxv1cWOG0HF5aSkxM_4fcjdXzROOp94ZmL3DMd6gi9j9E31YgdaISEOJinpdrKMZsnsi2vX9-Enig65cGM7wo-s07o7iFh6koswb8pyVPPlC5kdH55iDLKff_odcWLMCxbklRU2n1dKfnmaX3l-WoJuCz2mfm2rac3CkNlTpUsLqXGJWuHdNrckoEzLEex0tAcTHMuPjVW7L_X1vQA')"></div>
+<div>
+<h4 class="font-title-lg text-title-lg text-on-surface line-clamp-2 text-base leading-tight">The River's Memory: Life along the Ganges</h4>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1">15% Complete</p>
+</div>
+</div>
+<div class="w-full bg-surface-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[15%] rounded-full"></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-3 bg-surface/80 backdrop-blur-md shadow-[0_-4px_24px_0_rgba(139,30,30,0.06)] rounded-t-xl z-50 md:hidden transition-all cubic-bezier(0.4,0,0.2,1) duration-500">
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-tertiary-container text-on-primary-container dark:text-tertiary-fixed-dim rounded-full px-5 py-1" href="#">
+<span class="material-symbols-outlined fill-1">home</span>
+<span class="font-label-md text-label-md uppercase tracking-widest text-[10px] mt-1 hidden">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant opacity-70 hover:scale-105 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-md text-label-md uppercase tracking-widest text-[10px] mt-1 hidden">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant opacity-70 hover:scale-105 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">share</span>
+<span class="font-label-md text-label-md uppercase tracking-widest text-[10px] mt-1 hidden">Share</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant opacity-70 hover:scale-105 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">bookmark</span>
+<span class="font-label-md text-label-md uppercase tracking-widest text-[10px] mt-1 hidden">Saved</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant opacity-70 hover:scale-105 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md uppercase tracking-widest text-[10px] mt-1 hidden">Profile</span>
+</a>
+</nav>
+</body></html>

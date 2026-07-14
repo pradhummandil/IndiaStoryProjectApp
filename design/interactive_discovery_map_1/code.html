@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>India Story Project - Interactive Map</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Antique Map Texture Overlay */
+        .map-texture {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        /* Heatmap Gradient Underlay */
+        .heatmap-bg {
+            background: radial-gradient(circle at 30% 40%, rgba(139,30,30,0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 70% 60%, rgba(139,30,30,0.1) 0%, transparent 30%),
+                        radial-gradient(circle at 50% 80%, rgba(208,179,126,0.1) 0%, transparent 40%);
+        }
+
+        /* Marker Pulse Animation */
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+        .marker-pulse::before {
+            content: '';
+            position: absolute;
+            left: -50%;
+            top: -50%;
+            width: 200%;
+            height: 200%;
+            border-radius: 50%;
+            background-color: theme('colors.primary');
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+            z-index: -1;
+        }
+
+        /* Smooth Bottom Sheet Transition */
+        .bottom-sheet {
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .bottom-sheet.open {
+            transform: translateY(0);
+        }
+        .bottom-sheet.closed {
+            transform: translateY(100%);
+        }
+
+        /* Custom Range Slider for Timeline */
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: theme('colors.primary');
+            cursor: pointer;
+            margin-top: -6px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+            box-shadow: 0 0 10px rgba(139,30,30,0.3);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: theme('colors.outline-variant');
+            border-radius: 2px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#58413f",
+                        "surface-container-low": "#f8f2f2",
+                        "inverse-surface": "#323030",
+                        "on-tertiary-fixed-variant": "#584419",
+                        "on-secondary-fixed-variant": "#5d3f3c",
+                        "on-secondary": "#ffffff",
+                        "surface": "#fef8f8",
+                        "surface-variant": "#e7e1e1",
+                        "on-tertiary-container": "#d0b37e",
+                        "primary-fixed": "#ffdad6",
+                        "surface-dim": "#ded9d9",
+                        "tertiary": "#402f05",
+                        "background": "#fef8f8",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#ece7e7",
+                        "surface-tint": "#aa3531",
+                        "on-primary-fixed": "#410003",
+                        "outline-variant": "#dfbfbc",
+                        "secondary-fixed": "#ffdad5",
+                        "inverse-on-surface": "#f5efef",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#59451a",
+                        "surface-bright": "#fef8f8",
+                        "inverse-primary": "#ffb3ad",
+                        "on-surface": "#1d1b1b",
+                        "on-primary-container": "#ff9d95",
+                        "on-primary-fixed-variant": "#891c1d",
+                        "outline": "#8b716e",
+                        "tertiary-fixed": "#fddfa6",
+                        "primary": "#6a020a",
+                        "tertiary-fixed-dim": "#e0c38c",
+                        "surface-container-highest": "#e7e1e1",
+                        "on-secondary-fixed": "#2c1512",
+                        "secondary": "#775652",
+                        "error": "#ba1a1a",
+                        "secondary-fixed-dim": "#e7bdb7",
+                        "on-secondary-container": "#7a5955",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#f2edec",
+                        "primary-container": "#8b1e1e",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#1d1b1b",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#ffb3ad",
+                        "secondary-container": "#ffd3cd",
+                        "on-tertiary-fixed": "#261900"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "5rem",
+                        "unit": "4px",
+                        "margin-tablet": "2.5rem",
+                        "gutter": "1.5rem",
+                        "margin-mobile": "1rem"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["EB Garamond"],
+                        "title-lg": ["EB Garamond"],
+                        "headline-lg-mobile": ["EB Garamond"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["EB Garamond"],
+                        "headline-lg": ["EB Garamond"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "500" }],
+                        "title-lg": ["22px", { "lineHeight": "28px", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["57px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface h-screen w-full overflow-hidden flex flex-col font-body-lg antialiased">
+<!-- Top Navigation (Generated from JSON) -->
+<header class="fixed top-0 w-full z-50 bg-surface/60 dark:bg-on-surface/60 backdrop-blur-xl shadow-[0_8px_32px_0_rgba(139,30,30,0.08)] transition-all cubic-bezier(0.4,0,0.2,1) duration-500">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 w-full">
+<button class="text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity duration-300">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-display-lg-mobile text-display-lg-mobile tracking-tight text-primary dark:text-primary-fixed-dim">HERITAGE</h1>
+<button class="text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity duration-300">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+</div>
+</header>
+<!-- Main Map Area -->
+<main class="relative flex-grow w-full h-full pt-16 pb-20 md:pb-0 bg-[#E8E1D5] overflow-hidden">
+<!-- The "Map" Layer -->
+<div class="absolute inset-0 w-full h-full bg-cover bg-center" data-alt="A highly detailed, antique-style cartographic map of India, rendered with warm, desaturated sand and ink tones. The map features delicate topographic lines, subtle shading for mountain ranges, and vintage compass roses. The lighting is soft and ambient, creating a sophisticated, high-end editorial luxury aesthetic perfect for a digital heritage project. The overall color palette relies on creams, sepia, and faded terracotta, exuding a sense of permanent, archival quality." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDumyNXegg7ud8maBQFXMC2vefAUB_Z9XF8K7wUFd_h_ifoJNpoFlen8GvGJ8YKYq6SaROsYKAQoO0lAlDZMuqjP_IuGG14cWpqJMWlwXtgQshDVEUjtmFHqX7vEzekErHRGdnSq98cvrc9s7zDeKxHt_K77UrSYGL08jxrpbBMagfx5HGZs2R5aqXdLcVFaYfnKgfcbHxPzTORPbwXpgW2jVNmBGgVN061wPmbApjp66Fe8hReNHgN6g')"></div>
+<div class="absolute inset-0 heatmap-bg mix-blend-multiply"></div>
+<div class="absolute inset-0 map-texture mix-blend-overlay"></div>
+<!-- Interactive Elements on Map -->
+<!-- Filter Chips Overlay (Top Left) -->
+<div class="absolute top-24 left-4 md:left-margin-desktop z-20 flex flex-wrap gap-2 max-w-sm md:max-w-md">
+<button class="px-4 py-2 bg-primary text-on-primary rounded-full font-label-md text-label-md uppercase tracking-widest shadow-lg hover:-translate-y-1 transition-transform duration-300 backdrop-blur-md border border-primary/20">All Stories</button>
+<button class="px-4 py-2 bg-surface/80 text-on-surface rounded-full font-label-md text-label-md uppercase tracking-widest shadow-md hover:-translate-y-1 transition-transform duration-300 backdrop-blur-md border border-outline-variant/30">Landmarks</button>
+<button class="px-4 py-2 bg-surface/80 text-on-surface rounded-full font-label-md text-label-md uppercase tracking-widest shadow-md hover:-translate-y-1 transition-transform duration-300 backdrop-blur-md border border-outline-variant/30">Wildlife</button>
+<button class="px-4 py-2 bg-surface/80 text-on-surface rounded-full font-label-md text-label-md uppercase tracking-widest shadow-md hover:-translate-y-1 transition-transform duration-300 backdrop-blur-md border border-outline-variant/30">Culture</button>
+</div>
+<!-- Map Markers -->
+<!-- Marker 1: Active -->
+<div class="absolute top-[40%] left-[35%] z-30 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group" onclick="toggleBottomSheet('sheet-1')">
+<div class="relative flex items-center justify-center w-8 h-8 marker-pulse">
+<div class="w-4 h-4 bg-primary rounded-full shadow-[0_0_12px_rgba(139,30,30,0.6)]"></div>
+</div>
+<div class="absolute top-full left-1/2 -translate-x-1/2 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-surface/90 backdrop-blur-sm px-3 py-1 rounded shadow-lg pointer-events-none whitespace-nowrap border border-outline-variant/20 font-label-md text-label-md text-on-surface uppercase">Hampi Ruins</div>
+</div>
+<!-- Marker 2: Inactive -->
+<div class="absolute top-[60%] left-[45%] z-30 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group hover:scale-110 transition-transform duration-300">
+<div class="w-3 h-3 bg-secondary rounded-full border-2 border-surface shadow-md opacity-80"></div>
+<div class="absolute top-full left-1/2 -translate-x-1/2 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-surface/90 backdrop-blur-sm px-3 py-1 rounded shadow-lg pointer-events-none whitespace-nowrap border border-outline-variant/20 font-label-md text-label-md text-on-surface uppercase">Mysore Palace</div>
+</div>
+<!-- Marker 3: Inactive -->
+<div class="absolute top-[30%] left-[65%] z-30 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group hover:scale-110 transition-transform duration-300">
+<div class="w-3 h-3 bg-secondary rounded-full border-2 border-surface shadow-md opacity-80"></div>
+<div class="absolute top-full left-1/2 -translate-x-1/2 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-surface/90 backdrop-blur-sm px-3 py-1 rounded shadow-lg pointer-events-none whitespace-nowrap border border-outline-variant/20 font-label-md text-label-md text-on-surface uppercase">Varanasi Ghats</div>
+</div>
+<!-- Timeline Controls (Bottom Overlay) -->
+<div class="absolute bottom-24 md:bottom-8 left-4 right-4 md:left-margin-desktop md:right-margin-desktop z-40 bg-surface/70 backdrop-blur-xl rounded-2xl p-6 shadow-[0_8px_32px_0_rgba(139,30,30,0.08)] border border-white/20">
+<div class="flex flex-col gap-4">
+<div class="flex justify-between items-end">
+<h3 class="font-title-lg text-title-lg text-on-surface">Era Explorer</h3>
+<span class="font-display-lg text-primary leading-none">1565 AD</span>
+</div>
+<div class="relative w-full pt-4">
+<input class="w-full appearance-none bg-transparent focus:outline-none" max="2024" min="1000" type="range" value="1565"/>
+<div class="flex justify-between mt-2 font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">
+<span>1000 AD</span>
+<span>Present</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Contextual Bottom Sheet / Drawer for Details -->
+<div class="bottom-sheet closed absolute bottom-0 left-0 w-full h-[60vh] md:h-full md:w-[400px] md:right-0 md:left-auto bg-surface shadow-[-8px_0_32px_0_rgba(139,30,30,0.1)] z-50 rounded-t-3xl md:rounded-none md:rounded-l-3xl flex flex-col" id="sheet-1">
+<!-- Drag Handle (Mobile) -->
+<div class="w-full flex justify-center pt-4 pb-2 md:hidden cursor-grab active:cursor-grabbing">
+<div class="w-12 h-1.5 bg-outline-variant rounded-full"></div>
+</div>
+<div class="flex justify-between items-center px-6 py-4 border-b border-surface-variant">
+<span class="font-label-md text-label-md uppercase tracking-widest text-primary">Landmark Details</span>
+<button class="text-on-surface-variant hover:text-primary transition-colors" onclick="toggleBottomSheet('sheet-1')">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<div class="flex-grow overflow-y-auto overflow-x-hidden">
+<div class="w-full h-64 bg-surface-container-high relative">
+<img class="w-full h-full object-cover" data-alt="A breathtaking, cinematic photograph of the ancient Hampi stone chariot under a dramatic sunset sky. The lighting is golden hour, casting long, warm shadows and highlighting the intricate carvings of the granite structure. The aesthetic is high-end editorial, with rich textures, deep blacks, and a serene, historic mood. The composition leaves generous whitespace around the central subject, fitting perfectly into a sophisticated UI layout." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBo5niSIHurWZBnCM8ZBx6LaJiOKG4A10fbwos4xAWfhzFKKeiIO99EgNrwCeU1vykWX4qIzOmfn_jpHg1_S_8LQlFeWjl8UnhAt2z80xaqXqee6v6NfDSnKLeAwtBUU9nP9KK1f24ticyhRKSfwlE69jlR8Dj4Q31uLbtdF6Suzj2Lb6OViL-gXgBKqpWOQtDV7aRPoDcf5v67TXv9ZU-qHXrqYBIi4hbC5RJMFujxKhnm2gE17XBVog"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+</div>
+<div class="p-6 md:p-8 flex flex-col gap-6">
+<div>
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-2">Vijayanagara Empire</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">The forgotten empire of stone and gold.</p>
+</div>
+<div class="prose prose-stone prose-lg">
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+                            Once one of the richest and largest cities in the world, the ruins of Hampi stand as a testament to the grandeur of the Vijayanagara Empire. Amidst boulder-strewn landscapes, magnificent temples and palaces silently narrate stories of a glorious past abruptly ended in 1565.
+                        </p>
+</div>
+<button class="mt-4 w-full py-4 bg-primary text-on-primary rounded-lg font-label-md text-label-md uppercase tracking-widest shadow-lg hover:opacity-90 transition-opacity">
+                        Read Full Story
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation (Generated from JSON) - Mobile Only -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-3 bg-surface/80 backdrop-blur-md z-50 rounded-t-xl shadow-[0_-4px_24px_0_rgba(139,30,30,0.06)]">
+<!-- Home (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant opacity-70 hover:scale-105 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="font-label-md text-label-md uppercase tracking-widest text-[10px]">Home</span>
+</a>
+<!-- Explore (Active) - Since it's a map/exploration view -->
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-tertiary-container text-on-primary-container dark:text-tertiary-fixed-dim rounded-full px-5 py-1 active:scale-95 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="explore" data-weight="fill" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-label-md text-label-md uppercase tracking-widest text-[10px]">Explore</span>
+</a>
+<!-- Share (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant opacity-70 hover:scale-105 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="share">share</span>
+<span class="font-label-md text-label-md uppercase tracking-widest text-[10px]">Share</span>
+</a>
+<!-- Saved (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant opacity-70 hover:scale-105 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="bookmark">bookmark</span>
+<span class="font-label-md text-label-md uppercase tracking-widest text-[10px]">Saved</span>
+</a>
+<!-- Profile (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant opacity-70 hover:scale-105 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-label-md text-label-md uppercase tracking-widest text-[10px]">Profile</span>
+</a>
+</nav>
+<script>
+        function toggleBottomSheet(id) {
+            const sheet = document.getElementById(id);
+            if (sheet.classList.contains('closed')) {
+                sheet.classList.remove('closed');
+                sheet.classList.add('open');
+            } else {
+                sheet.classList.remove('open');
+                sheet.classList.add('closed');
+            }
+        }
+    </script>
+</body></html>

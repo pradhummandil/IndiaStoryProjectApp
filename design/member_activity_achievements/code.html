@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Storyteller Profile - Discovery Community</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "text-secondary": "#5F6368",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-highest": "#e5e2e1",
+                      "surface": "#FFFFFF",
+                      "surface-container": "#f0eded",
+                      "error": "#ba1a1a",
+                      "tertiary-container": "#004e6a",
+                      "surface-dim": "#dcd9d9",
+                      "tertiary-fixed-dim": "#95ceef",
+                      "on-tertiary": "#ffffff",
+                      "secondary-fixed": "#ffe08e",
+                      "on-background": "#1b1b1c",
+                      "on-primary": "#ffffff",
+                      "on-tertiary-fixed": "#001e2c",
+                      "inverse-surface": "#303030",
+                      "primary-container": "#8b1e1e",
+                      "border": "#E8E2D8",
+                      "surface-container-high": "#eae7e7",
+                      "secondary-container": "#fed255",
+                      "tertiary": "#00364b",
+                      "outline-variant": "#dfbfbc",
+                      "error-container": "#ffdad6",
+                      "surface-variant": "#e5e2e1",
+                      "on-secondary-fixed-variant": "#584400",
+                      "tertiary-fixed": "#c3e8ff",
+                      "outline": "#8b716e",
+                      "on-secondary": "#ffffff",
+                      "on-surface-variant": "#58413f",
+                      "primary": "#6a020a",
+                      "on-primary-container": "#ff9d95",
+                      "on-secondary-fixed": "#241a00",
+                      "primary-fixed-dim": "#ffb3ad",
+                      "on-error-container": "#93000a",
+                      "secondary-fixed-dim": "#ecc246",
+                      "primary-fixed": "#ffdad6",
+                      "on-surface": "#1b1b1c",
+                      "inverse-on-surface": "#f3f0ef",
+                      "gold-light": "#FAF6E9",
+                      "on-tertiary-fixed-variant": "#004c68",
+                      "on-error": "#ffffff",
+                      "secondary": "#755b00",
+                      "on-primary-fixed-variant": "#891c1d",
+                      "on-primary-fixed": "#410003",
+                      "surface-container-low": "#f6f3f2",
+                      "madder-light": "#F2E8E8",
+                      "on-tertiary-container": "#86bedf",
+                      "surface-bright": "#fcf9f8",
+                      "surface-tint": "#aa3531",
+                      "background": "#F8F5EF",
+                      "inverse-primary": "#ffb3ad",
+                      "on-secondary-container": "#735a00"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-sm": "8px",
+                      "margin-desktop": "64px",
+                      "gutter": "24px",
+                      "section-gap": "120px",
+                      "margin-mobile": "20px",
+                      "stack-md": "16px",
+                      "stack-lg": "32px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["EB Garamond"],
+                      "caption": ["Inter"],
+                      "headline-sm": ["EB Garamond"],
+                      "body-lg": ["Inter"],
+                      "display-lg-mobile": ["EB Garamond"],
+                      "display-lg": ["EB Garamond"],
+                      "label-md": ["Inter"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                      "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                      "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "display-lg-mobile": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "500"}],
+                      "display-lg": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.background'); color: theme('colors.on-background'); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+        .material-symbols-outlined.filled { font-variation-settings: 'FILL' 1; }
+        
+        /* Subtle fade in for timeline items */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-up { animation: fadeUp 0.6s ease-out forwards; opacity: 0; }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        
+        /* Editorial text selection */
+        ::selection { background-color: theme('colors.primary-fixed-dim'); color: theme('colors.on-primary-fixed'); }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col pt-16 pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-background border-b border-border flat no shadows flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16">
+<button class="text-text-secondary hover:text-primary transition-colors duration-300 scale-95 active:duration-150">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-headline-sm text-headline-sm text-primary italic">Discovery Community</h1>
+<button class="text-text-secondary hover:text-primary transition-colors duration-300 scale-95 active:duration-150">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg md:py-section-gap grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Profile Overview (Left Column Desktop) -->
+<aside class="md:col-span-4 flex flex-col gap-stack-lg">
+<!-- Hero Profile Card -->
+<div class="bg-surface border border-border rounded-lg p-stack-lg flex flex-col items-center text-center shadow-sm">
+<div class="relative w-32 h-32 mb-stack-md">
+<img class="w-full h-full object-cover rounded-full border border-border" data-alt="A striking portrait of a distinguished academic author, captured in soft, natural light, wearing a tailored tweed jacket against a softly blurred background of ancient stone ruins. The aesthetic is warm, intellectual, and timeless, utilizing a palette of deep earth tones and soft golden highlights, reflecting a premium editorial style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEmRf_X_yPQh71zYMxXfK44IFoDJewzNpmlVyMrbD0nAfJJPQfT-n1qxRmyYUJIjUe1cctPQMFRgfehb8t4Ipk2YGX9ZWLCwaoqNGvDA-LojTTnAXVzkMVU3QoFM2BsXmsM7FFxsh_PstkJnU3C02DelvwdTDMCgOGsjgCz4uF_YlpovJBuZY_-zEcKCYzHiqkh2Eu6DQvGeFwyLYrTlTqUV1PZiC1UWYthnH_mlt4YCzdiNwVqh28Rw"/>
+<div class="absolute -bottom-2 -right-2 bg-secondary-container text-on-secondary-container rounded-full p-1 border-2 border-surface flex items-center justify-center" title="Verified Author">
+<span class="material-symbols-outlined filled text-[16px]" data-icon="verified">verified</span>
+</div>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-stack-sm">Dr. Elias Thorne</h2>
+<p class="font-body-lg text-body-lg text-text-secondary mb-stack-md italic">Historian &amp; Anthropologist</p>
+<div class="flex gap-gutter mb-stack-lg w-full justify-center">
+<div class="flex flex-col items-center">
+<span class="font-headline-sm text-headline-sm text-on-surface">142</span>
+<span class="font-caption text-caption text-text-secondary uppercase tracking-widest">Contributions</span>
+</div>
+<div class="w-px bg-border h-full"></div>
+<div class="flex flex-col items-center">
+<span class="font-headline-sm text-headline-sm text-on-surface">12.4k</span>
+<span class="font-caption text-caption text-text-secondary uppercase tracking-widest">Followers</span>
+</div>
+<div class="w-px bg-border h-full"></div>
+<div class="flex flex-col items-center">
+<span class="font-headline-sm text-headline-sm text-on-surface">89</span>
+<span class="font-caption text-caption text-text-secondary uppercase tracking-widest">Following</span>
+</div>
+</div>
+<div class="flex gap-stack-sm w-full">
+<button class="flex-1 bg-primary text-on-primary font-label-md text-label-md rounded-lg py-3 px-4 hover:bg-primary-container transition-colors duration-300">Follow</button>
+<button class="bg-transparent border border-primary text-primary rounded-lg p-3 hover:bg-madder-light transition-colors duration-300 flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+</button>
+</div>
+</div>
+<!-- Badges & Achievements -->
+<div class="bg-surface border border-border rounded-lg p-stack-lg shadow-sm">
+<h3 class="font-label-md text-label-md text-text-secondary uppercase tracking-widest mb-stack-md">Honors &amp; Accolades</h3>
+<div class="flex flex-wrap gap-stack-sm">
+<div class="flex items-center gap-2 bg-gold-light border border-secondary-fixed-dim rounded-full px-3 py-1.5">
+<span class="material-symbols-outlined text-secondary text-[18px] filled" data-icon="local_fire_department">local_fire_department</span>
+<span class="font-caption text-caption text-secondary font-medium">Chronicler of Hampi</span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container border border-border rounded-full px-3 py-1.5">
+<span class="material-symbols-outlined text-text-secondary text-[18px]" data-icon="school">school</span>
+<span class="font-caption text-caption text-text-secondary">Ph.D. Antiquity</span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container border border-border rounded-full px-3 py-1.5">
+<span class="material-symbols-outlined text-text-secondary text-[18px]" data-icon="edit_document">edit_document</span>
+<span class="font-caption text-caption text-text-secondary">Top Contributor '23</span>
+</div>
+</div>
+</div>
+<!-- Bio/About -->
+<div class="bg-surface border border-border rounded-lg p-stack-lg shadow-sm">
+<h3 class="font-label-md text-label-md text-text-secondary uppercase tracking-widest mb-stack-md">About</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                    Dedicated to unearthing the lost narratives of the Vijayanagara Empire. Author of "Stones of Silence," exploring the intersection of architecture and oral history in southern India.
+                </p>
+</div>
+</aside>
+<!-- Activity Timeline Canvas (Right Column Desktop) -->
+<section class="md:col-span-8">
+<div class="mb-stack-lg pb-stack-md border-b border-border flex justify-between items-end">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Activity Journal</h2>
+<div class="hidden md:flex gap-stack-md">
+<button class="font-label-md text-label-md text-primary border-b-2 border-primary pb-1">Chronological</button>
+<button class="font-label-md text-label-md text-text-secondary hover:text-primary transition-colors pb-1">Curated</button>
+</div>
+</div>
+<!-- Timeline -->
+<div class="relative border-l border-border ml-4 md:ml-6 pl-stack-lg flex flex-col gap-stack-lg">
+<!-- Timeline Item 1: Publication -->
+<article class="relative animate-fade-up">
+<div class="absolute -left-[43px] md:-left-[51px] bg-surface border border-border rounded-full p-2 text-text-secondary">
+<span class="material-symbols-outlined text-[16px]" data-icon="article">article</span>
+</div>
+<time class="font-caption text-caption text-text-secondary uppercase tracking-widest mb-stack-sm block">October 24, 2023</time>
+<div class="bg-surface border border-border rounded-lg overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow duration-300">
+<div class="h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="A breathtaking, cinematic wide shot of the ancient ruins of Hampi at golden hour. The crumbling stone pillars and intricately carved temples are bathed in warm, amber light, casting long shadows across the dusty ground. The aesthetic is premium editorial travel photography, emphasizing the timeless and mysterious atmosphere of the heritage site, utilizing a rich palette of terracotta and gold." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvkezSA68m_rAjfwkYgKCyxH_FGKXAtXjKLqePnT0Du41p8iGVezY779KEe9RjkeIgKNajzVn7Wr8zIYUmOecdm_dlsWOu8-xOv1GGk7k9gFefJI7pP8ucBAdV8rZN2rTVfEgoTm0OA9NkZv7ggy3x3bQ7X8U_2S22JLO3pE7OpITeGF4mwwjZr4p1-E2WHIbkCntYqK6YsV8hF1UNaRFg7FJ8w7ddihC0KF1Uotc_jtwieHqsPhI7SA"/>
+</div>
+<div class="p-stack-md">
+<span class="inline-block bg-madder-light text-primary font-caption text-caption px-2 py-1 rounded-sm mb-stack-sm">Heritage Log</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-stack-sm group-hover:text-primary transition-colors">The Whispering Pillars of Vitthala</h4>
+<p class="font-body-md text-body-md text-text-secondary line-clamp-2">A sonic exploration of the legendary musical pillars, detailing recent acoustic findings that challenge previous architectural theories...</p>
+</div>
+</div>
+</article>
+<!-- Timeline Item 2: Event Attended -->
+<article class="relative animate-fade-up delay-100">
+<div class="absolute -left-[43px] md:-left-[51px] bg-surface border border-border rounded-full p-2 text-text-secondary">
+<span class="material-symbols-outlined text-[16px]" data-icon="event">event</span>
+</div>
+<time class="font-caption text-caption text-text-secondary uppercase tracking-widest mb-stack-sm block">September 12, 2023</time>
+<div class="bg-surface border border-border rounded-lg p-stack-md flex items-center gap-stack-md">
+<div class="w-16 h-16 rounded-md overflow-hidden shrink-0 hidden sm:block">
+<img class="w-full h-full object-cover" data-alt="A close-up, abstract detail shot of ancient manuscript pages stacked upon each other. The focus is shallow, highlighting the texture of the aged paper and the faded ink of scholarly annotations. The lighting is soft and directional, creating a sense of quiet study and archival discovery, fitting a premium academic visual identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDszEOO4BIyF0JTT8RQCR_3Bh87I5hw7NyyW7GpeaYSjN0D3fW3DByz_X00v_BsOiXHBku-aT4knRFI7oTGWv07XL3aNDODg1AtswJyVvKcla5llIpvamM2F8BW2woJeKf7E7xRVZPhfB7VbvMrb4lo0XeK71RdDfreg5yCyYxYy18kXpA9D_qRN-oz3CPSRLQGjYg5F-96dI4X501Sz7DXPusp2kQ_CWonG0SWHrSHkdiGFOt8rVqUQA"/>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface mb-1">Attended <span class="font-medium">Symposium on Deccan Antiquities</span></p>
+<p class="font-caption text-caption text-text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="location_on">location_on</span>
+                                 National Museum, New Delhi
+                             </p>
+</div>
+</div>
+</article>
+<!-- Timeline Item 3: Milestone -->
+<article class="relative animate-fade-up delay-200">
+<div class="absolute -left-[43px] md:-left-[51px] bg-secondary-container border border-surface rounded-full p-2 text-on-secondary-container">
+<span class="material-symbols-outlined text-[16px] filled" data-icon="workspace_premium">workspace_premium</span>
+</div>
+<time class="font-caption text-caption text-text-secondary uppercase tracking-widest mb-stack-sm block">August 05, 2023</time>
+<div class="py-stack-sm">
+<p class="font-headline-sm text-headline-sm text-on-surface">Reached 10,000 Followers</p>
+<p class="font-body-md text-body-md text-text-secondary mt-1">A milestone in sharing historical narratives with a broader audience.</p>
+</div>
+</article>
+<div class="pt-stack-md flex justify-center">
+<button class="font-label-md text-label-md text-primary flex items-center gap-2 hover:bg-madder-light px-4 py-2 rounded-full transition-colors">
+                        Load Previous Entries <span class="material-symbols-outlined" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden bg-surface border-t border-border shadow-sm fixed bottom-0 w-full z-50 rounded-t-xl flex justify-around items-center py-2 px-4 pb-safe">
+<a class="flex flex-col items-center justify-center text-text-secondary hover:bg-gold-light transition-all ease-in-out duration-300 transform active:scale-90 p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="auto_stories">auto_stories</span>
+<span class="font-label-md text-label-md mt-1 text-[10px]">Feed</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary hover:bg-gold-light transition-all ease-in-out duration-300 transform active:scale-90 p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-md text-label-md mt-1 text-[10px]">Clubs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary hover:bg-gold-light transition-all ease-in-out duration-300 transform active:scale-90 p-2 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="emoji_events">emoji_events</span>
+<span class="font-label-md text-label-md mt-1 text-[10px]">Challenges</span>
+</a>
+<!-- Active state for Profile (closest intent to Activity) -->
+<a class="flex flex-col items-center justify-center text-primary font-bold bg-madder-light rounded-full px-4 py-1 transition-all ease-in-out duration-300 transform active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="history_edu">history_edu</span>
+<span class="font-label-md text-label-md mt-1 text-[10px]">Activity</span>
+</a>
+</nav>
+</body></html>

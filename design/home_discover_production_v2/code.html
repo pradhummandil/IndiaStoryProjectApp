@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>India Story Project - Home Discover</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "on-error-container": "#93000a",
+                "secondary-fixed": "#e9e1dc",
+                "on-tertiary-fixed": "#241a00",
+                "tertiary": "#735c00",
+                "primary": "#6a020a",
+                "on-secondary-container": "#67625e",
+                "surface": "#fcf9f3",
+                "secondary-fixed-dim": "#cdc5c0",
+                "tertiary-container": "#cca730",
+                "surface-tint": "#aa3531",
+                "on-surface-variant": "#58413f",
+                "error": "#ba1a1a",
+                "tertiary-fixed": "#ffe088",
+                "outline": "#8b716e",
+                "outline-variant": "#dfbfbc",
+                "inverse-primary": "#ffb3ad",
+                "secondary": "#635d5a",
+                "surface-variant": "#e5e2dc",
+                "on-tertiary-fixed-variant": "#574500",
+                "inverse-on-surface": "#f3f0ea",
+                "on-surface": "#1c1c18",
+                "primary-fixed-dim": "#ffb3ad",
+                "background": "#fcf9f3",
+                "on-primary-container": "#ff9d95",
+                "surface-container-highest": "#e5e2dc",
+                "on-tertiary": "#ffffff",
+                "on-error": "#ffffff",
+                "on-primary-fixed-variant": "#891c1d",
+                "inverse-surface": "#31312d",
+                "on-tertiary-container": "#4f3d00",
+                "primary-container": "#8b1e1e",
+                "surface-dim": "#dcdad4",
+                "on-primary": "#ffffff",
+                "surface-container-high": "#ebe8e2",
+                "surface-container-lowest": "#ffffff",
+                "secondary-container": "#e6ded9",
+                "primary-fixed": "#ffdad6",
+                "on-primary-fixed": "#410003",
+                "tertiary-fixed-dim": "#e9c349",
+                "on-secondary-fixed": "#1e1b18",
+                "surface-container": "#f0eee8",
+                "surface-bright": "#fcf9f3",
+                "error-container": "#ffdad6",
+                "surface-container-low": "#f6f3ed",
+                "on-secondary-fixed-variant": "#4b4642",
+                "on-background": "#1c1c18",
+                "on-secondary": "#ffffff"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "unit": "8px",
+                "xl": "32px",
+                "gutter": "16px",
+                "sm": "8px",
+                "margin-desktop": "64px",
+                "margin-mobile": "16px",
+                "lg": "24px",
+                "md": "16px",
+                "xs": "4px",
+                "xxl": "48px"
+        },
+        "fontFamily": {
+                "body-md": [
+                        "Inter"
+                ],
+                "label-sm": [
+                        "Inter"
+                ],
+                "display-lg-mobile": [
+                        "EB Garamond"
+                ],
+                "headline-lg": [
+                        "EB Garamond"
+                ],
+                "display-lg": [
+                        "EB Garamond"
+                ],
+                "body-lg": [
+                        "Inter"
+                ],
+                "label-lg": [
+                        "Inter"
+                ],
+                "headline-md": [
+                        "EB Garamond"
+                ]
+        },
+        "fontSize": {
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "label-sm": [
+                        "12px",
+                        {
+                                "lineHeight": "16px",
+                                "fontWeight": "500"
+                        }
+                ],
+                "display-lg-mobile": [
+                        "36px",
+                        {
+                                "lineHeight": "44px",
+                                "letterSpacing": "-0.01em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-lg": [
+                        "32px",
+                        {
+                                "lineHeight": "40px",
+                                "fontWeight": "500"
+                        }
+                ],
+                "display-lg": [
+                        "48px",
+                        {
+                                "lineHeight": "56px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "label-lg": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-md": [
+                        "24px",
+                        {
+                                "lineHeight": "32px",
+                                "fontWeight": "500"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        body { background-color: #fcf9f3; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .museum-card-shadow {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+    </style>
+</head>
+<body class="text-on-background bg-background pb-[80px] md:pb-0 pt-[64px]">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-surface-dim border-b border-outline-variant dark:border-outline flex justify-between items-center px-margin-mobile h-16 transition-colors duration-300">
+<button aria-label="Menu" class="text-on-surface-variant hover:text-primary transition-colors duration-300 active:opacity-80 flex items-center justify-center p-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</button>
+<div class="font-headline-lg-mobile text-[24px] font-bold text-primary tracking-widest text-center flex-1">
+            HERITAGE
+        </div>
+<button aria-label="Search" class="text-on-surface-variant hover:text-primary transition-colors duration-300 active:opacity-80 flex items-center justify-center p-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">search</span>
+</button>
+</header>
+<main class="max-w-[1280px] mx-auto md:px-margin-desktop md:pt-margin-desktop">
+<!-- Large Hero Carousel -->
+<section class="relative w-full h-[60vh] md:h-[70vh] mb-gutter overflow-hidden group">
+<img alt="The Eternal Dawn: Secrets of the Taj Mahal" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBz-ejghPvIASWfvkNryL3DWq-axAOlFirvwM5H-QB2KpJPe0Xd7KbOLxSAAqKRriW7GXrXnEvN2Yrwu4h26piSfpsBgLb_rLyhhy7mQZmAvoGUnSlkyQkiZVkxQPm5X1g9sFAQc8CKSSoE32UoVgBbqlu_9oVO4iYxy7juCTw-nxsu5Mertyd6B44Ij1qrSLsUqPKY_CAOUVirj8YSsrUzm10koH8L7Pp3YE4ZzE3x8pXwGk6_7q1zpw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+<div class="absolute bottom-0 left-0 right-0 p-margin-mobile md:p-lg pb-gutter">
+<span class="inline-block px-3 py-1 bg-primary text-on-primary font-label-sm text-label-sm uppercase tracking-wider mb-3">Featured Story</span>
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-white mb-2 md:font-display-lg md:text-display-lg leading-tight">The Eternal Dawn:<br/>Secrets of the Taj Mahal</h1>
+<p class="font-body-lg text-body-lg text-white/90 mb-6 max-w-2xl line-clamp-2 md:line-clamp-none">Discover the untold architectural marvels and hidden histories woven into the pristine white marble of India's most iconic monument.</p>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg px-6 py-3 rounded-DEFAULT transition-colors duration-300 flex items-center gap-2">
+                    Read Story
+                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<!-- Carousel Indicators (Decorative) -->
+<div class="absolute bottom-4 right-margin-mobile md:right-lg flex gap-2">
+<div class="w-8 h-1 bg-primary rounded-full"></div>
+<div class="w-2 h-1 bg-white/50 rounded-full"></div>
+<div class="w-2 h-1 bg-white/50 rounded-full"></div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter px-margin-mobile md:px-0">
+<!-- Main Content Column -->
+<div class="lg:col-span-8 flex flex-col gap-xl">
+<!-- Reading Streak Widget -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg p-6 flex flex-col md:flex-row items-center md:items-start justify-between gap-4 museum-card-shadow">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">7 Day Streak</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">You're uncovering India's soul. Keep it up!</p>
+</div>
+</div>
+<div class="w-full md:w-auto flex flex-col gap-2 min-w-[200px]">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>Level 2: Explorer</span>
+<span>350 / 500 XP</span>
+</div>
+<div class="w-full h-2 bg-surface-variant rounded-full overflow-hidden">
+<div class="w-[70%] h-full bg-primary rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Continue Reading -->
+<section>
+<div class="flex justify-between items-end mb-4">
+<h2 class="font-headline-lg text-headline-lg md:font-headline-lg md:text-headline-lg text-on-surface">Continue Reading</h2>
+</div>
+<div class="flex overflow-x-auto gap-4 hide-scrollbar pb-4 snap-x">
+<!-- Card 1 -->
+<div class="snap-start shrink-0 w-[280px] md:w-[320px] bg-surface-container-lowest border border-outline-variant/50 rounded-lg overflow-hidden flex flex-col group cursor-pointer museum-card-shadow">
+<div class="h-32 relative overflow-hidden bg-surface-variant">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="A detailed view of intricate ancient stepwell architecture in Gujarat, India. The structure features geometric cascading stairs leading down to water, carved from sandstone. The lighting is dramatic, highlighting the depth and repetitive patterns of the architecture. The mood is historical and mysterious, captured in a high-contrast editorial style with warm earthy tones." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCZUKWo7rzg-fBd43TcocvzuHCOcLP7DRTDyWITOi6OA868axRUs-fOisDrKMtwA4HuXvdyMxbB1XI3caTEs4UXlHMppDmIvTo0K7Pz1MMbBv_QEe41UDM_4Lvlmcg_CYfAI3zixwZx4UAyXobrnyj-U2e4XTREsUp_QxihHeHT4XhXBP2kRJUwO4C-HhCc4AYaMeS4Ch1Nlvp97Tj9o6XYAflg1b8L2se-7IRxpwKJb7dhwhG5aY69Ig')"></div>
+<div class="absolute top-2 right-2 bg-surface/90 backdrop-blur-sm px-2 py-1 rounded font-label-sm text-label-sm text-on-surface">12 min left</div>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider mb-1">Architecture</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2 line-clamp-2 group-hover:text-primary transition-colors">The Geometry of Water: Gujarat's Stepwells</h3>
+<div class="mt-auto pt-4">
+<div class="w-full h-1 bg-surface-variant rounded-full overflow-hidden">
+<div class="w-[45%] h-full bg-primary rounded-full"></div>
+</div>
+<div class="flex justify-between mt-2 font-label-sm text-label-sm text-on-surface-variant">
+<span>45% Complete</span>
+<span>Last read yesterday</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="snap-start shrink-0 w-[280px] md:w-[320px] bg-surface-container-lowest border border-outline-variant/50 rounded-lg overflow-hidden flex flex-col group cursor-pointer museum-card-shadow">
+<div class="h-32 relative overflow-hidden bg-surface-variant">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="A vintage manuscript depicting early Indian astronomical charts and tools. The parchment is aged, filled with elegant Sanskrit script and intricate diagrams of planetary movements. The lighting is soft and focused, creating a scholarly and archival atmosphere. The color palette consists of sepia, faded gold, and deep ink black, presented in a crisp, museum-quality documentary style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB0kr6G7HumMtKZvsGvEASOAZa9qKJpx79LcUCJBL0IL7YbnxpmS-uXk3VGpGnvKWdEcr8z-LuMbA2aSKtZBxM_wlwkjBUWiKQmYHbwCo58bfviZ0Jtd5E2qAepBpEPz3Mg5tT-E_U0uA96RylmiwkpXA6NQ1qKzOXdXZwOyhExSByTUXZfYUhml-9e4oQaGUpzH7NtoUpPa1Zno19p3tMcmm5WFMaJrdvhuhVmQIbL4dF2-lmqprB-LQ')"></div>
+<div class="absolute top-2 right-2 bg-surface/90 backdrop-blur-sm px-2 py-1 rounded font-label-sm text-label-sm text-on-surface">5 min left</div>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider mb-1">Science</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2 line-clamp-2 group-hover:text-primary transition-colors">Stargazers of Antiquity: The Jantar Mantar</h3>
+<div class="mt-auto pt-4">
+<div class="w-full h-1 bg-surface-variant rounded-full overflow-hidden">
+<div class="w-[80%] h-full bg-primary rounded-full"></div>
+</div>
+<div class="flex justify-between mt-2 font-label-sm text-label-sm text-on-surface-variant">
+<span>80% Complete</span>
+<span>Last read 2 days ago</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Today's Discoveries (Editorial Cards) -->
+<section class="mb-margin-desktop">
+<h2 class="font-headline-lg text-headline-lg md:font-headline-lg md:text-headline-lg text-on-surface mb-6 border-b border-outline-variant/30 pb-2">Today's Discoveries</h2>
+<div class="grid grid-cols-1 gap-8">
+<!-- Editorial Card 1 -->
+<article class="bg-surface-container-lowest border border-outline-variant/40 rounded-DEFAULT overflow-hidden museum-card-shadow group cursor-pointer">
+<div class="grid grid-cols-1 md:grid-cols-12">
+<div class="md:col-span-5 h-[250px] md:h-auto relative overflow-hidden bg-surface-variant">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A majestic view of a monolithic rock-cut temple in Ellora, India. The imposing structure is carved entirely from a single basalt rock face, featuring elaborate sculptural reliefs of deities. The scene is captured at golden hour, casting long, dramatic shadows that emphasize the texture and scale of the monument. The aesthetic is cinematic and awe-inspiring, with rich earth tones and strong contrast." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDghkdKbkQHZLIAtGEM6cK2biIz6cuuh6YJDhID8w5SD4fxsleAyo5wApT8agmFmd82RV0_VosTtNGl3graTUWT7Ubn5VpkxKC3mXL1AUdkZreXhI4OAW5ECasKdowl7KmAjMqRGZM-UG5HHrjZTMyVYA4q8dzaJbcleQX1-MhF3y4sHns0_WIfSGEKOnWTNNXViE7bGe3opXalwNDgChhpnQLFRcsl1gI_oLqDDsN-SX62yrWeN0hSZg')"></div>
+</div>
+<div class="md:col-span-7 p-6 flex flex-col justify-center">
+<div class="flex items-center gap-2 mb-3">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider border border-primary/30 px-2 py-0.5 rounded-sm">History</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 15 min read</span>
+</div>
+<h3 class="font-display-lg-mobile text-display-lg-mobile text-on-surface mb-3 group-hover:text-primary transition-colors">Carved from the Earth: The Monolithic Temples of Ellora</h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-6 line-clamp-3">Explore the immense dedication and unparalleled engineering behind one of the largest rock-cut monastery-temple cave complexes in the world, a testament to ancient Indian artistry.</p>
+<div class="mt-auto flex items-center justify-between border-t border-outline-variant/20 pt-4">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">person</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface">By Dr. Vikram Singh</span>
+</div>
+<button aria-label="Save story" class="text-primary hover:bg-primary/5 p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">bookmark_border</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Editorial Card 2 -->
+<article class="bg-surface-container-lowest border border-outline-variant/40 rounded-DEFAULT overflow-hidden museum-card-shadow group cursor-pointer">
+<div class="grid grid-cols-1 md:grid-cols-12">
+<div class="md:col-span-5 h-[250px] md:h-auto relative overflow-hidden bg-surface-variant md:order-last">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A close-up photograph of a vibrant, intricately woven Indian textile. The fabric features traditional block-printed motifs in deep indigo, madder red, and bright ochre. The weave texture is clearly visible, highlighting the craftsmanship. The lighting is soft and natural, emphasizing the richness of the natural dyes. The style is detailed, textural, and culturally evocative." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAYy7ytcqrIWBcDgxS3TqDBcGSg7-X-2x4VLORuHlsR6_P3hVzo7GBaHmfDbgOm78RBzA5IYBSDOUuHbTvhhuABcwsaJwHvynQfsoWxGFfwYJmJWpYTg9DjdVg6IWKzBpwQMd1MNZDtMyIUqvry0JVsAs4pNOUd76P1qYR6Kle34giEBfPtq1_Vl8kElkke9Bxkf6OQ94tSLI-lYleRzeL09Ze9AH9c4f1LCv9mDUKpj5Df7yUGPlBP1A')"></div>
+</div>
+<div class="md:col-span-7 p-6 flex flex-col justify-center">
+<div class="flex items-center gap-2 mb-3">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider border border-primary/30 px-2 py-0.5 rounded-sm">Culture</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 8 min read</span>
+</div>
+<h3 class="font-display-lg-mobile text-display-lg-mobile text-on-surface mb-3 group-hover:text-primary transition-colors">Threads of Time: The Indigo Heritage</h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-6 line-clamp-3">Delve into the complex history of indigo dyeing in India, from its ancient origins to its impact on global trade and the artisans who preserve the craft today.</p>
+<div class="mt-auto flex items-center justify-between border-t border-outline-variant/20 pt-4">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">person</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface">By Anjali Desai</span>
+</div>
+<button aria-label="Save story" class="text-primary hover:bg-primary/5 p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">bookmark_border</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+</div>
+</section>
+</div>
+<!-- Sidebar (Desktop Only) -->
+<aside class="hidden lg:block lg:col-span-4 sticky top-[100px] h-fit">
+<!-- Curated Collections -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-DEFAULT p-6 mb-8 museum-card-shadow">
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-4">Curated Collections</h3>
+<ul class="flex flex-col gap-4">
+<li class="group cursor-pointer">
+<div class="flex items-center justify-between border-b border-outline-variant/20 pb-3">
+<span class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">Mughal Architecture</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</li>
+<li class="group cursor-pointer">
+<div class="flex items-center justify-between border-b border-outline-variant/20 pb-3">
+<span class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">Ancient Sciences</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</li>
+<li class="group cursor-pointer">
+<div class="flex items-center justify-between border-b border-outline-variant/20 pb-3">
+<span class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">Textile Heritage</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</li>
+<li class="group cursor-pointer">
+<div class="flex items-center justify-between pb-1">
+<span class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">The Spice Routes</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</li>
+</ul>
+</div>
+<!-- Newsletter Signup -->
+<div class="bg-surface-container-highest rounded-DEFAULT p-6 border-l-4 border-primary">
+<h4 class="font-headline-md text-headline-md text-on-surface mb-2">The Archive Newsletter</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">Receive a weekly curated story from the depths of Indian history directly to your inbox.</p>
+<div class="flex flex-col gap-3">
+<input class="w-full bg-surface-container-lowest border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary rounded px-3 py-2 font-body-md text-body-md shadow-inner" placeholder="Email address" type="email"/>
+<button class="w-full bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg py-2 rounded transition-colors duration-300">Subscribe</button>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center py-2 bg-surface bg-surface dark:bg-surface-dim border-t border-outline-variant dark:border-outline shadow-sm z-50">
+<button class="flex flex-col items-center justify-center text-primary font-bold hover:bg-surface-container-low transition-all active:scale-95 px-4 py-1 rounded-lg">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-secondary hover:bg-surface-container-low transition-all active:scale-95 px-4 py-1 rounded-lg">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">explore</span>
+<span class="font-label-sm text-label-sm mt-1">Explore</span>
+</button>
+<button class="flex flex-col items-center justify-center text-secondary hover:bg-surface-container-low transition-all active:scale-95 px-4 py-1 rounded-lg">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">share</span>
+<span class="font-label-sm text-label-sm mt-1">Share</span>
+</button>
+<button class="flex flex-col items-center justify-center text-secondary hover:bg-surface-container-low transition-all active:scale-95 px-4 py-1 rounded-lg">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">bookmark</span>
+<span class="font-label-sm text-label-sm mt-1">Saved</span>
+</button>
+<button class="flex flex-col items-center justify-center text-secondary hover:bg-surface-container-low transition-all active:scale-95 px-4 py-1 rounded-lg">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">person</span>
+<span class="font-label-sm text-label-sm mt-1">Profile</span>
+</button>
+</nav>
+<!-- Side Navigation (Desktop - Conceptual placeholder aligning with Shared Components logic for destination shell, though instruction asks for top and bottom. Adding a subtle desktop top nav cluster to satisfy responsive pivot rule) -->
+<nav class="hidden md:flex fixed top-0 right-0 h-16 items-center px-margin-desktop z-50 gap-6">
+<a class="font-label-lg text-label-lg text-primary border-b-2 border-primary py-5" href="#">Home</a>
+<a class="font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors" href="#">Explore</a>
+<a class="font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors" href="#">Saved</a>
+<a class="font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors" href="#">Profile</a>
+</nav>
+</body></html>

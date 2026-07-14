@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Profile - India Story Project</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-container": "#735a00",
+                      "secondary-fixed-dim": "#ecc246",
+                      "secondary": "#755b00",
+                      "on-background": "#1b1b1c",
+                      "surface": "#FFFFFF",
+                      "error": "#ba1a1a",
+                      "outline-variant": "#dfbfbc",
+                      "text-secondary": "#5F6368",
+                      "on-primary-container": "#ff9d95",
+                      "on-secondary-fixed-variant": "#584400",
+                      "on-surface": "#1b1b1c",
+                      "madder-light": "#F2E8E8",
+                      "surface-dim": "#dcd9d9",
+                      "outline": "#8b716e",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed-dim": "#95ceef",
+                      "tertiary-fixed": "#c3e8ff",
+                      "tertiary-container": "#004e6a",
+                      "background": "#F8F5EF",
+                      "on-secondary-fixed": "#241a00",
+                      "surface-container-highest": "#e5e2e1",
+                      "error-container": "#ffdad6",
+                      "on-tertiary-container": "#86bedf",
+                      "surface-tint": "#aa3531",
+                      "primary-fixed-dim": "#ffb3ad",
+                      "secondary-fixed": "#ffe08e",
+                      "on-tertiary": "#ffffff",
+                      "gold-light": "#FAF6E9",
+                      "on-primary-fixed-variant": "#891c1d",
+                      "primary": "#6a020a",
+                      "secondary-container": "#fed255",
+                      "on-error": "#ffffff",
+                      "inverse-on-surface": "#f3f0ef",
+                      "surface-variant": "#e5e2e1",
+                      "on-primary": "#ffffff",
+                      "primary-fixed": "#ffdad6",
+                      "surface-container": "#f0eded",
+                      "tertiary": "#00364b",
+                      "on-surface-variant": "#58413f",
+                      "inverse-primary": "#ffb3ad",
+                      "inverse-surface": "#303030",
+                      "on-error-container": "#93000a",
+                      "border": "#E8E2D8",
+                      "on-tertiary-fixed-variant": "#004c68",
+                      "on-tertiary-fixed": "#001e2c",
+                      "surface-bright": "#fcf9f8",
+                      "on-primary-fixed": "#410003",
+                      "on-secondary": "#ffffff",
+                      "surface-container-low": "#f6f3f2",
+                      "surface-container-high": "#eae7e7",
+                      "primary-container": "#8b1e1e"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-desktop": "64px",
+                      "stack-md": "16px",
+                      "stack-lg": "32px",
+                      "section-gap": "120px",
+                      "margin-mobile": "20px",
+                      "stack-sm": "8px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-sm": [
+                              "EB Garamond"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "EB Garamond"
+                      ],
+                      "display-lg": [
+                              "EB Garamond"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "caption": [
+                              "Inter"
+                      ],
+                      "display-lg-mobile": [
+                              "EB Garamond"
+                      ]
+              },
+              "fontSize": {
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-sm": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-lg": [
+                              "64px",
+                              {
+                                      "lineHeight": "72px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "caption": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "40px",
+                              {
+                                      "lineHeight": "48px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 300,
+          'GRAD' 0,
+          'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        /* Hide scrollbar for clean horizontal scrolls */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+      </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col pb-24 md:pb-0">
+<!-- TopAppBar (Web & Mobile) -->
+<header class="bg-background dark:bg-background text-primary dark:text-primary-fixed docked full-width top-0 z-40 sticky">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 bg-background dark:bg-background">
+<button aria-label="Go back" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-variant transition-colors duration-300 group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="font-headline-sm text-headline-sm text-primary dark:text-primary-fixed tracking-tight font-bold">
+                India Story Project
+            </div>
+<button aria-label="Share" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-variant transition-colors duration-300 group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="share">share</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg md:py-stack-lg">
+<!-- Profile Header Section -->
+<section class="flex flex-col md:flex-row items-center md:items-start gap-stack-lg mb-section-gap">
+<!-- Avatar -->
+<div class="relative w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden border-2 border-border shadow-sm flex-shrink-0">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="A high-quality, professional headshot portrait of a distinguished Indian writer or historian, subtly warm lighting, editorial magazine style, minimalist neutral background, conveying wisdom and curiosity, high resolution, sharp focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxqer5lxkuS0ItqymMUGlyHefhjgdk-3VwMXfOgd5Vh0ilmaQkEaJAmXKOa-yDJvu0TBamX0VnpyYbOZSMASi6ogIk8JBsi-2fs2RuJADvtec729ftteXubrzzc435xKIuCm5Q8WQfdPWH7IwY7QAwViEuAlSu0R4u9tR13nIutdfxmQTAmVymTZJw6a7icGm_8pGZ1Tf8D0RZ1kjPQgaKcb1-E89pIo2IbbmIfx-gme6FoUN5QmPRWg"/>
+</div>
+<!-- Info & Stats -->
+<div class="flex flex-col items-center md:items-start text-center md:text-left w-full">
+<div class="flex flex-col md:flex-row justify-between items-center w-full mb-stack-sm">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg font-bold text-primary mb-2 md:mb-0">Arundhati Roy</h1>
+<button aria-label="Settings" class="flex items-center gap-2 px-4 py-2 rounded-full border border-border hover:bg-surface-variant transition-colors text-label-md font-label-md text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
+                        Settings
+                    </button>
+</div>
+<p class="font-body-lg text-body-lg text-text-secondary mb-stack-lg max-w-2xl">
+                    Archivist of forgotten tales, chronicler of the subcontinent's hidden heritage. Passionate about architecture, textile history, and oral traditions.
+                </p>
+<!-- Stats Bento -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 w-full md:w-auto">
+<div class="bg-surface border border-border p-4 rounded-xl flex flex-col items-center justify-center hover:-translate-y-1 transition-transform duration-300 shadow-sm">
+<span class="font-headline-sm text-headline-sm text-primary mb-1">42</span>
+<span class="font-caption text-caption text-text-secondary uppercase tracking-wider">Stories Shared</span>
+</div>
+<div class="bg-surface border border-border p-4 rounded-xl flex flex-col items-center justify-center hover:-translate-y-1 transition-transform duration-300 shadow-sm">
+<span class="font-headline-sm text-headline-sm text-primary mb-1">128</span>
+<span class="font-caption text-caption text-text-secondary uppercase tracking-wider">Bookmarks</span>
+</div>
+<div class="bg-surface border border-border p-4 rounded-xl flex flex-col items-center justify-center hover:-translate-y-1 transition-transform duration-300 shadow-sm">
+<span class="font-headline-sm text-headline-sm text-primary mb-1">1.2k</span>
+<span class="font-caption text-caption text-text-secondary uppercase tracking-wider">Followers</span>
+</div>
+<div class="bg-surface border border-border p-4 rounded-xl flex flex-col items-center justify-center hover:-translate-y-1 transition-transform duration-300 shadow-sm">
+<span class="font-headline-sm text-headline-sm text-primary mb-1">340</span>
+<span class="font-caption text-caption text-text-secondary uppercase tracking-wider">Following</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Achievements & Badges -->
+<section class="mb-section-gap">
+<h2 class="font-headline-sm text-headline-sm text-on-background mb-stack-md flex items-center gap-3 border-b border-border pb-2">
+<span class="material-symbols-outlined text-secondary" data-icon="military_tech">military_tech</span>
+                Honors &amp; Badges
+            </h2>
+<div class="flex overflow-x-auto gap-6 pb-4 no-scrollbar">
+<!-- Badge 1 -->
+<div class="flex flex-col items-center flex-shrink-0 w-32 group cursor-pointer">
+<div class="w-20 h-20 rounded-full bg-gold-light border border-secondary/30 flex items-center justify-center mb-3 group-hover:bg-secondary-container transition-colors duration-300 relative">
+<span class="material-symbols-outlined text-[40px] text-secondary icon-fill" data-icon="account_balance">account_balance</span>
+<div class="absolute -bottom-1 -right-1 bg-surface rounded-full p-1 border border-border shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary-fixed-dim" data-icon="star">star</span>
+</div>
+</div>
+<span class="font-label-md text-label-md text-center text-on-surface">Heritage Guardian</span>
+</div>
+<!-- Badge 2 -->
+<div class="flex flex-col items-center flex-shrink-0 w-32 group cursor-pointer">
+<div class="w-20 h-20 rounded-full bg-madder-light border border-primary/20 flex items-center justify-center mb-3 group-hover:bg-primary-fixed-dim transition-colors duration-300">
+<span class="material-symbols-outlined text-[40px] text-primary icon-fill" data-icon="biotech">biotech</span>
+</div>
+<span class="font-label-md text-label-md text-center text-on-surface">Science Explorer</span>
+</div>
+<!-- Badge 3 -->
+<div class="flex flex-col items-center flex-shrink-0 w-32 group cursor-pointer">
+<div class="w-20 h-20 rounded-full bg-tertiary-fixed border border-tertiary/20 flex items-center justify-center mb-3 group-hover:bg-tertiary-fixed-dim transition-colors duration-300">
+<span class="material-symbols-outlined text-[40px] text-tertiary icon-fill" data-icon="menu_book">menu_book</span>
+</div>
+<span class="font-label-md text-label-md text-center text-on-surface">Avid Chronicler</span>
+</div>
+<!-- Badge 4 -->
+<div class="flex flex-col items-center flex-shrink-0 w-32 group cursor-pointer opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+<div class="w-20 h-20 rounded-full bg-surface-variant border border-border flex items-center justify-center mb-3">
+<span class="material-symbols-outlined text-[40px] text-text-secondary" data-icon="lock">lock</span>
+</div>
+<span class="font-label-md text-label-md text-center text-text-secondary">Master Weaver</span>
+</div>
+</div>
+</section>
+<!-- Your Collections (Bento Grid) -->
+<section class="mb-section-gap">
+<div class="flex justify-between items-end border-b border-border pb-2 mb-stack-lg">
+<h2 class="font-headline-sm text-headline-sm text-on-background flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="bookmark">bookmark</span>
+                    Your Collections
+                </h2>
+<a class="font-label-md text-label-md text-primary hover:underline flex items-center gap-1" href="#">
+                    View All <span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Large Card -->
+<div class="md:col-span-2 group cursor-pointer flex flex-col h-full bg-surface rounded-xl overflow-hidden border border-border shadow-[0_4px_20px_rgba(30,30,30,0.02)] hover:shadow-[0_10px_30px_rgba(30,30,30,0.05)] transition-shadow duration-300 relative">
+<div class="absolute top-4 right-4 z-10 bg-surface/90 backdrop-blur-sm px-3 py-1 rounded-full border border-border flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary" data-icon="collections">collections</span>
+<span class="font-caption text-caption text-on-surface">12 Stories</span>
+</div>
+<div class="h-64 w-full relative overflow-hidden">
+<img alt="Architecture of the West" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out" data-alt="A stunning, wide-angle architectural photograph of a stepwell in Gujarat, India (like Rani ki Vav). Intricate stone carvings, dramatic interplay of light and shadow, cinematic lighting, editorial magazine style, warm terracotta and sand tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxdcOF9qhjHC8h_T8m2m9iv4Gd1AHEjphDuXqrDN7xI1QpQ0w-TnpNc-rbMWihnTFGo-M5DE8G408s3to_bjbSmOOcOd41HeJD0dQEZ9vDsJzZuQVGarNTbPk3_jXwLlP8lqJotUb2cUyrODrGeUC9dfFydnIYMSLV4rQ1DXjH_fZ3905xmR7_qeq6TpTgyuYf89tMAwbhb0bNfAErAHxDLviIEKeogwBNlTIdYTpqbZAgzMx_IyvIvA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+</div>
+<div class="p-6 flex-grow flex flex-col justify-end bg-surface z-10 -mt-10 relative rounded-t-2xl">
+<span class="font-caption text-caption text-secondary uppercase tracking-widest mb-2 font-semibold">Architecture</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 group-hover:text-primary transition-colors">Forgotten Stepwells of Gujarat</h3>
+<p class="font-body-md text-body-md text-text-secondary line-clamp-2">A curated journey through the intricate subterranean water temples that served as community hubs.</p>
+</div>
+</div>
+<!-- Small Stacked Cards -->
+<div class="flex flex-col gap-6">
+<div class="group cursor-pointer flex h-[200px] bg-surface rounded-xl overflow-hidden border border-border hover:shadow-[0_10px_30px_rgba(30,30,30,0.05)] transition-shadow duration-300">
+<div class="w-1/3 relative overflow-hidden">
+<img alt="Textile Arts" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Close-up macro photography of traditional Indian silk weaving. Vibrant crimson and gold threads, detailed texture, shallow depth of field, natural warm lighting, artisanal craft focus, editorial aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAC3v1eMG4CvGalJkRpE8CL74G1-nlJXRS5-0HjeOmBApHLFzWWWa6u91fzcrfpdVct5z9vvqvGGsMjgII_iesJRm-I9QaLSqvIrY0syCm-fRuy4jnuaqABEA8zVNk1wg7Czv5sgWtMFZWRF5PGdAQtB2RL1XWjxxfAzGYaOtkMb7OHG280DMh1YS8ES84mAYn_rNMr5SnZf5-roWMqkUZDBp-aOoJyV5HdI-981J2v0AWrQq1Mij2MKw"/>
+</div>
+<div class="w-2/3 p-4 flex flex-col justify-center">
+<span class="font-caption text-caption text-secondary uppercase tracking-widest mb-1 font-semibold">Craft</span>
+<h3 class="font-body-lg text-body-lg font-headline-sm text-on-surface mb-1 leading-tight group-hover:text-primary transition-colors">The Silk Route Weavers</h3>
+<span class="font-caption text-caption text-text-secondary mt-auto">8 Stories saved</span>
+</div>
+</div>
+<div class="group cursor-pointer flex h-[200px] bg-surface rounded-xl overflow-hidden border border-border hover:shadow-[0_10px_30px_rgba(30,30,30,0.05)] transition-shadow duration-300">
+<div class="w-1/3 relative overflow-hidden">
+<img alt="Ancient Science" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A vintage brass astrolabe or ancient astronomical instrument resting on an old manuscript. Soft directional light highlighting the engraved details, intellectual moody atmosphere, sepia and brass color palette, high-end museum documentation style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2MEvSOphhRzhHes9JkPSCS2OhKKFtzKOQzziEOMJamNYP4jNj9vLA2JRJ_uCR--2x_hFLIbkmGaQTcP1yJn5_C85OnmxJJ_7R02J-KHsi9UePMOah5Eoc_bw8DmGFZKzWWNehF_XkHd60wWZ4jYE-nEwY5QkLE6MvjYYr586Vl4hmXA166pJePiv9NSngia2UpTsxwcxTYUDP_RW4n9Ai5NOzjPyqPYrkZ3cwqkqOU4DzFVkYJlcXLw"/>
+</div>
+<div class="w-2/3 p-4 flex flex-col justify-center">
+<span class="font-caption text-caption text-secondary uppercase tracking-widest mb-1 font-semibold">Science</span>
+<h3 class="font-body-lg text-body-lg font-headline-sm text-on-surface mb-1 leading-tight group-hover:text-primary transition-colors">Vedic Astronomy</h3>
+<span class="font-caption text-caption text-text-secondary mt-auto">5 Stories saved</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Reading History Timeline -->
+<section class="mb-stack-lg">
+<h2 class="font-headline-sm text-headline-sm text-on-background mb-stack-md flex items-center gap-3 border-b border-border pb-2">
+<span class="material-symbols-outlined text-text-secondary" data-icon="history">history</span>
+                Recent Discoveries
+            </h2>
+<div class="relative pl-6 md:pl-8 border-l border-border space-y-8 py-4">
+<!-- Timeline Item 1 -->
+<div class="relative">
+<div class="absolute -left-[30px] md:-left-[38px] top-1 w-3 h-3 rounded-full bg-primary ring-4 ring-background"></div>
+<p class="font-caption text-caption text-text-secondary mb-1">Today</p>
+<a class="block group" href="#">
+<h4 class="font-body-lg text-body-lg font-medium text-on-surface group-hover:text-primary transition-colors mb-1">The Lost Manuscripts of Timbuktu's Indian Connection</h4>
+<p class="font-body-md text-body-md text-text-secondary line-clamp-1">Exploring the trade routes of ideas between continents.</p>
+</a>
+</div>
+<!-- Timeline Item 2 -->
+<div class="relative">
+<div class="absolute -left-[30px] md:-left-[38px] top-1 w-3 h-3 rounded-full bg-surface-variant border border-border ring-4 ring-background"></div>
+<p class="font-caption text-caption text-text-secondary mb-1">Yesterday</p>
+<a class="block group" href="#">
+<h4 class="font-body-lg text-body-lg font-medium text-on-surface group-hover:text-primary transition-colors mb-1">Monsoon Ragas: The Sound of Rain</h4>
+<p class="font-body-md text-body-md text-text-secondary line-clamp-1">How classical music mapped the changing seasons.</p>
+</a>
+</div>
+<!-- Timeline Item 3 -->
+<div class="relative">
+<div class="absolute -left-[30px] md:-left-[38px] top-1 w-3 h-3 rounded-full bg-surface-variant border border-border ring-4 ring-background"></div>
+<p class="font-caption text-caption text-text-secondary mb-1">Oct 12, 2023</p>
+<a class="block group" href="#">
+<h4 class="font-body-lg text-body-lg font-medium text-on-surface group-hover:text-primary transition-colors mb-1">Culinary Heritage: The Origins of Filter Coffee</h4>
+<p class="font-body-md text-body-md text-text-secondary line-clamp-1">A brew that defined mornings across the southern peninsula.</p>
+</a>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden bg-surface dark:bg-surface-container-low text-primary dark:text-primary-fixed font-label-md text-label-md font-headline-sm text-headline-sm text-primary docked full-width bottom-0 rounded-t-xl border-t border-border dark:border-outline-variant shadow-sm fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe">
+<a aria-label="Home" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]" data-icon="home">home</span>
+<span class="text-[10px]">Home</span>
+</a>
+<a aria-label="Explore" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]" data-icon="explore">explore</span>
+<span class="text-[10px]">Explore</span>
+</a>
+<a aria-label="Share" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]" data-icon="share">share</span>
+<span class="text-[10px]">Share</span>
+</a>
+<a aria-label="Saved" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-300" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]" data-icon="bookmark">bookmark</span>
+<span class="text-[10px]">Saved</span>
+</a>
+<a aria-label="Profile" class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed bg-secondary-container/20 rounded-xl px-3 py-1 scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px] icon-fill" data-icon="person">person</span>
+<span class="text-[10px] font-semibold">Profile</span>
+</a>
+</nav>
+</body></html>

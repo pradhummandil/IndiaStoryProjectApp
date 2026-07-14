@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Writer Studio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "border": "#E8E2D8",
+                      "surface-tint": "#aa3531",
+                      "surface-container-high": "#eae7e7",
+                      "secondary-fixed": "#ffe08e",
+                      "on-surface": "#1b1b1c",
+                      "on-tertiary-fixed-variant": "#004c68",
+                      "on-secondary-fixed-variant": "#584400",
+                      "background": "#F8F5EF",
+                      "surface-container-highest": "#e5e2e1",
+                      "on-surface-variant": "#58413f",
+                      "tertiary-fixed": "#c3e8ff",
+                      "tertiary": "#00364b",
+                      "on-secondary-fixed": "#241a00",
+                      "surface-container-low": "#f6f3f2",
+                      "on-secondary": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-dim": "#dcd9d9",
+                      "on-primary-container": "#ff9d95",
+                      "secondary-container": "#fed255",
+                      "outline": "#8b716e",
+                      "madder-light": "#F2E8E8",
+                      "on-primary-fixed": "#410003",
+                      "outline-variant": "#dfbfbc",
+                      "inverse-surface": "#303030",
+                      "primary-fixed": "#ffdad6",
+                      "on-tertiary": "#ffffff",
+                      "primary": "#6a020a",
+                      "tertiary-container": "#004e6a",
+                      "primary-fixed-dim": "#ffb3ad",
+                      "on-primary": "#ffffff",
+                      "secondary-fixed-dim": "#ecc246",
+                      "surface-variant": "#e5e2e1",
+                      "tertiary-fixed-dim": "#95ceef",
+                      "surface-bright": "#fcf9f8",
+                      "on-tertiary-fixed": "#001e2c",
+                      "on-background": "#1b1b1c",
+                      "inverse-on-surface": "#f3f0ef",
+                      "on-secondary-container": "#735a00",
+                      "error-container": "#ffdad6",
+                      "surface": "#FFFFFF",
+                      "surface-container": "#f0eded",
+                      "on-error-container": "#93000a",
+                      "secondary": "#755b00",
+                      "on-primary-fixed-variant": "#891c1d",
+                      "on-tertiary-container": "#86bedf",
+                      "gold-light": "#FAF6E9",
+                      "error": "#ba1a1a",
+                      "inverse-primary": "#ffb3ad",
+                      "primary-container": "#8b1e1e",
+                      "text-secondary": "#5F6368",
+                      "on-error": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-sm": "8px",
+                      "stack-lg": "32px",
+                      "margin-desktop": "64px",
+                      "section-gap": "120px",
+                      "gutter": "24px",
+                      "stack-md": "16px",
+                      "margin-mobile": "20px"
+              },
+              "fontFamily": {
+                      "headline-sm": [
+                              "EB Garamond"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "display-lg-mobile": [
+                              "EB Garamond"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "EB Garamond"
+                      ],
+                      "headline-lg": [
+                              "EB Garamond"
+                      ],
+                      "caption": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "headline-sm": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "40px",
+                              {
+                                      "lineHeight": "48px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "64px",
+                              {
+                                      "lineHeight": "72px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "caption": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 300;
+        }
+        
+        /* Custom scrollbar for a cleaner editorial look */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E8E2D8;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #dfbfbc;
+        }
+        
+        /* Circular Progress Animation */
+        .progress-ring__circle {
+            transition: stroke-dashoffset 1s ease-in-out;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-lg text-body-lg antialiased selection:bg-madder-light selection:text-primary min-h-screen flex flex-col overflow-x-hidden">
+<!-- TopAppBar -->
+<!-- Applying exact style keys from JSON -->
+<header class="w-full top-0 sticky z-40 bg-background dark:bg-on-background border-b border-border dark:border-outline-variant transition-all duration-300 ease-in-out">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-stack-md w-full">
+<div class="flex items-center gap-gutter">
+<button class="text-on-surface-variant dark:text-outline-variant hover:text-surface-tint transition-colors duration-300 group flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined text-2xl group-active:scale-90 transition-transform">menu</span>
+</button>
+<div class="font-headline-lg text-headline-lg text-primary dark:text-primary-fixed-dim">
+                    Writer Studio
+                </div>
+</div>
+<div class="flex items-center gap-stack-md">
+<span class="font-label-md text-label-md text-text-secondary hidden sm:block">Draft automatically saved</span>
+<button class="bg-primary-container text-on-primary-container px-6 py-2.5 rounded-lg font-label-md text-label-md font-semibold hover:bg-primary hover:text-on-primary transition-all duration-300 shadow-[0_4px_14px_rgba(139,30,30,0.2)] hover:shadow-[0_6px_20px_rgba(139,30,30,0.3)] active:scale-95 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">publish</span>
+                    Publish
+                </button>
+<!-- Mobile Settings Toggle -->
+<button class="lg:hidden text-on-surface-variant hover:text-surface-tint transition-colors w-10 h-10 flex items-center justify-center rounded-full bg-surface shadow-sm border border-border" id="mobile-settings-toggle">
+<span class="material-symbols-outlined">tune</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Workspace Layout -->
+<div class="flex-1 flex flex-col lg:flex-row w-full max-w-[1600px] mx-auto relative">
+<!-- Editor Canvas -->
+<main class="flex-1 flex flex-col relative w-full lg:w-auto px-margin-mobile md:px-margin-desktop py-section-gap transition-all duration-500">
+<div class="w-full max-w-3xl mx-auto space-y-stack-lg relative">
+<!-- Cover Image Area -->
+<div class="relative group cursor-pointer rounded-xl overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.04)] transition-all duration-500 hover:shadow-[0_15px_50px_rgba(0,0,0,0.08)] bg-surface border border-border">
+<div class="bg-cover bg-center w-full aspect-video transition-transform duration-700 group-hover:scale-[1.02]" data-alt="A cinematic, ultra-high-resolution landscape photograph showcasing the lush, terraced tea gardens of Munnar, India, bathed in soft, golden morning light. The scene is slightly desaturated with a warm vintage tint, fitting a premium editorial travel magazine style. Mist gently hugs the valley, creating a serene, timeless discovery mood." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuASYyESVqIE2lGl89eOwwp3bVTaUcdVmHFUBcuG_ka_PbH40CmesJzIP14FDB98y6nuaUsFX8mIskYgC0oQdhAeIYNEK0PzO4FTH0AfHMHpoz2jd675R2VgZTMWAhIzdas4QG93t-dnfp_SQdlXawymOK1vRJEvywgNcO9qHg8MNpmq5oiQeDTWUgI9oaccBVqKY_EwlDA477xOqEhlWAnQ0tfB2fg7ajmt7sRdHG2LHPmxrqn0ayu8lw')"></div>
+<!-- Image Hover Overlay -->
+<div class="absolute inset-0 bg-inverse-surface/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+<div class="bg-surface/90 backdrop-blur-sm px-6 py-3 rounded-full flex items-center gap-2 text-on-surface font-label-md text-label-md shadow-lg border border-border/50">
+<span class="material-symbols-outlined text-[18px]">add_photo_alternate</span>
+                            Change Cover Image
+                        </div>
+</div>
+</div>
+<!-- Story Metadata Row -->
+<div class="flex items-center gap-3 pt-stack-md">
+<span class="px-3 py-1 bg-gold-light text-secondary font-label-md text-label-md uppercase tracking-wider rounded border border-secondary-fixed-dim/30">Heritage</span>
+<span class="px-3 py-1 bg-surface text-on-surface-variant font-label-md text-label-md border border-border rounded flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span> India
+                    </span>
+<span class="text-text-secondary font-caption text-caption flex items-center gap-1 ml-auto">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 5 min read
+                    </span>
+</div>
+<!-- Title Input -->
+<div>
+<input class="w-full bg-transparent border-none outline-none focus:ring-0 font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-background placeholder:text-outline-variant p-0 m-0 leading-tight" placeholder="A Timeless Discovery..." type="text"/>
+</div>
+<!-- Rich Text Area -->
+<div class="relative min-h-[50vh]">
+<!-- Simulated Editor Content -->
+<div class="prose prose-lg max-w-none font-body-lg text-body-lg text-on-surface-variant leading-relaxed space-y-6 outline-none focus:outline-none" contenteditable="true" data-placeholder="Begin your narrative...">
+<p class="first-letter:text-5xl first-letter:font-headline-lg first-letter:text-primary first-letter:float-left first-letter:mr-3 first-letter:mt-1">The journey begins long before the first step is taken. It starts in the quiet anticipation of the unknown, the rustle of maps, and the faint scent of old paper. In the heart of the subcontinent, history doesn't just sit in museums; it breathes through the bustling streets and silent temples.</p>
+<p>Our expedition aimed to uncover the lesser-known narratives woven into the fabric of these ancient settlements. We sought not the grand monuments, but the intimate corners where time seems to have paused, preserving a way of life that feels both distant and profoundly familiar.</p>
+</div>
+</div>
+</div>
+<!-- Floating AI Toolbar (Sticky Bottom Center) -->
+<div class="fixed bottom-margin-mobile md:bottom-margin-desktop left-1/2 -translate-x-1/2 z-30 pointer-events-none">
+<!-- Wrapper for pointer events and styling -->
+<div class="pointer-events-auto bg-surface/80 backdrop-blur-xl border border-border rounded-full p-2 shadow-[0_8px_30px_rgba(0,0,0,0.08)] flex items-center gap-1 transition-all duration-300 hover:shadow-[0_12px_40px_rgba(0,0,0,0.12)] hover:border-outline-variant">
+<div class="px-3 border-r border-border flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px] icon-fill">auto_awesome</span>
+</div>
+<button class="px-4 py-2 rounded-full font-label-md text-label-md text-on-surface hover:bg-madder-light hover:text-primary transition-colors flex items-center gap-2 group">
+<span class="material-symbols-outlined text-[18px] group-hover:scale-110 transition-transform">edit_note</span>
+                        Improve Prose
+                    </button>
+<button class="px-4 py-2 rounded-full font-label-md text-label-md text-on-surface hover:bg-madder-light hover:text-primary transition-colors flex items-center gap-2 group">
+<span class="material-symbols-outlined text-[18px] group-hover:scale-110 transition-transform">title</span>
+                        Generate Title
+                    </button>
+<button class="px-4 py-2 rounded-full font-label-md text-label-md text-on-surface hover:bg-madder-light hover:text-primary transition-colors flex items-center gap-2 group">
+<span class="material-symbols-outlined text-[18px] group-hover:scale-110 transition-transform">summarize</span>
+                        Summarize
+                    </button>
+</div>
+</div>
+</main>
+<!-- Right Side Drawer: Story Settings -->
+<aside class="fixed lg:sticky top-0 lg:top-[88px] right-0 h-screen lg:h-[calc(100vh-88px)] w-[360px] bg-surface border-l border-border shadow-2xl lg:shadow-none transform translate-x-full lg:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] z-50 flex flex-col overflow-hidden" id="settings-drawer">
+<!-- Drawer Header (Mobile Only) -->
+<div class="flex lg:hidden items-center justify-between p-stack-md border-b border-border bg-surface-bright">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Story Settings</h2>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors text-on-surface-variant" id="close-settings">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto p-stack-lg space-y-10">
+<!-- Section Header -->
+<div class="hidden lg:block mb-8">
+<h2 class="font-headline-sm text-headline-sm text-on-surface border-b border-border pb-4">Story Setting</h2>
+</div>
+<!-- Scores Grid (Bento Style) -->
+<div class="grid grid-cols-2 gap-4">
+<!-- SEO Score Card -->
+<div class="bg-background rounded-xl p-4 border border-border flex flex-col items-center justify-center gap-3 relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-surface to-background opacity-50"></div>
+<div class="relative w-20 h-20">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#E8E2D8" stroke-width="8"></circle>
+<circle class="text-primary-container drop-shadow-md" cx="50" cy="50" fill="transparent" r="40" stroke="#8b1e1e" stroke-dasharray="251.2" stroke-dashoffset="37.68" stroke-width="8"></circle>
+<!-- 85% of 251.2 (2 * pi * r) is roughly 213.5. 251.2 - 213.5 = 37.7 -->
+</svg>
+<div class="absolute inset-0 flex items-center justify-center flex-col">
+<span class="font-headline-sm text-headline-sm text-primary">85</span>
+</div>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant relative z-10">SEO Score</span>
+</div>
+<!-- Accessibility Score Card -->
+<div class="bg-background rounded-xl p-4 border border-border flex flex-col items-center justify-center gap-3 relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-bl from-surface to-background opacity-50"></div>
+<div class="relative w-20 h-20">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#E8E2D8" stroke-width="8"></circle>
+<circle class="text-secondary drop-shadow-md" cx="50" cy="50" fill="transparent" r="40" stroke="#755b00" stroke-dasharray="251.2" stroke-dashoffset="20" stroke-width="8"></circle>
+<!-- 92% offset -->
+</svg>
+<div class="absolute inset-0 flex items-center justify-center flex-col">
+<span class="font-headline-sm text-headline-sm text-secondary">92</span>
+</div>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant relative z-10">A11y Score</span>
+</div>
+</div>
+<hr class="border-border"/>
+<!-- Metadata Selectors -->
+<div class="space-y-6">
+<h3 class="font-label-md text-label-md text-text-secondary uppercase tracking-widest">Metadata</h3>
+<!-- Custom Selects imitating paper inputs -->
+<div class="space-y-4">
+<div class="relative group">
+<label class="block font-caption text-caption text-outline mb-1 transition-colors group-focus-within:text-primary">Theme Focus</label>
+<div class="relative">
+<select class="w-full appearance-none bg-background border-0 border-b-2 border-border px-0 py-2 font-body-md text-body-md text-on-surface focus:ring-0 focus:border-primary-container transition-colors cursor-pointer pr-8">
+<option>Cultural Heritage</option>
+<option>Wildlife &amp; Nature</option>
+<option>Urban Chronicles</option>
+<option>Culinary Journeys</option>
+</select>
+<span class="material-symbols-outlined absolute right-0 top-1/2 -translate-y-1/2 text-outline-variant pointer-events-none transition-transform group-focus-within:rotate-180">expand_more</span>
+</div>
+</div>
+<div class="relative group">
+<label class="block font-caption text-caption text-outline mb-1 transition-colors group-focus-within:text-primary">State / Region</label>
+<div class="relative">
+<select class="w-full appearance-none bg-background border-0 border-b-2 border-border px-0 py-2 font-body-md text-body-md text-on-surface focus:ring-0 focus:border-primary-container transition-colors cursor-pointer pr-8">
+<option>Kerala</option>
+<option>Rajasthan</option>
+<option>Maharashtra</option>
+<option>West Bengal</option>
+</select>
+<span class="material-symbols-outlined absolute right-0 top-1/2 -translate-y-1/2 text-outline-variant pointer-events-none transition-transform group-focus-within:rotate-180">expand_more</span>
+</div>
+</div>
+<div class="relative group">
+<label class="block font-caption text-caption text-outline mb-1 transition-colors group-focus-within:text-primary">District</label>
+<div class="relative">
+<select class="w-full appearance-none bg-background border-0 border-b-2 border-border px-0 py-2 font-body-md text-body-md text-on-surface focus:ring-0 focus:border-primary-container transition-colors cursor-pointer pr-8">
+<option>Idukki</option>
+<option>Ernakulam</option>
+<option>Wayanad</option>
+</select>
+<span class="material-symbols-outlined absolute right-0 top-1/2 -translate-y-1/2 text-outline-variant pointer-events-none transition-transform group-focus-within:rotate-180">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<hr class="border-border"/>
+<!-- Map Picker Widget -->
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="font-label-md text-label-md text-text-secondary uppercase tracking-widest">Location</h3>
+<button class="text-primary hover:text-surface-tint transition-colors p-1 rounded-full hover:bg-madder-light">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+</div>
+<div class="w-full h-48 rounded-xl overflow-hidden border border-border shadow-inner relative group cursor-crosshair">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A stylized, highly detailed vintage map illustration of India, focusing on the southern region. The map uses a warm, sepia-toned paper texture background with elegant, thin dark brown linework denoting state borders and rivers. Typography on the map is serif and historic. The aesthetic is purely editorial, minimalist, and antique, fitting a luxury travel journal." data-location="India" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCshVDFcHoyQ-4rUx5AbvIX2murZDEjy8BtSJXwhrGzMIC-VVrDPYqGXsmJPuiuTTK2TxOFl8Bolo7SMuX0Lnbg5tIf7UqQuR8oZDrpFPg3MosfhH2FZY7Mfq2JoSNFTe7g324bvJxG7L63LGT4aKXm0QOP0dDElivrKMgw3teUBg-iKdUmI3d4Qn7gN4-go1SmzQ5nVIbRlYL4fA62RkFImJTz_htaKbrQS9plF4zd1x3V_cXGZX6Ucg')"></div>
+<!-- Pin Overlay -->
+<div class="absolute top-[60%] left-[45%] transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center drop-shadow-lg">
+<div class="w-4 h-4 bg-primary-container rounded-full border-2 border-surface animate-pulse"></div>
+<div class="w-0.5 h-6 bg-primary-container mt-1"></div>
+</div>
+<!-- Interaction Overlay -->
+<div class="absolute inset-0 bg-surface-tint/0 group-hover:bg-surface-tint/5 transition-colors duration-300"></div>
+</div>
+<p class="font-caption text-caption text-outline italic text-center">Pin dropped in Munnar, Idukki District.</p>
+</div>
+</div>
+</aside>
+<!-- Mobile Drawer Overlay -->
+<div class="fixed inset-0 bg-inverse-surface/40 backdrop-blur-sm z-40 hidden opacity-0 transition-opacity duration-300 lg:hidden" id="drawer-overlay"></div>
+</div>
+<script>
+        // Simple logic to handle mobile drawer
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleBtn = document.getElementById('mobile-settings-toggle');
+            const closeBtn = document.getElementById('close-settings');
+            const drawer = document.getElementById('settings-drawer');
+            const overlay = document.getElementById('drawer-overlay');
+
+            function openDrawer() {
+                drawer.classList.remove('translate-x-full');
+                overlay.classList.remove('hidden');
+                // slight delay to allow display:block to apply before animating opacity
+                requestAnimationFrame(() => {
+                    overlay.classList.remove('opacity-0');
+                });
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            }
+
+            function closeDrawer() {
+                drawer.classList.add('translate-x-full');
+                overlay.classList.add('opacity-0');
+                setTimeout(() => {
+                    overlay.classList.add('hidden');
+                }, 300);
+                document.body.style.overflow = '';
+            }
+
+            if (toggleBtn && drawer && overlay && closeBtn) {
+                toggleBtn.addEventListener('click', openDrawer);
+                closeBtn.addEventListener('click', closeDrawer);
+                overlay.addEventListener('click', closeDrawer);
+            }
+        });
+    </script>
+</body></html>

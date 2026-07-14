@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Enterprise User and Roles Management</title>
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-container": "#735a00",
+                    "text-secondary": "#5F6368",
+                    "background": "#F8F5EF",
+                    "error-container": "#ffdad6",
+                    "surface": "#FFFFFF",
+                    "surface-container-high": "#eae7e7",
+                    "secondary-fixed-dim": "#ecc246",
+                    "on-surface": "#1b1b1c",
+                    "on-tertiary-container": "#86bedf",
+                    "inverse-surface": "#303030",
+                    "surface-container-low": "#f6f3f2",
+                    "secondary-fixed": "#ffe08e",
+                    "primary-fixed-dim": "#ffb3ad",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-variant": "#e5e2e1",
+                    "outline-variant": "#dfbfbc",
+                    "on-tertiary": "#ffffff",
+                    "surface-dim": "#dcd9d9",
+                    "surface-container-highest": "#e5e2e1",
+                    "border": "#E8E2D8",
+                    "tertiary-fixed-dim": "#95ceef",
+                    "on-surface-variant": "#58413f",
+                    "on-secondary-fixed-variant": "#584400",
+                    "on-secondary": "#ffffff",
+                    "surface-tint": "#aa3531",
+                    "inverse-primary": "#ffb3ad",
+                    "tertiary-container": "#004e6a",
+                    "on-tertiary-fixed": "#001e2c",
+                    "surface-bright": "#fcf9f8",
+                    "primary-fixed": "#ffdad6",
+                    "on-primary-fixed": "#410003",
+                    "on-tertiary-fixed-variant": "#004c68",
+                    "gold-light": "#FAF6E9",
+                    "secondary": "#755b00",
+                    "on-primary-fixed-variant": "#891c1d",
+                    "primary-container": "#8b1e1e",
+                    "error": "#ba1a1a",
+                    "on-primary": "#ffffff",
+                    "outline": "#8b716e",
+                    "madder-light": "#F2E8E8",
+                    "primary": "#6a020a",
+                    "on-background": "#1b1b1c",
+                    "inverse-on-surface": "#f3f0ef",
+                    "tertiary-fixed": "#c3e8ff",
+                    "on-primary-container": "#ff9d95",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "tertiary": "#00364b",
+                    "surface-container": "#f0eded",
+                    "on-secondary-fixed": "#241a00",
+                    "secondary-container": "#fed255"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "20px",
+                    "margin-desktop": "64px",
+                    "stack-lg": "32px",
+                    "stack-md": "16px",
+                    "gutter": "24px",
+                    "stack-sm": "8px",
+                    "section-gap": "120px"
+            },
+            "fontFamily": {
+                    "display-lg": ["EB Garamond"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["EB Garamond"],
+                    "headline-sm": ["EB Garamond"],
+                    "caption": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-lg-mobile": ["EB Garamond"]
+            },
+            "fontSize": {
+                    "display-lg": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                    "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg-mobile": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "500"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased flex h-screen overflow-hidden">
+<!-- NavigationDrawer (Desktop) -->
+<nav class="hidden md:flex h-screen w-80 fixed left-0 top-0 bg-background flex-col p-stack-md gap-stack-lg border-r border-border z-40">
+<div class="flex items-center gap-4 px-4 py-6">
+<span class="font-display-lg text-headline-sm tracking-tight text-primary">Heritage Portal</span>
+</div>
+<div class="flex items-center gap-4 px-4 py-4 mb-4">
+<img class="w-12 h-12 rounded-full object-cover border border-border" data-alt="A highly detailed headshot of a professional archivist in a warm, naturally lit library setting, featuring a diverse individual in professional attire. Minimalist editorial aesthetic with a slight warm color grade to match the heritage brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDd-AM_YsT1TWn9phroiy-lQS1k_KyGP442c0-qXzavmUpSr6KRXJnMJV8IYPsVnVX9e4PlxQmdmmk0T2VbID6Eqf0oaDp0e63e_HHs9JaUSC93pu03_fl4y04-mY8MjG0aUgRg_cOTwq8GsV8AkcTOZppm_AXhFsD3JOgB9J2wU6A6NPO8O3iUa-Jtsj919ow9N5kISJP2w_xmDq9RIKjXw66ofRO9jLGOQxaXMpyaXessTtOU5u6vBA"/>
+<div>
+<div class="font-label-md text-label-md text-on-surface">Curation Lead</div>
+<div class="font-caption text-caption text-text-secondary">Administrator</div>
+<div class="font-caption text-caption text-secondary">Premium Tier</div>
+</div>
+</div>
+<ul class="flex flex-col gap-2 flex-grow">
+<li>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-text-secondary hover:bg-surface-container-high transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md uppercase tracking-wider">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-text-secondary hover:bg-surface-container-high transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">auto_stories</span>
+<span class="font-label-md text-label-md uppercase tracking-wider">Stories</span>
+</a>
+</li>
+<li>
+<!-- Active State -->
+<a class="flex items-center gap-4 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-lg transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-label-md text-label-md uppercase tracking-wider">Users</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-text-secondary hover:bg-surface-container-high transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md uppercase tracking-wider">Settings</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col md:ml-80 h-screen overflow-hidden relative">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-surface border-b border-border flex items-center justify-between px-margin-desktop h-20 z-30 md:hidden">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined cursor-pointer active:scale-95 transition-transform text-text-secondary hover:text-primary duration-300">menu</span>
+<span class="font-display-lg text-headline-sm tracking-tight text-primary">Heritage Portal</span>
+</div>
+<span class="material-symbols-outlined cursor-pointer active:scale-95 transition-transform text-text-secondary hover:text-primary duration-300">notifications</span>
+</header>
+<div class="hidden md:flex w-full top-0 sticky bg-surface border-b border-border items-center justify-between px-margin-desktop h-20 z-30">
+<div class="flex items-center gap-4">
+<span class="font-headline-sm text-headline-sm text-on-surface">User Management</span>
+</div>
+<span class="material-symbols-outlined cursor-pointer active:scale-95 transition-transform text-text-secondary hover:text-primary duration-300">notifications</span>
+</div>
+<!-- Content Canvas -->
+<div class="flex-1 overflow-y-auto p-margin-mobile md:p-margin-desktop pb-32 md:pb-margin-desktop flex gap-gutter">
+<!-- Left: Table Section -->
+<div class="flex-1 flex flex-col gap-stack-lg">
+<!-- Action Bar -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+<div class="relative w-full sm:w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary">search</span>
+<input class="w-full bg-background border-0 border-b border-border pl-10 pr-4 py-3 focus:ring-0 focus:border-primary transition-colors font-body-md text-on-surface placeholder-text-secondary" placeholder="Search users, roles, or status..." type="text"/>
+</div>
+<button class="bg-primary text-on-primary px-6 py-3 rounded-lg font-label-md text-label-md uppercase tracking-wider hover:bg-on-primary-fixed-variant transition-colors shadow-sm flex items-center gap-2 flex-shrink-0">
+<span class="material-symbols-outlined">person_add</span>
+                        Add User
+                    </button>
+</div>
+<!-- User Table (Bento Style Card) -->
+<div class="bg-surface border border-border rounded-xl overflow-hidden shadow-sm">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-border bg-surface-container-low">
+<th class="p-4 font-label-md text-label-md text-text-secondary uppercase tracking-wider">Profile</th>
+<th class="p-4 font-label-md text-label-md text-text-secondary uppercase tracking-wider hidden sm:table-cell">Email</th>
+<th class="p-4 font-label-md text-label-md text-text-secondary uppercase tracking-wider">Role</th>
+<th class="p-4 font-label-md text-label-md text-text-secondary uppercase tracking-wider">Status</th>
+<th class="p-4 font-label-md text-label-md text-text-secondary uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border">
+<!-- Row 1: Selected State -->
+<tr class="bg-surface-container-lowest hover:bg-surface-bright transition-colors cursor-pointer border-l-4 border-l-primary">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover border border-border" data-alt="A warm, editorial portrait of an elegant woman with short gray hair in a minimalist museum setting. Soft, natural lighting highlighting the textured fabric of her dark blue coat. Shot on 35mm film aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnDzzTKe1TiLRBPeNyZU7J09OJzY3uyL8oeoTvJPiJ3bjplrm4p9nT5oKvsY2gs41DkM8NjYIYQ6Pxvl5a-cbp077Ztf0-gTmwhWde7dgJlzhCTiuOwqR-yGbF4aWydmPMfNuieW56UFUFNcjp-IVnU3nJygK4YhxcPqooE19PFmdb7WKSTKEWoS49-5_RBKpViBrjdBBFT8piF58U8coyrRVo-1Iy08_ziqNTHY3CqXF4ZHRLAtBavw"/>
+<div>
+<div class="font-body-md font-medium text-on-surface">Eleanor Vance</div>
+<div class="font-caption text-caption text-text-secondary sm:hidden">eleanor.v@heritage.org</div>
+</div>
+</div>
+</td>
+<td class="p-4 hidden sm:table-cell font-body-md text-text-secondary">eleanor.v@heritage.org</td>
+<td class="p-4">
+<span class="bg-secondary-container text-on-secondary-container px-2 py-1 rounded font-caption text-xs uppercase tracking-wide">Admin</span>
+</td>
+<td class="p-4">
+<span class="text-primary font-caption flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-primary inline-block"></span> Active</span>
+</td>
+<td class="p-4 text-right">
+<button class="text-text-secondary hover:text-primary transition-colors"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="bg-surface hover:bg-surface-bright transition-colors cursor-pointer border-l-4 border-l-transparent">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover border border-border" data-alt="A portrait of a young male archivist holding a vintage leather-bound book, standing in a brightly lit, modern minimalist archive room with white shelving. The image uses a high-key exposure and a warm, sophisticated color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8nwIyLYIanc82z4hd3ce-YEzzZO8nCeWuolu8J8kx-4CrrLxHLZdZZolww-I4SrckqfS3It_-U3qFlqcWw2VMn1XhWJ7ZUo9MDX_YmYx_GcbTf6alUJcSuN6m3J6ucpuCqzDZ9LyGqrHNKLOwA9ZYghWmSb7PsT1YBdp35KdjMQ4DZn4mi6h3749_fZDwNwufbtIJnQbqqHTEIpVQH26cGg9A3alUxUSpAq707s682BpAjGep-b1z3w"/>
+<div>
+<div class="font-body-md font-medium text-on-surface">Julian Blackwood</div>
+<div class="font-caption text-caption text-text-secondary sm:hidden">j.blackwood@heritage.org</div>
+</div>
+</div>
+</td>
+<td class="p-4 hidden sm:table-cell font-body-md text-text-secondary">j.blackwood@heritage.org</td>
+<td class="p-4">
+<span class="bg-surface-variant text-on-surface-variant px-2 py-1 rounded font-caption text-xs uppercase tracking-wide">Editor</span>
+</td>
+<td class="p-4">
+<span class="text-primary font-caption flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-primary inline-block"></span> Active</span>
+</td>
+<td class="p-4 text-right">
+<button class="text-text-secondary hover:text-primary transition-colors"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="bg-surface hover:bg-surface-bright transition-colors cursor-pointer border-l-4 border-l-transparent opacity-75">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high border border-border flex items-center justify-center text-text-secondary font-headline-sm">MC</div>
+<div>
+<div class="font-body-md font-medium text-on-surface">Maria Chen</div>
+<div class="font-caption text-caption text-text-secondary sm:hidden">m.chen@heritage.org</div>
+</div>
+</div>
+</td>
+<td class="p-4 hidden sm:table-cell font-body-md text-text-secondary">m.chen@heritage.org</td>
+<td class="p-4">
+<span class="bg-surface-variant text-on-surface-variant px-2 py-1 rounded font-caption text-xs uppercase tracking-wide border border-border">Writer</span>
+</td>
+<td class="p-4">
+<span class="text-text-secondary font-caption flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-text-secondary inline-block"></span> Suspended</span>
+</td>
+<td class="p-4 text-right">
+<button class="text-text-secondary hover:text-primary transition-colors"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Right: Detail View (Permissions) - Visible on large screens -->
+<aside class="hidden lg:flex w-80 flex-col bg-surface border border-border rounded-xl p-6 shadow-sm overflow-y-auto">
+<div class="flex flex-col items-center text-center mb-8">
+<img class="w-24 h-24 rounded-full object-cover border-2 border-primary mb-4 p-1" data-alt="A warm, editorial portrait of an elegant woman with short gray hair in a minimalist museum setting. Soft, natural lighting highlighting the textured fabric of her dark blue coat. Shot on 35mm film aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqp7YrnxMHFHU42ku--6hQ2HSejQtmZiZ0HPa3sJnj5qVEgiIJ9U_Yl59hebbXgS1Sj6mq4Q-Ka5Wz88K8_aGKTSBbUgSH6Jw1WORlaWNUv94SShM6i2EL0EFBD6skYfenYaSustj2SfUvLx2RMLeqXi6OI7MJrzZJVXTg3dBbGRYCGynRf9-d7O6QidGvvZmC-ZxXdhcMrqbcjcFAgLadJKkW9StZYD0vzZeQY-RG7LTx0Td1RjOHOw"/>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Eleanor Vance</h2>
+<p class="font-body-md text-text-secondary">eleanor.v@heritage.org</p>
+<div class="mt-3 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-md text-xs uppercase tracking-wide inline-block">System Administrator</div>
+</div>
+<hr class="border-border mb-6"/>
+<h3 class="font-label-md text-label-md text-on-surface uppercase tracking-wider mb-4">Permissions &amp; Access</h3>
+<div class="flex flex-col gap-4">
+<!-- Toggle Item -->
+<label class="flex items-center justify-between cursor-pointer group">
+<div class="flex flex-col">
+<span class="font-body-md text-on-surface">Can Edit Stories</span>
+<span class="font-caption text-text-secondary">Publish and modify content</span>
+</div>
+<div class="relative">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface after:border-border after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary transition-colors"></div>
+</div>
+</label>
+<!-- Toggle Item -->
+<label class="flex items-center justify-between cursor-pointer group">
+<div class="flex flex-col">
+<span class="font-body-md text-on-surface">Can Access Analytics</span>
+<span class="font-caption text-text-secondary">View traffic and engagement</span>
+</div>
+<div class="relative">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface after:border-border after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary transition-colors"></div>
+</div>
+</label>
+<!-- Toggle Item -->
+<label class="flex items-center justify-between cursor-pointer group">
+<div class="flex flex-col">
+<span class="font-body-md text-on-surface">Can Manage Users</span>
+<span class="font-caption text-text-secondary">Add, remove, and alter roles</span>
+</div>
+<div class="relative">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface after:border-border after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary transition-colors"></div>
+</div>
+</label>
+</div>
+<div class="mt-auto pt-8">
+<button class="w-full bg-transparent border border-primary text-primary px-4 py-2 rounded-lg font-label-md text-label-md hover:bg-madder-light transition-colors">
+                        Save Changes
+                    </button>
+</div>
+</aside>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="fixed bottom-0 w-full z-50 md:hidden flex justify-around items-center px-4 py-3 pb-safe-area bg-surface border-t border-border shadow-sm">
+<a class="flex flex-col items-center justify-center text-text-secondary scale-100 active:scale-95 transition-transform duration-200 gap-1" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-xs">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary scale-100 active:scale-95 transition-transform duration-200 gap-1" href="#">
+<span class="material-symbols-outlined">auto_stories</span>
+<span class="font-label-md text-xs">Stories</span>
+</a>
+<!-- Active State Mobile -->
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-6 py-1 scale-100 active:scale-95 transition-transform duration-200 gap-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-label-md text-xs">Users</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary scale-100 active:scale-95 transition-transform duration-200 gap-1" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-xs">Settings</span>
+</a>
+</nav>
+</body></html>
