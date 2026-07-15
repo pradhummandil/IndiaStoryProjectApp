@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Verification Required | Heritage Narrative</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#6a020a",
+                    "on-primary-container": "#ff9d95",
+                    "surface-container-highest": "#e5e2dc",
+                    "on-secondary-container": "#67625e",
+                    "surface-tint": "#aa3531",
+                    "error-container": "#ffdad6",
+                    "on-secondary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "surface-container-low": "#f6f3ed",
+                    "surface-container": "#f0eee8",
+                    "outline-variant": "#dfbfbc",
+                    "surface-bright": "#fcf9f3",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed": "#410003",
+                    "secondary-fixed": "#e9e1dc",
+                    "tertiary-fixed": "#ffe088",
+                    "surface-dim": "#dcdad4",
+                    "tertiary-fixed-dim": "#e9c349",
+                    "on-background": "#1c1c18",
+                    "primary-fixed-dim": "#ffb3ad",
+                    "inverse-on-surface": "#f3f0ea",
+                    "tertiary": "#735c00",
+                    "on-secondary-fixed-variant": "#4b4642",
+                    "secondary": "#635d5a",
+                    "on-tertiary-fixed": "#241a00",
+                    "on-primary-fixed-variant": "#891c1d",
+                    "on-primary": "#ffffff",
+                    "on-surface-variant": "#58413f",
+                    "primary-fixed": "#ffdad6",
+                    "surface-variant": "#e5e2dc",
+                    "secondary-fixed-dim": "#cdc5c0",
+                    "primary-container": "#8b1e1e",
+                    "inverse-primary": "#ffb3ad",
+                    "error": "#ba1a1a",
+                    "surface-container-high": "#ebe8e2",
+                    "on-tertiary-fixed-variant": "#574500",
+                    "secondary-container": "#e6ded9",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed": "#1e1b18",
+                    "surface": "#fcf9f3",
+                    "on-tertiary-container": "#4f3d00",
+                    "on-surface": "#1c1c18",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-container": "#cca730",
+                    "background": "#fcf9f3",
+                    "inverse-surface": "#31312d",
+                    "outline": "#8b716e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "gutter": "16px",
+                    "margin-mobile": "16px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "xs": "4px",
+                    "unit": "8px",
+                    "sm": "8px",
+                    "xxl": "48px",
+                    "margin-desktop": "64px"
+            },
+            "fontFamily": {
+                    "label-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-lg-mobile": ["EB Garamond"],
+                    "label-sm": ["Inter"],
+                    "headline-md": ["EB Garamond"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["EB Garamond"],
+                    "display-lg": ["EB Garamond"]
+            },
+            "fontSize": {
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .otp-input:focus {
+            outline: none;
+            border-color: #8B1E1E;
+            box-shadow: 0 0 0 1px #8B1E1E;
+        }
+        .paper-texture {
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+            opacity: 0.05;
+        }
+        @keyframes subtle-fade {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: subtle-fade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md overflow-x-hidden">
+<!-- Top App Bar (As per Shared Components) -->
+<header class="fixed top-0 w-full z-50 bg-surface/60 backdrop-blur-xl flex justify-between items-center px-margin-mobile h-16 shadow-[0_8px_32px_0_rgba(139,30,30,0.08)]">
+<button class="text-primary hover:opacity-80 transition-opacity duration-300">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-display-lg-mobile text-display-lg-mobile tracking-tight text-primary">HERITAGE</h1>
+<button class="text-primary hover:opacity-80 transition-opacity duration-300">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex items-center justify-center px-gutter pt-24 pb-12 relative overflow-hidden">
+<!-- Atmospheric Background Elements -->
+<div class="absolute inset-0 paper-texture pointer-events-none"></div>
+<div class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[100px] -mr-48 -mt-48"></div>
+<div class="absolute bottom-0 left-0 w-64 h-64 bg-tertiary-container/10 rounded-full blur-[80px] -ml-32 -mb-32"></div>
+<section class="max-w-[440px] w-full bg-surface-container-lowest border border-outline-variant p-xl md:p-xxl rounded-xl shadow-[0px_4px_12px_rgba(45,41,38,0.05)] relative z-10 animate-fade-in">
+<!-- Archival Crest (Visual Accent) -->
+<div class="flex justify-center mb-xl">
+<div class="w-16 h-16 border border-primary/20 rounded-full flex items-center justify-center bg-surface-bright">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="verified_user">verified_user</span>
+</div>
+</div>
+<div class="text-center space-y-md mb-xl">
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight">Verification Required</h2>
+<p class="font-body-md text-on-surface-variant max-w-[280px] mx-auto">
+                    A code has been sent to your device. Please enter the archival key to continue your journey.
+                </p>
+</div>
+<!-- OTP Input Field Logic -->
+<form class="space-y-xl" id="otp-form">
+<div class="flex justify-center gap-md" id="otp-container">
+<input class="otp-input w-14 h-16 text-center text-headline-md font-headline-md bg-white border border-outline-variant rounded-lg transition-all focus:border-primary focus:ring-0" inputmode="numeric" maxlength="1" pattern="\d*" required="" type="text"/>
+<input class="otp-input w-14 h-16 text-center text-headline-md font-headline-md bg-white border border-outline-variant rounded-lg transition-all focus:border-primary focus:ring-0" inputmode="numeric" maxlength="1" pattern="\d*" required="" type="text"/>
+<input class="otp-input w-14 h-16 text-center text-headline-md font-headline-md bg-white border border-outline-variant rounded-lg transition-all focus:border-primary focus:ring-0" inputmode="numeric" maxlength="1" pattern="\d*" required="" type="text"/>
+<input class="otp-input w-14 h-16 text-center text-headline-md font-headline-md bg-white border border-outline-variant rounded-lg transition-all focus:border-primary focus:ring-0" inputmode="numeric" maxlength="1" pattern="\d*" required="" type="text"/>
+</div>
+<div class="space-y-md">
+<button class="w-full bg-primary-container text-white py-md rounded-lg font-label-lg uppercase tracking-widest hover:opacity-90 active:scale-[0.98] transition-all duration-200" type="submit">
+                        Verify &amp; Proceed
+                    </button>
+<div class="text-center">
+<button class="text-primary font-label-lg border-b border-primary/30 hover:border-primary transition-colors py-1" type="button">
+                            Resend Code
+                        </button>
+</div>
+</div>
+</form>
+<!-- Decorative Archival Border -->
+<div class="mt-xl pt-xl border-t border-outline-variant/50 text-center">
+<p class="font-label-sm text-on-surface-variant italic opacity-60">
+                    "History is a set of lies agreed upon." — Bonaparte
+                </p>
+</div>
+</section>
+</main>
+<!-- Footer Identity (Asymmetric Content) -->
+<footer class="mt-auto px-margin-mobile py-xl border-t border-outline-variant/30 bg-surface-container-low grid grid-cols-1 md:grid-cols-2 gap-md items-end">
+<div>
+<h3 class="font-display-lg text-primary text-3xl mb-xs">HERITAGE</h3>
+<p class="font-label-sm text-on-surface-variant tracking-wider uppercase">Archiving the Soul of India</p>
+</div>
+<div class="md:text-right">
+<p class="font-body-md text-on-surface-variant max-w-xs md:ml-auto">
+                Every digit secured ensures the preservation of our collective narratives.
+            </p>
+</div>
+</footer>
+<!-- OTP Input Interaction Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const inputs = document.querySelectorAll('.otp-input');
+            
+            inputs.forEach((input, index) => {
+                // Auto-focus next field
+                input.addEventListener('input', (e) => {
+                    if (e.target.value.length === 1 && index < inputs.length - 1) {
+                        inputs[index + 1].focus();
+                    }
+                });
+
+                // Handle backspace
+                input.addEventListener('keydown', (e) => {
+                    if (e.key === 'Backspace' && !e.target.value && index > 0) {
+                        inputs[index - 1].focus();
+                    }
+                });
+
+                // Paste handling
+                input.addEventListener('paste', (e) => {
+                    e.preventDefault();
+                    const pasteData = e.clipboardData.getData('text').slice(0, 4).split('');
+                    pasteData.forEach((char, i) => {
+                        if (inputs[i]) inputs[i].value = char;
+                    });
+                    if (inputs[pasteData.length - 1]) inputs[pasteData.length - 1].focus();
+                });
+            });
+
+            // Form Submission Effect
+            document.getElementById('otp-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const btn = e.target.querySelector('button[type="submit"]');
+                btn.innerHTML = '<span class="material-symbols-outlined animate-spin" data-icon="progress_activity">progress_activity</span>';
+                btn.classList.add('opacity-80');
+                
+                setTimeout(() => {
+                    btn.innerHTML = 'Identity Verified';
+                    btn.classList.replace('bg-primary-container', 'bg-tertiary');
+                }, 1500);
+            });
+        });
+    </script>
+</body></html>

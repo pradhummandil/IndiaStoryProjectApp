@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HERITAGE | India Story Project</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#6a020a",
+                    "on-primary-container": "#ff9d95",
+                    "surface-container-highest": "#e5e2dc",
+                    "on-secondary-container": "#67625e",
+                    "surface-tint": "#aa3531",
+                    "error-container": "#ffdad6",
+                    "on-secondary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "surface-container-low": "#f6f3ed",
+                    "surface-container": "#f0eee8",
+                    "outline-variant": "#dfbfbc",
+                    "surface-bright": "#fcf9f3",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed": "#410003",
+                    "secondary-fixed": "#e9e1dc",
+                    "tertiary-fixed": "#ffe088",
+                    "surface-dim": "#dcdad4",
+                    "tertiary-fixed-dim": "#e9c349",
+                    "on-background": "#1c1c18",
+                    "primary-fixed-dim": "#ffb3ad",
+                    "inverse-on-surface": "#f3f0ea",
+                    "tertiary": "#735c00",
+                    "on-secondary-fixed-variant": "#4b4642",
+                    "secondary": "#635d5a",
+                    "on-tertiary-fixed": "#241a00",
+                    "on-primary-fixed-variant": "#891c1d",
+                    "on-primary": "#ffffff",
+                    "on-surface-variant": "#58413f",
+                    "primary-fixed": "#ffdad6",
+                    "surface-variant": "#e5e2dc",
+                    "secondary-fixed-dim": "#cdc5c0",
+                    "primary-container": "#8b1e1e",
+                    "inverse-primary": "#ffb3ad",
+                    "error": "#ba1a1a",
+                    "surface-container-high": "#ebe8e2",
+                    "on-tertiary-fixed-variant": "#574500",
+                    "secondary-container": "#e6ded9",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed": "#1e1b18",
+                    "surface": "#fcf9f3",
+                    "on-tertiary-container": "#4f3d00",
+                    "on-surface": "#1c1c18",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-container": "#cca730",
+                    "background": "#fcf9f3",
+                    "inverse-surface": "#31312d",
+                    "outline": "#8b716e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "gutter": "16px",
+                    "margin-mobile": "16px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "xs": "4px",
+                    "unit": "8px",
+                    "sm": "8px",
+                    "xxl": "48px",
+                    "margin-desktop": "64px"
+            },
+            "fontFamily": {
+                    "label-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-lg-mobile": ["EB Garamond"],
+                    "label-sm": ["Inter"],
+                    "headline-md": ["EB Garamond"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["EB Garamond"],
+                    "display-lg": ["EB Garamond"]
+            },
+            "fontSize": {
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #F8F5EF; /* Warm Paper Base */
+            overflow: hidden;
+            margin: 0;
+            height: 100vh;
+        }
+
+        .paper-grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.05;
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+            z-index: 1;
+        }
+
+        .royal-gradient {
+            background: linear-gradient(180deg, rgba(139, 30, 30, 0) 0%, rgba(139, 30, 30, 0.03) 100%);
+        }
+
+        .fade-in {
+            animation: fadeIn 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .letter-spacing-widest {
+            letter-spacing: 0.25em;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .wordmark-reveal {
+            animation: wordmarkAnim 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes wordmarkAnim {
+            from { opacity: 0; letter-spacing: 0.5em; filter: blur(10px); }
+            to { opacity: 1; letter-spacing: 0.15em; filter: blur(0); }
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .line-draw {
+            width: 0;
+            animation: lineExpand 1.2s cubic-bezier(0.65, 0, 0.35, 1) 0.8s forwards;
+        }
+
+        @keyframes lineExpand {
+            from { width: 0; }
+            to { width: 80px; }
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface selection:bg-primary/20">
+<!-- Subtle Paper Texture Overlay -->
+<div class="paper-grain"></div>
+<!-- Background Atmospheric Layer -->
+<div class="absolute inset-0 royal-gradient pointer-events-none"></div>
+<!-- Main Content Container -->
+<main class="relative z-10 flex flex-col items-center justify-center h-screen px-margin-mobile md:px-margin-desktop text-center">
+<!-- Top Metadata Label -->
+<div class="fade-in mb-xl" style="animation-delay: 0.2s;">
+<p class="font-label-lg text-label-lg uppercase text-on-surface-variant letter-spacing-widest">
+                The India Story Project
+            </p>
+</div>
+<!-- Archival Line Accent -->
+<div class="h-[1px] bg-outline-variant line-draw mb-xl"></div>
+<!-- Central Hero Section -->
+<div class="max-w-screen-md">
+<!-- Wordmark -->
+<h1 class="font-display-lg text-[64px] md:text-[96px] text-primary-container leading-none wordmark-reveal select-none">
+                HERITAGE
+            </h1>
+<!-- Tagline -->
+<div class="mt-lg fade-in" style="animation-delay: 1s;">
+<p class="font-headline-md text-headline-md italic text-on-surface-variant max-w-lg mx-auto">
+                    Traversing thousands of years of culture and history.
+                </p>
+</div>
+</div>
+<!-- Bottom Action / Navigation Hint -->
+<div class="absolute bottom-16 left-0 w-full flex flex-col items-center gap-sm fade-in" style="animation-delay: 1.5s;">
+<button class="group flex flex-col items-center transition-all duration-500 hover:translate-y-[-4px]">
+<span class="font-label-sm text-label-sm uppercase tracking-[0.3em] text-on-surface-variant mb-xs">Begin Journey</span>
+<span class="material-symbols-outlined text-primary-container text-[32px] font-light">
+                    expand_more
+                </span>
+</button>
+</div>
+</main>
+<!-- Decorative Corner Accents -->
+<div class="fixed top-8 left-8 border-t border-l border-outline-variant w-12 h-12 opacity-30 pointer-events-none"></div>
+<div class="fixed top-8 right-8 border-t border-r border-outline-variant w-12 h-12 opacity-30 pointer-events-none"></div>
+<div class="fixed bottom-8 left-8 border-b border-l border-outline-variant w-12 h-12 opacity-30 pointer-events-none"></div>
+<div class="fixed bottom-8 right-8 border-b border-r border-outline-variant w-12 h-12 opacity-30 pointer-events-none"></div>
+<!-- Foreground Content (Cards / Contextual Elements) - Subtle Layering -->
+<div class="fixed top-1/2 left-0 transform -translate-y-1/2 -translate-x-12 opacity-20 hidden xl:block">
+<div class="w-64 h-96 bg-surface-container-lowest border border-outline-variant rotate-[-6deg] shadow-sm flex items-end p-lg">
+<div class="w-full h-1/2 bg-surface-variant/30" data-alt="A macro photograph of aged, handmade parchment paper with visible fibers and deckled edges. The lighting is soft and warm, casting gentle shadows that emphasize the tactile texture. The color palette is composed of creamy whites, subtle beiges, and hints of warm tan, creating an archival and historical atmosphere typical of high-end editorial design for a cultural project." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuALFJ-cyC8cYQZxACBE2q1vACp_3I9xLiHxkLg09wBR-kh6Y6XSYDuFHqj6gAaaY9fJrYmOVfFLjsZI6LXO1i6l5oDv1FMe0Lsp3L4yW5kBS0BzJF3IM6H0FFbUZqZl3umLwVf3s-v8IR9iILSMjZyCD5yFFw2okhyeMtxngISl_8UerYaUGNIvfUyaxMhUpyCNuid-JTpQ5RvFfIVI4M6NLnqaDWOr7osH4N1qJXl2b0ZdnqEYqBv1Zg')"></div>
+</div>
+</div>
+<div class="fixed top-1/2 right-0 transform -translate-y-1/2 translate-x-12 opacity-20 hidden xl:block">
+<div class="w-64 h-96 bg-surface-container-lowest border border-outline-variant rotate-[4deg] shadow-sm flex items-start p-lg">
+<div class="w-full h-1/2 bg-surface-variant/30" data-alt="A minimalist architectural shot of an ancient Indian temple detail, focusing on intricate stone carvings and geometric patterns. The image is rendered in high-key lighting with a warm, sun-drenched filter that mimics historical photography. The aesthetic is clean and modern editorial, featuring a palette of sandstone yellows and deep umber shadows against a pristine light-mode background." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDiM3pqcAYfyNeE_TQygZN2heCHOpOIfFh7GsHj9ERff9owjsUwcLJvjGOo0O6P972KpEDW__AbZBYOeLHep6ALRcVbb8K6XhnT98___P3StMFHqnfIVpv9tbFCGnIvd8StBdqWABbCJJruh1Abxv-mTXvHBiWsm-1K3x9emfrEcbI0HJm3tw6z9vOhwElHxWTBZt3gvawQgDDaDcp5X7rEtyOB1yEWX2R1Q5ODXOWIMkBcHwpOlBLyNg')"></div>
+</div>
+</div>
+<!-- Interaction Script -->
+<script>
+        document.addEventListener('mousemove', (e) => {
+            const moveX = (e.clientX - window.innerWidth / 2) / 100;
+            const moveY = (e.clientY - window.innerHeight / 2) / 100;
+            
+            // Subtle parallax for the main text
+            const h1 = document.querySelector('h1');
+            if (h1) {
+                h1.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            }
+        });
+
+        // Redirect or transition simulation
+        const beginBtn = document.querySelector('button');
+        beginBtn.addEventListener('click', () => {
+            document.body.style.transition = 'opacity 1s ease';
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                // In a real app, this would route to /home
+                alert("Entering the Archives of India...");
+                document.body.style.opacity = '1';
+            }, 1000);
+        });
+    </script>
+</body></html>

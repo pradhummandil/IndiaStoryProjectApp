@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Begin Your Intellectual Journey | Heritage</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#6a020a",
+                        "on-primary-container": "#ff9d95",
+                        "surface-container-highest": "#e5e2dc",
+                        "on-secondary-container": "#67625e",
+                        "surface-tint": "#aa3531",
+                        "error-container": "#ffdad6",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#f6f3ed",
+                        "surface-container": "#f0eee8",
+                        "outline-variant": "#dfbfbc",
+                        "surface-bright": "#fcf9f3",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#410003",
+                        "secondary-fixed": "#e9e1dc",
+                        "tertiary-fixed": "#ffe088",
+                        "surface-dim": "#dcdad4",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "on-background": "#1c1c18",
+                        "primary-fixed-dim": "#ffb3ad",
+                        "inverse-on-surface": "#f3f0ea",
+                        "tertiary": "#735c00",
+                        "on-secondary-fixed-variant": "#4b4642",
+                        "secondary": "#635d5a",
+                        "on-tertiary-fixed": "#241a00",
+                        "on-primary-fixed-variant": "#891c1d",
+                        "on-primary": "#ffffff",
+                        "on-surface-variant": "#58413f",
+                        "primary-fixed": "#ffdad6",
+                        "surface-variant": "#e5e2dc",
+                        "secondary-fixed-dim": "#cdc5c0",
+                        "primary-container": "#8b1e1e",
+                        "inverse-primary": "#ffb3ad",
+                        "error": "#ba1a1a",
+                        "surface-container-high": "#ebe8e2",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "secondary-container": "#e6ded9",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#1e1b18",
+                        "surface": "#fcf9f3",
+                        "on-tertiary-container": "#4f3d00",
+                        "on-surface": "#1c1c18",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#cca730",
+                        "background": "#fcf9f3",
+                        "inverse-surface": "#31312d",
+                        "outline": "#8b716e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "gutter": "16px",
+                        "margin-mobile": "16px",
+                        "lg": "24px",
+                        "xl": "32px",
+                        "xs": "4px",
+                        "unit": "8px",
+                        "sm": "8px",
+                        "xxl": "48px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "label-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg-mobile": ["EB Garamond"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["EB Garamond"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["EB Garamond"],
+                        "display-lg": ["EB Garamond"]
+                    },
+                    "fontSize": {
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #F8F5EF; /* Warm Paper Base */
+            color: #1c1c18;
+            -webkit-font-smoothing: antialiased;
+        }
+        .paper-stack {
+            box-shadow: 
+                0px 1px 1px rgba(45, 41, 38, 0.05),
+                0px 8px 0px -4px #FFFFFF,
+                0px 8px 1px -4px #E5E1D8,
+                0px 16px 0px -8px #FFFFFF,
+                0px 16px 1px -8px #E5E1D8;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-body-md text-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top App Bar (As per Shared Components, but without nav as this is transactional) -->
+<header class="fixed top-0 w-full z-50 bg-surface/60 backdrop-blur-xl flex justify-between items-center px-margin-mobile h-16 shadow-[0_8px_32px_0_rgba(139,30,30,0.08)]">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="menu">menu</span>
+<span class="font-display-lg-mobile text-display-lg-mobile tracking-tight text-primary">HERITAGE</span>
+</div>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-primary" data-icon="search">search</span>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center pt-24 pb-12 px-margin-mobile">
+<div class="max-w-[480px] w-full">
+<!-- Modern Editorial Card Layout -->
+<div class="bg-surface-container-lowest border border-surface-container shadow-[0px_4px_12px_rgba(45,41,38,0.05)] rounded-lg p-xl md:p-xxl paper-stack">
+<!-- Brand Anchor / Narrative Entry -->
+<div class="mb-xl text-center md:text-left">
+<span class="text-label-sm font-label-sm uppercase tracking-[0.2em] text-outline mb-xs block">Archive Membership</span>
+<h1 class="font-headline-lg text-headline-lg text-primary leading-tight mb-md">
+                        Begin Your Intellectual Journey
+                    </h1>
+<p class="text-on-surface-variant font-body-md text-body-md opacity-80">
+                        Join our community of historians, storytellers, and archivists preserving India's rich cultural lineage.
+                    </p>
+</div>
+<!-- Registration Form -->
+<form action="#" class="space-y-lg" method="POST" onsubmit="event.preventDefault();">
+<!-- Full Name -->
+<div class="space-y-xs">
+<label class="block font-label-lg text-label-lg text-on-surface-variant uppercase" for="full_name">Full Name</label>
+<div class="relative">
+<input class="w-full bg-white border border-outline/20 rounded-lg px-md py-3 focus:outline-none focus:ring-0 focus:border-primary transition-colors duration-300 placeholder:text-surface-dim" id="full_name" name="full_name" placeholder="E.g., Vikram Seth" required="" type="text"/>
+</div>
+</div>
+<!-- Email -->
+<div class="space-y-xs">
+<label class="block font-label-lg text-label-lg text-on-surface-variant uppercase" for="email">Email Address</label>
+<div class="relative">
+<input class="w-full bg-white border border-outline/20 rounded-lg px-md py-3 focus:outline-none focus:ring-0 focus:border-primary transition-colors duration-300 placeholder:text-surface-dim" id="email" name="email" placeholder="name@archive.in" required="" type="email"/>
+</div>
+</div>
+<!-- Password -->
+<div class="space-y-xs">
+<label class="block font-label-lg text-label-lg text-on-surface-variant uppercase" for="password">Password</label>
+<div class="relative">
+<input class="w-full bg-white border border-outline/20 rounded-lg px-md py-3 focus:outline-none focus:ring-0 focus:border-primary transition-colors duration-300 placeholder:text-surface-dim" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+<button class="absolute right-md top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+<!-- Terms & Conditions -->
+<div class="flex items-start gap-md pt-sm">
+<div class="flex items-center h-5">
+<input class="h-4 w-4 rounded border-outline/30 text-primary focus:ring-primary/20" id="terms" name="terms" required="" type="checkbox"/>
+</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant">
+<label class="cursor-pointer" for="terms">
+                                I agree to the <a class="text-primary underline underline-offset-4 hover:opacity-80 transition-opacity" href="#">Terms &amp; Conditions</a> and <a class="text-primary underline underline-offset-4 hover:opacity-80 transition-opacity" href="#">Privacy Policy</a> of the India Story Project.
+                            </label>
+</div>
+</div>
+<!-- CTA -->
+<div class="pt-md">
+<button class="w-full bg-primary-container text-white font-label-lg text-label-lg py-4 rounded-lg hover:bg-primary transition-all duration-300 shadow-md active:scale-[0.98]" type="submit">
+                            Create Account
+                        </button>
+</div>
+<!-- Sign In Link -->
+<div class="text-center pt-md">
+<p class="text-body-md font-body-md text-on-surface-variant">
+                            Already have an account? 
+                            <a class="text-primary font-label-lg text-label-lg ml-xs hover:underline underline-offset-4 transition-all" href="#">Sign In</a>
+</p>
+</div>
+</form>
+</div>
+<!-- Footer Decorative Element -->
+<div class="mt-xl flex flex-col items-center gap-md opacity-40 grayscale pointer-events-none">
+<div class="h-px w-16 bg-outline-variant"></div>
+<span class="material-symbols-outlined text-4xl" data-icon="menu_book">menu_book</span>
+</div>
+</div>
+</main>
+<!-- Side Graphic for Desktop (Visual Anchor) -->
+<div class="hidden lg:block fixed left-margin-desktop bottom-margin-desktop max-w-[280px]">
+<div class="space-y-md border-l-2 border-primary/20 pl-md">
+<p class="font-display-lg-mobile text-[24px] italic text-primary/60 leading-tight">
+                "History is not a burden on the memory, but an illumination of the soul."
+            </p>
+<p class="font-label-sm text-label-sm uppercase tracking-widest text-outline">Lord Acton</p>
+</div>
+</div>
+<!-- Right Graphic for Desktop (Archival Image) -->
+<div class="hidden lg:block fixed right-0 top-0 bottom-0 w-[20%] z-[-1] overflow-hidden opacity-10">
+<div class="w-full h-full bg-cover bg-center" data-alt="A vintage, sepia-toned high-resolution photograph of an ancient Indian library with towering wooden shelves filled with weathered manuscripts and leather-bound books. Soft, golden dust motes dance in the light streaming through arched windows, creating a warm and reverent editorial atmosphere. The visual style is archival, echoing the India Story Project's commitment to historical preservation and scholarly depth." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBta9fw31mJu850HV-54Xvg3DblN6OyqBDeCJJqcMlbNk4OZSGLUpO9NwBaKK7F6PMBUOJLnzXWxwaJ8JgqS3TvhE2rSJSwWLH5mSZyeB2U4efT47DzmrlFo5mOpLWR8lpHxi_P9vGaexwgX5wfylwE3tX1zwqx3pZt1XTefkbQVpsEWQowOOxkILZQp0nKn54f0gT6X72j2hk2L1hRydZEBqCuvdUNhr7VfjQuk6K8hp6zpc17NqbNfg')"></div>
+</div>
+<script>
+        // Simple micro-interaction for password visibility toggle
+        document.querySelector('button[type="button"]')?.addEventListener('click', function() {
+            const input = document.getElementById('password');
+            const icon = this.querySelector('.material-symbols-outlined');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.textContent = 'visibility_off';
+            } else {
+                input.type = 'password';
+                icon.textContent = 'visibility';
+            }
+        });
+    </script>
+</body></html>

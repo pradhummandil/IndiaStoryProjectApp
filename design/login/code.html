@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login | Heritage - India Story Project</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#6a020a",
+                    "on-primary-container": "#ff9d95",
+                    "surface-container-highest": "#e5e2dc",
+                    "on-secondary-container": "#67625e",
+                    "surface-tint": "#aa3531",
+                    "error-container": "#ffdad6",
+                    "on-secondary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "surface-container-low": "#f6f3ed",
+                    "surface-container": "#f0eee8",
+                    "outline-variant": "#dfbfbc",
+                    "surface-bright": "#fcf9f3",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed": "#410003",
+                    "secondary-fixed": "#e9e1dc",
+                    "tertiary-fixed": "#ffe088",
+                    "surface-dim": "#dcdad4",
+                    "tertiary-fixed-dim": "#e9c349",
+                    "on-background": "#1c1c18",
+                    "primary-fixed-dim": "#ffb3ad",
+                    "inverse-on-surface": "#f3f0ea",
+                    "tertiary": "#735c00",
+                    "on-secondary-fixed-variant": "#4b4642",
+                    "secondary": "#635d5a",
+                    "on-tertiary-fixed": "#241a00",
+                    "on-primary-fixed-variant": "#891c1d",
+                    "on-primary": "#ffffff",
+                    "on-surface-variant": "#58413f",
+                    "primary-fixed": "#ffdad6",
+                    "surface-variant": "#e5e2dc",
+                    "secondary-fixed-dim": "#cdc5c0",
+                    "primary-container": "#8b1e1e",
+                    "inverse-primary": "#ffb3ad",
+                    "error": "#ba1a1a",
+                    "surface-container-high": "#ebe8e2",
+                    "on-tertiary-fixed-variant": "#574500",
+                    "secondary-container": "#e6ded9",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed": "#1e1b18",
+                    "surface": "#fcf9f3",
+                    "on-tertiary-container": "#4f3d00",
+                    "on-surface": "#1c1c18",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-container": "#cca730",
+                    "background": "#fcf9f3",
+                    "inverse-surface": "#31312d",
+                    "outline": "#8b716e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "gutter": "16px",
+                    "margin-mobile": "16px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "xs": "4px",
+                    "unit": "8px",
+                    "sm": "8px",
+                    "xxl": "48px",
+                    "margin-desktop": "64px"
+            },
+            "fontFamily": {
+                    "label-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-lg-mobile": ["EB Garamond"],
+                    "label-sm": ["Inter"],
+                    "headline-md": ["EB Garamond"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["EB Garamond"],
+                    "display-lg": ["EB Garamond"]
+            },
+            "fontSize": {
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .bg-warm-paper {
+        background-color: #F8F5EF;
+      }
+      .paper-texture {
+        background-image: url("https://www.transparenttextures.com/patterns/cardboard-flat.png");
+        opacity: 0.05;
+      }
+      .editorial-shadow {
+        box-shadow: 0px 4px 12px rgba(45, 41, 38, 0.05);
+      }
+      .active-scale:active {
+        transform: scale(0.98);
+      }
+    </style>
+</head>
+<body class="bg-warm-paper text-on-surface font-body-md min-h-screen relative overflow-x-hidden">
+<!-- Texture Overlay -->
+<div class="fixed inset-0 paper-texture pointer-events-none z-0"></div>
+<!-- Navigation Suppression: Navigation shell is suppressed for transactional login page -->
+<nav class="hidden">
+<!-- Shared component definitions exist in JSON but are suppressed per UI goal -->
+</nav>
+<main class="relative z-10 min-h-screen flex items-center justify-center px-margin-mobile md:px-margin-desktop py-xxl">
+<div class="w-full max-w-[1100px] grid grid-cols-1 md:grid-cols-12 gap-xxl items-center">
+<!-- Left Side: Editorial Content -->
+<div class="md:col-span-6 lg:col-span-7 flex flex-col space-y-lg order-2 md:order-1">
+<div class="space-y-sm">
+<span class="font-label-lg text-label-lg text-primary uppercase tracking-[0.2em]">Archival Entry</span>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary-fixed-variant leading-tight">
+                        Welcome Back, Scholar
+                    </h1>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-[540px]">
+                    Continue your journey through the tapestry of India's history. Access the digital archives, preserved manuscripts, and the collective wisdom of centuries.
+                </p>
+<!-- Atmospheric Visual -->
+<div class="relative group mt-xl">
+<div class="absolute inset-0 bg-primary/5 rounded-lg transform translate-x-3 translate-y-3 -z-10 transition-transform group-hover:translate-x-1 group-hover:translate-y-1"></div>
+<div class="w-full aspect-[16/9] overflow-hidden rounded-lg editorial-shadow border border-surface-variant">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A cinematic, high-end editorial photograph of a historic Indian library filled with ancient leather-bound books and weathered parchment scrolls. The scene is illuminated by soft, natural sunlight streaming through a traditional jali window, creating intricate patterns of light and shadow on the warm paper-textured surfaces. The color palette is dominated by rich mahoganies, creamy off-whites, and deep royal red accents, evoking a sense of timeless scholarly reverence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVkVA4YKGmxzWVs_9PNGynxoIB4yOQ44vzKBd8R-iJdTI92471Ez3aPiRqZPFFZgajZtuI6MJ1qhX-3-RtnSJ7dttBF8Md42XLpLhkucz6s3kgHsXGPwPfCUQPMG5ootefgiJk5U6-tx9x7yv8Rz2Ks_tVx60LdWJucwEx7UBRcNNclR2UTI62NyqU7SimyPcZJmiXuz1Poi7tYoDTv0Fs04XDioaay-ZatAYhepn7_6j5tQBw3rrBWA"/>
+</div>
+</div>
+</div>
+<!-- Right Side: Login Form -->
+<div class="md:col-span-6 lg:col-span-5 order-1 md:order-2">
+<div class="bg-surface-container-lowest border border-surface-variant p-xl md:p-xxl rounded-xl editorial-shadow">
+<div class="mb-xl">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-2">Access Portal</h2>
+<div class="h-1 w-12 bg-primary rounded-full"></div>
+</div>
+<form class="space-y-lg" onsubmit="event.preventDefault();">
+<!-- Email Input -->
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant" for="email">Email Address</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">mail</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface rounded-lg border border-surface-variant focus:ring-2 focus:ring-primary focus:border-primary transition-all font-body-md text-on-surface outline-none" id="email" placeholder="scholar@heritage.in" type="email"/>
+</div>
+</div>
+<!-- Password Input -->
+<div class="space-y-xs">
+<div class="flex justify-between items-center">
+<label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant" for="password">Password</label>
+<a class="font-label-sm text-label-sm text-primary hover:underline transition-all" href="#">Forgot?</a>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">lock</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface rounded-lg border border-surface-variant focus:ring-2 focus:ring-primary focus:border-primary transition-all font-body-md text-on-surface outline-none" id="password" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<!-- Sign In Button -->
+<button class="w-full py-4 bg-primary text-on-primary font-label-lg text-label-lg rounded-lg active-scale transition-all shadow-md hover:bg-primary/90">
+                            SIGN IN
+                        </button>
+<!-- Divider -->
+<div class="relative py-4">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-surface-variant"></div>
+</div>
+<div class="relative flex justify-center text-label-sm uppercase tracking-tighter">
+<span class="bg-surface-container-lowest px-4 text-on-surface-variant">or continue with</span>
+</div>
+</div>
+<!-- Social Logins -->
+<div class="grid grid-cols-2 gap-md">
+<button class="flex items-center justify-center gap-sm py-3 px-4 bg-surface-container border border-surface-variant rounded-lg font-label-sm text-label-sm text-on-surface-variant active-scale hover:bg-surface transition-all">
+<svg class="w-5 h-5" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+</svg>
+                                GOOGLE
+                            </button>
+<button class="flex items-center justify-center gap-sm py-3 px-4 bg-surface-container border border-surface-variant rounded-lg font-label-sm text-label-sm text-on-surface-variant active-scale hover:bg-surface transition-all">
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+<path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.75 1.18-.02 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.88-3.12 1.87-2.38 5.98.48 7.13-.55 1.5-1.31 3.03-2.53 4.05zM12.03 7.25c-.02-2.23 1.76-4.07 3.9-4.25.26 2.5-2.3 4.5-3.9 4.25z"></path>
+</svg>
+                                APPLE
+                            </button>
+</div>
+</form>
+<div class="mt-xl text-center">
+<p class="font-body-md text-on-surface-variant">
+                            New to the Project? 
+                            <a class="text-primary font-label-lg text-label-lg ml-1 hover:underline" href="#">Register Account</a>
+</p>
+</div>
+</div>
+<!-- Footer Links -->
+<div class="mt-md flex justify-center space-x-md font-label-sm text-label-sm text-outline">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<span>•</span>
+<a class="hover:text-primary transition-colors" href="#">Terms of Access</a>
+<span>•</span>
+<a class="hover:text-primary transition-colors" href="#">Archives</a>
+</div>
+</div>
+</div>
+</main>
+<!-- Micro-interaction Script -->
+<script>
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.parentElement.querySelector('label').classList.add('text-primary');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.parentElement.querySelector('label').classList.remove('text-primary');
+            });
+        });
+
+        // Simple paralax effect on image
+        window.addEventListener('mousemove', (e) => {
+            const amount = 10;
+            const x = (e.clientX / window.innerWidth - 0.5) * amount;
+            const y = (e.clientY / window.innerHeight - 0.5) * amount;
+            const img = document.querySelector('img');
+            if(img) {
+                img.style.transform = `scale(1.05) translate(${x}px, ${y}px)`;
+            }
+        });
+    </script>
+</body></html>

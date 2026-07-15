@@ -1,0 +1,3 @@
+// Future notifications adapter.
+export {};
+

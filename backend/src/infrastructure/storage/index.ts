@@ -1,0 +1,3 @@
+// Future storage adapter.
+export {};
+
