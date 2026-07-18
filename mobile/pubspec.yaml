@@ -42,7 +42,7 @@ dependencies:
 
   # Messaging / maps / media
   firebase_messaging: ^15.1.3
-  google_maps_flutter: ^2.9.0
+#  google_maps_flutter: ^2.9.0
 
   # Media helpers
   cached_network_image: ^3.4.1
