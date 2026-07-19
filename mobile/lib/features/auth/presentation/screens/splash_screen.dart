@@ -109,16 +109,18 @@ class _SplashScreenState extends State<SplashScreen>
               decoration: BoxDecoration(color: const Color(0xFFF8F5EF)),
             ),
           ),
-          // Subtle grain texture layer.
+          // Subtle grain texture layer (offline): use a pure gradient mask.
           IgnorePointer(
             child: DecoratedBox(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(
-                    'https://www.transparenttextures.com/patterns/natural-paper.png',
-                  ),
-                  fit: BoxFit.cover,
-                  opacity: 0.05,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    scheme.surface.withValues(alpha: 0.00),
+                    scheme.surfaceContainerHighest.withValues(alpha: 0.03),
+                    scheme.surface.withValues(alpha: 0.00),
+                  ],
                 ),
               ),
             ),
@@ -270,13 +272,27 @@ class _SplashScreenState extends State<SplashScreen>
                                       alignment: Alignment.bottomCenter,
                                       child: FractionallySizedBox(
                                         heightFactor: 0.5,
-                                        child: DecoratedBox(
+                                        child: Container(
                                           decoration: BoxDecoration(
-                                            image: const DecorationImage(
-                                              image: NetworkImage(
-                                                'https://lh3.googleusercontent.com/aida-public/AB6AXuALFJ-cyC8cYQZxACBE2q1vACp_3I9xLiHxkLg09wBR-kh6Y6XSYDuFHqj6gAaaY9fJrYmOVfFLjsZI6LXO1i6l5oDv1FMe0Lsp3L4yW5kBS0BzJF3IM6H0FFbUZqZl3umLwVf3s-v8IR9iILSMjZyCD5yFFw2okhyeMtxngISl_8UerYaUGNIvfUyaxMhUpyCNuid-JTpQ5RvFfIVI4M6NLnqaDWOr7osH4N1qJXl2b0ZdnqEYqBv1Zg',
-                                              ),
-                                              fit: BoxFit.cover,
+                                            borderRadius:
+                                                const BorderRadius.only(
+                                                  bottomLeft: Radius.circular(
+                                                    12,
+                                                  ),
+                                                  bottomRight: Radius.circular(
+                                                    12,
+                                                  ),
+                                                  topLeft: Radius.zero,
+                                                  topRight: Radius.zero,
+                                                ),
+                                            gradient: LinearGradient(
+                                              begin: Alignment.topCenter,
+                                              end: Alignment.bottomCenter,
+                                              colors: [
+                                                scheme.surfaceContainerLowest,
+                                                scheme.surfaceVariant
+                                                    .withValues(alpha: 0.35),
+                                              ],
                                             ),
                                           ),
                                         ),
@@ -314,13 +330,23 @@ class _SplashScreenState extends State<SplashScreen>
                                       alignment: Alignment.topCenter,
                                       child: FractionallySizedBox(
                                         heightFactor: 0.5,
-                                        child: DecoratedBox(
+                                        child: Container(
                                           decoration: BoxDecoration(
-                                            image: const DecorationImage(
-                                              image: NetworkImage(
-                                                'https://lh3.googleusercontent.com/aida-public/AB6AXuDiM3pqcAYfyNeE_TQygZN2heCHOpOIfFh7GsHj9ERff9owjsUwcLJvjGOo0O6P972KpEDW__AbZBYOeLHep6ALRcVbb8K6XhnT98___P3StMFHqnfIVpv9tbFCGnIvd8StBdqWABbCJJruh1Abxv-mTXvHBiWsm-1K3x9emfrEcbI0HJm3tw6z9vOhwElHxWTBZt3gvawQgDDaDcp5X7rEtyOB1yEWX2R1Q5ODXOWIMkBcHwpOlBLyNg',
-                                              ),
-                                              fit: BoxFit.cover,
+                                            borderRadius:
+                                                const BorderRadius.only(
+                                                  topLeft: Radius.circular(12),
+                                                  topRight: Radius.circular(12),
+                                                  bottomLeft: Radius.zero,
+                                                  bottomRight: Radius.zero,
+                                                ),
+                                            gradient: LinearGradient(
+                                              begin: Alignment.topCenter,
+                                              end: Alignment.bottomCenter,
+                                              colors: [
+                                                scheme.surfaceContainerLowest,
+                                                scheme.surfaceVariant
+                                                    .withValues(alpha: 0.35),
+                                              ],
                                             ),
                                           ),
                                         ),

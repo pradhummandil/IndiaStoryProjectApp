@@ -1,12 +1,16 @@
-# TODO - Authentication UI (Stitch Export)
+# TODO - Login Screen Implementation (design/login)
 
-- [ ] Create auth feature structure: `lib/features/auth/presentation/screens`, `widgets`, `controllers`.
-- [ ] Implement reusable auth widgets (scaffold, labeled text field, password field, otp inputs, divider).
-- [ ] Implement screens: Splash, Login, Register, Forgot Password, OTP, Email Verification, Reset Password.
-- [ ] Wire GoRouter routes in `mobile/lib/app/routing/app_router.dart`.
-- [x] Ensure initial route `/` opens SplashScreen (no black screen).
+- [x] Update `mobile/lib/features/auth/presentation/screens/login_screen.dart` to match `design/login/code.html`.
+  - [x] Implement validation regex cleanup.
+  - [x] Match editorial typography (Archival Entry label + Welcome Back, Scholar headline).
+  - [ ] Replace synthetic editorial image panel with HTML-specified image area (parallax/hover behavior).
+  - [ ] Update login card internals to match HTML spacing and hierarchy.
+  - [ ] Replace social buttons with Google/Apple brand icons + styling matching HTML.
+  - [ ] Ensure divider overlay and link rows match HTML.
+  - [ ] Ensure micro-interaction behavior (hover scale + subtle image translation).
+- [ ] Run `flutter analyze`.
+- [x] Run `flutter test`.
+- [ ] Run app and verify Login screen route visually vs HTML.
 
-- [ ] Add navigation between screens via GoRouter.
-- [ ] Add UI-only validation and basic animations (no backend).
-- [ ] Run `flutter analyze` and `flutter test` and `flutter run`.
+
 
