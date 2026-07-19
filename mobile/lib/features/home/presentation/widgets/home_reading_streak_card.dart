@@ -32,28 +32,33 @@ class HomeReadingStreakCard extends StatelessWidget {
           return isWide
               ? Row(
                   children: [
-                    _StreakLeft(colors: colors),
+                    _StreakLeft(colors: colors, streak: streak),
                     const Spacer(),
-                    _StreakProgress(colors: colors),
+                    _StreakProgress(colors: colors, streak: streak),
                   ],
                 )
               : Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _StreakLeft(colors: colors),
+                    _StreakLeft(colors: colors, streak: streak),
                     const SizedBox(height: 14),
-                    _StreakProgress(colors: colors),
+                    _StreakProgress(colors: colors, streak: streak),
                   ],
                 );
         },
       ),
     );
   }
+}
 
-  Widget _StreakLeft({
-    required ColorScheme colors,
-    required BuildContext context,
-  }) {
+class _StreakLeft extends StatelessWidget {
+  const _StreakLeft({required this.colors, required this.streak});
+
+  final ColorScheme colors;
+  final HomeReadingStreak streak;
+
+  @override
+  Widget build(BuildContext context) {
     return Row(
       children: [
         Container(
@@ -88,8 +93,16 @@ class HomeReadingStreakCard extends StatelessWidget {
       ],
     );
   }
+}
 
-  Widget _StreakProgress({required ColorScheme colors}) {
+class _StreakProgress extends StatelessWidget {
+  const _StreakProgress({required this.colors, required this.streak});
+
+  final ColorScheme colors;
+  final HomeReadingStreak streak;
+
+  @override
+  Widget build(BuildContext context) {
     return SizedBox(
       width: 240,
       child: Column(

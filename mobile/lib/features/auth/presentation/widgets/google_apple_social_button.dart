@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../design_system/app_radius.dart';
 
@@ -33,14 +34,19 @@ class GoogleAppleSocialButton extends StatelessWidget {
           foregroundColor: scheme.onSurfaceVariant,
           side: BorderSide(color: scheme.outlineVariant),
           shape: RoundedRectangleBorder(borderRadius: radius.lg),
-          // mimic HTML: no extra elevation; keep DS shadow available if needed
           elevation: 0,
         ),
         onPressed: onPressed,
-        icon: ImageIcon(
-          AssetImage(assetPath),
-          color: isGoogle ? null : scheme.onSurfaceVariant,
-          size: 20,
+        icon: SizedBox(
+          width: 20,
+          height: 20,
+          child: SvgPicture.asset(
+            assetPath,
+            // HTML specifies GOOGLE icon has its own colors, Apple uses currentColor.
+            colorFilter: isGoogle
+                ? null
+                : ColorFilter.mode(scheme.onSurfaceVariant, BlendMode.srcIn),
+          ),
         ),
         label: Text(
           label,

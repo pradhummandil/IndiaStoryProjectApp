@@ -171,7 +171,24 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               enabled: true,
               onPressed: () {
                 if (!_validate()) return;
-                context.go('/otp');
+
+                // TODO: Remove temporary development login before production
+                const devEmail = 'indiastoryprojectmanager21@gmail.com';
+                const devPassword = 'Pradhum@123';
+                final enteredEmail = _emailController.text.trim();
+                final enteredPassword = _passwordController.text;
+
+                if (enteredEmail == devEmail &&
+                    enteredPassword == devPassword) {
+                  context.go('/home');
+                  return;
+                }
+
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Invalid email or password')),
+                );
+
+                return;
               },
             ),
             const SizedBox(height: 20),
@@ -466,6 +483,7 @@ class _SocialRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Use a non-scrollable layout to avoid nested scrolling / infinite height issues.
     return GridView.count(
       crossAxisCount: 2,
       shrinkWrap: true,
@@ -473,6 +491,9 @@ class _SocialRow extends StatelessWidget {
       mainAxisSpacing: 12,
       crossAxisSpacing: 12,
       childAspectRatio: 2.1,
+      // Ensure the GridView gets a bounded height.
+      // (shrinkWrap=true alone can still yield unbounded constraints in some layouts.)
+      padding: EdgeInsets.zero,
       children: [
         GoogleAppleSocialButton(
           label: 'GOOGLE',
