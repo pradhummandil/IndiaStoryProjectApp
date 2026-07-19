@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+
+// ignore_for_file: use_build_context_synchronously
 
 import '../controllers/auth_form_providers.dart';
 import '../widgets/auth_labeled_text_field.dart';
@@ -18,6 +20,9 @@ class ForgotPasswordScreen extends ConsumerStatefulWidget {
 class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
   final _emailController = TextEditingController();
   String? _emailError;
+  bool _isSubmitting = false;
+
+  static final _emailPattern = RegExp(r'^\S+@\S+\.\S+$');
 
   @override
   void dispose() {
@@ -30,9 +35,7 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
     setState(() {
       _emailError = email.isEmpty
           ? 'Email is required.'
-          : (!RegExp(r'^\S+@\S+\.\S+$').hasMatch(email)
-                ? 'Enter a valid email.'
-                : null);
+          : (!_emailPattern.hasMatch(email) ? 'Enter a valid email.' : null);
     });
     return _emailError == null;
   }
@@ -40,62 +43,185 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
+    final typography = Theme.of(context).textTheme;
     final formState = ref.watch(authFormProvider);
 
+    // UI sync only.
     _emailController.value = _emailController.value.copyWith(
       text: formState.email,
     );
 
+    final cardBorder = BorderSide(
+      color: scheme.surfaceContainerHighest.withValues(alpha: 0.9),
+    );
+
     return AuthScaffold(
-      title: 'Restore Access',
+      showBrandInHeader: false,
+      title: null,
       subtitle: null,
-      child: Card(
-        elevation: 0,
-        color: scheme.surfaceContainerHighest,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        child: Padding(
-          padding: const EdgeInsets.all(24),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Text(
-                'Enter your registered email to receive recovery instructions.',
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: scheme.onSurfaceVariant,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 20),
-              AuthLabeledTextField(
-                label: 'Email Address',
-                hintText: 'e.g. curator@isp.org',
-                controller: _emailController,
-                keyboardType: TextInputType.emailAddress,
-                errorText: _emailError,
-                onChanged: (v) =>
-                    ref.read(authFormProvider.notifier).setEmail(v),
-              ),
-              const SizedBox(height: 20),
-              PrimaryAuthButton(
-                label: 'Send Recovery Link',
-                onPressed: () {
-                  if (!_validate()) return;
-                  context.go('/otp');
-                },
-              ),
-              const SizedBox(height: 16),
-              TextButton(
-                onPressed: () => context.go('/login'),
-                child: Text(
-                  'Back to Login',
-                  style: TextStyle(color: scheme.primary),
-                  textAlign: TextAlign.center,
+      appBarHeight: 0,
+      child: Stack(
+        children: [
+          // Warm paper background vibe (procedural, no hardcoded external assets).
+          Positioned.fill(
+            child: IgnorePointer(
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      scheme.surface.withValues(alpha: 1),
+                      scheme.surfaceContainerHighest.withValues(alpha: 0.35),
+                      scheme.surface.withValues(alpha: 1),
+                    ],
+                  ),
                 ),
               ),
-            ],
+            ),
           ),
-        ),
+          Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 520),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 18,
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    // Brand Identity / Header (HTML parity)
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 20),
+                      child: Column(
+                        children: [
+                          Icon(
+                            Icons.history_edu,
+                            size: 36,
+                            color: scheme.primary,
+                          ),
+                          const SizedBox(height: 10),
+                          Text(
+                            'Restore Access',
+                            textAlign: TextAlign.center,
+                            style: typography.displaySmall?.copyWith(
+                              color: scheme.primary,
+                              height: 1.05,
+                              letterSpacing: -0.2,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          Container(
+                            width: 64,
+                            height: 2,
+                            decoration: BoxDecoration(
+                              color: scheme.primary.withValues(alpha: 0.4),
+                              borderRadius: BorderRadius.circular(999),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    // Form Card
+                    Card(
+                      elevation: 0,
+                      color: scheme.surfaceContainerLowest,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        side: cardBorder,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(28),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              'Enter your registered email to receive recovery instructions.',
+                              style: typography.bodyMedium?.copyWith(
+                                color: scheme.onSurfaceVariant,
+                                height: 1.6,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            const SizedBox(height: 22),
+                            AuthLabeledTextField(
+                              label: 'Email Address',
+                              hintText: 'e.g. curator@heritage.org',
+                              controller: _emailController,
+                              keyboardType: TextInputType.emailAddress,
+                              errorText: _emailError,
+                              onChanged: (v) => ref
+                                  .read(authFormProvider.notifier)
+                                  .setEmail(v),
+                            ),
+                            const SizedBox(height: 22),
+                            PrimaryAuthButton(
+                              label: _isSubmitting
+                                  ? 'Processing...'
+                                  : 'Send Recovery Link',
+                              enabled: !_isSubmitting,
+                              onPressed: () async {
+                                if (_isSubmitting) return;
+                                if (!_validate()) return;
+
+                                setState(() => _isSubmitting = true);
+                                // UI-only loading simulation (no backend integration).
+                                await Future<void>.delayed(
+                                  const Duration(milliseconds: 800),
+                                );
+                                if (!mounted) return;
+                                setState(() => _isSubmitting = false);
+
+                                context.go('/otp');
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+
+                    // Footer
+                    Padding(
+                      padding: const EdgeInsets.only(top: 22),
+                      child: Column(
+                        children: [
+                          TextButton.icon(
+                            onPressed: () => context.go('/login'),
+                            icon: Icon(
+                              Icons.keyboard_backspace,
+                              color: scheme.primary,
+                              size: 18,
+                            ),
+                            label: Text(
+                              'Back to Login',
+                              style: TextStyle(color: scheme.primary),
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          Text(
+                            '© 2024 The India Story Project • Archival Access',
+                            style: typography.labelSmall?.copyWith(
+                              color: scheme.onSurfaceVariant.withValues(
+                                alpha: 0.38,
+                              ),
+                              letterSpacing: 2,
+                              fontSize: 10,
+                              height: 1.6,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

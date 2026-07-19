@@ -9,6 +9,7 @@ import '../widgets/auth_password_input.dart';
 import '../widgets/primary_auth_button.dart';
 import '../widgets/auth_link_button.dart';
 import '../widgets/auth_card.dart';
+import '../widgets/google_apple_social_button.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
@@ -24,6 +25,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   String? _emailError;
   String? _passwordError;
 
+  static final _emailPattern = RegExp(r'^\\S+@\\S+\\.\\S+$');
+
   @override
   void dispose() {
     _emailController.dispose();
@@ -38,9 +41,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     setState(() {
       _emailError = email.isEmpty
           ? 'Email is required.'
-          : (!RegExp(r'^\\S+@\\S+\\.\\S+$').hasMatch(email)
-                ? 'Enter a valid email.'
-                : null);
+          : (!_emailPattern.hasMatch(email) ? 'Enter a valid email.' : null);
       _passwordError = pass.isEmpty ? 'Password is required.' : null;
     });
 
@@ -79,23 +80,23 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             'Welcome Back, Scholar',
             style: Theme.of(context).textTheme.displaySmall?.copyWith(
               color: scheme.primary,
-              fontWeight: FontWeight.w700,
-              height: 1.05,
+              fontWeight: FontWeight.w600,
+              height: 0.98,
             ),
           ),
-          const SizedBox(height: 14),
+          const SizedBox(height: 16),
           ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 560),
+            constraints: const BoxConstraints(maxWidth: 540),
             child: Text(
-              'Continue your journey through the tapestry of India\'s history. Access the digital archives, preserved manuscripts, and the collective wisdom of centuries.',
+              "Continue your journey through the tapestry of India's history. Access the digital archives, preserved manuscripts, and the collective wisdom of centuries.",
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                 color: scheme.onSurfaceVariant,
                 height: 1.55,
               ),
             ),
           ),
-          const SizedBox(height: 22),
-          _HeroImagePanel(scheme: scheme),
+          const SizedBox(height: 32),
+          _HeroImagePanel(scheme: scheme, desktop: true),
         ],
       ),
     );
@@ -191,37 +192,40 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
     Widget content;
     if (isDesktop) {
-      content = SizedBox(
-        height: double.infinity,
-        child: Center(
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 1100),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(child: leftEditorialPanel),
-                Expanded(
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: formPanel,
-                  ),
+      content = Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 1100),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(child: leftEditorialPanel),
+              Expanded(
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: formPanel,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       );
     } else {
       // Mobile/tablet: keep editorial on top, card below.
-      content = SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
-        child: Column(
-          children: [
-            _HeroImagePanel(scheme: scheme, compact: true),
-            const SizedBox(height: 22),
-            formPanel,
-          ],
-        ),
+      // Important: make the entire page scrollable so the footer is never clipped.
+      content = LayoutBuilder(
+        builder: (context, constraints) {
+          return SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _HeroImagePanel(scheme: scheme, compact: true),
+                const SizedBox(height: 22),
+                formPanel,
+              ],
+            ),
+          );
+        },
       );
     }
 
@@ -236,78 +240,155 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 }
 
 class _HeroImagePanel extends StatelessWidget {
-  const _HeroImagePanel({required this.scheme, this.compact = false});
+  const _HeroImagePanel({
+    required this.scheme,
+    this.compact = false,
+    this.desktop = false,
+  });
 
   final ColorScheme scheme;
   final bool compact;
+  final bool desktop;
 
   @override
   Widget build(BuildContext context) {
-    // Offline replacement for the editorial photo: warm paper gradient + subtle shadow.
-    final height = compact ? 220.0 : 250.0;
+    // Offline replacement for the editorial photo: premium warm-paper composition.
+    // HTML used an external image; we recreate the same feeling via layered gradients
+    // + subtle “texture” + jali window ray patterns.
+    final height = compact ? 220.0 : (desktop ? 250.0 : 250.0);
 
-    return Container(
-      width: double.infinity,
-      height: height,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: scheme.outlineVariant.withValues(alpha: 0.9)),
-        boxShadow: [
-          BoxShadow(
-            blurRadius: 6,
-            color: Colors.black.withValues(alpha: 0.04),
-            offset: const Offset(0, 4),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(12),
+      child: Container(
+        width: double.infinity,
+        height: height,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: scheme.outlineVariant.withValues(alpha: 0.9),
           ),
-        ],
-        image: DecorationImage(
-          // Local placeholder: use a gradient as "image" layer via overlay containers.
-          image: const AssetImage(''),
-          fit: BoxFit.cover,
-          onError: (_, __) => null,
+          boxShadow: [
+            BoxShadow(
+              blurRadius: 6,
+              color: Colors.black.withValues(alpha: 0.04),
+              offset: const Offset(0, 4),
+            ),
+          ],
         ),
-      ),
-      child: Stack(
-        children: [
-          Positioned.fill(
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [
-                    scheme.primaryContainer.withValues(alpha: 0.10),
-                    scheme.surface.withValues(alpha: 1),
-                    scheme.primaryContainer.withValues(alpha: 0.06),
-                  ],
+        child: Stack(
+          children: [
+            // Warm paper base
+            Positioned.fill(
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      scheme.primaryContainer.withValues(alpha: 0.08),
+                      const Color(0xFFF8F5EF),
+                      scheme.primaryContainer.withValues(alpha: 0.04),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-          // Jali-like rays (stylized)
-          Positioned.fill(
-            child: CustomPaint(
-              painter: _JaliRayPainter(
-                color: scheme.primaryContainer.withValues(alpha: 0.18),
+
+            // “Paper texture” (procedural dot field)
+            Positioned.fill(
+              child: CustomPaint(
+                painter: _PaperTexturePainter(color: scheme.outlineVariant),
               ),
             ),
-          ),
-          Positioned.fill(
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                gradient: const RadialGradient(
-                  center: Alignment(0.2, -0.3),
-                  radius: 0.9,
-                  colors: [Color(0xFFFFF0D0), Color(0x00FFF0D0)],
+
+            // Jali window glow
+            Positioned.fill(
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  gradient: const RadialGradient(
+                    center: Alignment(0.18, -0.35),
+                    radius: 1.05,
+                    colors: [
+                      Color(0xFFFFE6B8),
+                      Color(0x00FFE6B8),
+                      Color(0x00FFD2A8),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+
+            // Jali-like rays
+            Positioned.fill(
+              child: CustomPaint(
+                painter: _JaliRayPainter(
+                  color: scheme.primaryContainer.withValues(alpha: 0.22),
+                ),
+              ),
+            ),
+
+            // Depth layer (subtle shadowy vignette)
+            Positioned.fill(
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  gradient: RadialGradient(
+                    center: const Alignment(0.55, 0.15),
+                    radius: 1.1,
+                    colors: [
+                      const Color(0x00000000),
+                      Colors.black.withValues(alpha: 0.05),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
+}
+
+class _PaperTexturePainter extends CustomPainter {
+  _PaperTexturePainter({required this.color});
+  final Color color;
+
+  final _seed = 1337;
+
+  double _hash(int x, int y) {
+    final n = x * 374761393 + y * 668265263 ^ _seed;
+    n; // ignore
+    final nn = (n ^ (n >> 13)) * 1274126177;
+    return ((nn ^ (nn >> 16)) & 0xFFFF) / 0xFFFF;
+  }
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    const spacing = 10.0;
+
+    for (double yy = 0; yy < size.height; yy += spacing) {
+      for (double xx = 0; xx < size.width; xx += spacing) {
+        final r = _hash(xx.toInt(), yy.toInt());
+        if (r < 0.55) continue;
+
+        final alpha = 0.025 + (r - 0.55) * 0.06;
+        final dot = Paint()
+          ..style = PaintingStyle.fill
+          ..color = color.withValues(alpha: alpha);
+
+        final rad = 0.6 + r * 0.9;
+        canvas.drawCircle(
+          Offset(xx + spacing * 0.4, yy + spacing * 0.35),
+          rad,
+          dot,
+        );
+      }
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant _PaperTexturePainter oldDelegate) =>
+      oldDelegate.color != color;
 }
 
 class _JaliRayPainter extends CustomPainter {
@@ -393,35 +474,19 @@ class _SocialRow extends StatelessWidget {
       crossAxisSpacing: 12,
       childAspectRatio: 2.1,
       children: [
-        _FakeSocialButton(label: 'GOOGLE', scheme: scheme),
-        _FakeSocialButton(label: 'APPLE', scheme: scheme),
+        GoogleAppleSocialButton(
+          label: 'GOOGLE',
+          assetPath: 'assets/icons/google.svg',
+          isGoogle: true,
+          onPressed: () {},
+        ),
+        GoogleAppleSocialButton(
+          label: 'APPLE',
+          assetPath: 'assets/icons/apple.svg',
+          isGoogle: false,
+          onPressed: () {},
+        ),
       ],
-    );
-  }
-}
-
-class _FakeSocialButton extends StatelessWidget {
-  const _FakeSocialButton({required this.label, required this.scheme});
-  final String label;
-  final ColorScheme scheme;
-
-  @override
-  Widget build(BuildContext context) {
-    return OutlinedButton.icon(
-      style: OutlinedButton.styleFrom(
-        minimumSize: const Size.fromHeight(48),
-        padding: const EdgeInsets.symmetric(horizontal: 12),
-        foregroundColor: scheme.onSurfaceVariant,
-        side: BorderSide(color: scheme.outlineVariant),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      ),
-      onPressed: () {},
-      icon: Icon(
-        Icons.circle_outlined,
-        size: 18,
-        color: scheme.onSurfaceVariant,
-      ),
-      label: Text(label, style: Theme.of(context).textTheme.labelSmall),
     );
   }
 }
