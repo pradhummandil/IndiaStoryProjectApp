@@ -8,6 +8,7 @@ import '../../features/auth/presentation/screens/forgot_password_screen.dart';
 import '../../features/auth/presentation/screens/otp_verification_screen.dart';
 import '../../features/auth/presentation/screens/email_verification_screen.dart';
 import '../../features/auth/presentation/screens/reset_password_screen.dart';
+import '../../features/home/presentation/screens/home_screen.dart';
 
 GoRouter buildAppRouter() {
   return GoRouter(
@@ -15,6 +16,7 @@ GoRouter buildAppRouter() {
     routes: [
       GoRoute(path: '/', builder: (context, state) => const SplashScreen()),
       GoRoute(path: '/login', builder: (context, state) => const LoginScreen()),
+      GoRoute(path: '/home', builder: (context, state) => const HomeScreen()),
       GoRoute(
         path: '/register',
         builder: (context, state) => const RegisterScreen(),
