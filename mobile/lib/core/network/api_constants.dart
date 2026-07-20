@@ -52,6 +52,17 @@ class ApiConstants {
 
   static const String publishValidate = '$apiPrefix/writer/publish/validate';
 
+  // -- Search endpoints ---------------------------------------------------
+
+  static const String search = '$apiPrefix/search';
+  static const String searchSuggestions = '$apiPrefix/search/suggestions';
+  static const String searchTrending = '$apiPrefix/search/trending';
+  static const String searchRecent = '$apiPrefix/search/recent';
+
+  static String searchDelete(String searchId) => '$apiPrefix/search/$searchId';
+
+  static const String searchClear = '$apiPrefix/search';
+
   // -- Timeouts -----------------------------------------------------------
 
   static const Duration connectTimeout = Duration(seconds: 10);

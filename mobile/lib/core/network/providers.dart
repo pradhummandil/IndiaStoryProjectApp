@@ -8,6 +8,8 @@ import '../repositories/profile_repository.dart';
 import '../repositories/writer_repository.dart';
 import '../repositories/ai_assistant_repository.dart';
 import '../repositories/publish_repository.dart';
+import '../repositories/bookmarks_repository.dart';
+import '../repositories/search_repository.dart';
 
 // ── API Client ───────────────────────────────────────────────────────
 
@@ -43,4 +45,12 @@ final aiAssistantRepositoryProvider = Provider<AiAssistantRepository>((ref) {
 
 final publishRepositoryProvider = Provider<PublishRepository>((ref) {
   return PublishRepository(ref.watch(apiClientProvider));
+});
+
+final bookmarksRepositoryProvider = Provider<BookmarksRepository>((ref) {
+  return BookmarksRepository(ref.watch(apiClientProvider));
+});
+
+final searchRepositoryProvider = Provider<SearchRepository>((ref) {
+  return SearchRepository(ref.watch(apiClientProvider));
 });

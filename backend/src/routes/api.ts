@@ -7,6 +7,8 @@ import { profileRouter } from "./profile";
 import { writerRouter } from "./writer";
 import { aiAssistantRouter } from "./aiAssistant";
 import { publishRouter } from "./publish";
+import { bookmarksRouter } from "./bookmarks";
+import { searchRouter } from "./search";
 
 export const apiRouter = Router();
 
@@ -17,3 +19,5 @@ apiRouter.use("/profile", profileRouter);
 apiRouter.use("/writer", writerRouter);
 apiRouter.use("/writer/assistant", aiAssistantRouter);
 apiRouter.use("/writer/publish", publishRouter);
+apiRouter.use("/bookmarks", bookmarksRouter);
+apiRouter.use("/search", searchRouter);
