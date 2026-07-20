@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Search | HERITAGE - India Story Project</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Inter:wght@300;400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@100..900&family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-primary": "#ffb3ad",
+                      "on-tertiary-fixed": "#241a00",
+                      "secondary-fixed": "#e9e1dc",
+                      "surface-dim": "#dcdad4",
+                      "error": "#ba1a1a",
+                      "surface-tint": "#aa3531",
+                      "outline-variant": "#dfbfbc",
+                      "on-tertiary": "#ffffff",
+                      "surface-container-high": "#ebe8e2",
+                      "on-primary": "#ffffff",
+                      "on-secondary-container": "#67625e",
+                      "on-error-container": "#93000a",
+                      "primary-container": "#8b1e1e",
+                      "tertiary-container": "#cca730",
+                      "primary": "#6a020a",
+                      "on-surface": "#1c1c18",
+                      "on-primary-container": "#ff9d95",
+                      "on-secondary-fixed": "#1e1b18",
+                      "surface-container": "#f0eee8",
+                      "background": "#fcf9f3",
+                      "tertiary-fixed-dim": "#e9c349",
+                      "on-surface-variant": "#58413f",
+                      "on-primary-fixed-variant": "#891c1d",
+                      "error-container": "#ffdad6",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-fixed-variant": "#574500",
+                      "on-tertiary-container": "#4f3d00",
+                      "tertiary-fixed": "#ffe088",
+                      "surface": "#fcf9f3",
+                      "on-background": "#1c1c18",
+                      "surface-bright": "#fcf9f3",
+                      "secondary": "#635d5a",
+                      "primary-fixed": "#ffdad6",
+                      "surface-container-low": "#f6f3ed",
+                      "on-secondary-fixed-variant": "#4b4642",
+                      "inverse-on-surface": "#f3f0ea",
+                      "outline": "#8b716e",
+                      "inverse-surface": "#31312d",
+                      "on-error": "#ffffff",
+                      "tertiary": "#735c00",
+                      "surface-container-highest": "#e5e2dc",
+                      "secondary-container": "#e6ded9",
+                      "secondary-fixed-dim": "#cdc5c0",
+                      "primary-fixed-dim": "#ffb3ad",
+                      "on-secondary": "#ffffff",
+                      "on-primary-fixed": "#410003",
+                      "surface-variant": "#e5e2dc"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xxl": "48px",
+                      "xs": "4px",
+                      "gutter": "16px",
+                      "unit": "8px",
+                      "margin-desktop": "64px",
+                      "md": "16px",
+                      "sm": "8px",
+                      "lg": "24px",
+                      "xl": "32px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "label-sm": ["Inter"],
+                      "headline-md": ["EB Garamond"],
+                      "label-lg": ["Inter"],
+                      "headline-lg": ["EB Garamond"],
+                      "display-lg-mobile": ["EB Garamond"],
+                      "body-md": ["Inter"],
+                      "display-lg": ["EB Garamond"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                      "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .warm-paper {
+            background-image: url("https://www.transparenttextures.com/patterns/sandpaper.png");
+            background-blend-mode: multiply;
+        }
+        .editorial-shadow {
+            box-shadow: 0px 4px 12px rgba(45, 41, 38, 0.05);
+        }
+        .active-pill {
+            background-color: #8B1E1E;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen warm-paper">
+<!-- Top Navigation Bar -->
+<header class="bg-background/95 backdrop-blur-sm fixed top-0 w-full z-50 border-b border-outline-variant">
+<nav class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-7xl mx-auto">
+<div class="flex items-center gap-12">
+<!-- Wordmark -->
+<a class="font-headline-lg text-headline-lg tracking-widest text-primary uppercase" href="#">HERITAGE</a>
+<!-- Desktop Nav Links -->
+<div class="hidden md:flex items-center gap-8">
+<a class="font-label-lg text-label-lg text-secondary hover:text-primary transition-colors" href="#">Archive</a>
+<a class="font-label-lg text-label-lg text-primary font-bold border-b-2 border-primary pb-1" href="#">Search</a>
+<a class="font-label-lg text-label-lg text-secondary hover:text-primary transition-colors" href="#">Collections</a>
+<a class="font-label-lg text-label-lg text-secondary hover:text-primary transition-colors" href="#">Account</a>
+</div>
+</div>
+<!-- Secondary Actions -->
+<div class="flex items-center gap-6">
+<div class="hidden lg:flex items-center bg-surface-container-low px-4 py-2 rounded-full border border-outline-variant">
+<span class="material-symbols-outlined text-secondary text-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-32 font-label-sm" placeholder="Quick find..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">history</span>
+</button>
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors relative">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full border-2 border-background"></span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline">
+<img class="w-full h-full object-cover" data-alt="A dignified professional headshot of an Indian archivist in their 50s, wearing classic spectacles and a linen Nehru jacket. The lighting is soft and natural, suggesting a study or library setting with blurred books in the background. The aesthetic is clean, academic, and modern editorial." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDusFltEbmgZF_1LA-SDMi-R4VYmKSDi2Xyh2JTI-Clu6UZAKjjLKPortAAVzOUj3KPEy6M_N9JVtd6IIcA0pxGArhcNVSvDebTcvW2J1wZtBdVfyDFUUVhrEuL-7pKKH1_DgLYRZQfZ9QaQuslPJmG4vbw6DOOXaN6uFcPUR3kyQvw2N5hxbXd8BY5bGKzVJusmv8Khw8eA-InW3-LxUq-_NtYXj_Ppt3CZnUiVlIoWEY6ZzNpFPzo_w"/>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<!-- Main Content Area -->
+<main class="pt-32 pb-xxl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-xxl">
+<!-- Left Column: Filters -->
+<aside class="md:col-span-3 space-y-xl">
+<div>
+<h3 class="font-label-lg text-label-lg text-on-surface uppercase tracking-wider mb-lg">Categories</h3>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-2 rounded-lg bg-primary text-white font-label-sm text-label-sm shadow-sm">All Stories</button>
+<button class="px-4 py-2 rounded-lg bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm hover:bg-outline-variant transition-colors">UNESCO Sites</button>
+<button class="px-4 py-2 rounded-lg bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm hover:bg-outline-variant transition-colors">Wildlife</button>
+<button class="px-4 py-2 rounded-lg bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm hover:bg-outline-variant transition-colors">Culinary Trails</button>
+<button class="px-4 py-2 rounded-lg bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm hover:bg-outline-variant transition-colors">Arts & Crafts</button>
+<button class="px-4 py-2 rounded-lg bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm hover:bg-outline-variant transition-colors">Architecture</button>
+</div>
+</div>
+<div class="pt-lg border-t border-outline-variant">
+<h3 class="font-label-lg text-label-lg text-on-surface uppercase tracking-wider mb-lg">Historical Eras</h3>
+<div class="space-y-3">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-outline-variant text-primary focus:ring-primary h-5 w-5" type="checkbox"/>
+<span class="font-body-md text-on-surface-variant group-hover:text-primary transition-colors">Ancient Civilizations</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-outline-variant text-primary focus:ring-primary h-5 w-5" type="checkbox"/>
+<span class="font-body-md text-on-surface-variant group-hover:text-primary transition-colors">Mughal Dynasty</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="rounded border-outline-variant text-primary focus:ring-primary h-5 w-5" type="checkbox"/>
+<span class="font-body-md text-on-surface-variant group-hover:text-primary transition-colors">Colonial Era</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-outline-variant text-primary focus:ring-primary h-5 w-5" type="checkbox"/>
+<span class="font-body-md text-on-surface-variant group-hover:text-primary transition-colors">Modern India</span>
+</label>
+</div>
+</div>
+<div class="bg-surface-container-low p-lg rounded-xl border border-outline-variant editorial-shadow">
+<span class="material-symbols-outlined text-primary mb-md">auto_stories</span>
+<p class="font-headline-md text-headline-md text-on-surface mb-sm">Archival Access</p>
+<p class="font-body-md text-on-secondary-container mb-lg">Unlock premium historical manuscripts and rare photographs with a Research Account.</p>
+<button class="w-full py-3 bg-transparent border-2 border-primary text-primary font-bold rounded-lg hover:bg-primary hover:text-white transition-all">Apply for Access</button>
+</div>
+</aside>
+<!-- Main Column: Search & Results -->
+<section class="md:col-span-9 space-y-xxl">
+<!-- Central Search Bar -->
+<div class="relative group">
+<span class="absolute left-6 top-1/2 -translate-y-1/2 material-symbols-outlined text-primary text-3xl">search</span>
+<input class="w-full pl-20 pr-6 py-8 bg-surface-container-lowest border border-outline-variant rounded-2xl font-headline-md text-headline-md focus:ring-2 focus:ring-primary/20 focus:border-primary editorial-shadow transition-all" placeholder="Discover India's hidden narratives..." type="text" value="Royal palaces of Rajasthan"/>
+<button class="absolute right-6 top-1/2 -translate-y-1/2 bg-primary text-white px-8 py-3 rounded-xl font-label-lg text-label-lg shadow-md hover:scale-105 active:scale-95 transition-transform">Search</button>
+</div>
+<!-- Contextual Metadata -->
+<div class="flex flex-col md:flex-row gap-lg">
+<div class="flex-1">
+<h4 class="font-label-lg text-label-lg text-secondary uppercase tracking-widest mb-md flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">history</span> Recent Searches
+                    </h4>
+<div class="flex flex-wrap gap-2">
+<a class="px-3 py-1.5 bg-surface-container-high rounded-full font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Silk Road Trade</a>
+<a class="px-3 py-1.5 bg-surface-container-high rounded-full font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Varanasi Ghats</a>
+<a class="px-3 py-1.5 bg-surface-container-high rounded-full font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Kathakali Origins</a>
+</div>
+</div>
+<div class="flex-1">
+<h4 class="font-label-lg text-label-lg text-secondary uppercase tracking-widest mb-md flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">trending_up</span> Trending Topics
+                    </h4>
+<div class="flex flex-wrap gap-2">
+<a class="px-3 py-1.5 bg-surface-container-high rounded-full font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Hampi Excavations</a>
+<a class="px-3 py-1.5 bg-surface-container-high rounded-full font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Dravidian Architecture</a>
+<a class="px-3 py-1.5 bg-surface-container-high rounded-full font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Spice History</a>
+</div>
+</div>
+</div>
+<!-- Live Results Grid -->
+<div class="space-y-lg">
+<div class="flex justify-between items-end border-b border-outline-variant pb-md">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Search Results <span class="text-secondary opacity-50 font-light">(124)</span></h2>
+<div class="flex items-center gap-4 text-secondary font-label-sm text-label-sm">
+<span>Sort by:</span>
+<select class="bg-transparent border-none focus:ring-0 font-bold text-primary">
+<option>Relevance</option>
+<option>Most Recent</option>
+<option>Historical Era</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-lg">
+<!-- Story Card 1 -->
+<article class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden flex flex-col group hover:editorial-shadow transition-all duration-300">
+<div class="h-64 relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A breathtaking wide shot of the Amer Fort in Jaipur at sunset. The golden hour light bathes the honey-colored sandstone walls in deep oranges and yellows. In the foreground, Maota Lake reflects the majestic fort with crystal clarity. The overall aesthetic is rich, warm, and highly cinematic, fitting a luxury editorial magazine." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOETIZDeZMbv6o5GlE6o236GveHN7SlB42tS1ta5qXK0otgWI0Vvf33CWJN6aItx8mD9lfkFBjpVaYoyP9-tHboooEEkml6djex2eWGdq22wIPijx-zmbxIrWEkK01NeqiqcvwdEk06mSA5w53CZZHREKHK6YdBBgNnmlMGceZxjt0B4DsKdh5CfhXDCWcf5GZ2tzSQtIBv2B7terwEsqsxSqQ1ZbkMxct28ZqPCOffOOTHmkB9scaQQ"/>
+<div class="absolute top-4 left-4 bg-primary text-white text-xs px-3 py-1 rounded-full uppercase tracking-tighter">Architecture</div>
+</div>
+<div class="p-lg flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-sm">
+<h3 class="font-headline-md text-headline-md text-primary leading-tight">The Whispering Walls of Amer</h3>
+<button class="material-symbols-outlined text-secondary hover:text-primary">bookmark</button>
+</div>
+<p class="font-body-md text-on-surface-variant mb-lg line-clamp-3">Deep within the Aravalli range lies the fort that defined Rajput glory. Uncover the hidden acoustic secrets of the Diwan-i-Khas and the intricate glasswork of Sheesh Mahal.</p>
+<div class="mt-auto flex items-center justify-between pt-md border-t border-outline-variant/30">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center text-xs font-bold text-on-secondary-fixed">AD</div>
+<span class="font-label-sm text-label-sm text-secondary">Ananya Deshmukh</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary italic">8 min read</span>
+</div>
+</div>
+</article>
+<!-- Story Card 2 -->
+<article class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden flex flex-col group hover:editorial-shadow transition-all duration-300">
+<div class="h-64 relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Close-up macro photography of intricate Zardozdi embroidery being crafted by a master artisan's hands. Royal madder red velvet fabric is being adorned with shimmering gold and silver threads. The lighting is focused and warm, highlighting the texture of the threads and the skilled precision of the craft. Elegant, heritage-focused aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSQ06amyxhfa15idxvoX5jVO3I7GPdw88EIaj4qZF6opgdtQrQo0BzQoSVPd_cALBAwolOg1SO2ICdAaaoDfpzO5wLMbzCeVdN7aDe26EOSm_kZFjxBZ1X5ocElqwtQYEzqUuwR-fcZY3beH_tNibMhdZJJwywW-mf578tqk34DGJBJvJUSdP8KJ4vt6n6wo4dS8akrHKIfcM4jdXHcM8fnzsxx70VjV5VtIze7eQy61kJibvl29WsaQ"/>
+<div class="absolute top-4 left-4 bg-tertiary-container text-on-tertiary-container text-xs px-3 py-1 rounded-full uppercase tracking-tighter">Arts & Crafts</div>
+</div>
+<div class="p-lg flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-sm">
+<h3 class="font-headline-md text-headline-md text-primary leading-tight">Zardozi: Gold Thread Narratives</h3>
+<button class="material-symbols-outlined text-secondary hover:text-primary">bookmark</button>
+</div>
+<p class="font-body-md text-on-surface-variant mb-lg line-clamp-3">Tracing the Persian roots of metallic embroidery in the Mughal courts. How a centuries-old craft is finding new life in modern sustainable fashion.</p>
+<div class="mt-auto flex items-center justify-between pt-md border-t border-outline-variant/30">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center text-xs font-bold text-on-secondary-fixed">RS</div>
+<span class="font-label-sm text-label-sm text-secondary">Rahul Sen</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary italic">12 min read</span>
+</div>
+</div>
+</article>
+<!-- Story Card 3 (High Density List Variant) -->
+<article class="lg:col-span-2 bg-white rounded-xl border border-outline-variant p-lg flex flex-col md:flex-row gap-lg hover:editorial-shadow transition-all">
+<div class="w-full md:w-1/3 h-48 rounded-lg overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="A stylized map of the Indian spice route from the 16th century, rendered in a vintage archival style on aged parchment paper. The map features elegant calligraphy and hand-drawn illustrations of merchant ships and spice plants like black pepper and cardamom. The color palette is muted sepias with deep crimson accents. Professional museum-quality presentation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMhFXfRLMGpJeBOUVCI3x7JBmqhxPqZbqYw_jFwvN2FNbL_G-Cu-Q0qshpaP74-VDeGHs7d_s4LZU9UEArgWdVLHgetQXKNecz7pvnTStVSczzNeYb_jk4mbL3WX_5YCbWb4lrM75Pt2xYvR_w6xEj3lvjW9ET_GEsfqvD8bvoOdzb6UyJzhC8Sg2wjEnfdzQD6OSSJnDan00lw6gKH91IBMmiYxWTrwOtFbxbj9_3JN7-Y4osWfj9XQ"/>
+</div>
+<div class="flex-1 flex flex-col">
+<div class="flex justify-between mb-2">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest">Culinary Trails</span>
+<span class="font-label-sm text-label-sm text-secondary">Published Oct 2023</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-3">Black Gold: The Spice That Changed History</h3>
+<p class="font-body-md text-on-surface-variant mb-lg line-clamp-2">How the quest for Malabar pepper launched the Age of Discovery and forever altered the geopolitical landscape of the Indian Ocean.</p>
+<div class="flex items-center gap-6 mt-auto">
+<button class="flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all">
+<span class="font-label-lg text-label-lg">Read Story</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<div class="flex items-center gap-4 text-secondary">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">visibility</span> 4.2k</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">favorite</span> 892</span>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Pagination -->
+<div class="flex items-center justify-center pt-xxl gap-4">
+<button class="p-3 rounded-lg border border-outline-variant hover:bg-surface-container-low transition-colors disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 rounded-lg bg-primary text-white font-bold">1</button>
+<button class="w-10 h-10 rounded-lg hover:bg-surface-container-high font-medium">2</button>
+<button class="w-10 h-10 rounded-lg hover:bg-surface-container-high font-medium">3</button>
+<span class="px-2">...</span>
+<button class="w-10 h-10 rounded-lg hover:bg-surface-container-high font-medium">12</button>
+</div>
+<button class="p-3 rounded-lg border border-outline-variant hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer for Premium Aesthetic -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant py-xxl mt-xxl">
+<div class="max-w-7xl mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-xl">
+<div class="space-y-md">
+<p class="font-headline-md text-headline-md text-primary tracking-widest uppercase">HERITAGE</p>
+<p class="text-on-surface-variant leading-relaxed">Preserving the soul of the Indian subcontinent through verified historical narratives and high-fidelity archival storytelling.</p>
+</div>
+<div class="space-y-md">
+<h4 class="font-label-lg text-label-lg uppercase tracking-widest">The Archive</h4>
+<ul class="space-y-2 text-secondary">
+<li><a class="hover:text-primary" href="#">Oral Histories</a></li>
+<li><a class="hover:text-primary" href="#">Map Collection</a></li>
+<li><a class="hover:text-primary" href="#">Manuscripts</a></li>
+<li><a class="hover:text-primary" href="#">Photo Library</a></li>
+</ul>
+</div>
+<div class="space-y-md">
+<h4 class="font-label-lg text-label-lg uppercase tracking-widest">Connect</h4>
+<ul class="space-y-2 text-secondary">
+<li><a class="hover:text-primary" href="#">Submit a Story</a></li>
+<li><a class="hover:text-primary" href="#">Educational Portal</a></li>
+<li><a class="hover:text-primary" href="#">Events & Walks</a></li>
+<li><a class="hover:text-primary" href="#">Institutional Access</a></li>
+</ul>
+</div>
+<div class="space-y-md">
+<h4 class="font-label-lg text-label-lg uppercase tracking-widest">Newsletter</h4>
+<p class="text-xs text-secondary mb-4">Bi-weekly dispatches from India's past.</p>
+<div class="flex overflow-hidden rounded-lg border border-outline-variant">
+<input class="bg-white border-none px-4 py-2 text-sm w-full focus:ring-0" placeholder="Email address" type="email"/>
+<button class="bg-primary text-white px-4 py-2 font-bold text-sm">Join</button>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-margin-desktop mt-xl pt-lg border-t border-outline-variant/30 flex justify-between items-center text-xs text-secondary">
+<p>© 2024 India Story Project. All Rights Reserved.</p>
+<div class="flex gap-8">
+<a class="hover:text-primary" href="#">Privacy Policy</a>
+<a class="hover:text-primary" href="#">Terms of Service</a>
+<a class="hover:text-primary" href="#">Archival Ethics</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple Micro-interactions
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.classList.add('ring-2', 'ring-primary/10');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.classList.remove('ring-2', 'ring-primary/10');
+            });
+        });
+
+        // Toggle bookmark state
+        document.querySelectorAll('article button.material-symbols-outlined').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (btn.innerText === 'bookmark') {
+                    btn.innerText = 'bookmark_added';
+                    btn.style.fontVariationSettings = "'FILL' 1";
+                    btn.classList.add('text-primary');
+                } else {
+                    btn.innerText = 'bookmark';
+                    btn.style.fontVariationSettings = "'FILL' 0";
+                    btn.classList.remove('text-primary');
+                }
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Writer Media Manager | India Story Project</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=EB+Garamond:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed": "#410003",
+                    "surface": "#fcf9f3",
+                    "error-container": "#ffdad6",
+                    "surface-container-highest": "#e5e2dc",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#cdc5c0",
+                    "on-tertiary-fixed": "#241a00",
+                    "background": "#fcf9f3",
+                    "primary-fixed": "#ffdad6",
+                    "secondary-fixed": "#e9e1dc",
+                    "on-background": "#1c1c18",
+                    "secondary-container": "#e6ded9",
+                    "on-primary-fixed-variant": "#891c1d",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-container": "#cca730",
+                    "surface-container-low": "#f6f3ed",
+                    "on-surface-variant": "#58413f",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#31312d",
+                    "surface-tint": "#aa3531",
+                    "outline-variant": "#dfbfbc",
+                    "on-secondary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "primary-container": "#8b1e1e",
+                    "on-surface": "#1c1c18",
+                    "on-secondary-fixed-variant": "#4b4642",
+                    "on-secondary-container": "#67625e",
+                    "secondary": "#635d5a",
+                    "error": "#ba1a1a",
+                    "on-primary-container": "#ff9d95",
+                    "surface-container": "#f0eee8",
+                    "surface-bright": "#fcf9f3",
+                    "on-secondary-fixed": "#1e1b18",
+                    "tertiary-fixed-dim": "#e9c349",
+                    "surface-variant": "#e5e2dc",
+                    "surface-container-high": "#ebe8e2",
+                    "tertiary": "#735c00",
+                    "on-tertiary-container": "#4f3d00",
+                    "on-error-container": "#93000a",
+                    "surface-dim": "#dcdad4",
+                    "on-tertiary-fixed-variant": "#574500",
+                    "primary": "#6a020a",
+                    "inverse-on-surface": "#f3f0ea",
+                    "primary-fixed-dim": "#ffb3ad",
+                    "inverse-primary": "#ffb3ad",
+                    "outline": "#8b716e",
+                    "tertiary-fixed": "#ffe088"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "xxl": "48px",
+                    "xl": "32px",
+                    "sm": "8px",
+                    "margin-mobile": "16px",
+                    "gutter": "16px",
+                    "md": "16px",
+                    "xs": "4px",
+                    "margin-desktop": "64px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "label-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["EB Garamond"],
+                    "display-lg": ["EB Garamond"],
+                    "display-lg-mobile": ["EB Garamond"],
+                    "headline-md": ["EB Garamond"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #fcf9f3;
+            color: #1c1c18;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .paper-shadow {
+            box-shadow: 0px 4px 12px rgba(45, 41, 38, 0.05);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .custom-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .asset-card-selected {
+            outline: 2px solid #8b1e1e;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-40 bg-surface border-b border-outline-variant flex justify-between items-center px-md py-sm">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="menu">menu</span>
+<h1 class="font-headline-md text-headline-md text-primary">Writer Media Manager</h1>
+</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer" data-icon="search">search</span>
+<button class="bg-primary-container text-white px-md py-xs rounded-lg font-label-lg text-label-lg active:scale-95 transition-transform">
+                Upload
+            </button>
+</div>
+</header>
+<main class="min-h-screen pb-xxl px-margin-mobile md:px-margin-desktop">
+<!-- Filter Chips Row -->
+<div class="py-lg overflow-x-auto flex gap-sm custom-scrollbar">
+<button class="flex-shrink-0 bg-primary-container text-white px-md py-xs rounded-full font-label-sm text-label-sm transition-colors">
+                All
+            </button>
+<button class="flex-shrink-0 bg-surface-container-high text-on-surface-variant px-md py-xs rounded-full font-label-sm text-label-sm hover:bg-surface-container-highest transition-colors">
+                Photos
+            </button>
+<button class="flex-shrink-0 bg-surface-container-high text-on-surface-variant px-md py-xs rounded-full font-label-sm text-label-sm hover:bg-surface-container-highest transition-colors">
+                Illustrations
+            </button>
+<button class="flex-shrink-0 bg-surface-container-high text-on-surface-variant px-md py-xs rounded-full font-label-sm text-label-sm hover:bg-surface-container-highest transition-colors">
+                Documents
+            </button>
+<button class="flex-shrink-0 bg-surface-container-high text-on-surface-variant px-md py-xs rounded-full font-label-sm text-label-sm hover:bg-surface-container-highest transition-colors">
+                Recently Used
+            </button>
+<button class="flex-shrink-0 bg-surface-container-high text-on-surface-variant px-md py-xs rounded-full font-label-sm text-label-sm hover:bg-surface-container-highest transition-colors">
+                Unused
+            </button>
+</div>
+<!-- Gallery Grid -->
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-gutter mb-xxl">
+<!-- Asset 1 (Selected) -->
+<div class="group relative flex flex-col bg-white border border-outline-variant rounded-xl overflow-hidden paper-shadow cursor-pointer transition-all asset-card-selected" onclick="toggleDetails()">
+<div class="aspect-square relative">
+<img class="w-full h-full object-cover" data-alt="A vintage black and white archival photograph of a bustling Indian marketplace in the 1920s. The lighting is soft and natural, emphasizing the textures of the woven baskets and the intricate patterns of the traditional clothing. The style is cinematic and historical, captured with an old-world lens feel on high-quality cream-toned paper." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQldwqQSt2Dcs9n3yFQYeTCT6R2BQ786t7n6t8X_g5-rcKAw9x7X2nzoFcY3ed7eNfINB-8kv8H4XQFWXcnOyyYNanx5hC1IbE_9-8kCYTtndP5hYgNiaqGRAbsWXpPTd2Ip-pmLpBgN-Vw8kzFviRb1mCwvdO2xowKm-3Oa0bDpaiUjd8YDiJmbpsGkcwiEza7LnPSuBMvuWgWDxYJpN22kAb89iaepQkgkvVmyA2Y9GQPgvAYg_XIQ"/>
+<div class="absolute top-2 right-2 bg-primary-container text-white rounded-full p-1 shadow-md">
+<span class="material-symbols-outlined text-[18px]" data-icon="check">check</span>
+</div>
+</div>
+<div class="p-sm flex flex-col gap-xs">
+<span class="font-label-sm text-label-sm truncate">marketplace_1920.jpg</span>
+<div class="flex justify-between items-center">
+<span class="bg-surface-variant text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded text-on-surface-variant">Published</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant" data-icon="more_vert">more_vert</span>
+</div>
+</div>
+</div>
+<!-- Asset 2 -->
+<div class="group flex flex-col bg-white border border-outline-variant rounded-xl overflow-hidden paper-shadow hover:border-outline transition-all cursor-pointer">
+<div class="aspect-square">
+<img class="w-full h-full object-cover" data-alt="An intricate illustration of a Mughal-era garden, featuring symmetrical water channels and lush green foliage. The artistic style is a modern editorial take on traditional Indian miniature painting, using a palette of royal madder red, deep greens, and soft parchment tones. The mood is tranquil and scholarly." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWxw1dpyI2W5YtW4fWR4hmWhwayJKDrxRmw6ZhKJY4QmrLLDpeDsI14o2gAw-0g6OEl1_-SL4bcYmU7K-ZMAKuhQ_wdAoZgohoJ-EcAE6IGEwP9c43CfGuYllkKmiFKRWZKp0or8IW9pl7YIemlp12SIJYqa5J9iPBdDaJ4qAY7-w3pjvNIdRZG6OZxWGpIEnDErdpknoUeYdCf66MyWW3eUaAb5EmPXVQEh8JOSvG2rsTSvuMzd5TFg"/>
+</div>
+<div class="p-sm flex flex-col gap-xs">
+<span class="font-label-sm text-label-sm truncate">mughal_garden_illu.png</span>
+<div class="flex justify-between items-center">
+<span class="bg-surface-variant text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded text-on-surface-variant">Draft</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant" data-icon="more_vert">more_vert</span>
+</div>
+</div>
+</div>
+<!-- Asset 3 -->
+<div class="group flex flex-col bg-white border border-outline-variant rounded-xl overflow-hidden paper-shadow hover:border-outline transition-all cursor-pointer">
+<div class="aspect-square flex items-center justify-center bg-surface-container-low">
+<span class="material-symbols-outlined text-[48px] text-outline" data-icon="description">description</span>
+</div>
+<div class="p-sm flex flex-col gap-xs">
+<span class="font-label-sm text-label-sm truncate">manifesto_final.pdf</span>
+<div class="flex justify-between items-center">
+<span class="bg-surface-variant text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded text-on-surface-variant">Archive</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant" data-icon="more_vert">more_vert</span>
+</div>
+</div>
+</div>
+<!-- Asset 4 -->
+<div class="group flex flex-col bg-white border border-outline-variant rounded-xl overflow-hidden paper-shadow hover:border-outline transition-all cursor-pointer">
+<div class="aspect-square">
+<img class="w-full h-full object-cover" data-alt="A macro photograph of an ancient Sanskrit manuscript on weathered palm leaves. The lighting is low and dramatic, highlighting the etched characters and the fibrous texture of the material. The aesthetic is archival and sophisticated, fitting a high-end digital museum interface. Soft cream and ink black colors dominate." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvTGHSpnR2_5g_LStjaU0DBRSNq6f9I0EVBR-YsX3IGyhkygi47r_H7ktmzHxOy54Dr0oSj9VVh0P1LAy8TFJ9sTLAUM53cxX90xh97uPeZC90P_xI-0K1uAeuoQmGEjQ5JaH694zP89gb1HqHfu1h89k7rBNGLx0orbYGBF_5EXl__JG1ht4hnPnqFcwcWNUwlWNHOigTNI7aycF_9HYF0XH9Ukf8xCxUjNFOkR1VILOoA6r4_cta1A"/>
+</div>
+<div class="p-sm flex flex-col gap-xs">
+<span class="font-label-sm text-label-sm truncate">sanskrit_manuscript.jpg</span>
+<div class="flex justify-between items-center">
+<span class="bg-surface-variant text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded text-on-surface-variant">Published</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant" data-icon="more_vert">more_vert</span>
+</div>
+</div>
+</div>
+<!-- More grid items for density -->
+<div class="group flex flex-col bg-white border border-outline-variant rounded-xl overflow-hidden paper-shadow hover:border-outline transition-all cursor-pointer hidden md:flex">
+<div class="aspect-square">
+<img class="w-full h-full object-cover" data-alt="A portrait of a contemporary Indian artist in a bright, minimalist studio filled with sketches of historical architecture. The style is modern editorial, with high-key lighting and a sense of focused creativity. Royal madder accents appear in the artist's tools. The image is clean and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD12GWQe2WTQPeA9z_-Osr8Za-EMUO8v0e4H21UicDSCo6Kkt6XPgVCCTUCo4AjDV7GKtwHLhyg9sLLcAYjFurKRdUCCr5j3oABmp7WWAZ0eumolpulwPYQwGNXJ-4a_upzVvrVzLHn3L_1X900DR2JBwn-_IXNBLBbi27EiFDcARhijNgNlpmXhuCELs7WwDfijA6kpEb8x10_lc2fpw2rFJvrkeaZqwSqpMfBpCCMdeVFpIC_e8sAZw"/>
+</div>
+<div class="p-sm flex flex-col gap-xs">
+<span class="font-label-sm text-label-sm truncate">artist_profile.jpg</span>
+<div class="flex justify-between items-center">
+<span class="bg-surface-variant text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded text-on-surface-variant">Draft</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant" data-icon="more_vert">more_vert</span>
+</div>
+</div>
+</div>
+<div class="group flex flex-col bg-white border border-outline-variant rounded-xl overflow-hidden paper-shadow hover:border-outline transition-all cursor-pointer hidden md:flex">
+<div class="aspect-square flex items-center justify-center bg-surface-container-low">
+<span class="material-symbols-outlined text-[48px] text-outline" data-icon="folder">folder</span>
+</div>
+<div class="p-sm flex flex-col gap-xs">
+<span class="font-label-sm text-label-sm truncate">Architecture Collection</span>
+<div class="flex justify-between items-center">
+<span class="bg-surface-variant text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded text-on-surface-variant">Folder</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant" data-icon="more_vert">more_vert</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty State Drag & Drop Reference (Web) -->
+<div class="hidden md:flex flex-col items-center justify-center border-2 border-dashed border-outline-variant rounded-xxl p-xxl bg-surface-container-low opacity-60">
+<span class="material-symbols-outlined text-[64px] text-outline mb-md" data-icon="cloud_upload">cloud_upload</span>
+<h3 class="font-headline-md text-headline-md text-on-surface-variant">Drag and drop assets to upload</h3>
+<p class="font-body-md text-on-surface-variant/70 mt-xs">Support for JPG, PNG, PDF and SVG files</p>
+</div>
+</main>
+<!-- Metadata Panel / Bottom Sheet (Selected State) -->
+<div class="fixed bottom-0 left-0 w-full bg-white rounded-t-3xl shadow-2xl z-50 transform translate-y-full transition-transform duration-300 border-t border-outline-variant" id="metadata-sheet">
+<div class="w-12 h-1.5 bg-outline-variant rounded-full mx-auto my-sm cursor-grab" onclick="toggleDetails()"></div>
+<div class="px-lg pb-xxl">
+<div class="flex justify-between items-start mb-lg">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary">Asset Details</h2>
+<p class="font-label-sm text-on-surface-variant">marketplace_1920.jpg</p>
+</div>
+<button class="p-xs hover:bg-surface-container rounded-full transition-colors" onclick="toggleDetails()">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-md mb-xl">
+<div class="flex flex-col p-md bg-surface-container-low rounded-lg">
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-1">File Type</span>
+<span class="font-label-lg text-label-lg">JPEG Image</span>
+</div>
+<div class="flex flex-col p-md bg-surface-container-low rounded-lg">
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-1">Dimensions</span>
+<span class="font-label-lg text-label-lg">2400 × 3200 px</span>
+</div>
+<div class="flex flex-col p-md bg-surface-container-low rounded-lg">
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-1">Size</span>
+<span class="font-label-lg text-label-lg">4.2 MB</span>
+</div>
+<div class="flex flex-col p-md bg-surface-container-low rounded-lg">
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-1">Date Added</span>
+<span class="font-label-lg text-label-lg">Oct 12, 2023</span>
+</div>
+</div>
+<div class="flex flex-col gap-sm">
+<button class="w-full bg-primary-container text-white py-md rounded-lg font-label-lg text-label-lg shadow-sm active:scale-95 transition-all">
+                    Edit Metadata
+                </button>
+<button class="w-full border border-primary text-primary py-md rounded-lg font-label-lg text-label-lg active:scale-95 transition-all">
+                    Download Original
+                </button>
+<button class="w-full text-error font-label-lg text-label-lg py-sm mt-sm flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span>
+                    Delete Asset
+                </button>
+</div>
+</div>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center py-xs px-md md:hidden bg-surface border-t border-outline-variant z-50 shadow-lg rounded-t-xl">
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 transition-transform duration-150">
+<span class="material-symbols-outlined" data-icon="grid_view" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<span class="font-label-sm text-label-sm">Assets</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-90">
+<span class="material-symbols-outlined" data-icon="folder">folder</span>
+<span class="font-label-sm text-label-sm">Folders</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-90">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-label-sm text-label-sm">Recent</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-90">
+<span class="material-symbols-outlined" data-icon="auto_stories">auto_stories</span>
+<span class="font-label-sm text-label-sm">Studio</span>
+</div>
+</nav>
+<script>
+        let detailsOpen = false;
+        function toggleDetails() {
+            const sheet = document.getElementById('metadata-sheet');
+            if (detailsOpen) {
+                sheet.classList.add('translate-y-full');
+                detailsOpen = false;
+            } else {
+                sheet.classList.remove('translate-y-full');
+                detailsOpen = true;
+            }
+        }
+
+        // Initialize with sheet closed
+        document.addEventListener('DOMContentLoaded', () => {
+            // No action needed as it starts with translate-y-full
+        });
+    </script>
+</body></html>

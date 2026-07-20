@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Search | India Story Project</title>
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        /* Paper texture overlay */
+        .paper-grain::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            pointer-events: none;
+            background-image: url("https://www.transparenttextures.com/patterns/felt.png");
+            z-index: 100;
+        }
+    </style>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#ffb3ad",
+                    "on-tertiary-fixed": "#241a00",
+                    "secondary-fixed": "#e9e1dc",
+                    "surface-dim": "#dcdad4",
+                    "error": "#ba1a1a",
+                    "surface-tint": "#aa3531",
+                    "outline-variant": "#dfbfbc",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-high": "#ebe8e2",
+                    "on-primary": "#ffffff",
+                    "on-secondary-container": "#67625e",
+                    "on-error-container": "#93000a",
+                    "primary-container": "#8b1e1e",
+                    "tertiary-container": "#cca730",
+                    "primary": "#6a020a",
+                    "on-surface": "#1c1c18",
+                    "on-primary-container": "#ff9d95",
+                    "on-secondary-fixed": "#1e1b18",
+                    "surface-container": "#f0eee8",
+                    "background": "#fcf9f3",
+                    "tertiary-fixed-dim": "#e9c349",
+                    "on-surface-variant": "#58413f",
+                    "on-primary-fixed-variant": "#891c1d",
+                    "error-container": "#ffdad6",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed-variant": "#574500",
+                    "on-tertiary-container": "#4f3d00",
+                    "tertiary-fixed": "#ffe088",
+                    "surface": "#fcf9f3",
+                    "on-background": "#1c1c18",
+                    "surface-bright": "#fcf9f3",
+                    "secondary": "#635d5a",
+                    "primary-fixed": "#ffdad6",
+                    "surface-container-low": "#f6f3ed",
+                    "on-secondary-fixed-variant": "#4b4642",
+                    "inverse-on-surface": "#f3f0ea",
+                    "outline": "#8b716e",
+                    "inverse-surface": "#31312d",
+                    "on-error": "#ffffff",
+                    "tertiary": "#735c00",
+                    "surface-container-highest": "#e5e2dc",
+                    "secondary-container": "#e6ded9",
+                    "secondary-fixed-dim": "#cdc5c0",
+                    "primary-fixed-dim": "#ffb3ad",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#410003",
+                    "surface-variant": "#e5e2dc"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xxl": "48px",
+                    "xs": "4px",
+                    "gutter": "16px",
+                    "unit": "8px",
+                    "margin-desktop": "64px",
+                    "md": "16px",
+                    "sm": "8px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "headline-md": ["EB Garamond"],
+                    "label-lg": ["Inter"],
+                    "headline-lg": ["EB Garamond"],
+                    "display-lg-mobile": ["EB Garamond"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["EB Garamond"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background text-on-background paper-grain selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation Bar -->
+<header class="docked full-width top-0 z-50 bg-background border-b border-outline-variant/30 flex justify-between items-center w-full px-margin-mobile py-4 transition-all duration-300 bg-opacity-95 backdrop-blur-sm">
+<div class="flex items-center gap-4">
+<button aria-label="Menu" class="material-symbols-outlined text-primary hover:bg-surface-container-low transition-colors p-2 rounded-full">menu</button>
+<h1 class="font-headline-lg text-headline-lg tracking-widest text-primary">HERITAGE</h1>
+</div>
+<button aria-label="Search Settings" class="material-symbols-outlined text-primary hover:bg-surface-container-low transition-colors p-2 rounded-full">tune</button>
+</header>
+<main class="pt-8 pb-24 max-w-screen-md mx-auto">
+<!-- Search Input Section -->
+<div class="px-margin-mobile mb-8">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input aria-label="Search historical records" class="w-full pl-12 pr-4 py-4 bg-surface-container-lowest border border-outline/20 rounded-lg focus:ring-2 focus:ring-primary-container focus:border-primary-container outline-none font-body-md text-on-background transition-all shadow-sm" placeholder="Explore India's chronicles..." type="text"/>
+</div>
+</div>
+<!-- Categories Scroll -->
+<section class="mb-xxl">
+<div class="flex items-center justify-between px-margin-mobile mb-4">
+<h2 class="font-label-lg text-label-lg text-on-surface-variant uppercase tracking-widest">Chronicle Themes</h2>
+</div>
+<div class="flex overflow-x-auto hide-scrollbar gap-3 px-margin-mobile">
+<button class="whitespace-nowrap px-6 py-2 bg-surface-container-highest text-on-surface-variant font-label-lg rounded-[4px] hover:bg-primary-container hover:text-white transition-all">UNESCO Sites</button>
+<button class="whitespace-nowrap px-6 py-2 bg-surface-container-highest text-on-surface-variant font-label-lg rounded-[4px] hover:bg-primary-container hover:text-white transition-all">Wildlife</button>
+<button class="whitespace-nowrap px-6 py-2 bg-surface-container-highest text-on-surface-variant font-label-lg rounded-[4px] hover:bg-primary-container hover:text-white transition-all">Culinary Trails</button>
+<button class="whitespace-nowrap px-6 py-2 bg-surface-container-highest text-on-surface-variant font-label-lg rounded-[4px] hover:bg-primary-container hover:text-white transition-all">Arts &amp; Crafts</button>
+<button class="whitespace-nowrap px-6 py-2 bg-surface-container-highest text-on-surface-variant font-label-lg rounded-[4px] hover:bg-primary-container hover:text-white transition-all">Architecture</button>
+</div>
+</section>
+<!-- Recent Searches -->
+<section class="mb-xxl px-margin-mobile">
+<div class="flex items-center justify-between mb-4">
+<h2 class="font-label-lg text-label-lg text-on-surface-variant uppercase tracking-widest">Recent Journeys</h2>
+<button class="text-primary font-label-sm hover:underline">Clear All</button>
+</div>
+<div class="flex flex-wrap gap-2">
+<div class="flex items-center gap-2 bg-surface-container-low border border-outline-variant/30 py-2 px-4 rounded-full group hover:border-primary-container/50 transition-colors">
+<span class="text-on-surface font-body-md">Vijayanagara Empire</span>
+<button class="material-symbols-outlined text-sm text-outline hover:text-primary transition-colors">close</button>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-low border border-outline-variant/30 py-2 px-4 rounded-full group hover:border-primary-container/50 transition-colors">
+<span class="text-on-surface font-body-md">Spice Route</span>
+<button class="material-symbols-outlined text-sm text-outline hover:text-primary transition-colors">close</button>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-low border border-outline-variant/30 py-2 px-4 rounded-full group hover:border-primary-container/50 transition-colors">
+<span class="text-on-surface font-body-md">Rabindranath Tagore</span>
+<button class="material-symbols-outlined text-sm text-outline hover:text-primary transition-colors">close</button>
+</div>
+</div>
+</section>
+<!-- Trending Topics -->
+<section class="mb-xxl px-margin-mobile">
+<h2 class="font-label-lg text-label-lg text-on-surface-variant uppercase tracking-widest mb-4">Trending Archives</h2>
+<div class="space-y-4">
+<a class="flex items-center justify-between group py-2 border-b border-outline-variant/20" href="#">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-primary/40 italic">01</span>
+<span class="font-headline-md text-headline-md group-hover:text-primary transition-colors">Mughal Architecture</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform">north_east</span>
+</a>
+<a class="flex items-center justify-between group py-2 border-b border-outline-variant/20" href="#">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-primary/40 italic">02</span>
+<span class="font-headline-md text-headline-md group-hover:text-primary transition-colors">Ancient Silk Road</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform">north_east</span>
+</a>
+<a class="flex items-center justify-between group py-2 border-b border-outline-variant/20" href="#">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-primary/40 italic">03</span>
+<span class="font-headline-md text-headline-md group-hover:text-primary transition-colors">Bhakti Movement</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform">north_east</span>
+</a>
+</div>
+</section>
+<!-- Live Results -->
+<section class="px-margin-mobile">
+<h2 class="font-label-lg text-label-lg text-on-surface-variant uppercase tracking-widest mb-6">Discovery Feed</h2>
+<div class="grid grid-cols-1 gap-8">
+<!-- Result Card 1 -->
+<article class="flex flex-col bg-surface-container-lowest border border-outline-variant/30 rounded-lg overflow-hidden transition-all hover:shadow-[0px_4px_12px_rgba(45,41,38,0.05)] group">
+<div class="h-56 relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A cinematic, low-angle shot of the majestic Humayun's Tomb at sunrise, featuring symmetrical red sandstone architecture and intricate marble inlays. The soft, golden hour light casts long shadows over the manicured Charbagh gardens, creating a serene and timeless archival atmosphere. The color palette is dominated by warm ochres, deep reds, and soft morning blues, reflecting a modern editorial aesthetic for a heritage project." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAWwEkgYEEipRv0mafU5q-9o4Zagogu_FkTY5oJFCR2uj6G3bPDneuh_s-JHds55WKui1rPgV7YjIhfQKx-0NQDmGghTOsgIreQ-xs4o5rm-whKVho2yuNX11BzDoTcxy9Y3VxDMl1sySbV13Wmd3JAc9wuYzMcEu86Bfn8UH68U2q2engZ36i4z08sHXxMLZmYEYDtLUfgBgu2xbeu5VpvYWGhb4pkbstRSSpgCQu2kKvXsKBZW0n1w"/>
+<div class="absolute top-4 right-4 px-3 py-1 bg-primary text-white font-label-sm rounded-[4px]">FEATURED</div>
+</div>
+<div class="p-6">
+<div class="flex gap-2 mb-3">
+<span class="text-primary font-label-sm tracking-wider uppercase">Architecture</span>
+<span class="text-outline/40 font-label-sm">•</span>
+<span class="text-outline font-label-sm uppercase">12 Min Read</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-3 group-hover:text-primary transition-colors">The Echoes of Red Sandstone: Evolution of Mughal Aesthetics</h3>
+<p class="font-body-md text-on-surface-variant line-clamp-2">Tracing the architectural transition from the robustness of early Sultanate structures to the refined symmetry of the Taj Mahal...</p>
+</div>
+</article>
+<!-- Result Card 2 -->
+<article class="flex flex-col bg-surface-container-lowest border border-outline-variant/30 rounded-lg overflow-hidden transition-all hover:shadow-[0px_4px_12px_rgba(45,41,38,0.05)] group">
+<div class="h-56 relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A rich, high-detail macro photograph of traditional Banarasi silk weaving in progress on a vintage wooden loom. Vibrant threads of royal madder red and liquid gold create intricate paisley patterns. The lighting is focused and warm, highlighting the tactile texture of the fabric and the artisan's hands. The mood is reverence for traditional craftsmanship, presented in a clean, sophisticated light-mode digital layout." src="https://lh3.googleusercontent.com/aida-public/AB6AXuASx6xAGkqITkrrKWozE_bwEnzA6elwdPXe4wyyXbtSGEIsT7k1Ht2lcCNq2gvABk7wI-mZ8XkdBB46ty9bOFjseBmeTEohKzMlFpcmzdIIx3U-Yr_74eVqU7KflyPgABozBwWbFu6tmZ_DGD_LVWkwLI3rv6hoWme_CTuViMQ5TButRw61JMevghtg16OYkqqqf-1kBryWbXQbz5UM4Hw02brl9Ca8ixD-uRbf9mUMSyiiVtYX3QmD3Q"/>
+</div>
+<div class="p-6">
+<div class="flex gap-2 mb-3">
+<span class="text-primary font-label-sm tracking-wider uppercase">Arts &amp; Crafts</span>
+<span class="text-outline/40 font-label-sm">•</span>
+<span class="text-outline font-label-sm uppercase">8 Min Read</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-3 group-hover:text-primary transition-colors">Warp of Time: The Secret Language of Banarasi Silks</h3>
+<p class="font-body-md text-on-surface-variant line-clamp-2">Inside the looms of Varanasi, where every knot tells a story of trade, culture, and ancestral heritage surviving the modern age.</p>
+</div>
+</article>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Mandatory Shell) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-4 bg-surface border-t border-outline-variant/30 shadow-[0px_-4px_12px_rgba(45,41,38,0.05)]">
+<a class="flex flex-col items-center justify-center text-secondary hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">auto_stories</span>
+<span class="font-label-sm text-label-sm">Discover</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-semibold scale-95" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">search</span>
+<span class="font-label-sm text-label-sm">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">museum</span>
+<span class="font-label-sm text-label-sm">Library</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">bookmark</span>
+<span class="font-label-sm text-label-sm">Saved</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions for recent searches removal
+        document.querySelectorAll('button.material-symbols-outlined').forEach(btn => {
+            if (btn.innerText === 'close') {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    this.closest('div').classList.add('scale-0', 'opacity-0');
+                    setTimeout(() => {
+                        this.closest('div').remove();
+                    }, 200);
+                });
+            }
+        });
+
+        // Search input focus behavior
+        const searchInput = document.querySelector('input[type="text"]');
+        const header = document.querySelector('header');
+        
+        searchInput.addEventListener('focus', () => {
+            header.classList.add('shadow-md');
+        });
+
+        searchInput.addEventListener('blur', () => {
+            header.classList.remove('shadow-md');
+        });
+    </script>
+</body></html>

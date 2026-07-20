@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HERITAGE Admin Dashboard | India Story Project</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#fcf9f3",
+                        "on-secondary": "#ffffff",
+                        "background": "#fcf9f3",
+                        "on-surface-variant": "#58413f",
+                        "inverse-surface": "#31312d",
+                        "on-primary-fixed": "#410003",
+                        "on-error": "#ffffff",
+                        "primary-container": "#8b1e1e",
+                        "outline": "#8b716e",
+                        "inverse-on-surface": "#f3f0ea",
+                        "tertiary": "#735c00",
+                        "surface-dim": "#dcdad4",
+                        "secondary-fixed": "#e9e1dc",
+                        "surface-container-low": "#f6f3ed",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e5e2dc",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#f0eee8",
+                        "tertiary-container": "#cca730",
+                        "inverse-primary": "#ffb3ad",
+                        "surface-container-high": "#ebe8e2",
+                        "secondary-container": "#e6ded9",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#ffe088",
+                        "primary": "#6a020a",
+                        "on-tertiary-fixed": "#241a00",
+                        "on-primary-fixed-variant": "#891c1d",
+                        "surface-tint": "#aa3531",
+                        "on-primary-container": "#ff9d95",
+                        "on-tertiary-container": "#4f3d00",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "on-background": "#1c1c18",
+                        "on-secondary-container": "#67625e",
+                        "primary-fixed": "#ffdad6",
+                        "primary-fixed-dim": "#ffb3ad",
+                        "surface-variant": "#e5e2dc",
+                        "surface-bright": "#fcf9f3",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#1e1b18",
+                        "secondary": "#635d5a",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#cdc5c0",
+                        "on-secondary-fixed-variant": "#4b4642",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#dfbfbc",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "on-surface": "#1c1c18"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "xl": "32px",
+                        "margin-mobile": "16px",
+                        "gutter": "16px",
+                        "unit": "8px",
+                        "lg": "24px",
+                        "md": "16px",
+                        "sm": "8px",
+                        "margin-desktop": "64px",
+                        "xxl": "48px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "display-lg": ["EB Garamond"],
+                        "headline-md": ["EB Garamond"],
+                        "label-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["EB Garamond"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .paper-texture {
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .chart-path {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: dash 3s ease-in-out forwards;
+        }
+        @keyframes dash {
+            to { stroke-dashoffset: 0; }
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden paper-texture">
+<!-- Navigation Drawer (SideNav) -->
+<aside class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-surface-container-low border-r border-outline-variant py-lg z-50">
+<div class="px-md mb-xxl">
+<h1 class="font-display-lg text-display-lg text-primary tracking-tight">ADMIN PANEL</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mt-xs">Heritage Control</p>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-md px-md py-sm bg-secondary-container text-on-secondary-container rounded-lg mx-2 my-1 transition-transform active:scale-95" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-lg text-label-lg">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 transition-all" href="#">
+<span class="material-symbols-outlined">gavel</span>
+<span class="font-label-lg text-label-lg">Moderation</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 transition-all" href="#">
+<span class="material-symbols-outlined">auto_stories</span>
+<span class="font-label-lg text-label-lg">Stories</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 transition-all" href="#">
+<span class="material-symbols-outlined">account_balance</span>
+<span class="font-label-lg text-label-lg">Archives</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-lg text-label-lg">Settings</span>
+</a>
+</nav>
+<div class="px-md mt-auto pt-lg border-t border-outline-variant/30">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">account_circle</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-primary">Admin User</p>
+<p class="text-[10px] uppercase text-on-surface-variant tracking-tighter">Super Curator</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="md:ml-64 min-h-screen">
+<!-- TopAppBar -->
+<header class="sticky top-0 w-full flex justify-between items-center px-md md:px-margin-desktop h-20 bg-surface/95 backdrop-blur-sm border-b border-outline-variant z-40">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary cursor-pointer md:hidden">menu</span>
+<div class="flex flex-col">
+<span class="font-display-lg text-headline-md tracking-tight text-primary">HERITAGE</span>
+<span class="font-label-sm text-[10px] tracking-[0.2em] text-on-surface-variant -mt-1 uppercase">Dashboard Home</span>
+</div>
+</div>
+<div class="flex items-center gap-xl">
+<div class="hidden lg:flex items-center gap-lg">
+<button class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+<div class="w-10 h-10 rounded-full border border-outline-variant overflow-hidden cursor-pointer hover:opacity-80 transition-opacity">
+<img class="w-full h-full object-cover" data-alt="A professional portrait of a senior archival scholar in a modern, light-filled academic office. The scholar is wearing minimalist spectacles and a charcoal linen shirt. The background features blurred shelves of ancient manuscripts and a large window looking out onto a heritage garden. The lighting is soft, cinematic, and emphasizes a high-end editorial aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZRe1D8pvlQ6INfJu0YG59_VQaeouzhtx6B4gjOHkJpwZZk8u5qdMSDO8ckr-EkAd2ItIAFK0pjYP3rD0Nhx7oi7cjJxG_5SdGuyQQ01USJ4qQJK0avKdW1BvZYLmCyo88U2pc4bPkeI-COSj_gl8JGQMrUNbunSqTBA9Oy1eLjBMivtCgoYknuOQlkzjvtk0lT57vpXJEnkokf-sWmFiVZ0EL50r5_GQVPuJYnpGbAN6k_SCaYSocHA"/>
+</div>
+</div>
+</header>
+<!-- Dashboard Canvas -->
+<div class="p-md md:p-margin-desktop space-y-xxl max-w-7xl mx-auto">
+<!-- Section 1: KPIs -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<div class="bg-surface-container-lowest p-lg border border-outline-variant rounded-lg shadow-sm">
+<div class="flex justify-between items-start mb-md">
+<p class="font-label-lg text-label-lg text-on-surface-variant uppercase tracking-wider">Total Stories</p>
+<span class="text-tertiary font-label-sm bg-tertiary-fixed px-2 py-0.5 rounded">+12%</span>
+</div>
+<p class="font-headline-lg text-headline-lg text-primary">1,240</p>
+<div class="h-12 mt-md flex items-end gap-1">
+<div class="w-full h-4 bg-primary/10 rounded-t-sm transition-all hover:bg-primary/30"></div>
+<div class="w-full h-6 bg-primary/10 rounded-t-sm transition-all hover:bg-primary/30"></div>
+<div class="w-full h-8 bg-primary/10 rounded-t-sm transition-all hover:bg-primary/30"></div>
+<div class="w-full h-5 bg-primary/10 rounded-t-sm transition-all hover:bg-primary/30"></div>
+<div class="w-full h-9 bg-primary/10 rounded-t-sm transition-all hover:bg-primary/30"></div>
+<div class="w-full h-11 bg-primary/10 rounded-t-sm transition-all hover:bg-primary/30"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-lg border border-outline-variant rounded-lg shadow-sm">
+<div class="flex justify-between items-start mb-md">
+<p class="font-label-lg text-label-lg text-on-surface-variant uppercase tracking-wider">Active Scholars</p>
+<span class="text-tertiary font-label-sm bg-tertiary-fixed px-2 py-0.5 rounded">+5%</span>
+</div>
+<p class="font-headline-lg text-headline-lg text-primary">850</p>
+<div class="h-12 mt-md flex items-end gap-1">
+<div class="w-full h-3 bg-primary/10 rounded-t-sm"></div>
+<div class="w-full h-5 bg-primary/10 rounded-t-sm"></div>
+<div class="w-full h-4 bg-primary/10 rounded-t-sm"></div>
+<div class="w-full h-7 bg-primary/10 rounded-t-sm"></div>
+<div class="w-full h-6 bg-primary/10 rounded-t-sm"></div>
+<div class="w-full h-10 bg-primary/10 rounded-t-sm"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-lg border border-outline-variant rounded-lg shadow-sm">
+<div class="flex justify-between items-start mb-md">
+<p class="font-label-lg text-label-lg text-on-surface-variant uppercase tracking-wider">Community XP</p>
+<span class="text-on-surface-variant font-label-sm bg-surface-container-highest px-2 py-0.5 rounded">Steady</span>
+</div>
+<p class="font-headline-lg text-headline-lg text-primary">45.2k</p>
+<div class="h-12 mt-md flex items-end gap-1">
+<div class="w-full h-8 bg-primary/10 rounded-t-sm"></div>
+<div class="w-full h-8 bg-primary/10 rounded-t-sm"></div>
+<div class="w-full h-9 bg-primary/10 rounded-t-sm"></div>
+<div class="w-full h-8 bg-primary/10 rounded-t-sm"></div>
+<div class="w-full h-10 bg-primary/10 rounded-t-sm"></div>
+<div class="w-full h-12 bg-primary/10 rounded-t-sm"></div>
+</div>
+</div>
+</section>
+<!-- Section 2 & 3: Moderation & Analytics -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-xl">
+<!-- Analytics Visualization -->
+<div class="lg:col-span-8 bg-surface-container-lowest p-lg border border-outline-variant rounded-lg shadow-sm">
+<div class="flex justify-between items-center mb-xl">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary">Growth Trends</h2>
+<p class="font-label-sm text-on-surface-variant">Readership statistics for the last 30 days</p>
+</div>
+<div class="flex gap-sm">
+<span class="inline-flex items-center gap-1 text-label-sm px-2 py-1 bg-surface-container border border-outline-variant/30 rounded cursor-pointer hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span> Last 30 Days
+                            </span>
+</div>
+</div>
+<div class="relative h-64 w-full bg-[#fdfbf7] border-l border-b border-outline-variant/50 p-4">
+<!-- Hand-drawn style chart SVG -->
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 100 40">
+<path class="chart-path" d="M0,35 Q10,32 20,28 T40,20 T60,15 T80,8 T100,2" fill="none" stroke="#8B1E1E" stroke-linecap="round" stroke-width="0.5"></path>
+<path d="M0,35 Q10,32 20,28 T40,20 T60,15 T80,8 T100,2 V40 H0 Z" fill="url(#gradient)" opacity="0.1"></path>
+<defs>
+<lineargradient id="gradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#8B1E1E"></stop>
+<stop offset="100%" stop-color="transparent"></stop>
+</lineargradient>
+</defs>
+</svg>
+<!-- Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none opacity-20">
+<div class="border-t border-outline border-dashed w-full"></div>
+<div class="border-t border-outline border-dashed w-full"></div>
+<div class="border-t border-outline border-dashed w-full"></div>
+<div class="border-t border-outline border-dashed w-full"></div>
+</div>
+</div>
+<div class="flex justify-between mt-md px-2 font-label-sm text-on-surface-variant text-[10px]">
+<span>01 SEP</span>
+<span>08 SEP</span>
+<span>15 SEP</span>
+<span>22 SEP</span>
+<span>30 SEP</span>
+</div>
+</div>
+<!-- Moderation Alerts -->
+<div class="lg:col-span-4 bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden flex flex-col shadow-sm">
+<div class="bg-primary-container p-md">
+<h3 class="font-headline-md text-headline-md text-on-primary">Moderation Desk</h3>
+</div>
+<div class="flex-1 p-lg space-y-md">
+<div class="p-md bg-error-container/30 border border-error/20 rounded-lg flex items-center justify-between group cursor-pointer hover:bg-error-container/50 transition-colors">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">priority_high</span>
+<div>
+<p class="font-label-lg text-label-lg text-primary">Pending Reviews</p>
+<p class="font-label-sm text-on-surface-variant">Awaiting curator approval</p>
+</div>
+</div>
+<span class="font-headline-md text-primary group-hover:scale-110 transition-transform">14</span>
+</div>
+<div class="p-md bg-surface-container border border-outline-variant rounded-lg flex items-center justify-between group cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant">flag</span>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface">Reported Content</p>
+<p class="font-label-sm text-on-surface-variant">Community flagged items</p>
+</div>
+</div>
+<span class="font-headline-md text-on-surface group-hover:scale-110 transition-transform">3</span>
+</div>
+<div class="mt-auto pt-lg">
+<button class="w-full py-md bg-primary text-white rounded-lg font-label-lg hover:bg-primary-container transition-all active:scale-[0.98]">
+                                Open Moderation Queue
+                            </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4 & 5: Activity & Actions -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-xl">
+<!-- Recent Activity Feed -->
+<div class="bg-surface-container-lowest p-lg border border-outline-variant rounded-lg shadow-sm">
+<div class="flex justify-between items-center mb-lg">
+<h2 class="font-headline-md text-headline-md text-primary">System Chronicle</h2>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">history</span>
+</div>
+<ul class="space-y-4">
+<li class="flex gap-md pb-md border-b border-outline-variant/30">
+<div class="w-2 h-2 rounded-full bg-tertiary mt-2"></div>
+<div>
+<p class="font-body-md text-on-surface">New story published: <span class="italic font-medium">The Silk Route Chronicles</span></p>
+<p class="font-label-sm text-on-surface-variant">2 hours ago • by Admin</p>
+</div>
+</li>
+<li class="flex gap-md pb-md border-b border-outline-variant/30">
+<div class="w-2 h-2 rounded-full bg-primary mt-2"></div>
+<div>
+<p class="font-body-md text-on-surface">Dr. Gupta verified as <span class="font-medium">Heritage Custodian</span></p>
+<p class="font-label-sm text-on-surface-variant">5 hours ago • Automated</p>
+</div>
+</li>
+<li class="flex gap-md">
+<div class="w-2 h-2 rounded-full bg-outline mt-2"></div>
+<div>
+<p class="font-body-md text-on-surface">Monthly Challenge: <span class="font-medium">Architecture of Hampi</span> launched</p>
+<p class="font-label-sm text-on-surface-variant">Yesterday • System Event</p>
+</div>
+</li>
+</ul>
+</div>
+<!-- Quick Actions Grid -->
+<div class="space-y-lg">
+<h2 class="font-headline-md text-headline-md text-primary px-2">Quick Archival Actions</h2>
+<div class="grid grid-cols-2 gap-md">
+<button class="flex flex-col items-center justify-center p-xl bg-surface-container-lowest border border-outline-variant rounded-lg hover:border-primary hover:bg-surface-container transition-all group active:scale-95">
+<span class="material-symbols-outlined text-primary mb-sm transition-transform group-hover:scale-110">edit_note</span>
+<span class="font-label-lg text-label-lg text-on-surface text-center">Create New Story</span>
+</button>
+<button class="flex flex-col items-center justify-center p-xl bg-surface-container-lowest border border-outline-variant rounded-lg hover:border-primary hover:bg-surface-container transition-all group active:scale-95">
+<span class="material-symbols-outlined text-primary mb-sm transition-transform group-hover:scale-110">photo_library</span>
+<span class="font-label-lg text-label-lg text-on-surface text-center">Audit Media</span>
+</button>
+<button class="flex flex-col items-center justify-center p-xl bg-surface-container-lowest border border-outline-variant rounded-lg hover:border-primary hover:bg-surface-container transition-all group active:scale-95">
+<span class="material-symbols-outlined text-primary mb-sm transition-transform group-hover:scale-110">group</span>
+<span class="font-label-lg text-label-lg text-on-surface text-center">Manage Users</span>
+</button>
+<button class="flex flex-col items-center justify-center p-xl bg-surface-container-lowest border border-outline-variant rounded-lg hover:border-primary hover:bg-surface-container transition-all group active:scale-95">
+<span class="material-symbols-outlined text-primary mb-sm transition-transform group-hover:scale-110">file_download</span>
+<span class="font-label-lg text-label-lg text-on-surface text-center">Export Data</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Featured Curator Card (Asymmetric Layout Element) -->
+<section class="bg-surface-container border border-outline-variant rounded-xl p-0 overflow-hidden flex flex-col md:flex-row">
+<div class="md:w-1/3 h-64 md:h-auto overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A warm, atmospheric photograph of a dusty Indian archive filled with floor-to-ceiling wooden bookshelves and stacks of ancient palm-leaf manuscripts. Shafts of golden sunlight pierce through the dust motes, illuminating a wooden table where an archival magnifying glass and a fountain pen rest on top of a weathered map. The style is deeply tactile, evocative of history and preservation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWgo5gqQ7dYPf0cRNOtg0N4_MXUmeJ2XfoaoUYQ1GxI39y5V2xvVVifA3RaQ2ORWc-m1dTtSCJAyaqCNhQZyspyASB2_ZBiERk9vp3rLUMnN8L5Je_NQMZTb2YimvtafdpMXJUYhGAkRHkh148PniBVnY0XC5___M1kB-3mF07UgelfUMD800Scl3lLFoo79_pbvLmqTEaFVnzZ8yQ2YjsQa1rdJU5O6c20dox3Ne45XgoY0smjsxPsA"/>
+</div>
+<div class="md:w-2/3 p-xxl flex flex-col justify-center">
+<div class="mb-md">
+<span class="font-label-sm bg-primary/10 text-primary px-3 py-1 rounded-full uppercase tracking-widest">Monthly Spotlight</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-md italic">Preserving the Oral Traditions of the Western Ghats</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-lg leading-relaxed">
+                        This month, our archival efforts focus on the rhythmic folk songs of the indigenous tribes in the Sahyadris. Over 40 hours of audio have been digitized and meta-tagged for the eternal archive.
+                    </p>
+<div>
+<button class="border-b-2 border-primary text-primary font-label-lg py-1 hover:text-primary-container transition-colors">Review Curated Collection</button>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer -->
+<footer class="w-full py-md mt-xxl border-t border-outline-variant bg-surface">
+<div class="flex flex-col md:flex-row justify-between items-center px-md md:px-margin-desktop max-w-7xl mx-auto gap-md">
+<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 India Story Project Admin. All scholarly rights reserved.</p>
+<div class="flex gap-xl">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Support</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Archival Guidelines</a>
+</div>
+</div>
+</footer>
+</main>
+<!-- FAB (Suppressed on Admin Home per rule, but here for reference if needed contextually) -->
+<!-- <button class="fixed bottom-lg right-lg w-14 h-14 rounded-full bg-primary text-white shadow-xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50">
+        <span class="material-symbols-outlined">add</span>
+    </button> -->
+<script>
+        // Simple micro-interaction for KPI cards
+        document.querySelectorAll('.bg-surface-container-lowest').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-4px)';
+                card.style.transition = 'transform 0.3s ease';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Search Bar Mock Interaction
+        document.querySelector('button .material-symbols-outlined[innerText="search"]')?.parentElement.addEventListener('click', () => {
+            console.log('Search triggered');
+        });
+    </script>
+</body></html>

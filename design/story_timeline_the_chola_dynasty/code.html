@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Timeline: The Chola Dynasty | India Story Project</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Inter:wght@400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@100..900&family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        .timeline-line {
+            background: linear-gradient(to bottom, transparent 0%, #8B1E1E 15%, #8B1E1E 85%, transparent 100%);
+        }
+        .editorial-shadow {
+            box-shadow: 0px 4px 12px rgba(45, 41, 38, 0.05);
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F8F5EF;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E5E1D8;
+            border-radius: 10px;
+        }
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#dfbfbc",
+                        "on-primary-fixed-variant": "#891c1d",
+                        "tertiary-container": "#cca730",
+                        "inverse-primary": "#ffb3ad",
+                        "on-primary-container": "#ff9d95",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#ebe8e2",
+                        "on-surface": "#1c1c18",
+                        "tertiary-fixed": "#ffe088",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#1e1b18",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "inverse-on-surface": "#f3f0ea",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f6f3ed",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#f0eee8",
+                        "outline": "#8b716e",
+                        "background": "#fcf9f3",
+                        "on-primary-fixed": "#410003",
+                        "secondary": "#635d5a",
+                        "primary-container": "#8b1e1e",
+                        "on-secondary-container": "#67625e",
+                        "surface-tint": "#aa3531",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#dcdad4",
+                        "secondary-fixed": "#e9e1dc",
+                        "surface": "#fcf9f3",
+                        "primary-fixed": "#ffdad6",
+                        "secondary-container": "#e6ded9",
+                        "primary": "#6a020a",
+                        "surface-container-highest": "#e5e2dc",
+                        "primary-fixed-dim": "#ffb3ad",
+                        "secondary-fixed-dim": "#cdc5c0",
+                        "on-tertiary-fixed": "#241a00",
+                        "on-surface-variant": "#58413f",
+                        "on-secondary-fixed-variant": "#4b4642",
+                        "on-tertiary-container": "#4f3d00",
+                        "surface-bright": "#fcf9f3",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary": "#735c00",
+                        "surface-variant": "#e5e2dc",
+                        "on-background": "#1c1c18",
+                        "inverse-surface": "#31312d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xxl": "48px",
+                        "margin-desktop": "64px",
+                        "gutter": "16px",
+                        "unit": "8px",
+                        "xl": "32px",
+                        "md": "16px",
+                        "sm": "8px",
+                        "margin-mobile": "16px",
+                        "lg": "24px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["EB Garamond"],
+                        "display-lg-mobile": ["EB Garamond"],
+                        "label-sm": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "headline-md": ["EB Garamond"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["EB Garamond"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-container selection:text-on-primary">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-[60] bg-surface border-b border-outline-variant flex items-center justify-between px-margin-mobile md:px-margin-desktop py-md w-full">
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary cursor-pointer active:opacity-70 hover:bg-surface-container-low transition-colors p-xs rounded-full">arrow_back</button>
+<h1 class="font-display-lg text-headline-md text-primary">India Story Project</h1>
+</div>
+<div class="flex items-center gap-sm">
+<button class="material-symbols-outlined text-primary hover:bg-surface-container-low transition-colors p-sm rounded-full">search</button>
+<button class="material-symbols-outlined text-primary hover:bg-surface-container-low transition-colors p-sm rounded-full">bookmark</button>
+</div>
+</header>
+<main class="min-h-screen pb-xxl">
+<!-- Hero Header -->
+<section class="max-w-[720px] mx-auto px-margin-mobile pt-xxl pb-xl text-center">
+<span class="font-label-lg text-primary tracking-[0.2em] uppercase mb-sm block">Imperial Archives</span>
+<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-md">Timeline: The Chola Dynasty</h2>
+<p class="font-body-lg text-on-surface-variant max-w-[600px] mx-auto">
+                Trace the rise of the 'Imperial Cholas', one of the longest-ruling dynasties in world history, whose maritime influence spanned from the Ganges to Southeast Asia.
+            </p>
+</section>
+<!-- Timeline Section -->
+<section class="relative max-w-[900px] mx-auto px-margin-mobile md:px-margin-desktop mt-lg">
+<!-- Vertical Line -->
+<div class="absolute left-margin-mobile md:left-1/2 md:-ml-[1px] top-0 bottom-0 w-[2px] timeline-line z-0"></div>
+<!-- Event 1: Left (Desktop) / Right (Mobile) -->
+<div class="relative mb-xxl scroll-reveal">
+<div class="md:flex items-center justify-between w-full">
+<div class="md:w-[45%] mb-md md:mb-0">
+<div class="bg-surface-container-lowest border border-outline-variant p-lg editorial-shadow rounded-lg hover:border-primary transition-colors cursor-pointer group">
+<span class="font-display-lg text-headline-lg text-primary mb-xs block">848 AD</span>
+<h3 class="font-headline-md text-on-surface mb-sm group-hover:text-primary transition-colors">Vijayalaya Chola's Revival</h3>
+<p class="font-body-md text-on-surface-variant mb-lg">Vijayalaya Chola captured Thanjavur from the Muttarayar, laying the foundation for the Imperial Chola Empire.</p>
+<div class="w-full aspect-video rounded-sm overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-700" data-alt="A cinematic historical reconstruction of an ancient South Indian stone temple under construction, featuring master stonemasons carving intricate reliefs into granite walls. The lighting is warm and dramatic, simulating early morning sun hitting the golden-brown stone. The aesthetic is inspired by high-end museum photography, with a shallow depth of field and a focus on tactile architectural details in a heritage editorial style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1WL-KavE3xfh-gfgqmjT3OCj_-FTBn2iHmK_5mVat0kEYWgVURiQyneT_kAA084zxPaDiYqKTphW71mTuaV3icxY4m4s5-47tOVpg6vKafO7NJPK6hGTpdB8b2Gkrs0nFHZDpbwbxNv0s2Bj2w1u9k30b4yVVci-ngAb2mImePhxJTuNmYhraJQSZmF9qAFT25tItWPeYZeySW4Yvy3x8teWU3VDV7if5nJ6AU5q0biifLF1wAqAKJw"/>
+</div>
+</div>
+</div>
+<!-- Node -->
+<div class="absolute left-margin-mobile md:left-1/2 -ml-[9px] md:-ml-[11px] w-5 h-5 md:w-6 md:h-6 rounded-full bg-surface border-4 border-primary-container z-10 shadow-sm"></div>
+<div class="md:w-[45%] hidden md:block"></div>
+</div>
+</div>
+<!-- Event 2: Right (Desktop) -->
+<div class="relative mb-xxl scroll-reveal">
+<div class="md:flex items-center justify-between w-full flex-row-reverse">
+<div class="md:w-[45%] mb-md md:mb-0">
+<div class="bg-surface-container-lowest border border-outline-variant p-lg editorial-shadow rounded-lg hover:border-primary transition-colors cursor-pointer group">
+<span class="font-display-lg text-headline-lg text-primary mb-xs block">985 AD</span>
+<h3 class="font-headline-md text-on-surface mb-sm group-hover:text-primary transition-colors">Accession of Rajaraja I</h3>
+<p class="font-body-md text-on-surface-variant mb-lg">Rajaraja I 'The Great' ascends the throne, marking the beginning of the empire's golden age and military expansion.</p>
+<div class="w-full aspect-square md:aspect-[4/3] rounded-sm overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-700" data-alt="An artistic high-fidelity illustration of a bronze Chola Nataraja statue, illuminated by soft flickering torchlight in a dark, atmospheric inner sanctum of a temple. The lighting highlights the fine metallic textures and the dynamic pose of the cosmic dancer. The color palette consists of deep shadows, warm bronze highlights, and royal madder red accents, reflecting a scholarly and immersive museum exhibition aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVLNynqmUhVkvNVcx_291rfxp2yyp99kfDLrjt-d1_fkJpMXG-ezytxWHIhjTc4jxpHrUQNBd6jETdqfJmJhjhIcS0ko-IJq1LqEfwIqQqOCAhJB_P1SeiThyHsc4tBUU-0QEGZtFxQKY1lxtz0ITHkPMIWZc6BrgM8MrRZgAXg1HiHnDwI7psIl_9Rg5kMRH_HUDDSWjlrgCuFLQ69VqlAof4dvLRtxnTIvX0v23-Ak3TznKx42jX7A"/>
+</div>
+</div>
+</div>
+<!-- Node -->
+<div class="absolute left-margin-mobile md:left-1/2 -ml-[9px] md:-ml-[11px] w-5 h-5 md:w-6 md:h-6 rounded-full bg-surface border-4 border-primary-container z-10 shadow-sm"></div>
+<div class="md:w-[45%] hidden md:block"></div>
+</div>
+</div>
+<!-- Event 3: Left (Desktop) -->
+<div class="relative mb-xxl scroll-reveal">
+<div class="md:flex items-center justify-between w-full">
+<div class="md:w-[45%] mb-md md:mb-0">
+<div class="bg-surface-container-lowest border border-outline-variant p-lg editorial-shadow rounded-lg hover:border-primary transition-colors cursor-pointer group">
+<span class="font-display-lg text-headline-lg text-primary mb-xs block">1010 AD</span>
+<h3 class="font-headline-md text-on-surface mb-sm group-hover:text-primary transition-colors">Brihadisvara Temple</h3>
+<p class="font-body-md text-on-surface-variant mb-lg">Completion of the massive Rajarajeswaram temple in Thanjavur, a marvel of Dravidian architecture and the world's first granite temple.</p>
+<div class="w-full aspect-video rounded-sm overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-700" data-alt="A wide-angle, minimalist architectural photograph of the Brihadisvara Temple's Vimana tower during a blue hour twilight. The granite structure glows subtly against a deep indigo sky, with soft orange interior lights from the sanctuary. The image style is clean and professional, resembling a premium heritage travel journal or a high-end editorial for a cultural history publication." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjpVNODO4cw0XiHUoMmuBfvwrnwy_lSABZc52Mi4iNP5-GvzpQ4bdglhmYiNlqreaAehZtLuV_XnJCopZjo9O4zOxOokax6WgogCx82Pa0RghC3O7XafkXIU1PN9xXj-10occJ17Kmi1xMqg55A1zT8jARf5iSfJLIMXpfd_52ZWex9dr2jpjHFX52cF0I3CnCfFgzSYz8SCGgiHMi-cI3UZOGN02sMrhBzkq5M5QjpHeiRBqoO8CYSQ"/>
+</div>
+</div>
+</div>
+<!-- Node -->
+<div class="absolute left-margin-mobile md:left-1/2 -ml-[9px] md:-ml-[11px] w-5 h-5 md:w-6 md:h-6 rounded-full bg-surface border-4 border-primary-container z-10 shadow-sm"></div>
+<div class="md:w-[45%] hidden md:block"></div>
+</div>
+</div>
+<!-- Event 4: Right (Desktop) -->
+<div class="relative mb-xxl scroll-reveal">
+<div class="md:flex items-center justify-between w-full flex-row-reverse">
+<div class="md:w-[45%] mb-md md:mb-0">
+<div class="bg-surface-container-lowest border border-outline-variant p-lg editorial-shadow rounded-lg hover:border-primary transition-colors cursor-pointer group">
+<span class="font-display-lg text-headline-lg text-primary mb-xs block">1025 AD</span>
+<h3 class="font-headline-md text-on-surface mb-sm group-hover:text-primary transition-colors">Maritime Srivijaya Campaign</h3>
+<p class="font-body-md text-on-surface-variant mb-lg">Rajendra I launches a massive naval expedition across the Bay of Bengal to conquer Srivijaya (present-day Indonesia/Malaysia).</p>
+<div class="w-full aspect-[21/9] rounded-sm overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-700" data-alt="A stylized digital painting of ancient Chola naval ships with wooden hulls and white sails traversing the Indian Ocean. The water is a deep turquoise, and the ships are depicted with historical accuracy based on temple reliefs. The lighting is bright and airy, representing the vastness of the maritime empire. The visual style is modern minimalist with a slight texture of old parchment paper underlaying the scene." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBq2X5MVa7FwB0OTEKN33xY7S2UbJif7FFUwuNdvPtkF4nt9JcqY0vvUJ6Y7OUpGF15lKYFSRfnAUcb9twCIc-VTKZoGGxZIEL2BjE9tyB-slI6tUs-BnIBzIT6hSzHQCpjx17fWDzoQPymnyW7rl7f19oTx4gaNps6G91GVrYceRjwJqh402-yQIzlvQpDO1AzWz6Uwa9CDOEClNn2GiHaCuDT4SWmutfefJyKmf7V9-yC94fZY_ukMw"/>
+</div>
+</div>
+</div>
+<!-- Node -->
+<div class="absolute left-margin-mobile md:left-1/2 -ml-[9px] md:-ml-[11px] w-5 h-5 md:w-6 md:h-6 rounded-full bg-surface border-4 border-primary-container z-10 shadow-sm"></div>
+<div class="md:w-[45%] hidden md:block"></div>
+</div>
+</div>
+<!-- End Marker -->
+<div class="flex flex-col items-center py-xxl opacity-40">
+<div class="w-px h-16 bg-outline-variant mb-md"></div>
+<span class="font-label-lg text-on-surface-variant">Archival continues in Volume II...</span>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 border-t border-outline-variant bg-surface flex justify-around items-center h-xxl px-md">
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed font-bold hover:text-primary transition-all scale-95 duration-150" href="#">
+<span class="material-symbols-outlined mb-1">history_edu</span>
+<span class="font-label-lg text-label-lg">Chronicle</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed opacity-60 hover:text-primary transition-all scale-95 duration-150" href="#">
+<span class="material-symbols-outlined mb-1">account_balance</span>
+<span class="font-label-lg text-label-lg">Archive</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed opacity-60 hover:text-primary transition-all scale-95 duration-150" href="#">
+<span class="material-symbols-outlined mb-1">auto_stories</span>
+<span class="font-label-lg text-label-lg">Curated</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed opacity-60 hover:text-primary transition-all scale-95 duration-150" href="#">
+<span class="material-symbols-outlined mb-1">collections_bookmark</span>
+<span class="font-label-lg text-label-lg">Library</span>
+</a>
+</nav>
+<script>
+        // Intersection Observer for scroll reveal animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+        // Click interaction for cards
+        document.querySelectorAll('.editorial-shadow').forEach(card => {
+            card.addEventListener('click', () => {
+                card.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    card.style.transform = 'scale(1)';
+                }, 150);
+            });
+        });
+    </script>
+</body></html>
