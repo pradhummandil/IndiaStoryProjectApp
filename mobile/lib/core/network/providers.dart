@@ -5,6 +5,9 @@ import '../repositories/home_repository.dart';
 import '../repositories/story_repository.dart';
 import '../repositories/category_repository.dart';
 import '../repositories/profile_repository.dart';
+import '../repositories/writer_repository.dart';
+import '../repositories/ai_assistant_repository.dart';
+import '../repositories/publish_repository.dart';
 
 // ── API Client ───────────────────────────────────────────────────────
 
@@ -28,4 +31,16 @@ final categoryRepositoryProvider = Provider<CategoryRepository>((ref) {
 
 final profileRepositoryProvider = Provider<ProfileRepository>((ref) {
   return ProfileRepository(ref.watch(apiClientProvider));
+});
+
+final writerRepositoryProvider = Provider<WriterRepository>((ref) {
+  return WriterRepository(ref.watch(apiClientProvider));
+});
+
+final aiAssistantRepositoryProvider = Provider<AiAssistantRepository>((ref) {
+  return AiAssistantRepository(ref.watch(apiClientProvider));
+});
+
+final publishRepositoryProvider = Provider<PublishRepository>((ref) {
+  return PublishRepository(ref.watch(apiClientProvider));
 });

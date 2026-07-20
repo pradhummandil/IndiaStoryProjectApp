@@ -9,6 +9,9 @@ import '../../features/auth/presentation/screens/otp_verification_screen.dart';
 import '../../features/auth/presentation/screens/email_verification_screen.dart';
 import '../../features/auth/presentation/screens/reset_password_screen.dart';
 import '../../features/home/presentation/screens/home_screen.dart';
+import '../../features/writer_studio/presentation/screens/writer_studio_screen.dart';
+import '../../features/writer_studio/presentation/screens/ai_assistant_screen.dart';
+import '../../features/writer_studio/presentation/screens/publish_review_screen.dart';
 
 GoRouter buildAppRouter() {
   return GoRouter(
@@ -36,6 +39,19 @@ GoRouter buildAppRouter() {
       GoRoute(
         path: '/reset-password',
         builder: (context, state) => const ResetPasswordScreen(),
+      ),
+      GoRoute(
+        path: '/writer-studio',
+        builder: (context, state) => const WriterStudioScreen(),
+      ),
+      GoRoute(
+        path: '/writer-studio/ai-assistant',
+        builder: (context, state) => const AiAssistantScreen(),
+      ),
+      GoRoute(
+        path: '/writer-studio/publish/:storyId',
+        builder: (context, state) =>
+            PublishReviewScreen(storyId: state.pathParameters['storyId'] ?? ''),
       ),
     ],
     errorBuilder: (context, state) {
