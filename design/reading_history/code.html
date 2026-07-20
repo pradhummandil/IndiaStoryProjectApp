@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>India Story Project | Reading History</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-secondary-fixed": "#1e1b18",
+                "secondary": "#635d5a",
+                "on-tertiary": "#ffffff",
+                "secondary-fixed-dim": "#cdc5c0",
+                "on-secondary-fixed-variant": "#4b4642",
+                "surface-variant": "#e5e2dc",
+                "surface-bright": "#fcf9f3",
+                "on-error-container": "#93000a",
+                "error-container": "#ffdad6",
+                "outline-variant": "#dfbfbc",
+                "tertiary-fixed-dim": "#e9c349",
+                "on-surface": "#1c1c18",
+                "on-primary-fixed-variant": "#891c1d",
+                "error": "#ba1a1a",
+                "tertiary-fixed": "#ffe088",
+                "primary": "#6a020a",
+                "on-tertiary-fixed": "#241a00",
+                "on-secondary-container": "#67625e",
+                "primary-fixed": "#ffdad6",
+                "primary-fixed-dim": "#ffb3ad",
+                "surface-tint": "#aa3531",
+                "on-primary-container": "#ff9d95",
+                "on-tertiary-container": "#4f3d00",
+                "on-tertiary-fixed-variant": "#574500",
+                "on-background": "#1c1c18",
+                "surface-container": "#f0eee8",
+                "tertiary-container": "#cca730",
+                "inverse-primary": "#ffb3ad",
+                "surface-container-highest": "#e5e2dc",
+                "on-primary": "#ffffff",
+                "secondary-container": "#e6ded9",
+                "surface-container-high": "#ebe8e2",
+                "on-surface-variant": "#58413f",
+                "inverse-surface": "#31312d",
+                "on-primary-fixed": "#410003",
+                "surface": "#fcf9f3",
+                "on-secondary": "#ffffff",
+                "background": "#fcf9f3",
+                "tertiary": "#735c00",
+                "surface-dim": "#dcdad4",
+                "secondary-fixed": "#e9e1dc",
+                "surface-container-low": "#f6f3ed",
+                "surface-container-lowest": "#ffffff",
+                "on-error": "#ffffff",
+                "primary-container": "#8b1e1e",
+                "outline": "#8b716e",
+                "inverse-on-surface": "#f3f0ea"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "unit": "8px",
+                "lg": "24px",
+                "margin-mobile": "16px",
+                "gutter": "16px",
+                "xl": "32px",
+                "xs": "4px",
+                "xxl": "48px",
+                "margin-desktop": "64px",
+                "md": "16px",
+                "sm": "8px"
+            },
+            "fontFamily": {
+                "label-lg": ["Inter"],
+                "body-lg": ["Inter"],
+                "headline-md": ["EB Garamond"],
+                "display-lg": ["EB Garamond"],
+                "label-sm": ["Inter"],
+                "body-md": ["Inter"],
+                "display-lg-mobile": ["EB Garamond"],
+                "headline-lg": ["EB Garamond"]
+            },
+            "fontSize": {
+                "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #fcf9f3;
+            color: #1c1c18;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #8b716e;
+            border-radius: 2px;
+        }
+        .editorial-shadow {
+            box-shadow: 0px 4px 12px rgba(45, 41, 38, 0.05);
+        }
+        .progress-bar-glow {
+            box-shadow: 0 0 8px rgba(139, 30, 30, 0.3);
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<!-- Top App Bar -->
+<header class="bg-background dark:bg-background flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 w-full fixed top-0 z-50 border-b border-surface-variant dark:border-outline-variant">
+<button class="text-primary dark:text-primary-fixed-dim hover:bg-surface-container-low transition-colors duration-200 p-sm rounded-lg active:scale-95 transition-transform">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline-lg text-headline-lg text-primary dark:text-primary-fixed-dim tracking-tight">India Story Project</h1>
+<button class="text-primary dark:text-primary-fixed-dim hover:bg-surface-container-low transition-colors duration-200 p-sm rounded-lg active:scale-95 transition-transform">
+<span class="material-symbols-outlined">search</span>
+</button>
+</header>
+<main class="pt-24 pb-24 max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop">
+<!-- Continue Reading Section -->
+<section class="mb-xxl">
+<div class="flex items-end justify-between mb-md">
+<h2 class="font-headline-md text-headline-md text-primary">Continue Reading</h2>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">3 in progress</span>
+</div>
+<div class="flex gap-md overflow-x-auto pb-md custom-scrollbar -mx-margin-mobile px-margin-mobile md:mx-0 md:px-0">
+<!-- Card 1 -->
+<div class="min-w-[280px] md:min-w-[340px] bg-white border border-[#E5E1D8] rounded-lg p-lg editorial-shadow flex flex-col gap-md transition-transform hover:-translate-y-1">
+<div class="relative w-full h-40 rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A high-contrast cinematic photograph of the Taj Mahal at sunrise, featuring the intricate red sandstone gateway framing the white marble dome. The lighting is golden and warm, casting long shadows. The style is modern editorial with a slight film grain texture and deep primary red accents in the shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuACjREKsLX45tahZKLRH6HaRN2Oh1TUydybseIR-nEQwST21KxT58rtlGhIo_B8jRf26s8HDqbNYYRI1C9reyVjlt8u1tjTh_0_cJOAEZ1_zez24hc5JwLEpzSwM4cRVYuTiYK03s2aM5heRJV6kYBeiQtIDjHNGOKoBXcAwb0s3xbSaZLcvUI2cOh-2Ze7iC-3HeX37jh5gV0kSpm3u2FszfhxzPdCbLdFYIDhFmOo6gjPX6UD72RY0Q"/>
+<div class="absolute top-sm right-sm bg-white/90 backdrop-blur px-sm py-xs rounded text-[10px] font-bold uppercase tracking-tighter text-primary">Mughal Era</div>
+</div>
+<div class="flex flex-col gap-xs">
+<h3 class="font-headline-md text-headline-md leading-tight">The Echoes of Red Sandstone</h3>
+<p class="font-label-sm text-label-sm text-secondary">Mughal Architecture • 12 min left</p>
+</div>
+<div class="mt-auto">
+<div class="flex justify-between items-center mb-xs">
+<span class="font-label-sm text-label-sm font-bold text-primary">65% complete</span>
+</div>
+<div class="w-full h-1 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[65%] progress-bar-glow"></div>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="min-w-[280px] md:min-w-[340px] bg-white border border-[#E5E1D8] rounded-lg p-lg editorial-shadow flex flex-col gap-md transition-transform hover:-translate-y-1">
+<div class="relative w-full h-40 rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Close-up macro shot of vibrant Banarasi silk fabric being woven on a traditional wooden loom. The gold zari threads catch the soft, diffused morning light. The color palette is rich with deep crimson and shimmering gold. The aesthetic is tactile and archival, highlighting the intricate textures of the craftsmanship." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTzckye70tRVXRxRa6cuBOiSpvaVsN95QI2JWut1HI6QmU-QSMZpYjwODhFtpGibXbZiYlfkZh0KLWIlVZg8cIXyKhhGl-05s_g3f0W4C3HuMBNHxyyeJOMFMGu2t_Tbz_O74J-ZneNi1jqh4JEHEN_224CuF2M-fbUWQr5gguOrphCPRi7z3UOuQ2x_UXgFhHrPAF_AqfCotH3Wo2WiYG9UeG4qJ-I0S2RZAEzB-VAQy6S1l-k-kfTA"/>
+<div class="absolute top-sm right-sm bg-white/90 backdrop-blur px-sm py-xs rounded text-[10px] font-bold uppercase tracking-tighter text-primary">Arts &amp; Crafts</div>
+</div>
+<div class="flex flex-col gap-xs">
+<h3 class="font-headline-md text-headline-md leading-tight">Warp of Time: Banarasi Silks</h3>
+<p class="font-label-sm text-label-sm text-secondary">Heritage Textiles • 4 min left</p>
+</div>
+<div class="mt-auto">
+<div class="flex justify-between items-center mb-xs">
+<span class="font-label-sm text-label-sm font-bold text-primary">82% complete</span>
+</div>
+<div class="w-full h-1 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[82%] progress-bar-glow"></div>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="min-w-[280px] md:min-w-[340px] bg-white border border-[#E5E1D8] rounded-lg p-lg editorial-shadow flex flex-col gap-md transition-transform hover:-translate-y-1">
+<div class="relative w-full h-40 rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A moody, atmospheric archival still life of black peppercorns scattered on an aged, weathered map of the Malabar coast. A single old brass compass sits nearby. The lighting is low-key, focusing on the texture of the spices and the parchment. The overall mood is one of discovery and historical depth, in a minimalist editorial style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhiBz1hjCRCVIW1LAJW-rGE1QZZbIzKAkF_brntsewUYRmhCq6TnuLgUa5gaVcTkHC3bZ85cwG6YOLqKM9r6Kqcah1Wn0qmyIuRN_VHQQgmfYFVO62zRQIk7rW4cK6xEPFVObzy7hAokeD4LLQs6rqC7w06daPSwu4A8cqI3wf9hy8plkDQ7UCynMRVVO902fyfrVj-gOi4VEdIKRYWaT4vh0yCMrUIyEzFQi2GwP_r8NHAfgL4-VnXQ"/>
+<div class="absolute top-sm right-sm bg-white/90 backdrop-blur px-sm py-xs rounded text-[10px] font-bold uppercase tracking-tighter text-primary">Culinary</div>
+</div>
+<div class="flex flex-col gap-xs">
+<h3 class="font-headline-md text-headline-md leading-tight">Black Gold: The Spice Trail</h3>
+<p class="font-label-sm text-label-sm text-secondary">Trade History • 18 min left</p>
+</div>
+<div class="mt-auto">
+<div class="flex justify-between items-center mb-xs">
+<span class="font-label-sm text-label-sm font-bold text-primary">15% complete</span>
+</div>
+<div class="w-full h-1 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[15%] progress-bar-glow"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Filter Bar -->
+<div class="sticky top-16 z-40 bg-background/80 backdrop-blur-md -mx-margin-mobile px-margin-mobile py-md mb-xl flex gap-sm overflow-x-auto no-scrollbar border-b border-surface-variant">
+<button class="whitespace-nowrap px-lg py-sm rounded-full bg-primary text-white font-label-sm text-label-sm shadow-sm">All History</button>
+<button class="whitespace-nowrap px-lg py-sm rounded-full bg-[#E5E1D8] text-on-surface font-label-sm text-label-sm hover:bg-surface-variant transition-colors">Ancient India</button>
+<button class="whitespace-nowrap px-lg py-sm rounded-full bg-[#E5E1D8] text-on-surface font-label-sm text-label-sm hover:bg-surface-variant transition-colors">Colonial Era</button>
+<button class="whitespace-nowrap px-lg py-sm rounded-full bg-[#E5E1D8] text-on-surface font-label-sm text-label-sm hover:bg-surface-variant transition-colors">Post-Independence</button>
+<button class="whitespace-nowrap px-lg py-sm rounded-full bg-[#E5E1D8] text-on-surface font-label-sm text-label-sm hover:bg-surface-variant transition-colors">Last 7 Days</button>
+</div>
+<!-- Timeline History -->
+<section class="flex flex-col gap-xl">
+<!-- Group: Today -->
+<div class="relative pl-xl">
+<div class="absolute left-0 top-0 bottom-0 w-px bg-surface-variant ml-2"></div>
+<div class="absolute left-0 top-0 w-4 h-4 rounded-full border-2 border-primary bg-background -ml-[7px]"></div>
+<h4 class="font-label-sm text-label-sm text-secondary uppercase tracking-[0.2em] mb-lg ml-md">Today</h4>
+<div class="flex flex-col gap-md ml-md">
+<div class="bg-white border border-[#E5E1D8] p-lg rounded-lg flex flex-col md:flex-row md:items-center justify-between gap-md group hover:border-primary/30 transition-colors">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-primary-container font-bold mb-xs">Ancient Civilizations</span>
+<h5 class="font-headline-md text-headline-md leading-tight mb-xs group-hover:text-primary transition-colors">The Lothal Dockyards: Bronze Age Engineering</h5>
+<div class="flex gap-md text-secondary font-label-sm text-label-sm">
+<span>Dr. Ananya Sharma</span>
+<span class="flex items-center gap-xs"><span class="material-symbols-outlined text-[14px]">schedule</span> 14 min read</span>
+</div>
+</div>
+<button class="self-start md:self-center border border-primary text-primary px-lg py-sm rounded-lg font-label-lg text-label-lg hover:bg-primary hover:text-white transition-all active:scale-95">Read Again</button>
+</div>
+</div>
+</div>
+<!-- Group: Yesterday -->
+<div class="relative pl-xl">
+<div class="absolute left-0 top-[-32px] bottom-0 w-px bg-surface-variant ml-2"></div>
+<div class="absolute left-0 top-0 w-4 h-4 rounded-full border-2 border-surface-variant bg-background -ml-[7px]"></div>
+<h4 class="font-label-sm text-label-sm text-secondary uppercase tracking-[0.2em] mb-lg ml-md">Yesterday</h4>
+<div class="flex flex-col gap-md ml-md">
+<div class="bg-white border border-[#E5E1D8] p-lg rounded-lg flex flex-col md:flex-row md:items-center justify-between gap-md group hover:border-primary/30 transition-colors opacity-80 hover:opacity-100">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary font-bold mb-xs">Folk Traditions</span>
+<h5 class="font-headline-md text-headline-md leading-tight mb-xs group-hover:text-primary transition-colors">Theyyam: The Dancing Gods of Kerala</h5>
+<div class="flex gap-md text-secondary font-label-sm text-label-sm">
+<span>Vikram Nair</span>
+<span class="flex items-center gap-xs"><span class="material-symbols-outlined text-[14px]">schedule</span> 22 min read</span>
+</div>
+</div>
+<button class="self-start md:self-center border border-primary text-primary px-lg py-sm rounded-lg font-label-lg text-label-lg hover:bg-primary hover:text-white transition-all active:scale-95">Read Again</button>
+</div>
+<div class="bg-white border border-[#E5E1D8] p-lg rounded-lg flex flex-col md:flex-row md:items-center justify-between gap-md group hover:border-primary/30 transition-colors opacity-80 hover:opacity-100">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary font-bold mb-xs">Natural Heritage</span>
+<h5 class="font-headline-md text-headline-md leading-tight mb-xs group-hover:text-primary transition-colors">Guardians of the Sundarbans</h5>
+<div class="flex gap-md text-secondary font-label-sm text-label-sm">
+<span>Priya Das</span>
+<span class="flex items-center gap-xs"><span class="material-symbols-outlined text-[14px]">schedule</span> 9 min read</span>
+</div>
+</div>
+<button class="self-start md:self-center border border-primary text-primary px-lg py-sm rounded-lg font-label-lg text-label-lg hover:bg-primary hover:text-white transition-all active:scale-95">Read Again</button>
+</div>
+</div>
+</div>
+<!-- Group: Last Week -->
+<div class="relative pl-xl">
+<div class="absolute left-0 top-[-32px] bottom-0 w-px bg-surface-variant ml-2 border-dashed"></div>
+<div class="absolute left-0 top-0 w-4 h-4 rounded-full border-2 border-surface-variant bg-background -ml-[7px]"></div>
+<h4 class="font-label-sm text-label-sm text-secondary uppercase tracking-[0.2em] mb-lg ml-md">Last Week</h4>
+<div class="flex flex-col gap-md ml-md">
+<div class="bg-white/50 border border-dashed border-[#E5E1D8] p-lg rounded-lg flex flex-col md:flex-row md:items-center justify-between gap-md group hover:bg-white hover:border-solid transition-all">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary font-bold mb-xs">Monuments</span>
+<h5 class="font-headline-md text-headline-md leading-tight mb-xs">Stepwells of Gujarat: Upside Down Palaces</h5>
+<div class="flex gap-md text-secondary font-label-sm text-label-sm">
+<span>Siddharth Roy</span>
+<span class="flex items-center gap-xs"><span class="material-symbols-outlined text-[14px]">schedule</span> 15 min read</span>
+</div>
+</div>
+<button class="self-start md:self-center border border-primary text-primary px-lg py-sm rounded-lg font-label-lg text-label-lg hover:bg-primary hover:text-white transition-all active:scale-95">Read Again</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Nav Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 bg-surface dark:bg-surface-dim px-4 pb-2 shadow-sm border-t border-surface-variant dark:border-outline-variant">
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim hover:text-primary-container active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">auto_stories</span>
+<span class="font-label-sm text-label-sm mt-1">Library</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-bold active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">history</span>
+<span class="font-label-sm text-label-sm mt-1">Timeline</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim hover:text-primary-container active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm mt-1">Discover</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim hover:text-primary-container active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for horizontal scrolling
+        const slider = document.querySelector('.overflow-x-auto');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            slider.classList.add('active');
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+        slider.addEventListener('mouseleave', () => {
+            isDown = false;
+            slider.classList.remove('active');
+        });
+        slider.addEventListener('mouseup', () => {
+            isDown = false;
+            slider.classList.remove('active');
+        });
+        slider.addEventListener('mousemove', (e) => {
+            if(!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 2;
+            slider.scrollLeft = scrollLeft - walk;
+        });
+
+        // Toggle Active State logic for demo purposes
+        const chips = document.querySelectorAll('.filter-bar button');
+        chips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                chips.forEach(c => {
+                    c.classList.remove('bg-primary', 'text-white');
+                    c.classList.add('bg-[#E5E1D8]', 'text-on-surface');
+                });
+                chip.classList.add('bg-primary', 'text-white');
+                chip.classList.remove('bg-[#E5E1D8]', 'text-on-surface');
+            });
+        });
+    </script>
+</body></html>

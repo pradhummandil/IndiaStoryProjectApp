@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Archive Downloads | India Story Project</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#ffb3ad",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed-dim": "#cdc5c0",
+                        "outline": "#8b716e",
+                        "inverse-on-surface": "#f3f0ea",
+                        "tertiary-fixed": "#ffe088",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#8b1e1e",
+                        "tertiary": "#735c00",
+                        "background": "#fcf9f3",
+                        "surface-container": "#f0eee8",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "primary": "#6a020a",
+                        "on-surface-variant": "#58413f",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#dcdad4",
+                        "surface-container-low": "#f6f3ed",
+                        "surface-container-highest": "#e5e2dc",
+                        "secondary-container": "#e6ded9",
+                        "on-primary-fixed-variant": "#891c1d",
+                        "surface-tint": "#aa3531",
+                        "on-secondary-container": "#67625e",
+                        "surface-variant": "#e5e2dc",
+                        "on-secondary-fixed-variant": "#4b4642",
+                        "secondary": "#635d5a",
+                        "inverse-primary": "#ffb3ad",
+                        "outline-variant": "#dfbfbc",
+                        "on-background": "#1c1c18",
+                        "on-secondary-fixed": "#1e1b18",
+                        "on-primary-fixed": "#410003",
+                        "surface": "#fcf9f3",
+                        "on-primary-container": "#ff9d95",
+                        "surface-bright": "#fcf9f3",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#4f3d00",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "tertiary-container": "#cca730",
+                        "surface-container-high": "#ebe8e2",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#e9e1dc",
+                        "on-tertiary-fixed": "#241a00",
+                        "on-surface": "#1c1c18",
+                        "primary-fixed": "#ffdad6",
+                        "inverse-surface": "#31312d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.8px",
+                        "xl": "12px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "unit": "8px",
+                        "md": "16px",
+                        "margin-mobile": "16px",
+                        "sm": "8px",
+                        "margin-desktop": "64px",
+                        "xxl": "48px",
+                        "xs": "4px",
+                        "gutter": "16px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "headline-md": ["EB Garamond"],
+                        "headline-lg": ["EB Garamond"],
+                        "display-lg-mobile": ["EB Garamond"],
+                        "display-lg": ["EB Garamond"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                        "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body {
+            background-color: #fcf9f3;
+            -webkit-font-smoothing: antialiased;
+        }
+        .editorial-shadow {
+            box-shadow: 0px 4px 12px rgba(45, 41, 38, 0.05);
+        }
+        .progress-ring__circle {
+            transition: stroke-dashoffset 0.35s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-background">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-background/90 backdrop-blur-md border-b border-outline-variant h-16 flex justify-between items-center px-margin-mobile md:px-margin-desktop">
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary hover:bg-surface-container-low p-2 rounded-full transition-colors active:opacity-70">
+                arrow_back
+            </button>
+<h1 class="font-headline-md text-headline-md text-primary tracking-tight">Archive Downloads</h1>
+</div>
+<button class="material-symbols-outlined text-secondary hover:bg-surface-container-low p-2 rounded-full transition-colors active:opacity-70">
+            settings
+        </button>
+</header>
+<main class="pt-24 pb-32 max-w-[720px] mx-auto px-margin-mobile md:px-0">
+<!-- Storage Management Dashboard -->
+<section class="mb-xxl">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg editorial-shadow">
+<div class="flex justify-between items-center mb-md">
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-secondary uppercase tracking-widest">Storage Usage</span>
+<span class="font-body-md text-body-md text-on-surface font-medium">1.2 GB of 5 GB used</span>
+</div>
+<div class="text-right">
+<span class="font-label-lg text-label-lg text-primary font-bold">14 Stories</span>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full w-[24%] transition-all duration-1000 ease-out" style="width: 24%;"></div>
+</div>
+<div class="mt-md flex justify-between">
+<p class="font-label-sm text-label-sm text-secondary">3.8 GB available for offline reading</p>
+<button class="text-primary font-label-lg text-label-lg hover:underline decoration-primary/30">Manage Storage</button>
+</div>
+</div>
+</section>
+<!-- Download List: Recent -->
+<section class="mb-xl">
+<h2 class="font-label-lg text-label-lg text-secondary uppercase tracking-[0.2em] mb-md border-b border-outline-variant pb-xs">Recent Downloads</h2>
+<div class="space-y-md">
+<!-- Story Card 1 -->
+<div class="group bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex gap-md editorial-shadow transition-transform active:scale-[0.98]">
+<div class="relative w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A vintage-style archival photograph of the Taj Mahal at sunrise, rendered in a warm, sepia-toned editorial style reminiscent of National Geographic. The lighting is soft and golden, highlighting the intricate marble details. The composition is balanced and elegant, fitting the India Story Project's minimalist and scholarly aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCZ5IW8ZBgzlc3ow6GyPXibw3AQ8iA46zWEIusXg5lbsYq1ZxGIJp7MHB_bAChvsYXBlV2JnlcNY5tnp1gYPbRJLVC5bCLzNVIcU3iEWyyp91XefcWBpQ9v6LKBEPP7kTTcXsyjxLxqEczp9Ank9apS4uQDgIPeavYXXR5a4BSG8jom_QHNvpYgqkPARiwkXAp35tpr2EN6WBg32aTGI74m49RKMo7ADqdW94Dbz-Uts6Hgqad1Dja5Q"/>
+</div>
+<div class="flex flex-col justify-between flex-grow">
+<div>
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider">Architecture</span>
+<button class="material-symbols-outlined text-secondary hover:text-primary transition-colors">more_vert</button>
+</div>
+<h3 class="font-headline-md text-headline-md leading-tight text-on-surface mt-1">The Marble Echo: Secrets of the Taj</h3>
+</div>
+<div class="flex items-center justify-between mt-xs">
+<div class="flex items-center gap-1 text-tertiary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-sm text-label-sm">Downloaded • 48MB</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Story Card 2 (In Progress) -->
+<div class="group bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex gap-md editorial-shadow">
+<div class="relative w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover grayscale-[0.3]" data-alt="A cinematic, high-fidelity digital painting of a bustling silk market in ancient Varanasi. Rich colors of deep crimson and saffron fabrics dominate the scene, with soft atmospheric lighting creating a sense of history and craftsmanship. The artistic style is sophisticated editorial, blending historical accuracy with modern digital precision for a cultural preservation platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZ4TYNpjS14FC4ZbF7VdZZXKtV0aH4LuHfjPcs2vShyTmucSMQzzKJY5KLZDdTqtXQmcZ3S_Sc-x-ZxqpdvnBoYtSxd6Vtdw2pUwYCewrJGISYA-IqltIxBdeIR_jg2NGLbH38l_9u-HZc0neTENSx7m30TIhoZ1fto4ePlXRsKmCqji96TrvdQyfcWTTIZB6kQlRhTYbOXq7Ox4xfuBy5rFzuZsErFQpspR8CltbBj_ubud3byb7l7Q"/>
+<div class="absolute inset-0 bg-black/20 flex items-center justify-center">
+<svg class="w-12 h-12">
+<circle class="text-white/30" cx="24" cy="24" fill="transparent" r="18" stroke="currentColor" stroke-width="3"></circle>
+<circle class="text-white progress-ring__circle" cx="24" cy="24" fill="transparent" r="18" stroke="currentColor" stroke-dasharray="113" stroke-dashoffset="39.55" stroke-linecap="round" stroke-width="3"></circle>
+</svg>
+</div>
+</div>
+<div class="flex flex-col justify-between flex-grow">
+<div>
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider">Trade &amp; Textiles</span>
+<button class="material-symbols-outlined text-secondary hover:text-primary transition-colors">close</button>
+</div>
+<h3 class="font-headline-md text-headline-md leading-tight text-on-surface mt-1">Saffron &amp; Silk: The Varanasi Trade</h3>
+</div>
+<div class="flex items-center justify-between mt-xs">
+<div class="flex items-center gap-1 text-secondary">
+<span class="font-label-sm text-label-sm animate-pulse">Downloading (65%) • 112MB</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Download List: Earlier -->
+<section class="mb-xl">
+<h2 class="font-label-lg text-label-lg text-secondary uppercase tracking-[0.2em] mb-md border-b border-outline-variant pb-xs">Earlier</h2>
+<div class="space-y-md">
+<!-- Story Card 3 -->
+<div class="group bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex gap-md editorial-shadow hover:bg-surface-container-low transition-colors">
+<div class="relative w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="An elegant editorial portrait of a freedom fighter from the 1940s, captured in a grainy, black and white archival style. The lighting is dramatic and moody, focusing on the determined expression. The background is a simple, textured studio wall, emphasizing the historical weight and human element of the India Story Project." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJufCTBh_zlacvNGFaRE0O92-NhTBG3Ch5zq4WSO1eA7LhSHtU78_QQBh7ZjGeFUe4ZbT2KiMUDmPqNZdDc7A6ebKaJJv-g8CeQ5iccukyZ-RRJgMLXtNBGc2WgEbq6w5JAOhq4kSd7KspMljR-TeER9jcy-EWXoLU-hWT3Tye3P21IpU3JgW2GXw_FQ4-oue-9m_QoS8EFRakFFJwLP3R9nTndhd0EKt7TRP8fikt_PjKRnCjLQeaOA"/>
+</div>
+<div class="flex flex-col justify-between flex-grow">
+<div>
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider">Independence</span>
+<button class="material-symbols-outlined text-secondary">more_vert</button>
+</div>
+<h3 class="font-headline-md text-headline-md leading-tight text-on-surface mt-1">Voices of the Salt March</h3>
+</div>
+<div class="flex items-center justify-between mt-xs">
+<div class="flex items-center gap-1 text-tertiary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-sm text-label-sm">Downloaded • 32MB</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Story Card 4 -->
+<div class="group bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex gap-md editorial-shadow">
+<div class="relative w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A lush, detailed botanical illustration of rare flora from the Western Ghats, rendered in a vintage scientific journal style. Delicate watercolors, fine ink lines, and parchment-like background. The visual is crisp and high-resolution, evoking a sense of discovery and scholarly documentation for a premium historical archive UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFhRcy70dLfeVxVK4NWY82_p4LQq6t8-Owvj-6Xgo6udU5jcME9qXQctgdaMHWD4dN1FHthdBTysJ7GCDI3N4jTYrN60_IdJ2sacfy2aK8OChLwZVMKHrO9qGGkifdl5Sr0VIeYjH-G3x09Ac__ydG1jio8lN0WwvJB_NlLQzLal1LNB6Y9HIIHwVHIeWiBtm2BN0EKSrfMYRI_MwG5L7N-99urR7GDEFTTDrVeHijpEL9WmCLaiagMg"/>
+</div>
+<div class="flex flex-col justify-between flex-grow">
+<div>
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider">Natural History</span>
+<button class="material-symbols-outlined text-secondary">more_vert</button>
+</div>
+<h3 class="font-headline-md text-headline-md leading-tight text-on-surface mt-1">Botany of the Sahyadri</h3>
+</div>
+<div class="flex items-center justify-between mt-xs">
+<div class="flex items-center gap-1 text-tertiary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-sm text-label-sm">Downloaded • 84MB</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Optional Empty State Template (Hidden by default) -->
+<section class="hidden py-xxl flex flex-col items-center text-center" id="empty-state">
+<div class="w-24 h-24 bg-surface-container-low rounded-full flex items-center justify-center mb-md border border-outline-variant">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'wght' 200;">library_books</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-sm">No offline stories yet</h2>
+<p class="font-body-md text-body-md text-secondary max-w-[320px]">Download stories from the archive to read them even when you're disconnected from the world.</p>
+<button class="mt-lg bg-primary-container text-white px-xl py-md rounded-lg font-label-lg tracking-wide hover:opacity-90 transition-opacity">Explore the Archive</button>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center h-20 px-4 bg-surface border-t border-outline-variant">
+<div class="flex flex-col items-center justify-center text-secondary hover:bg-surface-container-low transition-colors px-4 py-2 rounded-xl scale-95 active:scale-90 transition-transform duration-200 cursor-pointer">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm mt-1">Discover</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary font-bold hover:bg-surface-container-low transition-colors px-4 py-2 rounded-xl scale-95 active:scale-90 transition-transform duration-200 cursor-pointer">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">book_2</span>
+<span class="font-label-sm text-label-sm mt-1">Library</span>
+</div>
+<div class="flex flex-col items-center justify-center text-secondary hover:bg-surface-container-low transition-colors px-4 py-2 rounded-xl scale-95 active:scale-90 transition-transform duration-200 cursor-pointer">
+<span class="material-symbols-outlined">download_done</span>
+<span class="font-label-sm text-label-sm mt-1">Saved</span>
+</div>
+<div class="flex flex-col items-center justify-center text-secondary hover:bg-surface-container-low transition-colors px-4 py-2 rounded-xl scale-95 active:scale-90 transition-transform duration-200 cursor-pointer">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm mt-1">Profile</span>
+</div>
+</nav>
+<script>
+        // Simple Interaction Logic
+        document.querySelectorAll('.material-symbols-outlined').forEach(icon => {
+            icon.addEventListener('click', (e) => {
+                if(e.target.innerText === 'more_vert') {
+                    // Logic for showing removal menu
+                    const card = e.target.closest('.editorial-shadow');
+                    const confirmed = confirm("Remove from downloads?");
+                    if(confirmed) {
+                        card.style.opacity = '0';
+                        setTimeout(() => {
+                            card.remove();
+                        }, 300);
+                    }
+                }
+            });
+        });
+
+        // Simulating the download progress animation on the second card
+        const progressBar = document.querySelector('.progress-ring__circle');
+        if (progressBar) {
+            let progress = 65;
+            setInterval(() => {
+                if (progress < 100) {
+                    progress += 0.5;
+                    const offset = 113 - (progress / 100 * 113);
+                    progressBar.style.strokeDashoffset = offset;
+                }
+            }, 1000);
+        }
+    </script>
+</body></html>

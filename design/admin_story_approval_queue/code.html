@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Story Approval Queue | India Story Project</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#ff9d95",
+                        "surface-container": "#f0eee8",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "secondary-fixed-dim": "#cdc5c0",
+                        "inverse-surface": "#31312d",
+                        "primary-fixed-dim": "#ffb3ad",
+                        "outline-variant": "#dfbfbc",
+                        "surface-container-highest": "#e5e2dc",
+                        "surface-container-high": "#ebe8e2",
+                        "on-secondary-container": "#67625e",
+                        "tertiary": "#735c00",
+                        "tertiary-container": "#cca730",
+                        "on-secondary-fixed": "#1e1b18",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#ffdad6",
+                        "surface-bright": "#fcf9f3",
+                        "secondary-container": "#e6ded9",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#8b1e1e",
+                        "surface-dim": "#dcdad4",
+                        "secondary": "#635d5a",
+                        "on-tertiary-fixed": "#241a00",
+                        "on-tertiary": "#ffffff",
+                        "background": "#fcf9f3",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#ffe088",
+                        "secondary-fixed": "#e9e1dc",
+                        "outline": "#8b716e",
+                        "on-primary-fixed": "#410003",
+                        "surface-variant": "#e5e2dc",
+                        "on-tertiary-container": "#4f3d00",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#58413f",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#ffb3ad",
+                        "inverse-on-surface": "#f3f0ea",
+                        "primary": "#6a020a",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#891c1d",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#fcf9f3",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "on-background": "#1c1c18",
+                        "surface-container-low": "#f6f3ed",
+                        "on-secondary-fixed-variant": "#4b4642",
+                        "surface-tint": "#aa3531",
+                        "on-surface": "#1c1c18"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "sm": "8px",
+                        "margin-desktop": "64px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "unit": "8px",
+                        "xxl": "48px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-md": ["EB Garamond"],
+                        "label-sm": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg-mobile": ["EB Garamond"],
+                        "headline-lg": ["EB Garamond"],
+                        "display-lg": ["EB Garamond"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #FCF9F3;
+            color: #1c1c18;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .editorial-shadow {
+            box-shadow: 0px 4px 12px rgba(45, 41, 38, 0.05);
+        }
+        .active-tab-indicator {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #6a020a;
+        }
+        .comparison-gradient {
+            background: linear-gradient(to right, #fcf9f3 0%, #ffffff 100%);
+        }
+    </style>
+</head>
+<body class="bg-surface selection:bg-primary-fixed">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-40 bg-surface border-b border-surface-variant/20">
+<div class="flex justify-between items-center px-4 h-16 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary p-2 hover:bg-surface-container-high transition-colors rounded-full">arrow_back</button>
+<h1 class="font-headline-md text-headline-md text-primary">Story Approval</h1>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-container-high transition-colors rounded-full">settings</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="max-w-7xl mx-auto px-4 md:px-margin-desktop py-8 mb-24">
+<!-- Status Tabs -->
+<div class="flex gap-8 border-b border-surface-variant/20 mb-8 overflow-x-auto whitespace-nowrap">
+<button class="relative pb-4 font-label-lg text-label-lg text-primary active:opacity-80 transition-opacity">
+                Pending
+                <div class="active-tab-indicator"></div>
+</button>
+<button class="relative pb-4 font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors">
+                Under Review
+            </button>
+<button class="relative pb-4 font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors">
+                Rejected
+            </button>
+</div>
+<!-- Queue Section -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- List Section (8 cols) -->
+<div class="lg:col-span-7 space-y-4">
+<!-- Story Card 1: New Submission -->
+<div class="bg-white border border-[#E5E1D8] rounded-lg p-6 hover:shadow-md transition-all cursor-pointer group">
+<div class="flex justify-between items-start mb-4">
+<span class="px-2 py-1 bg-surface-container text-on-surface-variant font-label-sm text-label-sm rounded uppercase tracking-wider">New Submission</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">2 hours ago</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2 group-hover:text-primary transition-colors">The Silk Weavers of Kanchipuram</h3>
+<div class="flex items-center gap-3 mb-6">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A portrait of a professional editorial editor with a kind expression, shot in soft natural lighting against a library background with warm wooden shelves. The photographer uses a shallow depth of field to create a soft, clean aesthetic consistent with high-end cultural publications." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDP7dtqtNSbW1gEQ0KEkaGgbPRavh1acm5KBCN8WH6d32VJ8DOzKEdlckLZCQy6VIzXtq_vmd4O912e0vlKHmPvMt6Lgfjcp8vjk9g41uHisiLl5UicMfhuQ-E57rGypbQC5ML8Xi1xx04xg0AlZ_o4K1OEt-ji-nHPUeG7RJ1ygN7suWbvDgs9KDKeUL7-syMilY8apOyQVtKBM31qOFGQU_DWg40S_aIQnpGXB0R4ElTgJSud35ryg"/>
+</div>
+<span class="font-label-lg text-label-lg text-on-surface-variant">Arjun Deshmukh</span>
+</div>
+<div class="flex justify-end">
+<button class="px-6 py-2 border border-primary text-primary font-label-lg text-label-lg rounded-lg hover:bg-surface-container-high transition-colors">Review</button>
+</div>
+</div>
+<!-- Story Card 2: Expanded/Comparison View -->
+<div class="bg-white border-2 border-primary/20 rounded-lg p-6 editorial-shadow ring-1 ring-primary/10">
+<div class="flex justify-between items-start mb-4">
+<span class="px-2 py-1 bg-primary/10 text-primary font-label-lg text-label-lg rounded font-semibold uppercase tracking-wider">Revision Pending</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">5 hours ago</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Echoes of the Indus: Reimagining Harappa</h3>
+<div class="flex items-center gap-3 mb-6">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Close up portrait of a young Indian writer in a modern creative studio environment. The lighting is crisp and cool, highlighting the subject's thoughtful expression. The overall style is minimalist and high-contrast, fitting for a modern digital archival platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWFhUVqZ5YvNEGEbYIhChdJqpLs9S3EnBcznicPp2s-YRVXmu8o7m7oFpb5NVnDa3zf0oL5XfMSHj8hsggAdjhe71sz26ubaVLRRcl2aTsWa8h3irh1djRd6FU66d167u-mzBqLGlrBcpPWzwz5--iciIKcxIR0X8NieEldJIzfwksycXfEff8N2ZgH85obKlLc74NLWV4pVQ3AoQpNDHOLfsEKaUr6D3aeShTQaUJ4rmgTLRrMgA1cg"/>
+</div>
+<span class="font-label-lg text-label-lg text-on-surface-variant">Priya Sharma</span>
+</div>
+<!-- Simulated Revision Comparison -->
+<div class="bg-surface-container-low rounded-lg p-4 mb-6 border border-outline-variant/30">
+<h4 class="font-label-lg text-label-lg text-primary mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">history</span>
+                            Compare Revisions
+                        </h4>
+<div class="space-y-3">
+<div class="flex gap-4 items-start">
+<span class="material-symbols-outlined text-error text-[16px] mt-1">remove_circle</span>
+<p class="font-body-md text-body-md text-on-surface-variant line-through opacity-50">Archaeological findings suggest the city was abandoned overnight due to unknown factors.</p>
+</div>
+<div class="flex gap-4 items-start">
+<span class="material-symbols-outlined text-on-tertiary-fixed-variant text-[16px] mt-1">add_circle</span>
+<p class="font-body-md text-body-md text-on-surface">Recent isotopic analysis of silt layers indicates a protracted period of environmental stress, leading to a staggered migration rather than a sudden exodus.</p>
+</div>
+</div>
+<p class="mt-4 text-[13px] italic text-on-surface-variant font-medium">Author's note: Updated the environmental theory with latest 2023 research citations as requested.</p>
+</div>
+<div class="flex justify-end">
+<button class="px-6 py-2 bg-primary text-white font-label-lg text-label-lg rounded-lg hover:opacity-90 transition-opacity">Select for Approval</button>
+</div>
+</div>
+<!-- Story Card 3 -->
+<div class="bg-white border border-[#E5E1D8] rounded-lg p-6 hover:shadow-md transition-all cursor-pointer group opacity-80">
+<div class="flex justify-between items-start mb-4">
+<span class="px-2 py-1 bg-surface-container text-on-surface-variant font-label-sm text-label-sm rounded uppercase tracking-wider">New Submission</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">1 day ago</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2 group-hover:text-primary transition-colors">The Forgotten Stepwells of Rajasthan</h3>
+<div class="flex items-center gap-3 mb-6">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A portrait of a male researcher in his late 40s, outdoors near a historic stone structure in Rajasthan. The lighting is golden hour, casting a warm, majestic glow. The image style is documentary, with high detail and a traditional film feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8tBzrH2joF_IwMsHf_qTjb4vnk91I7GwJa_hCx8W5r2I_w8jG-5QhQITrQ_Qj97LIEGb80RnrHQfz99oB2QOogpePxN3KbKOpzIR88woKcwE0PAZNGBz2zGeYwedAoZF2gN9BE3VndKjBTUB91gQZuufzG7ovFBH9xuE6BsVCfpiQ8fNy_tpUhD4k6uhFNb0pBG4lsRvegwCAixSIrwNPYvBlfrwFuUv7Xmtr9AxPwdcHNSvhzjRE4w"/>
+</div>
+<span class="font-label-lg text-label-lg text-on-surface-variant">Vikram Singh</span>
+</div>
+<div class="flex justify-end">
+<button class="px-6 py-2 border border-primary text-primary font-label-lg text-label-lg rounded-lg hover:bg-surface-container-high transition-colors">Review</button>
+</div>
+</div>
+</div>
+<!-- Stats/Contextual Sidebar (4 cols) -->
+<aside class="lg:col-span-5 sticky top-24 hidden lg:block">
+<div class="bg-white border border-[#E5E1D8] rounded-lg p-8">
+<h2 class="font-headline-md text-headline-md text-primary mb-6">Editorial Insights</h2>
+<div class="space-y-6">
+<div class="pb-6 border-b border-surface-variant/20">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-2">Total Queue</p>
+<div class="flex items-baseline gap-2">
+<span class="text-display-lg font-display-lg text-on-surface">14</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Stories pending</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-4 bg-surface-container-low rounded-lg">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Approved today</p>
+<span class="text-headline-md font-headline-md text-tertiary">08</span>
+</div>
+<div class="p-4 bg-surface-container-low rounded-lg">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Turnaround</p>
+<span class="text-headline-md font-headline-md text-on-surface">4.2h</span>
+</div>
+</div>
+<div class="space-y-3">
+<p class="font-label-lg text-label-lg text-on-surface">Trending Categories</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded">Indus Valley</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded">Mughal Architecture</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface font-label-sm text-label-sm rounded">Oral Folklore</span>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Action Bar (Sticky Bottom) - Shown when a story is active -->
+<div class="fixed bottom-0 left-0 w-full z-50 bg-white border-t border-surface-variant/20 shadow-lg transform transition-transform duration-300">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-4">
+<div class="hidden md:flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">SELECTED STORY</span>
+<span class="font-label-lg text-label-lg text-on-surface truncate max-w-[200px]">Echoes of the Indus...</span>
+</div>
+<div class="flex items-center gap-3 w-full md:w-auto">
+<button class="flex-1 md:flex-none px-6 py-2.5 font-label-lg text-label-lg text-primary hover:bg-surface-container-high transition-colors rounded-lg">
+                    Reject
+                </button>
+<button class="flex-1 md:flex-none px-6 py-2.5 font-label-lg text-label-lg border border-primary text-primary hover:bg-primary/5 transition-colors rounded-lg">
+                    Request Revision
+                </button>
+<button class="flex-[2] md:flex-none px-8 py-2.5 font-label-lg text-label-lg bg-primary-container text-on-primary-container hover:opacity-90 transition-opacity rounded-lg editorial-shadow">
+                    Approve Story
+                </button>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation Shell (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-4 bg-surface border-t border-surface-variant/20">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-lg px-3 py-1 scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">rule</span>
+<span class="font-label-sm text-label-sm">Queue</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1" href="#">
+<span class="material-symbols-outlined">auto_stories</span>
+<span class="font-label-sm text-label-sm">Archive</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1" href="#">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for expanding revision comparison (Simulated)
+        const cards = document.querySelectorAll('.group');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-2px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Simple visibility toggle for the Action Bar based on "Selection"
+        // In a real app, this would be reactive. For this demo, it's always shown as requested.
+    </script>
+</body></html>

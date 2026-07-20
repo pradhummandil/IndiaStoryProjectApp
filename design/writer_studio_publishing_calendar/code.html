@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Publishing Calendar | India Story Project</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: EB Garamond & Inter -->
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#e9c349",
+                    "on-background": "#1c1c18",
+                    "on-tertiary-fixed": "#241a00",
+                    "tertiary": "#735c00",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed-variant": "#4b4642",
+                    "on-surface": "#1c1c18",
+                    "background": "#fcf9f3",
+                    "on-primary-fixed": "#410003",
+                    "outline-variant": "#dfbfbc",
+                    "primary": "#6a020a",
+                    "surface-dim": "#dcdad4",
+                    "on-tertiary-container": "#4f3d00",
+                    "tertiary-fixed": "#ffe088",
+                    "on-secondary-fixed": "#1e1b18",
+                    "surface-tint": "#aa3531",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-container": "#8b1e1e",
+                    "on-secondary-container": "#67625e",
+                    "on-primary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "tertiary-container": "#cca730",
+                    "surface-container-high": "#ebe8e2",
+                    "inverse-primary": "#ffb3ad",
+                    "secondary": "#635d5a",
+                    "on-tertiary-fixed-variant": "#574500",
+                    "secondary-fixed-dim": "#cdc5c0",
+                    "surface-variant": "#e5e2dc",
+                    "error": "#ba1a1a",
+                    "inverse-surface": "#31312d",
+                    "surface-bright": "#fcf9f3",
+                    "secondary-container": "#e6ded9",
+                    "on-tertiary": "#ffffff",
+                    "outline": "#8b716e",
+                    "inverse-on-surface": "#f3f0ea",
+                    "primary-fixed": "#ffdad6",
+                    "secondary-fixed": "#e9e1dc",
+                    "surface-container-highest": "#e5e2dc",
+                    "surface-container-low": "#f6f3ed",
+                    "primary-fixed-dim": "#ffb3ad",
+                    "surface-container": "#f0eee8",
+                    "on-primary-container": "#ff9d95",
+                    "on-primary-fixed-variant": "#891c1d",
+                    "surface": "#fcf9f3",
+                    "on-surface-variant": "#58413f",
+                    "error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xxl": "48px",
+                    "md": "16px",
+                    "xs": "4px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "64px",
+                    "sm": "8px",
+                    "unit": "8px",
+                    "gutter": "16px",
+                    "xl": "32px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "label-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-lg": ["EB Garamond"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["EB Garamond"],
+                    "display-lg": ["EB Garamond"],
+                    "display-lg-mobile": ["EB Garamond"]
+            },
+            "fontSize": {
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .editorial-shadow {
+            box-shadow: 0px 4px 12px rgba(45, 41, 38, 0.05);
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+        }
+        .warm-paper-texture {
+            background-color: #fcf9f3;
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-24 warm-paper-texture">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-background border-b border-outline-variant flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16">
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-surface-container-low transition-colors rounded-full active:scale-95 transition-all">
+<span class="material-symbols-outlined text-primary">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md italic text-primary">India Story Project</h1>
+</div>
+<div class="flex items-center gap-2">
+<span class="hidden md:block font-label-lg text-label-lg text-on-surface-variant mr-2">Writer Studio</span>
+<button class="p-2 hover:bg-surface-container-low transition-colors rounded-full active:scale-95 transition-all">
+<span class="material-symbols-outlined text-primary">account_circle</span>
+</button>
+</div>
+</header>
+<main class="pt-24 px-margin-mobile md:px-margin-desktop max-w-6xl mx-auto">
+<!-- Page Title -->
+<div class="mb-lg">
+<h2 class="font-headline-lg text-headline-lg text-on-background">Publishing Calendar</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Manage and schedule archival narratives for the upcoming month.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-xl">
+<!-- Calendar Section -->
+<section class="lg:col-span-8 bg-surface-container-lowest border border-outline-variant rounded-lg editorial-shadow overflow-hidden">
+<!-- Calendar Header -->
+<div class="flex items-center justify-between p-lg border-b border-outline-variant bg-surface-bright">
+<h3 class="font-headline-md text-headline-md text-on-surface">October 2023</h3>
+<div class="flex gap-2">
+<button class="p-2 hover:bg-surface-container-low border border-outline-variant rounded-lg transition-all active:scale-95">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="p-2 hover:bg-surface-container-low border border-outline-variant rounded-lg transition-all active:scale-95">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Calendar Grid -->
+<div class="p-4">
+<div class="calendar-grid mb-2 text-center">
+<div class="font-label-sm text-label-sm text-secondary py-2">SUN</div>
+<div class="font-label-sm text-label-sm text-secondary py-2">MON</div>
+<div class="font-label-sm text-label-sm text-secondary py-2">TUE</div>
+<div class="font-label-sm text-label-sm text-secondary py-2">WED</div>
+<div class="font-label-sm text-label-sm text-secondary py-2">THU</div>
+<div class="font-label-sm text-label-sm text-secondary py-2">FRI</div>
+<div class="font-label-sm text-label-sm text-secondary py-2">SAT</div>
+</div>
+<div class="calendar-grid border-l border-t border-outline-variant">
+<!-- Example empty days -->
+<div class="h-24 md:h-32 border-r border-b border-outline-variant bg-surface-container-low opacity-40"></div>
+<div class="h-24 md:h-32 border-r border-b border-outline-variant bg-surface-container-low opacity-40"></div>
+<!-- Day 1 -->
+<div class="h-24 md:h-32 border-r border-b border-outline-variant p-2 relative group hover:bg-surface-bright transition-colors cursor-pointer">
+<span class="font-label-sm text-label-sm">1</span>
+</div>
+<div class="h-24 md:h-32 border-r border-b border-outline-variant p-2 relative">
+<span class="font-label-sm text-label-sm">2</span>
+</div>
+<!-- Day 3 with item -->
+<div class="h-24 md:h-32 border-r border-b border-outline-variant p-2 relative bg-primary-container/5">
+<span class="font-label-sm text-label-sm text-primary font-bold">3</span>
+<div class="mt-2 flex flex-col gap-1">
+<div class="w-full h-1.5 bg-primary-container rounded-full"></div>
+<span class="hidden md:block text-[10px] leading-tight font-medium text-on-primary-fixed-variant truncate">Varanasi Ghats...</span>
+</div>
+</div>
+<div class="h-24 md:h-32 border-r border-b border-outline-variant p-2 relative">
+<span class="font-label-sm text-label-sm text-on-surface">4</span>
+</div>
+<div class="h-24 md:h-32 border-r border-b border-outline-variant p-2 relative">
+<span class="font-label-sm text-label-sm text-on-surface">5</span>
+</div>
+<!-- Row 2 -->
+<div class="h-24 md:h-32 border-r border-b border-outline-variant p-2 relative">
+<span class="font-label-sm text-label-sm">6</span>
+</div>
+<div class="h-24 md:h-32 border-r border-b border-outline-variant p-2 relative">
+<span class="font-label-sm text-label-sm">7</span>
+</div>
+<div class="h-24 md:h-32 border-r border-b border-outline-variant p-2 relative bg-primary-container/5">
+<span class="font-label-sm text-label-sm text-primary font-bold">8</span>
+<div class="mt-2 flex flex-col gap-1">
+<div class="w-full h-1.5 bg-primary-container rounded-full"></div>
+<span class="hidden md:block text-[10px] leading-tight font-medium text-on-primary-fixed-variant truncate">Hampi Temples...</span>
+</div>
+</div>
+<div class="h-24 md:h-32 border-r border-b border-outline-variant p-2 relative">
+<span class="font-label-sm text-label-sm">9</span>
+</div>
+<div class="h-24 md:h-32 border-r border-b border-outline-variant p-2 relative">
+<span class="font-label-sm text-label-sm">10</span>
+</div>
+<div class="h-24 md:h-32 border-r border-b border-outline-variant p-2 relative">
+<span class="font-label-sm text-label-sm">11</span>
+</div>
+<div class="h-24 md:h-32 border-r border-b border-outline-variant p-2 relative">
+<span class="font-label-sm text-label-sm">12</span>
+</div>
+<!-- Current Day -->
+<div class="h-24 md:h-32 border-r border-b border-outline-variant p-2 relative bg-surface-container-high border-2 border-primary">
+<span class="font-label-sm text-label-sm font-bold text-primary">24</span>
+<div class="absolute bottom-2 right-2">
+<div class="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+</div>
+</div>
+<!-- Fill remaining cells... -->
+<div class="h-24 md:h-32 border-r border-b border-outline-variant p-2">
+<span class="font-label-sm text-label-sm">25</span>
+</div>
+<div class="h-24 md:h-32 border-r border-b border-outline-variant p-2">
+<span class="font-label-sm text-label-sm">26</span>
+</div>
+<div class="h-24 md:h-32 border-r border-b border-outline-variant p-2">
+<span class="font-label-sm text-label-sm">27</span>
+</div>
+<div class="h-24 md:h-32 border-r border-b border-outline-variant p-2">
+<span class="font-label-sm text-label-sm">28</span>
+</div>
+<div class="h-24 md:h-32 border-r border-b border-outline-variant p-2">
+<span class="font-label-sm text-label-sm">29</span>
+</div>
+<div class="h-24 md:h-32 border-r border-b border-outline-variant p-2">
+<span class="font-label-sm text-label-sm">30</span>
+</div>
+<div class="h-24 md:h-32 border-r border-b border-outline-variant p-2">
+<span class="font-label-sm text-label-sm">31</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Sidebar: Upcoming Stories -->
+<aside class="lg:col-span-4 space-y-md">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-md text-headline-md text-on-surface">Upcoming Stories</h3>
+<button class="text-primary font-label-lg text-label-lg hover:underline transition-all">View All</button>
+</div>
+<!-- Story List -->
+<div class="space-y-4">
+<!-- Story Item 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-4 rounded-lg editorial-shadow hover:translate-x-1 transition-transform duration-300">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] font-bold tracking-widest uppercase text-primary-container bg-primary-container/10 px-2 py-0.5 rounded">Scheduled</span>
+<span class="font-label-sm text-label-sm text-secondary">Today, 09:00 AM</span>
+</div>
+<h4 class="font-headline-md text-lg leading-tight mb-1 text-on-surface">The Lost Temples of Hampi</h4>
+<p class="font-body-md text-sm text-on-surface-variant mb-3">By Dr. Arjun Mehta</p>
+<div class="flex gap-2">
+<button class="flex-1 py-2 border border-outline text-on-surface font-label-sm text-label-sm rounded-lg hover:bg-surface-container-low transition-colors">Edit Story</button>
+<button class="p-2 border border-outline rounded-lg hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-sm">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Story Item 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-4 rounded-lg editorial-shadow">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] font-bold tracking-widest uppercase text-tertiary bg-tertiary-container/10 px-2 py-0.5 rounded">Ready</span>
+<span class="font-label-sm text-label-sm text-secondary">Oct 26, 11:30 AM</span>
+</div>
+<h4 class="font-headline-md text-lg leading-tight mb-1 text-on-surface">Silk Routes: The Malabar Chapter</h4>
+<p class="font-body-md text-sm text-on-surface-variant mb-3">By Sarah Hussain</p>
+<div class="flex gap-2">
+<button class="flex-1 py-2 border border-outline text-on-surface font-label-sm text-label-sm rounded-lg hover:bg-surface-container-low transition-colors">Review Draft</button>
+<button class="p-2 border border-outline rounded-lg hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-sm">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Story Item 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-4 rounded-lg editorial-shadow">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] font-bold tracking-widest uppercase text-secondary bg-secondary-container/30 px-2 py-0.5 rounded">Drafting</span>
+<span class="font-label-sm text-label-sm text-secondary">Oct 29, 08:00 AM</span>
+</div>
+<h4 class="font-headline-md text-lg leading-tight mb-1 text-on-surface">Bazaar Chronicles of Old Delhi</h4>
+<p class="font-body-md text-sm text-on-surface-variant mb-3">By Karan Singh</p>
+<div class="flex gap-2">
+<button class="flex-1 py-2 border border-outline text-on-surface font-label-sm text-label-sm rounded-lg hover:bg-surface-container-low transition-colors">Resume Writing</button>
+<button class="p-2 border border-outline rounded-lg hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-sm">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Stats/Archive Teaser Card -->
+<div class="p-lg bg-primary-container text-on-primary rounded-lg shadow-lg relative overflow-hidden">
+<div class="relative z-10">
+<h5 class="font-headline-md text-lg mb-2">Editorial Pulse</h5>
+<p class="text-sm opacity-90 mb-4 font-body-md">You have 12 narratives currently in the publishing queue for Q4.</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+<span class="font-label-lg text-label-lg">15% increase in output</span>
+</div>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-[120px]">auto_stories</span>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- FAB -->
+<button class="fixed bottom-24 right-6 md:right-12 bg-primary-container text-on-primary w-14 h-14 md:w-56 md:h-14 rounded-full md:rounded-xl shadow-xl flex items-center justify-center gap-2 hover:scale-105 active:scale-95 transition-all z-50 group">
+<span class="material-symbols-outlined">add</span>
+<span class="hidden md:block font-label-lg text-label-lg">Schedule New Story</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-surface border-t border-outline-variant flex justify-around items-center h-20 pb-safe px-4 shadow-md">
+<!-- Calendar Tab (Active) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary rounded-lg px-3 py-1 scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+<span class="font-label-sm text-label-sm">Calendar</span>
+</a>
+<!-- Stories Tab -->
+<a class="flex flex-col items-center justify-center text-secondary p-2 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-label-sm text-label-sm">Stories</span>
+</a>
+<!-- Drafts Tab -->
+<a class="flex flex-col items-center justify-center text-secondary p-2 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">edit_note</span>
+<span class="font-label-sm text-label-sm">Drafts</span>
+</a>
+<!-- Studio Tab -->
+<a class="flex flex-col items-center justify-center text-secondary p-2 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">auto_stories</span>
+<span class="font-label-sm text-label-sm">Studio</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for Calendar Cells
+        document.querySelectorAll('.calendar-grid div').forEach(cell => {
+            cell.addEventListener('click', function() {
+                if(this.classList.contains('p-2')) {
+                    // Logic for selecting a day
+                    document.querySelectorAll('.calendar-grid div').forEach(c => c.classList.remove('bg-surface-container-high', 'border-primary'));
+                    this.classList.add('bg-surface-container-high', 'border-primary');
+                }
+            });
+        });
+
+        // Atmospheric effect: Subtle float for FAB
+        let angle = 0;
+        function animateFAB() {
+            const fab = document.querySelector('button.fixed.bottom-24');
+            angle += 0.05;
+            const y = Math.sin(angle) * 3;
+            fab.style.transform = `translateY(${y}px)`;
+            requestAnimationFrame(animateFAB);
+        }
+        // animateFAB(); // Uncomment to enable the subtle float effect
+    </script>
+</body></html>
