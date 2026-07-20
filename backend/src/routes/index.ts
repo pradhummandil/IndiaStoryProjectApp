@@ -1,5 +1,7 @@
-import { Router } from 'express';
+import { Router } from "express";
+import { apiRouter } from "./api";
 
-// No feature routes in scaffolding.
 export const routes = Router();
 
+// Mount all API routes under /api
+routes.use("/api", apiRouter);

@@ -1,18 +1,18 @@
-import express, { type Express, type Request, type Response } from 'express';
-import compression from 'compression';
-import cors from 'cors';
-import helmet from 'helmet';
-import morgan from 'morgan';
-import cookieParser from 'cookie-parser';
-import rateLimit from 'express-rate-limit';
+import express, { type Express, type Request, type Response } from "express";
+import compression from "compression";
+import cors from "cors";
+import helmet from "helmet";
+import morgan from "morgan";
+import cookieParser from "cookie-parser";
+import rateLimit from "express-rate-limit";
 
-import { env } from './config/env';
-import { configureLogger, httpLoggerStream } from './config/logger';
-import { errorHandler, notFoundHandler } from './core/errors/httpErrors';
-import { asyncHandler } from './core/utils/asyncHandler';
-import { applyRequestValidation } from './core/middleware/requestValidation';
+import { env } from "./config/env";
+import { configureLogger, httpLoggerStream } from "./config/logger";
+import { errorHandler, notFoundHandler } from "./core/errors/httpErrors";
+import { asyncHandler } from "./core/utils/asyncHandler";
+import { applyRequestValidation } from "./core/middleware/requestValidation";
+import { routes } from "./routes";
 
-// Note: No feature routes/controllers here. We only expose /health.
 export async function buildApp(): Promise<Express> {
   const app = express();
 
@@ -22,11 +22,13 @@ export async function buildApp(): Promise<Express> {
   // Mongo connection is prepared but can be delayed to server.ts.
 
   // Trust proxy if behind load balancers.
-  app.set('trust proxy', env.TRUST_PROXY);
+  app.set("trust proxy", env.TRUST_PROXY);
 
   // Body parsing
   app.use(express.json({ limit: env.JSON_BODY_LIMIT }));
-  app.use(express.urlencoded({ extended: false, limit: env.URL_ENCODED_LIMIT }));
+  app.use(
+    express.urlencoded({ extended: false, limit: env.URL_ENCODED_LIMIT }),
+  );
 
   // Security
   app.use(helmet());
@@ -36,7 +38,7 @@ export async function buildApp(): Promise<Express> {
     cors({
       origin: env.CORS_ORIGIN,
       credentials: env.CORS_CREDENTIALS,
-      methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+      methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     }),
   );
 
@@ -64,17 +66,20 @@ export async function buildApp(): Promise<Express> {
 
   // Health check endpoint
   app.get(
-    '/health',
+    "/health",
     asyncHandler(async (_req: Request, res: Response) => {
       const ok = true;
       res.status(200).json({
-        status: ok ? 'ok' : 'degraded',
+        status: ok ? "ok" : "degraded",
         uptimeSeconds: process.uptime(),
-        mongo: env.MONGO_ENABLED ? 'configured' : 'disabled',
+        mongo: env.MONGO_ENABLED ? "configured" : "disabled",
         env: env.NODE_ENV,
       });
     }),
   );
+
+  // Mount feature API routes
+  app.use(routes);
 
   // Not found
   app.use(notFoundHandler);
@@ -84,4 +89,3 @@ export async function buildApp(): Promise<Express> {
 
   return app;
 }
-

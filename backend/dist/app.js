@@ -16,14 +16,14 @@ const logger_1 = require("./config/logger");
 const httpErrors_1 = require("./core/errors/httpErrors");
 const asyncHandler_1 = require("./core/utils/asyncHandler");
 const requestValidation_1 = require("./core/middleware/requestValidation");
-// Note: No feature routes/controllers here. We only expose /health.
+const routes_1 = require("./routes");
 async function buildApp() {
     const app = (0, express_1.default)();
     (0, logger_1.configureLogger)();
     // Environment validation already executed on import.
     // Mongo connection is prepared but can be delayed to server.ts.
     // Trust proxy if behind load balancers.
-    app.set('trust proxy', env_1.env.TRUST_PROXY);
+    app.set("trust proxy", env_1.env.TRUST_PROXY);
     // Body parsing
     app.use(express_1.default.json({ limit: env_1.env.JSON_BODY_LIMIT }));
     app.use(express_1.default.urlencoded({ extended: false, limit: env_1.env.URL_ENCODED_LIMIT }));
@@ -33,7 +33,7 @@ async function buildApp() {
     app.use((0, cors_1.default)({
         origin: env_1.env.CORS_ORIGIN,
         credentials: env_1.env.CORS_CREDENTIALS,
-        methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+        methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     }));
     // Compression
     app.use((0, compression_1.default)());
@@ -51,15 +51,17 @@ async function buildApp() {
     // Request validation structure (placeholder for future validators)
     (0, requestValidation_1.applyRequestValidation)(app);
     // Health check endpoint
-    app.get('/health', (0, asyncHandler_1.asyncHandler)(async (_req, res) => {
+    app.get("/health", (0, asyncHandler_1.asyncHandler)(async (_req, res) => {
         const ok = true;
         res.status(200).json({
-            status: ok ? 'ok' : 'degraded',
+            status: ok ? "ok" : "degraded",
             uptimeSeconds: process.uptime(),
-            mongo: env_1.env.MONGO_ENABLED ? 'configured' : 'disabled',
+            mongo: env_1.env.MONGO_ENABLED ? "configured" : "disabled",
             env: env_1.env.NODE_ENV,
         });
     }));
+    // Mount feature API routes
+    app.use(routes_1.routes);
     // Not found
     app.use(httpErrors_1.notFoundHandler);
     // Global error handler

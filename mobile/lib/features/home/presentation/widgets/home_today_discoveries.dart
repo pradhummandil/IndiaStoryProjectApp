@@ -2,6 +2,15 @@ import 'package:flutter/material.dart';
 
 import '../../domain/models/home_story.dart';
 
+/// "Today's Discoveries" editorial cards, matching HTML exactly.
+///
+/// HTML: design/home_discover_production/code.html
+/// - Title with bottom border (border-b border-outline-variant/30 pb-2)
+/// - Category badge: border border-primary/30 px-2 py-0.5 rounded-sm
+/// - Reading time with schedule icon
+/// - Alternating image left/right on desktop (md:order-last)
+/// - Author row with avatar circle + name
+/// - Bookmark button
 class HomeTodayDiscoveries extends StatelessWidget {
   const HomeTodayDiscoveries({super.key, required this.discoveries});
 
@@ -14,18 +23,29 @@ class HomeTodayDiscoveries extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text(
-          'Today\'s Discoveries',
-          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-            color: colors.onSurface,
-            fontWeight: FontWeight.w800,
+        // Title with bottom border (matches HTML: border-b border-outline-variant/30 pb-2)
+        Container(
+          padding: const EdgeInsets.only(bottom: 8),
+          decoration: BoxDecoration(
+            border: Border(
+              bottom: BorderSide(
+                color: colors.outlineVariant.withValues(alpha: 0.3),
+              ),
+            ),
+          ),
+          child: Text(
+            "Today's Discoveries",
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+              color: colors.onSurface,
+              fontWeight: FontWeight.w800,
+            ),
           ),
         ),
-        const SizedBox(height: 8),
-        ...discoveries.map((d) {
+        const SizedBox(height: 24),
+        ...discoveries.asMap().entries.map((entry) {
           return Padding(
-            padding: const EdgeInsets.only(bottom: 18),
-            child: _DiscoveryCard(discovery: d),
+            padding: const EdgeInsets.only(bottom: 32),
+            child: _DiscoveryCard(discovery: entry.value),
           );
         }),
       ],
@@ -45,66 +65,86 @@ class _DiscoveryCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: colors.surfaceContainerLowest,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(4),
         border: Border.all(color: colors.outlineVariant.withValues(alpha: 0.4)),
         boxShadow: [
           BoxShadow(
-            blurRadius: 6,
-            color: Colors.black.withValues(alpha: 0.05),
+            blurRadius: 8,
+            color: Colors.black.withValues(alpha: 0.04),
             offset: const Offset(0, 2),
           ),
         ],
       ),
       child: LayoutBuilder(
         builder: (context, c) {
-          final vertical = c.maxWidth < 700;
-          return vertical
-              ? Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    SizedBox(
-                      height: 220,
-                      child: DecoratedBox(
-                        decoration: BoxDecoration(
-                          color: colors.surfaceVariant,
-                          borderRadius: const BorderRadius.vertical(
-                            top: Radius.circular(12),
-                          ),
-                        ),
+          final isWide = c.maxWidth >= 768;
+
+          if (!isWide) {
+            // Mobile: stacked layout
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                SizedBox(
+                  height: 250,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: colors.surfaceVariant,
+                      borderRadius: const BorderRadius.vertical(
+                        top: Radius.circular(4),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: _DiscoveryContent(discovery: discovery),
-                    ),
-                  ],
-                )
-              : Row(
-                  children: [
-                    Expanded(
-                      flex: 5,
-                      child: SizedBox(
-                        height: 260,
-                        child: DecoratedBox(
-                          decoration: BoxDecoration(
-                            color: colors.surfaceVariant,
-                            borderRadius: const BorderRadius.horizontal(
-                              left: Radius.circular(12),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 7,
-                      child: Padding(
-                        padding: const EdgeInsets.all(18),
-                        child: _DiscoveryContent(discovery: discovery),
-                      ),
-                    ),
-                  ],
-                );
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(24),
+                  child: _DiscoveryContent(discovery: discovery),
+                ),
+              ],
+            );
+          }
+
+          // Desktop: side-by-side with alternating layout
+          final cardIndex = discovery.hashCode; // use discovery identity
+          final imageOnLeft = cardIndex.isEven;
+
+          return Row(
+            children: [
+              if (imageOnLeft) _DiscoveryImage(colors: colors),
+              Expanded(
+                flex: 7,
+                child: Padding(
+                  padding: const EdgeInsets.all(24),
+                  child: _DiscoveryContent(discovery: discovery),
+                ),
+              ),
+              if (!imageOnLeft) _DiscoveryImage(colors: colors),
+            ],
+          );
         },
+      ),
+    );
+  }
+}
+
+class _DiscoveryImage extends StatelessWidget {
+  const _DiscoveryImage({required this.colors});
+
+  final ColorScheme colors;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      flex: 5,
+      child: SizedBox(
+        height: 250,
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            color: colors.surfaceVariant,
+            borderRadius: const BorderRadius.horizontal(
+              left: Radius.circular(4),
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -122,40 +162,43 @@ class _DiscoveryContent extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        // Category badge + reading time row
         Row(
           children: [
-            DecoratedBox(
+            // Category badge: border border-primary/30 px-2 py-0.5 rounded-sm
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: colors.primary.withValues(alpha: 0.35),
+                  color: colors.primary.withValues(alpha: 0.3),
                 ),
                 borderRadius: BorderRadius.circular(4),
               ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 10,
-                  vertical: 4,
-                ),
-                child: Text(
-                  discovery.category,
-                  style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                    color: colors.primary,
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: 1,
-                  ),
+              child: Text(
+                discovery.category,
+                style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                  color: colors.primary,
+                  fontWeight: FontWeight.w500,
+                  letterSpacing: 0.5,
                 ),
               ),
             ),
-            const SizedBox(width: 10),
+            const SizedBox(width: 8),
+            // Reading time with schedule icon
             Row(
+              mainAxisSize: MainAxisSize.min,
               children: [
-                const Icon(Icons.schedule_rounded, size: 16),
+                Icon(
+                  Icons.schedule_rounded,
+                  size: 14,
+                  color: colors.onSurfaceVariant,
+                ),
                 const SizedBox(width: 4),
                 Text(
                   discovery.readTime,
                   style: Theme.of(context).textTheme.labelSmall?.copyWith(
                     color: colors.onSurfaceVariant,
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
               ],
@@ -163,6 +206,7 @@ class _DiscoveryContent extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 12),
+        // Title
         Text(
           discovery.title,
           style: Theme.of(context).textTheme.headlineMedium?.copyWith(
@@ -171,6 +215,7 @@ class _DiscoveryContent extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 12),
+        // Description
         Text(
           discovery.description,
           style: Theme.of(
@@ -179,27 +224,35 @@ class _DiscoveryContent extends StatelessWidget {
           maxLines: 3,
           overflow: TextOverflow.ellipsis,
         ),
-        const SizedBox(height: 18),
+        const SizedBox(height: 16),
+        // Author row + bookmark button
         Row(
           children: [
-            CircleAvatar(
-              radius: 14,
-              backgroundColor: colors.surfaceVariant,
-              child: const Icon(Icons.person_outline_rounded, size: 16),
+            // Author avatar
+            Container(
+              width: 32,
+              height: 32,
+              decoration: BoxDecoration(
+                color: colors.surfaceVariant,
+                borderRadius: BorderRadius.circular(999),
+              ),
+              child: const Icon(Icons.person_rounded, size: 16),
             ),
-            const SizedBox(width: 10),
+            const SizedBox(width: 8),
             Text(
               'By ${discovery.author}',
               style: Theme.of(context).textTheme.labelSmall?.copyWith(
                 color: colors.onSurfaceVariant,
-                fontWeight: FontWeight.w700,
+                fontWeight: FontWeight.w500,
               ),
             ),
             const Spacer(),
+            // Bookmark button
             IconButton(
               onPressed: () {},
               icon: const Icon(Icons.bookmark_border_rounded),
               color: colors.primary,
+              visualDensity: VisualDensity.compact,
             ),
           ],
         ),
