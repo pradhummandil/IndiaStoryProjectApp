@@ -12,6 +12,7 @@ import '../../features/home/presentation/screens/home_screen.dart';
 import '../../features/writer_studio/presentation/screens/writer_studio_screen.dart';
 import '../../features/writer_studio/presentation/screens/ai_assistant_screen.dart';
 import '../../features/writer_studio/presentation/screens/publish_review_screen.dart';
+import '../../features/saved_stories/presentation/screens/saved_stories_screen.dart';
 
 GoRouter buildAppRouter() {
   return GoRouter(
@@ -52,6 +53,10 @@ GoRouter buildAppRouter() {
         path: '/writer-studio/publish/:storyId',
         builder: (context, state) =>
             PublishReviewScreen(storyId: state.pathParameters['storyId'] ?? ''),
+      ),
+      GoRoute(
+        path: '/saved-stories',
+        builder: (context, state) => const SavedStoriesScreen(),
       ),
     ],
     errorBuilder: (context, state) {
