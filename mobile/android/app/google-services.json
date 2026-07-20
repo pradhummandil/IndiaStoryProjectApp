@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1036754373740",
+    "firebase_url": "https://india-story-project-27b9c-default-rtdb.firebaseio.com",
+    "project_id": "india-story-project-27b9c",
+    "storage_bucket": "india-story-project-27b9c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1036754373740:android:7d3a36f4f17c439875dc49",
+        "android_client_info": {
+          "package_name": "com.indiastoryproject.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1036754373740-2ob77tdg1o3o2vndibkaa4udvkks8mu4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzdHC1h94a7w7vF0Sqr2LKP11VRIovnMA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1036754373740-2ob77tdg1o3o2vndibkaa4udvkks8mu4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

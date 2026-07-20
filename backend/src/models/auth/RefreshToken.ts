@@ -1,43 +1,18 @@
-import mongoose, { Schema, type HydratedDocument } from 'mongoose';
+import { z } from "zod";
+// Domain model for refresh tokens.
+// NOTE: This file is now Prisma-backed (Mongo/Mongoose schema removed).
 
-export interface RefreshToken {
-  userId: mongoose.Types.ObjectId;
-  tokenHash: string;
-  expiresAt: Date;
-  deviceInfo?: string;
-  revoked: boolean;
-  createdAt: Date;
-  updatedAt: Date;
-}
+export const RefreshTokenSchema = z.object({
+  userId: z.any(),
+  tokenHash: z.string().min(20).max(255),
+  expiresAt: z.date(),
+  deviceInfo: z.string().optional().default(""),
+  revoked: z.boolean(),
+  createdAt: z.date(),
+  updatedAt: z.date(),
+});
 
-type RefreshTokenDocument = HydratedDocument<RefreshToken>;
+export type RefreshToken = z.infer<typeof RefreshTokenSchema>;
 
-const RefreshTokenSchema = new Schema<RefreshToken>(
-
-  {
-    userId: {
-      type: Schema.Types.ObjectId,
-      ref: 'User',
-      required: true,
-      index: true,
-    },
-    tokenHash: {
-      type: String,
-      required: true,
-      minlength: 20,
-      maxlength: 255,
-      index: true,
-    },
-    expiresAt: { type: Date, required: true, index: true },
-    deviceInfo: { type: String, required: false, default: '' },
-    revoked: { type: Boolean, required: true, default: false, index: true },
-  },
-  { timestamps: true },
-);
-
-RefreshTokenSchema.index({ userId: 1, tokenHash: 1 }, { unique: true });
-
-export const RefreshTokenModel = mongoose.model<RefreshTokenDocument>(
-  'RefreshToken',
-  RefreshTokenSchema,
-);
+// Convenience alias for existing call sites that might expect this type.
+export type RefreshTokenUserId = string;

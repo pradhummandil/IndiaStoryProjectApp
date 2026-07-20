@@ -6,15 +6,16 @@ class HomeStory {
     required this.readTime,
     required this.progressPercent,
     required this.lastRead,
+    this.imageUrl,
   });
 
   final String title;
   final String category;
   final String description;
-
   final String readTime;
   final int progressPercent;
   final String lastRead;
+  final String? imageUrl;
 }
 
 class HomeReadingStreak {
@@ -42,6 +43,7 @@ class HomeDiscoveryCard {
     required this.title,
     required this.description,
     required this.author,
+    this.imageUrl,
   });
 
   final String category;
@@ -49,6 +51,7 @@ class HomeDiscoveryCard {
   final String title;
   final String description;
   final String author;
+  final String? imageUrl;
 }
 
 class HomeCuratedCollection {

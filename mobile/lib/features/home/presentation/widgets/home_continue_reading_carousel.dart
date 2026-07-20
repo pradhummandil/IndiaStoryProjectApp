@@ -2,6 +2,17 @@ import 'package:flutter/material.dart';
 
 import '../../domain/models/home_story.dart';
 
+/// "Continue Reading" horizontal carousel, matching HTML exactly.
+///
+/// HTML: design/home_discover_production/code.html
+/// - Title: font-headline-lg-mobile (28px/36px, weight 600) on mobile,
+///          font-headline-lg (32px/40px, weight 600) on desktop
+/// - Cards: 280px wide mobile, 320px wide desktop, snap-start
+/// - "12 min left" badge: bg-surface/90 backdrop-blur-sm, label-sm
+/// - Category label: label-sm, uppercase, text-primary
+/// - Title: title-lg (22px/28px, weight 500)
+/// - Progress bar: h-1 (4px), bg-surface-variant, filled with primary
+/// - Progress labels: label-sm, on-surface-variant
 class HomeContinueReadingCarousel extends StatelessWidget {
   const HomeContinueReadingCarousel({super.key, required this.stories});
 
@@ -10,23 +21,23 @@ class HomeContinueReadingCarousel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
+    final isDesktop = MediaQuery.of(context).size.width >= 1024;
+
+    if (stories.isEmpty) return const SizedBox.shrink();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Text(
-              'Continue Reading',
-              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                color: colors.onSurface,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-          ],
+        Text(
+          'Continue Reading',
+          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+            color: colors.onSurface,
+            fontWeight: FontWeight.w600,
+            fontSize: isDesktop ? 32 : 28,
+            height: isDesktop ? 40 / 32 : 36 / 28,
+          ),
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 16),
         SizedBox(
           height: 280,
           child: ListView.separated(
@@ -60,19 +71,19 @@ class _ContinueStoryCardState extends State<_ContinueStoryCard> {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
-
-    final cardWidth = MediaQuery.of(context).size.width >= 600 ? 320.0 : 280.0;
+    final isDesktop = MediaQuery.of(context).size.width >= 600;
+    final cardWidth = isDesktop ? 320.0 : 280.0;
 
     final card = Container(
       width: cardWidth,
       decoration: BoxDecoration(
         color: colors.surfaceContainerLowest,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(8),
         border: Border.all(color: colors.outlineVariant.withValues(alpha: 0.5)),
         boxShadow: [
           BoxShadow(
-            blurRadius: 6,
-            color: Colors.black.withValues(alpha: 0.06),
+            blurRadius: 8,
+            color: Colors.black.withValues(alpha: 0.04),
             offset: const Offset(0, 2),
           ),
         ],
@@ -80,80 +91,91 @@ class _ContinueStoryCardState extends State<_ContinueStoryCard> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          // Image area
           SizedBox(
             height: 128,
             child: Stack(
               children: [
+                // Background placeholder
                 Positioned.fill(
                   child: DecoratedBox(
                     decoration: BoxDecoration(
                       color: colors.surfaceVariant,
                       borderRadius: const BorderRadius.vertical(
-                        top: Radius.circular(12),
+                        top: Radius.circular(8),
                       ),
                     ),
                   ),
                 ),
+                // "12 min left" badge
                 Positioned(
-                  top: 10,
-                  right: 10,
-                  child: DecoratedBox(
+                  top: 8,
+                  right: 8,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 4,
+                    ),
                     decoration: BoxDecoration(
                       color: colors.surface.withValues(alpha: 0.9),
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(4),
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 10,
-                        vertical: 6,
-                      ),
-                      child: Text(
-                        widget.story.readTime,
-                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                          color: colors.onSurface,
-                          fontWeight: FontWeight.w700,
-                        ),
+                    child: Text(
+                      widget.story.readTime,
+                      style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                        color: colors.onSurface,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 11,
+                        height: 16 / 11,
                       ),
                     ),
                   ),
                 ),
+                // Hover zoom effect (web only)
                 AnimatedScale(
-                  scale: _hover ? 1.04 : 1.0,
-                  duration: const Duration(milliseconds: 400),
+                  scale: _hover ? 1.05 : 1.0,
+                  duration: const Duration(milliseconds: 500),
                   curve: Curves.easeOut,
                   child: const SizedBox.shrink(),
                 ),
               ],
             ),
           ),
+          // Content
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  // Category label
                   Text(
-                    widget.story.category,
+                    widget.story.category.toUpperCase(),
                     style: Theme.of(context).textTheme.labelSmall?.copyWith(
                       color: colors.primary,
-                      letterSpacing: 1.2,
-                      fontWeight: FontWeight.w700,
+                      letterSpacing: 0.5,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 11,
+                      height: 16 / 11,
                     ),
                   ),
                   const SizedBox(height: 8),
+                  // Title
                   Text(
                     widget.story.title,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       color: colors.onSurface,
-                      fontWeight: FontWeight.w700,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 22,
+                      height: 28 / 22,
                     ),
                   ),
                   const Spacer(),
-                  const SizedBox(height: 12),
+                  // Progress bar
                   ClipRRect(
-                    borderRadius: BorderRadius.circular(999),
+                    borderRadius: BorderRadius.circular(2),
                     child: Container(
                       height: 4,
                       color: colors.surfaceVariant,
@@ -166,23 +188,31 @@ class _ContinueStoryCardState extends State<_ContinueStoryCard> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 8),
+                  // Progress labels
                   Row(
                     children: [
                       Text(
                         '${widget.story.progressPercent}% Complete',
                         style: Theme.of(context).textTheme.labelSmall?.copyWith(
                           color: colors.onSurfaceVariant,
-                          fontWeight: FontWeight.w600,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 11,
+                          height: 16 / 11,
                         ),
                       ),
                       const Spacer(),
-                      Text(
-                        widget.story.lastRead,
-                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                          color: colors.onSurfaceVariant,
+                      if (widget.story.lastRead.isNotEmpty)
+                        Text(
+                          widget.story.lastRead,
+                          style: Theme.of(context).textTheme.labelSmall
+                              ?.copyWith(
+                                color: colors.onSurfaceVariant,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 11,
+                                height: 16 / 11,
+                              ),
                         ),
-                      ),
                     ],
                   ),
                 ],
