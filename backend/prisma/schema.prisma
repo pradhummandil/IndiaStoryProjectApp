@@ -460,7 +460,7 @@ model SearchQueryTracker {
   id        String   @id @db.Uuid
   query     String   @unique
   count     Int      @default(1)
-  updatedAt DateTime
+  updatedAt DateTime @default(now()) @updatedAt
 
   @@index([count])
 }
@@ -782,7 +782,7 @@ model UserProfile {
   StoryLike                                              StoryLike[]
   SubmittedStory                                         SubmittedStory[]
   UserBadge                                              UserBadge[]
-  Notification                                          Notification[]   
+  Notification                                           Notification[]
   UserMention_UserMention_mentionedByUserIdToUserProfile UserMention[]     @relation("UserMention_mentionedByUserIdToUserProfile")
   UserMention_UserMention_mentionedUserIdToUserProfile   UserMention[]     @relation("UserMention_mentionedUserIdToUserProfile")
   UserStat                                               UserStat?

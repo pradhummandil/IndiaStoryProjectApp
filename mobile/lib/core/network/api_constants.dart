@@ -2,11 +2,11 @@
 class ApiConstants {
   ApiConstants._();
 
-  /// Base URL for the backend API.
-  /// Update this to your production URL when deploying.
+  /// Production backend URL (Render).
+  /// For local dev, override via --dart-define=API_BASE_URL=http://10.0.2.2:3000
   static const String baseUrl = String.fromEnvironment(
     'API_BASE_URL',
-    defaultValue: 'http://10.0.2.2:3000', // Android emulator -> host localhost
+    defaultValue: 'https://isp-backend-09fw.onrender.com',
   );
 
   /// API prefix
@@ -89,12 +89,7 @@ class ApiConstants {
 
   // -- Timeouts -----------------------------------------------------------
 
-  /// Connection timeout — increased to handle slow mobile networks.
   static const Duration connectTimeout = Duration(seconds: 15);
-
-  /// Receive timeout — increased for large payloads.
   static const Duration receiveTimeout = Duration(seconds: 30);
-
-  /// Send timeout.
   static const Duration sendTimeout = Duration(seconds: 15);
 }
