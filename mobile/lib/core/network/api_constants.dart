@@ -63,6 +63,12 @@ class ApiConstants {
 
   static const String searchClear = '$apiPrefix/search';
 
+  // -- History endpoints ---------------------------------------------------
+
+  static const String history = '$apiPrefix/history';
+  static String historyDelete(String storyId) => '$apiPrefix/history/$storyId';
+  static const String historyClear = '$apiPrefix/history';
+
   // -- Notifications endpoints --------------------------------------------
 
   static const String notifications = '$apiPrefix/notifications';
@@ -73,8 +79,22 @@ class ApiConstants {
   static const String notificationUnreadCount =
       '$apiPrefix/notifications/unread-count';
 
+  // -- Auth endpoints ------------------------------------------------------
+
+  static const String authLogin = '$apiPrefix/auth/login';
+  static const String authRegister = '$apiPrefix/auth/register';
+  static const String authMe = '$apiPrefix/auth/me';
+  static const String authRefresh = '$apiPrefix/auth/refresh';
+  static const String authLogout = '$apiPrefix/auth/logout';
+
   // -- Timeouts -----------------------------------------------------------
 
-  static const Duration connectTimeout = Duration(seconds: 10);
-  static const Duration receiveTimeout = Duration(seconds: 15);
+  /// Connection timeout — increased to handle slow mobile networks.
+  static const Duration connectTimeout = Duration(seconds: 15);
+
+  /// Receive timeout — increased for large payloads.
+  static const Duration receiveTimeout = Duration(seconds: 30);
+
+  /// Send timeout.
+  static const Duration sendTimeout = Duration(seconds: 15);
 }

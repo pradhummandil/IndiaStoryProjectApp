@@ -1,7 +1,10 @@
+import 'dart:developer' as developer;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/services/auth_state_provider.dart';
 import '../controllers/auth_form_providers.dart';
 import '../widgets/auth_scaffold.dart';
 import '../widgets/auth_text_field.dart';
@@ -24,8 +27,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
   String? _emailError;
   String? _passwordError;
+  bool _isLoading = false;
+  String? _errorMessage;
+  bool _isGoogleSigningIn = false;
 
-  static final _emailPattern = RegExp(r'^\\S+@\\S+\\.\\S+$');
+  static final _emailPattern = RegExp(r'^\S+@\S+\.\S+$');
 
   @override
   void dispose() {
@@ -48,12 +54,89 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     return _emailError == null && _passwordError == null;
   }
 
+  Future<void> _handleLogin() async {
+    if (!_validate()) return;
+
+    setState(() {
+      _isLoading = true;
+      _errorMessage = null;
+    });
+
+    try {
+      await ref
+          .read(authStateProvider.notifier)
+          .signInWithEmailPassword(
+            email: _emailController.text.trim(),
+            password: _passwordController.text,
+          );
+
+      if (mounted) {
+        final authState = ref.read(authStateProvider);
+        if (authState.isAuthenticated) {
+          context.go('/home');
+        } else if (authState.error != null) {
+          setState(() {
+            _isLoading = false;
+            _errorMessage = authState.error!.replaceFirst('Exception: ', '');
+          });
+        }
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() {
+          _isLoading = false;
+          _errorMessage = e.toString().replaceFirst('Exception: ', '');
+        });
+      }
+    }
+  }
+
+  Future<void> _handleGoogleSignIn() async {
+    if (_isGoogleSigningIn) return;
+
+    setState(() {
+      _isGoogleSigningIn = true;
+      _isLoading = true;
+      _errorMessage = null;
+    });
+
+    developer.log('LoginScreen: Google sign-in button tapped', name: 'AuthUI');
+
+    try {
+      await ref.read(authStateProvider.notifier).signInWithGoogle();
+
+      if (mounted) {
+        final authState = ref.read(authStateProvider);
+        if (authState.isAuthenticated) {
+          developer.log(
+            'LoginScreen: Google sign-in successful, navigating to /home',
+            name: 'AuthUI',
+          );
+          context.go('/home');
+        } else if (authState.error != null) {
+          setState(() {
+            _isGoogleSigningIn = false;
+            _isLoading = false;
+            _errorMessage = authState.error!.replaceFirst('Exception: ', '');
+          });
+        }
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() {
+          _isGoogleSigningIn = false;
+          _isLoading = false;
+          _errorMessage = e.toString().replaceFirst('Exception: ', '');
+        });
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     final formState = ref.watch(authFormProvider);
 
-    // Keep controllers in sync with provider (UI-only).
     _emailController.value = _emailController.value.copyWith(
       text: formState.email,
     );
@@ -136,12 +219,49 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               ],
             ),
             const SizedBox(height: 22),
+            // Error banner
+            if (_errorMessage != null) ...[
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 12,
+                ),
+                decoration: BoxDecoration(
+                  color: scheme.errorContainer.withValues(alpha: 0.3),
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(
+                    color: scheme.error.withValues(alpha: 0.3),
+                  ),
+                ),
+                child: Row(
+                  children: [
+                    Icon(Icons.error_outline, color: scheme.error, size: 20),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: Text(
+                        _errorMessage!,
+                        style: Theme.of(
+                          context,
+                        ).textTheme.bodySmall?.copyWith(color: scheme.error),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () => setState(() => _errorMessage = null),
+                      child: Icon(Icons.close, color: scheme.error, size: 18),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 16),
+            ],
             AuthTextField(
               label: 'Email Address',
               hintText: 'scholar@isp.org',
               controller: _emailController,
               keyboardType: TextInputType.emailAddress,
               errorText: _emailError,
+              enabled: !_isLoading,
               onChanged: (v) => ref.read(authFormProvider.notifier).setEmail(v),
               prefixIcon: Icon(
                 Icons.mail_outline,
@@ -154,6 +274,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               hintText: '••••••••',
               controller: _passwordController,
               errorText: _passwordError,
+              enabled: !_isLoading,
               onChanged: (v) =>
                   ref.read(authFormProvider.notifier).setPassword(v),
               prefixIcon: Icon(
@@ -167,38 +288,54 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             ),
             const SizedBox(height: 18),
             PrimaryAuthButton(
-              label: 'SIGN IN',
-              enabled: true,
-              onPressed: () {
-                if (!_validate()) return;
-
-                // TODO: Remove temporary development login before production
-                const devEmail = 'indiastoryprojectmanager21@gmail.com';
-                const devPassword = 'Pradhum@123';
-                final enteredEmail = _emailController.text.trim();
-                final enteredPassword = _passwordController.text;
-
-                if (enteredEmail == devEmail &&
-                    enteredPassword == devPassword) {
-                  context.go('/home');
-                  return;
-                }
-
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Invalid email or password')),
-                );
-
-                return;
-              },
+              label: _isLoading && !_isGoogleSigningIn
+                  ? 'SIGNING IN...'
+                  : 'SIGN IN',
+              enabled: !_isLoading,
+              onPressed: (_isLoading || _isGoogleSigningIn)
+                  ? null
+                  : _handleLogin,
+              isLoading: _isLoading && !_isGoogleSigningIn,
             ),
+            if (_isLoading && _isGoogleSigningIn)
+              const Padding(
+                padding: EdgeInsets.only(top: 8),
+                child: LinearProgressIndicator(),
+              ),
             const SizedBox(height: 20),
             _ContinueDivider(scheme: scheme),
             const SizedBox(height: 20),
-            _SocialRow(scheme: scheme),
-            const SizedBox(height: 20),
-            _RegisterRow(
+            _SocialRow(
               scheme: scheme,
-              onRegister: () => context.go('/register'),
+              onGoogleTap: _handleGoogleSignIn,
+              googleLoading: _isGoogleSigningIn,
+            ),
+            const SizedBox(height: 6),
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Center(
+                child: Wrap(
+                  spacing: 10,
+                  alignment: WrapAlignment.center,
+                  children: [
+                    Text(
+                      'New to the Project? ',
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: scheme.onSurfaceVariant,
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: _isLoading
+                          ? null
+                          : () => context.go('/register'),
+                      child: Text(
+                        'Apply for Access',
+                        style: TextStyle(color: scheme.primary),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
             const SizedBox(height: 6),
             _FooterLinks(scheme: scheme),
@@ -227,8 +364,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         ),
       );
     } else {
-      // Mobile/tablet: keep editorial on top, card below.
-      // Important: make the entire page scrollable so the footer is never clipped.
       content = LayoutBuilder(
         builder: (context, constraints) {
           return SingleChildScrollView(
@@ -269,9 +404,6 @@ class _HeroImagePanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Offline replacement for the editorial photo: premium warm-paper composition.
-    // HTML used an external image; we recreate the same feeling via layered gradients
-    // + subtle “texture” + jali window ray patterns.
     final height = compact ? 220.0 : (desktop ? 250.0 : 250.0);
 
     return ClipRRect(
@@ -294,7 +426,6 @@ class _HeroImagePanel extends StatelessWidget {
         ),
         child: Stack(
           children: [
-            // Warm paper base
             Positioned.fill(
               child: DecoratedBox(
                 decoration: BoxDecoration(
@@ -310,15 +441,11 @@ class _HeroImagePanel extends StatelessWidget {
                 ),
               ),
             ),
-
-            // “Paper texture” (procedural dot field)
             Positioned.fill(
               child: CustomPaint(
                 painter: _PaperTexturePainter(color: scheme.outlineVariant),
               ),
             ),
-
-            // Jali window glow
             Positioned.fill(
               child: DecoratedBox(
                 decoration: BoxDecoration(
@@ -334,8 +461,6 @@ class _HeroImagePanel extends StatelessWidget {
                 ),
               ),
             ),
-
-            // Jali-like rays
             Positioned.fill(
               child: CustomPaint(
                 painter: _JaliRayPainter(
@@ -343,8 +468,6 @@ class _HeroImagePanel extends StatelessWidget {
                 ),
               ),
             ),
-
-            // Depth layer (subtle shadowy vignette)
             Positioned.fill(
               child: DecoratedBox(
                 decoration: BoxDecoration(
@@ -369,12 +492,11 @@ class _HeroImagePanel extends StatelessWidget {
 class _PaperTexturePainter extends CustomPainter {
   _PaperTexturePainter({required this.color});
   final Color color;
-
   final _seed = 1337;
 
   double _hash(int x, int y) {
     final n = x * 374761393 + y * 668265263 ^ _seed;
-    n; // ignore
+    n;
     final nn = (n ^ (n >> 13)) * 1274126177;
     return ((nn ^ (nn >> 16)) & 0xFFFF) / 0xFFFF;
   }
@@ -382,17 +504,14 @@ class _PaperTexturePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     const spacing = 10.0;
-
     for (double yy = 0; yy < size.height; yy += spacing) {
       for (double xx = 0; xx < size.width; xx += spacing) {
         final r = _hash(xx.toInt(), yy.toInt());
         if (r < 0.55) continue;
-
         final alpha = 0.025 + (r - 0.55) * 0.06;
         final dot = Paint()
           ..style = PaintingStyle.fill
           ..color = color.withValues(alpha: alpha);
-
         final rad = 0.6 + r * 0.9;
         canvas.drawCircle(
           Offset(xx + spacing * 0.4, yy + spacing * 0.35),
@@ -418,7 +537,6 @@ class _JaliRayPainter extends CustomPainter {
       ..color = color
       ..strokeWidth = 1;
     final step = size.width / 10;
-    // Simple crossing rays.
     for (int i = -2; i < 12; i++) {
       final x = i * step / 2;
       canvas.drawLine(
@@ -478,12 +596,17 @@ class _ContinueDivider extends StatelessWidget {
 }
 
 class _SocialRow extends StatelessWidget {
-  const _SocialRow({required this.scheme});
+  const _SocialRow({
+    required this.scheme,
+    this.onGoogleTap,
+    this.googleLoading = false,
+  });
   final ColorScheme scheme;
+  final VoidCallback? onGoogleTap;
+  final bool googleLoading;
 
   @override
   Widget build(BuildContext context) {
-    // Use a non-scrollable layout to avoid nested scrolling / infinite height issues.
     return GridView.count(
       crossAxisCount: 2,
       shrinkWrap: true,
@@ -491,15 +614,14 @@ class _SocialRow extends StatelessWidget {
       mainAxisSpacing: 12,
       crossAxisSpacing: 12,
       childAspectRatio: 2.1,
-      // Ensure the GridView gets a bounded height.
-      // (shrinkWrap=true alone can still yield unbounded constraints in some layouts.)
       padding: EdgeInsets.zero,
       children: [
         GoogleAppleSocialButton(
-          label: 'GOOGLE',
+          label: googleLoading ? 'CONTINUING...' : 'GOOGLE',
           assetPath: 'assets/icons/google.svg',
           isGoogle: true,
-          onPressed: () {},
+          onPressed: onGoogleTap ?? () {},
+          isLoading: googleLoading,
         ),
         GoogleAppleSocialButton(
           label: 'APPLE',
@@ -508,25 +630,6 @@ class _SocialRow extends StatelessWidget {
           onPressed: () {},
         ),
       ],
-    );
-  }
-}
-
-class _RegisterRow extends StatelessWidget {
-  const _RegisterRow({required this.scheme, required this.onRegister});
-  final ColorScheme scheme;
-  final VoidCallback onRegister;
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'New to the Project? ',
-        textAlign: TextAlign.center,
-        style: Theme.of(
-          context,
-        ).textTheme.bodyMedium?.copyWith(color: scheme.onSurfaceVariant),
-      ),
     );
   }
 }
@@ -550,7 +653,7 @@ class _FooterLinks extends StatelessWidget {
               style: TextStyle(color: scheme.primary),
             ),
           ),
-          const Text('•'),
+          const Text('\u2022'),
           TextButton(
             onPressed: () {},
             child: Text(
@@ -558,7 +661,7 @@ class _FooterLinks extends StatelessWidget {
               style: TextStyle(color: scheme.primary),
             ),
           ),
-          const Text('•'),
+          const Text('\u2022'),
           TextButton(
             onPressed: () {},
             child: Text('Archives', style: TextStyle(color: scheme.primary)),

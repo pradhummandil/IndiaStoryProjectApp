@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 // ignore_for_file: use_build_context_synchronously
 
+import '../../../../core/services/auth_state_provider.dart';
 import '../controllers/auth_form_providers.dart';
 import '../widgets/auth_labeled_text_field.dart';
 import '../widgets/auth_scaffold.dart';
@@ -21,6 +22,7 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
   final _emailController = TextEditingController();
   String? _emailError;
   bool _isSubmitting = false;
+  String? _successMessage;
 
   static final _emailPattern = RegExp(r'^\S+@\S+\.\S+$');
 
@@ -40,13 +42,39 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
     return _emailError == null;
   }
 
+  Future<void> _handleSendResetLink() async {
+    if (_isSubmitting) return;
+    if (!_validate()) return;
+
+    setState(() {
+      _isSubmitting = true;
+      _successMessage = null;
+      _emailError = null;
+    });
+
+    try {
+      final email = _emailController.text.trim();
+      await ref.read(authStateProvider.notifier).sendPasswordResetEmail(email);
+      if (!mounted) return;
+      setState(() {
+        _isSubmitting = false;
+        _successMessage = 'Recovery link sent! Check your inbox.';
+      });
+    } catch (e) {
+      if (!mounted) return;
+      setState(() {
+        _isSubmitting = false;
+        _emailError = e.toString().replaceAll('Exception: ', '');
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     final typography = Theme.of(context).textTheme;
     final formState = ref.watch(authFormProvider);
 
-    // UI sync only.
     _emailController.value = _emailController.value.copyWith(
       text: formState.email,
     );
@@ -62,7 +90,6 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
       appBarHeight: 0,
       child: Stack(
         children: [
-          // Warm paper background vibe (procedural, no hardcoded external assets).
           Positioned.fill(
             child: IgnorePointer(
               child: DecoratedBox(
@@ -91,7 +118,6 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    // Brand Identity / Header (HTML parity)
                     Padding(
                       padding: const EdgeInsets.only(bottom: 20),
                       child: Column(
@@ -124,8 +150,6 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
                         ],
                       ),
                     ),
-
-                    // Form Card
                     Card(
                       elevation: 0,
                       color: scheme.surfaceContainerLowest,
@@ -138,14 +162,27 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Text(
-                              'Enter your registered email to receive recovery instructions.',
-                              style: typography.bodyMedium?.copyWith(
-                                color: scheme.onSurfaceVariant,
-                                height: 1.6,
+                            if (_successMessage != null)
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 16),
+                                child: Text(
+                                  _successMessage!,
+                                  style: typography.bodyMedium?.copyWith(
+                                    color: scheme.primary,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              )
+                            else
+                              Text(
+                                'Enter your registered email to receive recovery instructions.',
+                                style: typography.bodyMedium?.copyWith(
+                                  color: scheme.onSurfaceVariant,
+                                  height: 1.6,
+                                ),
+                                textAlign: TextAlign.center,
                               ),
-                              textAlign: TextAlign.center,
-                            ),
                             const SizedBox(height: 22),
                             AuthLabeledTextField(
                               label: 'Email Address',
@@ -160,30 +197,15 @@ class _ForgotPasswordScreenState extends ConsumerState<ForgotPasswordScreen> {
                             const SizedBox(height: 22),
                             PrimaryAuthButton(
                               label: _isSubmitting
-                                  ? 'Processing...'
+                                  ? 'Sending...'
                                   : 'Send Recovery Link',
                               enabled: !_isSubmitting,
-                              onPressed: () async {
-                                if (_isSubmitting) return;
-                                if (!_validate()) return;
-
-                                setState(() => _isSubmitting = true);
-                                // UI-only loading simulation (no backend integration).
-                                await Future<void>.delayed(
-                                  const Duration(milliseconds: 800),
-                                );
-                                if (!mounted) return;
-                                setState(() => _isSubmitting = false);
-
-                                context.go('/otp');
-                              },
+                              onPressed: _handleSendResetLink,
                             ),
                           ],
                         ),
                       ),
                     ),
-
-                    // Footer
                     Padding(
                       padding: const EdgeInsets.only(top: 22),
                       child: Column(

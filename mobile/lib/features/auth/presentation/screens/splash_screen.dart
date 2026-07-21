@@ -1,16 +1,19 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class SplashScreen extends StatefulWidget {
+import '../../../../core/services/auth_state_provider.dart';
+
+class SplashScreen extends ConsumerStatefulWidget {
   const SplashScreen({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  ConsumerState<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen>
+class _SplashScreenState extends ConsumerState<SplashScreen>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
   late final Animation<double> _fade;
@@ -23,6 +26,7 @@ class _SplashScreenState extends State<SplashScreen>
   late final Animation<double> _beginFade;
 
   bool _isFadingOut = false;
+  bool _autoLoginAttempted = false;
 
   @override
   void initState() {
@@ -47,7 +51,6 @@ class _SplashScreenState extends State<SplashScreen>
       ),
     );
 
-    // Wordmark reveal: opacity + letter spacing + blur reduction.
     _wordmarkOpacity = Tween<double>(begin: 0, end: 1).animate(
       CurvedAnimation(
         parent: _controller,
@@ -77,6 +80,29 @@ class _SplashScreenState extends State<SplashScreen>
     );
 
     _controller.forward();
+
+    Future.delayed(const Duration(milliseconds: 500), _attemptAutoLogin);
+  }
+
+  Future<void> _attemptAutoLogin() async {
+    if (_autoLoginAttempted) return;
+    _autoLoginAttempted = true;
+
+    try {
+      await ref.read(authStateProvider.notifier).tryAutoLogin();
+
+      if (!mounted) return;
+
+      final authState = ref.read(authStateProvider);
+      if (authState.isAuthenticated) {
+        if (_isFadingOut) return;
+        setState(() => _isFadingOut = true);
+        Future.delayed(const Duration(milliseconds: 500), () {
+          if (!mounted) return;
+          context.go('/home');
+        });
+      }
+    } catch (_) {}
   }
 
   @override
@@ -103,13 +129,11 @@ class _SplashScreenState extends State<SplashScreen>
       backgroundColor: scheme.surface,
       body: Stack(
         children: [
-          // Warm paper grain.
           IgnorePointer(
             child: DecoratedBox(
               decoration: BoxDecoration(color: const Color(0xFFF8F5EF)),
             ),
           ),
-          // Subtle grain texture layer (offline): use a pure gradient mask.
           IgnorePointer(
             child: DecoratedBox(
               decoration: BoxDecoration(
@@ -125,7 +149,6 @@ class _SplashScreenState extends State<SplashScreen>
               ),
             ),
           ),
-          // Royal gradient overlay.
           IgnorePointer(
             child: DecoratedBox(
               decoration: BoxDecoration(
@@ -140,8 +163,6 @@ class _SplashScreenState extends State<SplashScreen>
               ),
             ),
           ),
-          // Decorative corners.
-          // Top-left
           Positioned(
             top: 32,
             left: 32,
@@ -164,7 +185,6 @@ class _SplashScreenState extends State<SplashScreen>
               ),
             ),
           ),
-          // Top-right
           Positioned(
             top: 32,
             right: 32,
@@ -187,7 +207,6 @@ class _SplashScreenState extends State<SplashScreen>
               ),
             ),
           ),
-          // Bottom-left
           Positioned(
             bottom: 32,
             left: 32,
@@ -210,7 +229,6 @@ class _SplashScreenState extends State<SplashScreen>
               ),
             ),
           ),
-          // Bottom-right
           Positioned(
             bottom: 32,
             right: 32,
@@ -233,8 +251,6 @@ class _SplashScreenState extends State<SplashScreen>
               ),
             ),
           ),
-
-          // Floating editorial cards (hide on small screens).
           LayoutBuilder(
             builder: (context, constraints) {
               final showDecor = constraints.maxWidth >= 900;
@@ -242,129 +258,12 @@ class _SplashScreenState extends State<SplashScreen>
                 child: AnimatedSwitcher(
                   duration: const Duration(milliseconds: 200),
                   child: showDecor
-                      ? Stack(
-                          children: [
-                            Positioned(
-                              top: constraints.maxHeight / 2 - 190,
-                              left: -40,
-                              child: Opacity(
-                                opacity: 0.2,
-                                child: Transform.rotate(
-                                  angle: -6 * 3.1415926535 / 180,
-                                  child: Container(
-                                    width: 256,
-                                    height: 384,
-                                    decoration: BoxDecoration(
-                                      color: scheme.surface,
-                                      border: Border.all(
-                                        width: 1,
-                                        color: scheme.outlineVariant,
-                                      ),
-                                      borderRadius: BorderRadius.circular(12),
-                                      boxShadow: const [
-                                        BoxShadow(
-                                          blurRadius: 6,
-                                          color: Colors.black12,
-                                        ),
-                                      ],
-                                    ),
-                                    child: Align(
-                                      alignment: Alignment.bottomCenter,
-                                      child: FractionallySizedBox(
-                                        heightFactor: 0.5,
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                const BorderRadius.only(
-                                                  bottomLeft: Radius.circular(
-                                                    12,
-                                                  ),
-                                                  bottomRight: Radius.circular(
-                                                    12,
-                                                  ),
-                                                  topLeft: Radius.zero,
-                                                  topRight: Radius.zero,
-                                                ),
-                                            gradient: LinearGradient(
-                                              begin: Alignment.topCenter,
-                                              end: Alignment.bottomCenter,
-                                              colors: [
-                                                scheme.surfaceContainerLowest,
-                                                scheme.surfaceVariant
-                                                    .withValues(alpha: 0.35),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Positioned(
-                              top: constraints.maxHeight / 2 - 192,
-                              right: -40,
-                              child: Opacity(
-                                opacity: 0.2,
-                                child: Transform.rotate(
-                                  angle: 4 * 3.1415926535 / 180,
-                                  child: Container(
-                                    width: 256,
-                                    height: 384,
-                                    decoration: BoxDecoration(
-                                      color: scheme.surface,
-                                      border: Border.all(
-                                        width: 1,
-                                        color: scheme.outlineVariant,
-                                      ),
-                                      borderRadius: BorderRadius.circular(12),
-                                      boxShadow: const [
-                                        BoxShadow(
-                                          blurRadius: 6,
-                                          color: Colors.black12,
-                                        ),
-                                      ],
-                                    ),
-                                    child: Align(
-                                      alignment: Alignment.topCenter,
-                                      child: FractionallySizedBox(
-                                        heightFactor: 0.5,
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                const BorderRadius.only(
-                                                  topLeft: Radius.circular(12),
-                                                  topRight: Radius.circular(12),
-                                                  bottomLeft: Radius.zero,
-                                                  bottomRight: Radius.zero,
-                                                ),
-                                            gradient: LinearGradient(
-                                              begin: Alignment.topCenter,
-                                              end: Alignment.bottomCenter,
-                                              colors: [
-                                                scheme.surfaceContainerLowest,
-                                                scheme.surfaceVariant
-                                                    .withValues(alpha: 0.35),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        )
+                      ? _buildDecorativeCards(constraints, scheme)
                       : const SizedBox.shrink(),
                 ),
               );
             },
           ),
-
-          // Main content.
           AnimatedOpacity(
             duration: const Duration(milliseconds: 900),
             opacity: _isFadingOut ? 0 : 1,
@@ -405,7 +304,6 @@ class _SplashScreenState extends State<SplashScreen>
                                       child: _AnimatedLine(delay: 800),
                                     ),
                                     const SizedBox(height: 24),
-
                                     AnimatedBuilder(
                                       animation: _controller,
                                       builder: (context, child) {
@@ -435,7 +333,6 @@ class _SplashScreenState extends State<SplashScreen>
                                       },
                                     ),
                                     const SizedBox(height: 8),
-
                                     AnimatedOpacity(
                                       opacity: _fade.value,
                                       duration: const Duration(
@@ -460,8 +357,6 @@ class _SplashScreenState extends State<SplashScreen>
                           ],
                         ),
                       ),
-
-                      // Begin Journey bottom hint.
                       Positioned(
                         left: 0,
                         right: 0,
@@ -483,11 +378,105 @@ class _SplashScreenState extends State<SplashScreen>
       ),
     );
   }
+
+  Widget _buildDecorativeCards(BoxConstraints constraints, ColorScheme scheme) {
+    return Stack(
+      children: [
+        Positioned(
+          top: constraints.maxHeight / 2 - 190,
+          left: -40,
+          child: Opacity(
+            opacity: 0.2,
+            child: Transform.rotate(
+              angle: -6 * 3.1415926535 / 180,
+              child: Container(
+                width: 256,
+                height: 384,
+                decoration: BoxDecoration(
+                  color: scheme.surface,
+                  border: Border.all(width: 1, color: scheme.outlineVariant),
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: const [
+                    BoxShadow(blurRadius: 6, color: Colors.black12),
+                  ],
+                ),
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: FractionallySizedBox(
+                    heightFactor: 0.5,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.only(
+                          bottomLeft: Radius.circular(12),
+                          bottomRight: Radius.circular(12),
+                        ),
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            scheme.surfaceContainerLowest,
+                            scheme.surfaceVariant.withValues(alpha: 0.35),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+        Positioned(
+          top: constraints.maxHeight / 2 - 192,
+          right: -40,
+          child: Opacity(
+            opacity: 0.2,
+            child: Transform.rotate(
+              angle: 4 * 3.1415926535 / 180,
+              child: Container(
+                width: 256,
+                height: 384,
+                decoration: BoxDecoration(
+                  color: scheme.surface,
+                  border: Border.all(width: 1, color: scheme.outlineVariant),
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: const [
+                    BoxShadow(blurRadius: 6, color: Colors.black12),
+                  ],
+                ),
+                child: Align(
+                  alignment: Alignment.topCenter,
+                  child: FractionallySizedBox(
+                    heightFactor: 0.5,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(12),
+                          topRight: Radius.circular(12),
+                        ),
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            scheme.surfaceContainerLowest,
+                            scheme.surfaceVariant.withValues(alpha: 0.35),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
 }
 
 class _AnimatedLine extends StatefulWidget {
   const _AnimatedLine({required this.delay});
-
   final int delay;
 
   @override
@@ -542,7 +531,6 @@ class _AnimatedLineState extends State<_AnimatedLine>
 
 class _BeginJourneyButton extends StatefulWidget {
   const _BeginJourneyButton({required this.onTap});
-
   final VoidCallback onTap;
 
   @override

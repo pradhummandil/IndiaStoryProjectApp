@@ -11,6 +11,7 @@ import '../repositories/publish_repository.dart';
 import '../repositories/bookmarks_repository.dart';
 import '../repositories/search_repository.dart';
 import '../repositories/notifications_repository.dart';
+import '../repositories/history_repository.dart';
 
 // ── API Client ───────────────────────────────────────────────────────
 
@@ -60,4 +61,8 @@ final notificationsRepositoryProvider = Provider<NotificationsRepository>((
   ref,
 ) {
   return NotificationsRepository(ref.watch(apiClientProvider));
+});
+
+final historyRepositoryProvider = Provider<HistoryRepository>((ref) {
+  return HistoryRepository(ref.watch(apiClientProvider));
 });

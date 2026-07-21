@@ -11,6 +11,7 @@ class AuthPasswordInput extends StatefulWidget {
     this.onChanged,
     this.prefixIcon,
     this.trailingWidget,
+    this.enabled = true,
   });
 
   final String label;
@@ -20,6 +21,7 @@ class AuthPasswordInput extends StatefulWidget {
   final ValueChanged<String>? onChanged;
   final Widget? prefixIcon;
   final Widget? trailingWidget;
+  final bool enabled;
 
   @override
   State<AuthPasswordInput> createState() => _AuthPasswordInputState();
@@ -48,6 +50,7 @@ class _AuthPasswordInputState extends State<AuthPasswordInput> {
           controller: widget.controller,
           obscureText: _obscure,
           onChanged: widget.onChanged,
+          enabled: widget.enabled,
           decoration: InputDecoration(
             hintText: widget.hintText,
             prefixIcon: widget.prefixIcon,

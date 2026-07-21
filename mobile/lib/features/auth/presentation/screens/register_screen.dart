@@ -6,6 +6,7 @@ import 'package:flutter/gestures.dart';
 
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/services/auth_state_provider.dart';
 import '../controllers/auth_form_providers.dart';
 import '../widgets/auth_card.dart';
 import '../widgets/auth_password_input.dart';
@@ -32,6 +33,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen>
   String? _passwordError;
   String? _confirmPasswordError;
   String? _termsError;
+  bool _isSubmitting = false;
 
   final _strengthAnimation = ValueNotifier<double>(0);
 
@@ -71,29 +73,48 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen>
         _termsError == null;
   }
 
-  static final _emailPattern = RegExp(r'^\\S+@\\S+\\.\\S+$');
+  static final _emailPattern = RegExp(r'^\S+@\S+\.\S+$');
 
-  // HTML strength is not fully specified as exact algorithm; implement a deterministic
-  // score based on common requirements.
-  // Still UI-only: no backend.
   double _computeStrength(String password) {
     if (password.isEmpty) return 0;
-
     final hasLower = password.contains(RegExp(r'[a-z]'));
     final hasUpper = password.contains(RegExp(r'[A-Z]'));
     final hasDigit = password.contains(RegExp(r'\d'));
     final hasSpecial = password.contains(RegExp(r'[^A-Za-z0-9]'));
     final lengthScore = (password.length / 12).clamp(0, 1);
-
     int points = 0;
     if (hasLower) points++;
     if (hasUpper) points++;
     if (hasDigit) points++;
     if (hasSpecial) points++;
+    final base = points / 4;
+    return (0.45 * base + 0.55 * lengthScore).clamp(0, 1);
+  }
 
-    final base = points / 4; // 0..1
-    final score = 0.45 * base + 0.55 * lengthScore;
-    return score.clamp(0, 1);
+  Future<void> _handleRegister() async {
+    if (_isSubmitting) return;
+    if (!_validate(termsAccepted: ref.read(authFormProvider).termsAccepted))
+      return;
+
+    setState(() => _isSubmitting = true);
+    try {
+      await ref
+          .read(authStateProvider.notifier)
+          .register(
+            email: _emailController.text.trim(),
+            password: _passwordController.text,
+            name: _fullNameController.text.trim(),
+          );
+      if (!mounted) return;
+      context.go('/home');
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(e.toString().replaceAll('Exception: ', ''))),
+      );
+    } finally {
+      if (mounted) setState(() => _isSubmitting = false);
+    }
   }
 
   @override
@@ -101,7 +122,6 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen>
     final scheme = Theme.of(context).colorScheme;
     final formState = ref.watch(authFormProvider);
 
-    // Sync controllers.
     _fullNameController.value = _fullNameController.value.copyWith(
       text: formState.fullName,
     );
@@ -111,9 +131,6 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen>
     _passwordController.value = _passwordController.value.copyWith(
       text: formState.password,
     );
-
-    // No confirmPassword in existing provider => keep local confirm text.
-    // Validation uses confirm controller.
 
     final password = formState.password;
     final strength = _computeStrength(password);
@@ -127,7 +144,6 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen>
         child: LayoutBuilder(
           builder: (context, constraints) {
             final isMobile = constraints.maxWidth < 900;
-
             final header = _RegisterHeader(scheme: scheme);
 
             final card = AuthCard(
@@ -155,8 +171,6 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen>
                         ref.read(authFormProvider.notifier).setEmail(v),
                   ),
                   const SizedBox(height: 16),
-
-                  // Password
                   AuthPasswordInput(
                     label: 'Password',
                     hintText: '••••••••',
@@ -164,30 +178,22 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen>
                     errorText: _passwordError,
                     onChanged: (v) {
                       ref.read(authFormProvider.notifier).setPassword(v);
-                      // live updates
-                      _strengthAnimation.value = strength;
+                      _strengthAnimation.value = _computeStrength(v);
                     },
                   ),
-
                   const SizedBox(height: 12),
-
-                  // Password strength UI (HTML has a strength indicator + requirements list)
                   _PasswordStrengthPanel(
                     scheme: scheme,
                     password: password,
                     strength: strength,
                   ),
-
                   const SizedBox(height: 16),
-
-                  // Confirm password (needs same styling + toggle)
                   AuthPasswordInput(
                     label: 'Confirm Password',
                     hintText: '••••••••',
                     controller: _confirmPasswordController,
                     errorText: _confirmPasswordError,
                     onChanged: (_) {
-                      // Live validation when confirm changes.
                       if (_confirmPasswordController.text.isEmpty) {
                         setState(() => _confirmPasswordError = null);
                         return;
@@ -196,42 +202,32 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen>
                         _confirmPasswordError =
                             _confirmPasswordController.text == password
                             ? null
-                            : 'Confirm password must match password.';
+                            : 'Passwords must match.';
                       });
                     },
                   ),
-
                   const SizedBox(height: 12),
-
-                  // Terms & conditions rich inline text.
-                  // Provider only stores boolean; text is static UI.
                   _TermsPrivacyRichText(
                     scheme: scheme,
                     checked: formState.termsAccepted,
                     onChanged: (v) {
                       ref.read(authFormProvider.notifier).setTermsAccepted(v);
+                      if (v) setState(() => _termsError = null);
                     },
                   ),
-
                   if (_termsError != null) ...[
                     const SizedBox(height: 8),
                     Text(_termsError!, style: TextStyle(color: scheme.error)),
                   ],
-
                   const SizedBox(height: 20),
-
                   PrimaryAuthButton(
-                    label: 'Create Account',
-                    enabled: true,
-                    onPressed: () {
-                      if (!_validate(termsAccepted: formState.termsAccepted)) {
-                        return;
-                      }
-                      context.go('/email-verification');
-                    },
+                    label: _isSubmitting
+                        ? 'Creating Account...'
+                        : 'Create Account',
+                    enabled: !_isSubmitting,
+                    onPressed: _handleRegister,
                   ),
                   const SizedBox(height: 14),
-
                   Center(
                     child: TextButton(
                       onPressed: () => context.go('/login'),
@@ -245,11 +241,8 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen>
               ),
             );
 
-            // Desktop composition: editorial quote panel (left) + right archival visual composition.
-            // No external images: build with gradients/overlays.
             Widget desktop = Stack(
               children: [
-                // Left quote panel
                 Positioned(
                   left: 0,
                   bottom: 160,
@@ -293,8 +286,6 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen>
                     ),
                   ),
                 ),
-
-                // Right archival composition
                 Positioned.fill(
                   child: IgnorePointer(
                     child: Opacity(
@@ -325,8 +316,6 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen>
                     ),
                   ),
                 ),
-
-                // Center content
                 Align(
                   alignment: Alignment.center,
                   child: ConstrainedBox(
@@ -366,7 +355,6 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen>
 
 class _RegisterHeader extends StatelessWidget {
   const _RegisterHeader({required this.scheme});
-
   final ColorScheme scheme;
 
   @override
@@ -416,7 +404,6 @@ class _PasswordStrengthPanel extends StatelessWidget {
     required this.password,
     required this.strength,
   });
-
   final ColorScheme scheme;
   final String password;
   final double strength;
@@ -436,10 +423,6 @@ class _PasswordStrengthPanel extends StatelessWidget {
       _StrengthRequirement(text: 'Number', ok: _hasDigit),
       _StrengthRequirement(text: 'Symbol', ok: _hasSpecial),
     ];
-
-    final barColor = scheme.primary;
-    final barBackground = scheme.outlineVariant;
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -456,61 +439,47 @@ class _PasswordStrengthPanel extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 8),
-        AnimatedContainer(
-          duration: const Duration(milliseconds: 300),
-          curve: Curves.easeOutCubic,
+        Container(
           height: 10,
           decoration: BoxDecoration(
-            color: barBackground,
+            color: scheme.outlineVariant,
             borderRadius: BorderRadius.circular(999),
           ),
-          child: LayoutBuilder(
-            builder: (context, c) => Stack(
+          child: FractionallySizedBox(
+            widthFactor: strength,
+            child: Container(
+              decoration: BoxDecoration(
+                color: scheme.primary,
+                borderRadius: BorderRadius.circular(999),
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(height: 10),
+        ...requirements.map(
+          (r) => Padding(
+            padding: const EdgeInsets.symmetric(vertical: 2),
+            child: Row(
               children: [
-                FractionallySizedBox(
-                  widthFactor: strength,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: barColor,
-                      borderRadius: BorderRadius.circular(999),
+                Icon(
+                  r.ok ? Icons.check_circle : Icons.circle,
+                  size: 18,
+                  color: r.ok
+                      ? scheme.primary
+                      : scheme.onSurfaceVariant.withValues(alpha: 0.6),
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    r.text,
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: r.ok ? scheme.onSurface : scheme.onSurfaceVariant,
                     ),
                   ),
                 ),
               ],
             ),
           ),
-        ),
-        const SizedBox(height: 10),
-        Column(
-          children: [
-            ...requirements.map(
-              (r) => Padding(
-                padding: const EdgeInsets.symmetric(vertical: 2),
-                child: Row(
-                  children: [
-                    Icon(
-                      r.ok ? Icons.check_circle : Icons.circle,
-                      size: 18,
-                      color: r.ok
-                          ? scheme.primary
-                          : scheme.onSurfaceVariant.withValues(alpha: 0.6),
-                    ),
-                    const SizedBox(width: 8),
-                    Expanded(
-                      child: Text(
-                        r.text,
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          color: r.ok
-                              ? scheme.onSurface
-                              : scheme.onSurfaceVariant,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
         ),
       ],
     );
@@ -529,7 +498,6 @@ class _TermsPrivacyRichText extends StatelessWidget {
     required this.checked,
     required this.onChanged,
   });
-
   final ColorScheme scheme;
   final bool checked;
   final ValueChanged<bool> onChanged;
@@ -539,44 +507,35 @@ class _TermsPrivacyRichText extends StatelessWidget {
     final bodyStyle = Theme.of(
       context,
     ).textTheme.bodySmall?.copyWith(color: scheme.onSurfaceVariant);
-
     final linkStyle = Theme.of(context).textTheme.bodySmall?.copyWith(
       color: scheme.primary,
       decoration: TextDecoration.underline,
-      decorationThickness: 1.2,
-      decorationStyle: TextDecorationStyle.solid,
     );
-
-    return Column(
+    return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Checkbox(value: checked, onChanged: (v) => onChanged(v ?? false)),
-            Expanded(
-              child: RichText(
-                text: TextSpan(
-                  style: bodyStyle,
-                  children: [
-                    const TextSpan(text: 'I agree to the '),
-                    TextSpan(
-                      text: 'Terms & Conditions',
-                      style: linkStyle,
-                      recognizer: TapGestureRecognizer()..onTap = () {},
-                    ),
-                    const TextSpan(text: ' and '),
-                    TextSpan(
-                      text: 'Privacy Policy',
-                      style: linkStyle,
-                      recognizer: TapGestureRecognizer()..onTap = () {},
-                    ),
-                    const TextSpan(text: ' of the India Story Project.'),
-                  ],
+        Checkbox(value: checked, onChanged: (v) => onChanged(v ?? false)),
+        Expanded(
+          child: RichText(
+            text: TextSpan(
+              style: bodyStyle,
+              children: [
+                const TextSpan(text: 'I agree to the '),
+                TextSpan(
+                  text: 'Terms & Conditions',
+                  style: linkStyle,
+                  recognizer: TapGestureRecognizer()..onTap = () {},
                 ),
-              ),
+                const TextSpan(text: ' and '),
+                TextSpan(
+                  text: 'Privacy Policy',
+                  style: linkStyle,
+                  recognizer: TapGestureRecognizer()..onTap = () {},
+                ),
+                const TextSpan(text: ' of the India Story Project.'),
+              ],
             ),
-          ],
+          ),
         ),
       ],
     );
@@ -585,14 +544,12 @@ class _TermsPrivacyRichText extends StatelessWidget {
 
 class _DustMotesPainter extends CustomPainter {
   _DustMotesPainter({required this.color});
-
   final Color color;
 
   @override
   void paint(Canvas canvas, Size size) {
     final rnd = Random(42);
     final paint = Paint()..color = color.withValues(alpha: 0.25);
-
     for (int i = 0; i < 120; i++) {
       final x = rnd.nextDouble() * size.width;
       final y = rnd.nextDouble() * size.height;

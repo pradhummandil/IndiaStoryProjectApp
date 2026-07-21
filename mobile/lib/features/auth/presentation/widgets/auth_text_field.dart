@@ -18,6 +18,7 @@ class AuthTextField extends StatelessWidget {
     this.prefixIcon,
     this.errorText,
     this.onChanged,
+    this.enabled = true,
   });
 
   final String label;
@@ -29,6 +30,7 @@ class AuthTextField extends StatelessWidget {
   final Widget? prefixIcon;
   final String? errorText;
   final ValueChanged<String>? onChanged;
+  final bool enabled;
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +53,7 @@ class AuthTextField extends StatelessWidget {
           textInputAction: textInputAction,
           obscureText: obscureText,
           onChanged: onChanged,
+          enabled: enabled,
           decoration: InputDecoration(
             hintText: hintText,
             prefixIcon: prefixIcon,
