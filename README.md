@@ -1,11 +1,11 @@
 <div align="center">
 
 <!-- Animated Wave Header -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:FF9933,50:FFFFFF,100:138808&height=220&section=header&text=India%20Story%20Project&fontSize=52&fontColor=1a1a1a&fontAlignY=38&desc=Reliving%20India's%20History%2C%20Culture%20%26%20Heritage&descAlignY=58&descSize=18&animation=fadeIn" width="100%" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:FF9933,50:FFFFFF,100:138808&height=220&section=header&text=India%20Story%20Project&fontSize=52&fontColor=1a1a1a&fontAlignY=38&desc=Reliving%20Indias%20History%2C%20Culture%20and%20Heritage&descAlignY=58&descSize=18&animation=fadeIn" width="100%" />
 
 <!-- Typing animation tagline -->
 <a href="https://git.io/typing-svg">
-  <img src="https://readme-typing-svg.demolab.com?font=Poppins&size=26&duration=3000&pause=800&color=FF6B00&center=true&vCenter=true&width=700&lines=A+Cinematic+Storytelling+Platform+%F0%9F%87%AE%F0%9F%87%B3;Built+with+Flutter+%2B+TypeScript+%2B+Node.js;Explore+India's+History+%7C+Culture+%7C+Heritage;Crafted+with+%E2%9D%A4%EF%B8%8F+by+Pradhum+Mandil" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Poppins&size=26&duration=3000&pause=800&color=FF6B00&center=true&vCenter=true&width=700&lines=A+Cinematic+Storytelling+Platform;Built+with+Flutter+%2B+TypeScript+%2B+Node.js;Explore+Indian+History+and+Heritage;Crafted+with+Love+by+Pradhum+Mandil" alt="Typing SVG" />
 </a>
 
 <br/>
@@ -18,7 +18,7 @@
 
 </div>
 
-<img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.gif" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:FF9933,50:FFFFFF,100:138808&height=6&width=1200" width="100%">
 
 ## 📖 About The Project
 
@@ -122,7 +122,7 @@ Active development tasks and upcoming milestones are tracked in [`TODO.md`](./TO
 
 <br/>
 
-<img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.gif" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:FF9933,50:FFFFFF,100:138808&height=6&width=1200" width="100%">
 
 ## 👨‍💻 Meet the Creator
 
@@ -132,7 +132,7 @@ Active development tasks and upcoming milestones are tracked in [`TODO.md`](./TO
 
 <h2>Pradhum Mandil</h2>
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=18&duration=2500&pause=900&color=138808&center=true&vCenter=true&width=600&lines=MERN+Stack+Developer+%7C+Flutter+Engineer;DSA+%40+LeetCode+%7C+Instagram+Storyteller;B.Tech+IT+%40+SATI+Vidisha" alt="Typing SVG" />
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=18&duration=2500&pause=900&color=138808&center=true&vCenter=true&width=600&lines=MERN+Stack+Developer+and+Flutter+Engineer;DSA+practice+on+LeetCode;Instagram+Storyteller;B.Tech+IT+at+SATI+Vidisha" alt="Typing SVG" />
 
 <br/><br/>
 
