@@ -82,6 +82,30 @@ class ApiClient {
     }
   }
 
+  // ── PATCH ─────────────────────────────────────────────────────────
+
+  Future<dynamic> patch(
+    String path, {
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+  }) async {
+    try {
+      final response = await _dio.patch(
+        path,
+        data: data,
+        queryParameters: queryParameters,
+      );
+      return response.data;
+    } on DioException catch (e) {
+      if (e.error is ApiException) rethrow;
+      throw ApiException(
+        message: e.message ?? 'Unknown error',
+        statusCode: e.response?.statusCode,
+        responseData: e.response?.data,
+      );
+    }
+  }
+
   // ── DELETE ─────────────────────────────────────────────────────────
 
   Future<dynamic> delete(

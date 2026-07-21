@@ -10,6 +10,7 @@ import '../repositories/ai_assistant_repository.dart';
 import '../repositories/publish_repository.dart';
 import '../repositories/bookmarks_repository.dart';
 import '../repositories/search_repository.dart';
+import '../repositories/notifications_repository.dart';
 
 // ── API Client ───────────────────────────────────────────────────────
 
@@ -53,4 +54,10 @@ final bookmarksRepositoryProvider = Provider<BookmarksRepository>((ref) {
 
 final searchRepositoryProvider = Provider<SearchRepository>((ref) {
   return SearchRepository(ref.watch(apiClientProvider));
+});
+
+final notificationsRepositoryProvider = Provider<NotificationsRepository>((
+  ref,
+) {
+  return NotificationsRepository(ref.watch(apiClientProvider));
 });

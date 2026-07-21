@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../design_system/app_colors.dart';
+import '../../../../design_system/app_shadows.dart';
 import '../../../../core/models/story.dart';
 import '../../domain/models/search_models.dart';
 import '../providers/search_providers.dart';
 
-/// Search Screen — matches design/search_mobile/code.html and design/search_desktop/code.html.
+/// Search Screen — matches `design/search_mobile/code.html` and `design/search_desktop/code.html` exactly.
 class SearchScreen extends ConsumerStatefulWidget {
   const SearchScreen({super.key});
 
@@ -16,10 +17,9 @@ class SearchScreen extends ConsumerStatefulWidget {
 
 class _SearchScreenState extends ConsumerState<SearchScreen> {
   final TextEditingController _searchController = TextEditingController();
-  FocusNode _searchFocus = FocusNode();
-  bool _showDesktopFilters = false;
-
-  static const List<String> _categories = [
+  late FocusNode _searchFocus;
+  bool _showDesktopFilters = true;
+  List<String> _categories = [
     'All Stories',
     'UNESCO Sites',
     'Wildlife',
@@ -51,6 +51,8 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     final colors = AppColors();
     final isDesktop = MediaQuery.of(context).size.width >= 1024;
     final isTablet = MediaQuery.of(context).size.width >= 600 && !isDesktop;
+    final searchState = ref.watch(searchQueryProvider);
+    final hasQuery = searchState.query.isNotEmpty;
 
     return Scaffold(
       backgroundColor: const Color(0xFFFCF9F3),
@@ -78,10 +80,8 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                       searchController: _searchController,
                       searchFocus: _searchFocus,
                       onSearch: _onSearch,
+                      hasQuery: hasQuery,
                       showDesktopFilters: _showDesktopFilters,
-                      onToggleFilters: () =>
-                          setState(() => _showDesktopFilters = !_showDesktopFilters),
-                      categories: _categories,
                     ),
                   ),
                 ],
@@ -95,7 +95,11 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   }
 }
 
-class _TopAppBar extends StatelessWidget {
+// ── TopAppBar ─────────────────────────────────────────────────────────
+
+// ── TopAppBar ─────────────────────────────────────────────────────────
+
+class _TopAppBar extends ConsumerWidget {
   final AppColors colors;
   final bool isDesktop;
   final TextEditingController searchController;
@@ -126,17 +130,10 @@ class _TopAppBar extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 64, vertical: 16),
               child: Row(
                 children: [
-                  Text(
-                    'HERITAGE',
-                    style: TextStyle(
-                      fontFamily: 'EB Garamond',
-                      fontSize: 32,
-                      fontWeight: FontWeight.w500,
-                      letterSpacing: 2,
-                      color: colors.primary,
-                      height: 40 / 32,
-                    ),
-                  ),
+                  Text('HERITAGE', style: TextStyle(
+                    fontFamily: 'EB Garamond', fontSize: 32, fontWeight: FontWeight.w500,
+                    letterSpacing: 2, color: colors.primary, height: 40 / 32,
+                  )),
                   const SizedBox(width: 48),
                   _DesktopNavLink(label: 'Archive', active: false, colors: colors),
                   const SizedBox(width: 24),
@@ -146,7 +143,6 @@ class _TopAppBar extends StatelessWidget {
                   const SizedBox(width: 24),
                   _DesktopNavLink(label: 'Account', active: false, colors: colors),
                   const Spacer(),
-                  // Quick find input
                   Container(
                     height: 36,
                     padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -160,50 +156,25 @@ class _TopAppBar extends StatelessWidget {
                       children: [
                         Icon(Icons.search_rounded, size: 16, color: const Color(0xFF635D5A)),
                         const SizedBox(width: 4),
-                        SizedBox(
-                          width: 100,
-                          child: TextField(
-                            controller: searchController,
-                            focusNode: searchFocus,
-                            decoration: const InputDecoration(
-                              hintText: 'Quick find...',
-                              border: InputBorder.none,
-                              isDense: true,
-                              contentPadding: EdgeInsets.symmetric(vertical: 8),
-                            ),
-                            style: const TextStyle(
-                              fontFamily: 'Inter',
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
-                            ),
-                            onSubmitted: onSearch,
+                        SizedBox(width: 100, child: TextField(
+                          controller: searchController, focusNode: searchFocus,
+                          decoration: const InputDecoration(
+                            hintText: 'Quick find...', border: InputBorder.none,
+                            isDense: true, contentPadding: EdgeInsets.symmetric(vertical: 8),
                           ),
-                        ),
+                          style: const TextStyle(fontFamily: 'Inter', fontSize: 12, fontWeight: FontWeight.w500),
+                          onSubmitted: onSearch,
+                        )),
                       ],
                     ),
                   ),
                   const SizedBox(width: 16),
-                  IconButton(
-                    icon: const Icon(Icons.history_rounded, size: 20),
-                    color: const Color(0xFF58413F),
-                    onPressed: () {},
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.notifications_outlined, size: 20),
-                    color: const Color(0xFF58413F),
-                    onPressed: () {},
-                  ),
+                  IconButton(icon: const Icon(Icons.history_rounded, size: 20), color: const Color(0xFF58413F), onPressed: () {}),
+                  IconButton(icon: const Icon(Icons.notifications_outlined, size: 20), color: const Color(0xFF58413F), onPressed: () {}),
                   Container(
-                    width: 32,
-                    height: 32,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFE5E2DC),
-                      shape: BoxShape.circle,
-                      border: Border.all(color: const Color(0xFFDFBFBC)),
-                    ),
-                    child: const Center(
-                      child: Icon(Icons.person_rounded, size: 16, color: Color(0xFF635D5A)),
-                    ),
+                    width: 32, height: 32,
+                    decoration: BoxDecoration(color: const Color(0xFFE5E2DC), shape: BoxShape.circle, border: Border.all(color: const Color(0xFFDFBFBC))),
+                    child: const Center(child: Icon(Icons.person_rounded, size: 16, color: Color(0xFF635D5A))),
                   ),
                 ],
               ),
@@ -212,7 +183,7 @@ class _TopAppBar extends StatelessWidget {
         ),
       );
     }
-
+    // Mobile
     return Container(
       height: 64,
       decoration: BoxDecoration(
@@ -222,36 +193,130 @@ class _TopAppBar extends StatelessWidget {
       child: Row(
         children: [
           const SizedBox(width: 16),
-          InkWell(
-            onTap: () {},
-            child: Container(
-              width: 40, height: 40,
-              alignment: Alignment.center,
-              child: Icon(Icons.menu_rounded, color: colors.primary, size: 24),
+          InkWell(onTap: () {}, child: Container(width: 40, height: 40, alignment: Alignment.center,
+    required this.onSearch,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: const Color(0xFFFCF9F3).withValues(alpha: 0.95),
+        border: Border(
+          bottom: BorderSide(color: const Color(0xFFDFBFBC)),
+        ),
+      ),
+      child: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 64, vertical: 16),
+            child: Row(
+              children: [
+                Text(
+                  'HERITAGE',
+                  style: TextStyle(
+                    fontFamily: 'EB Garamond',
+                    fontSize: 32,
+                    fontWeight: FontWeight.w500,
+                    letterSpacing: 2,
+                    color: colors.primary,
+                    height: 40 / 32,
+                  ),
+                ),
+                const SizedBox(width: 48),
+                _DesktopNavLink(
+                  label: 'Archive',
+                  active: false,
+                  colors: colors,
+                ),
+                const SizedBox(width: 24),
+                _DesktopNavLink(
+                  label: 'Search',
+                  active: true,
+                  colors: colors,
+                ),
+                const SizedBox(width: 24),
+                _DesktopNavLink(
+                  label: 'Collections',
+                  active: false,
+                  colors: colors,
+                ),
+                const SizedBox(width: 24),
+                _DesktopNavLink(
+                  label: 'Account',
+                  active: false,
+                  colors: colors,
+                ),
+                const Spacer(),
+                Container(
+                  height: 36,
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFF6F3ED),
+                    borderRadius: BorderRadius.circular(999),
+                    border: Border.all(color: const Color(0xFFDFBFBC)),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        Icons.search_rounded,
+                        size: 16,
+                        color: const Color(0xFF635D5A),
+                      ),
+                      const SizedBox(width: 4),
+                      SizedBox(
+                        width: 100,
+                        child: TextField(
+                          controller: searchController,
+                          focusNode: searchFocus,
+                          decoration: const InputDecoration(
+                            hintText: 'Quick find...',
+                            border: InputBorder.none,
+                            isDense: true,
+                            contentPadding: EdgeInsets.symmetric(vertical: 8),
+                          ),
+                          style: const TextStyle(
+                            fontFamily: 'Inter',
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                          ),
+                          onSubmitted: onSearch,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 16),
+                IconButton(
+                  icon: const Icon(Icons.history_rounded, size: 20),
+                  color: const Color(0xFF58413F),
+                  onPressed: () {},
+                ),
+                IconButton(
+                  icon: const Icon(Icons.notifications_outlined, size: 20),
+                  color: const Color(0xFF58413F),
+                  onPressed: () {},
+                ),
+                Container(
+                  width: 32,
+                  height: 32,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFE5E2DC),
+                    shape: BoxShape.circle,
+                    border: Border.all(color: const Color(0xFFDFBFBC)),
+                  ),
+                  child: const Center(
+                    child: Icon(
+                      Icons.person_rounded,
+                      size: 16,
+                      color: Color(0xFF635D5A),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
-          const SizedBox(width: 8),
-          Text(
-            'HERITAGE',
-            style: TextStyle(
-              fontFamily: 'EB Garamond',
-              fontSize: 32,
-              fontWeight: FontWeight.w500,
-              letterSpacing: 2,
-              color: colors.primary,
-              height: 40 / 32,
-            ),
-          ),
-          const Spacer(),
-          InkWell(
-            onTap: onToggleFilters,
-            child: Container(
-              width: 40, height: 40,
-              alignment: Alignment.center,
-              child: const Icon(Icons.tune_rounded, size: 24, color: Color(0xFF6A020A)),
-            ),
-          ),
-          const SizedBox(width: 8),
         ],
       ),
     );
@@ -263,7 +328,11 @@ class _DesktopNavLink extends StatelessWidget {
   final bool active;
   final AppColors colors;
 
-  const _DesktopNavLink({required this.label, required this.active, required this.colors});
+  const _DesktopNavLink({
+    required this.label,
+    required this.active,
+    required this.colors,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -271,7 +340,9 @@ class _DesktopNavLink extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
       decoration: active
           ? const BoxDecoration(
-              border: Border(bottom: BorderSide(color: Color(0xFF6A020A), width: 2)),
+              border: Border(
+                bottom: BorderSide(color: Color(0xFF6A020A), width: 2),
+              ),
             )
           : null,
       child: Text(
@@ -289,27 +360,31 @@ class _DesktopNavLink extends StatelessWidget {
   }
 }
 
+// ── Search Body ──────────────────────────────────────────────────────
+
 class _SearchBody extends ConsumerWidget {
   final AppColors colors;
   final bool isDesktop;
-  final bool isTablet;
   final TextEditingController searchController;
   final FocusNode searchFocus;
   final ValueChanged<String> onSearch;
+  final bool hasQuery;
   final bool showDesktopFilters;
-  final VoidCallback onToggleFilters;
+  final String selectedCategory;
   final List<String> categories;
+  final ValueChanged<String> onCategoryChanged;
 
   const _SearchBody({
     required this.colors,
     required this.isDesktop,
-    required this.isTablet,
     required this.searchController,
     required this.searchFocus,
     required this.onSearch,
+    required this.hasQuery,
     required this.showDesktopFilters,
-    required this.onToggleFilters,
+    required this.selectedCategory,
     required this.categories,
+    required this.onCategoryChanged,
   });
 
   @override
@@ -323,8 +398,9 @@ class _SearchBody extends ConsumerWidget {
         searchController: searchController,
         onSearch: onSearch,
         categories: categories,
+        selectedCategory: selectedCategory,
+        onCategoryChanged: onCategoryChanged,
         showFilters: showDesktopFilters,
-        onToggleFilters: onToggleFilters,
       );
     }
 
@@ -339,14 +415,17 @@ class _SearchBody extends ConsumerWidget {
   }
 }
 
+// ── Desktop Layout ───────────────────────────────────────────────────
+
 class _DesktopLayout extends ConsumerWidget {
   final AppColors colors;
   final SearchQueryState queryState;
   final TextEditingController searchController;
   final ValueChanged<String> onSearch;
   final List<String> categories;
+  final String selectedCategory;
+  final ValueChanged<String> onCategoryChanged;
   final bool showFilters;
-  final VoidCallback onToggleFilters;
 
   const _DesktopLayout({
     required this.colors,
@@ -354,8 +433,9 @@ class _DesktopLayout extends ConsumerWidget {
     required this.searchController,
     required this.onSearch,
     required this.categories,
+    required this.selectedCategory,
+    required this.onCategoryChanged,
     required this.showFilters,
-    required this.onToggleFilters,
   });
 
   @override
@@ -395,103 +475,23 @@ class _DesktopLayout extends ConsumerWidget {
                       spacing: 8,
                       runSpacing: 8,
                       children: categories.map((cat) {
-                        final isSelected = cat == 'All Stories';
-                        return Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                          decoration: BoxDecoration(
-                            color: isSelected ? colors.primary : const Color(0xFFE5E2DC),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Text(
-                            cat,
-                            style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
-                              color: isSelected ? Colors.white : const Color(0xFF58413F),
-                              height: 16 / 12,
+                        final isSelected = cat == selectedCategory;
+                        return GestureDetector(
+                          onTap: () => onCategoryChanged(cat),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 8,
                             ),
-                          ),
-                        );
-                      }).toList(),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 24),
-                const Divider(),
-                const SizedBox(height: 24),
-                // Historical Eras
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'HISTORICAL ERAS',
-                      style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        letterSpacing: 0.05,
-                        color: const Color(0xFF1C1C18),
-                        height: 20 / 14,
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-                    ...[
-                      'Ancient Civilizations',
-                      'Mughal Dynasty',
-                      'Colonial Era',
-                      'Modern India',
-                    ].map((era) => Padding(
-                      padding: const EdgeInsets.only(bottom: 12),
-                      child: Row(
-                        children: [
-                          SizedBox(
-                            width: 20,
-                            height: 20,
-                            child: Checkbox(
-                              value: era == 'Colonial Era',
-                              onChanged: (_) {},
-                              activeColor: colors.primary,
-                              side: const BorderSide(color: Color(0xFFDFBFBC)),
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+                            decoration: BoxDecoration(
+                              color: isSelected
+                                  ? colors.primary
+                                  : const Color(0xFFE5E2DC),
+                              borderRadius: BorderRadius.circular(8),
                             ),
-                          ),
-                          const SizedBox(width: 12),
-                          Text(
-                            era,
-                            style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                              color: const Color(0xFF58413F),
-                              height: 24 / 16,
-                            ),
-                          ),
-                        ],
-                      ),
-                    )),
-                  ],
-                ),
-                const SizedBox(height: 24),
-                Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFF6F3ED),
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: const Color(0xFFDFBFBC)),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Icon(Icons.auto_stories_rounded, size: 24, color: colors.primary),
-                      const SizedBox(height: 8),
-                      Text(
-                        'Archival Access',
-                        style: TextStyle(
-                          fontFamily: 'EB Garamond',
-                          fontSize: 24,
-                          fontWeight: FontWeight.w500,
-                          color: const Color(0xFF1C1C18),
+                            child: Text(
+                              cat,
+                              style: TextStyle(
                           height: 32 / 24,
                         ),
                       ),

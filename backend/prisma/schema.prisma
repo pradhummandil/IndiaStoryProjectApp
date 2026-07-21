@@ -782,6 +782,7 @@ model UserProfile {
   StoryLike                                              StoryLike[]
   SubmittedStory                                         SubmittedStory[]
   UserBadge                                              UserBadge[]
+  Notification                                          Notification[]   
   UserMention_UserMention_mentionedByUserIdToUserProfile UserMention[]     @relation("UserMention_mentionedByUserIdToUserProfile")
   UserMention_UserMention_mentionedUserIdToUserProfile   UserMention[]     @relation("UserMention_mentionedUserIdToUserProfile")
   UserStat                                               UserStat?
@@ -871,6 +872,24 @@ model WebStoryPage {
   sortOrder  Int      @default(0)
   durationMs Int      @default(5000)
   WebStory   WebStory @relation(fields: [storyId], references: [id], onDelete: Cascade)
+}
+
+model Notification {
+  id        String   @id @db.Uuid
+  userId    String   @db.Uuid
+  type      String   @default("SYSTEM")
+  title     String
+  message   String
+  data      Json?
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  UserProfile UserProfile @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, isRead])
+  @@index([userId, createdAt])
+  @@index([type])
 }
 
 model profiles {
