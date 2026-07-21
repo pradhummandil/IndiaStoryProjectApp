@@ -63,6 +63,16 @@ class ApiConstants {
 
   static const String searchClear = '$apiPrefix/search';
 
+  // -- Notifications endpoints --------------------------------------------
+
+  static const String notifications = '$apiPrefix/notifications';
+  static String notificationRead(String id) =>
+      '$apiPrefix/notifications/$id/read';
+  static const String notificationReadAll = '$apiPrefix/notifications/read-all';
+  static String notificationDelete(String id) => '$apiPrefix/notifications/$id';
+  static const String notificationUnreadCount =
+      '$apiPrefix/notifications/unread-count';
+
   // -- Timeouts -----------------------------------------------------------
 
   static const Duration connectTimeout = Duration(seconds: 10);
