@@ -17,7 +17,7 @@ export const bookmarksController = {
     const userId: string | undefined = req.user?.id ?? req.headers["x-user-id"];
     if (!userId) throw new UnauthorizedError("Unauthorized");
 
-    const { storyId } = req.body ?? {};
+    const storyId = req.params?.storyId ?? req.body?.storyId;
     if (!storyId) throw new BadRequestError("storyId is required");
 
     return bookmarksRepository.addBookmark(userId, storyId);

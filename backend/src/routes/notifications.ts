@@ -1,12 +1,14 @@
 import { Router } from "express";
 import { asyncHandler } from "../core/utils/asyncHandler";
 import { notificationsController } from "../services/controllers/notificationsController";
+import { authenticate } from "../core/middleware/auth";
 
 export const notificationsRouter = Router();
 
 // GET /api/notifications — paginated list
 notificationsRouter.get(
   "/",
+  authenticate,
   asyncHandler(async (req, res) => {
     const data = await notificationsController.getNotifications(req);
     res.status(200).json(data);
@@ -16,6 +18,7 @@ notificationsRouter.get(
 // GET /api/notifications/unread-count — unread count badge
 notificationsRouter.get(
   "/unread-count",
+  authenticate,
   asyncHandler(async (req, res) => {
     const data = await notificationsController.getUnreadCount(req);
     res.status(200).json(data);
@@ -25,6 +28,7 @@ notificationsRouter.get(
 // PATCH /api/notifications/:id/read — mark one as read
 notificationsRouter.patch(
   "/:id/read",
+  authenticate,
   asyncHandler(async (req, res) => {
     const data = await notificationsController.markAsRead(req);
     res.status(200).json(data);
@@ -34,6 +38,7 @@ notificationsRouter.patch(
 // PATCH /api/notifications/read-all — mark all as read
 notificationsRouter.patch(
   "/read-all",
+  authenticate,
   asyncHandler(async (req, res) => {
     const data = await notificationsController.markAllAsRead(req);
     res.status(200).json(data);
@@ -43,6 +48,7 @@ notificationsRouter.patch(
 // DELETE /api/notifications/:id — delete single notification
 notificationsRouter.delete(
   "/:id",
+  authenticate,
   asyncHandler(async (req, res) => {
     const data = await notificationsController.deleteNotification(req);
     res.status(200).json(data);

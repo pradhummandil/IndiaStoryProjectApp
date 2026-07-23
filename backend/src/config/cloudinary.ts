@@ -1,15 +1,20 @@
-import { v2 as cloudinary } from 'cloudinary';
+import { v2 as cloudinary } from "cloudinary";
 
-import { env } from './env';
-import { logger } from '../core/logger/logger';
+import { env } from "./env";
+import { logger } from "../core/logger/logger";
 
 export function configureCloudinary(): void {
-  if (!env.CLOUDINARY_ENABLED) return;
+  if (!env.CLOUDINARY_ENABLED) {
+    logger.info("Cloudinary disabled");
+    return;
+  }
 
-  if (!env.CLOUDINARY_CLOUD_NAME || !env.CLOUDINARY_API_KEY || !env.CLOUDINARY_API_SECRET) {
-    logger.warn('Cloudinary is enabled but missing credentials. Uploads will fail until configured.', {
-      enabled: env.CLOUDINARY_ENABLED,
-    });
+  if (
+    !env.CLOUDINARY_CLOUD_NAME ||
+    !env.CLOUDINARY_API_KEY ||
+    !env.CLOUDINARY_API_SECRET
+  ) {
+    logger.info("Cloudinary disabled (missing credentials)");
     return;
   }
 
@@ -19,8 +24,7 @@ export function configureCloudinary(): void {
     api_secret: env.CLOUDINARY_API_SECRET,
   });
 
-  logger.info('Cloudinary configured');
+  logger.info("Cloudinary configured");
 }
 
 export { cloudinary };
-

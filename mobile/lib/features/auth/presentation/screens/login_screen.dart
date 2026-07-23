@@ -496,7 +496,6 @@ class _PaperTexturePainter extends CustomPainter {
 
   double _hash(int x, int y) {
     final n = x * 374761393 + y * 668265263 ^ _seed;
-    n;
     final nn = (n ^ (n >> 13)) * 1274126177;
     return ((nn ^ (nn >> 16)) & 0xFFFF) / 0xFFFF;
   }

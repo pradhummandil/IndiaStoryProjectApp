@@ -20,39 +20,53 @@ declare global {
   }
 }
 
-const JWT_SECRET = process.env.JWT_SECRET || "isp-jwt-secret-dev";
+const JWT_SECRET =
+  env.JWT_SECRET || process.env.JWT_SECRET || "isp-jwt-secret-dev";
 const JWT_EXPIRES_IN = "7d";
 
-function getFirebaseApp(): admin.app.App {
+function getFirebaseApp(): admin.app.App | null {
   if (admin.apps.length > 0) return admin.apps[0]!;
-  const serviceAccountBase64 = process.env.FIREBASE_SERVICE_ACCOUNT_JSON;
+  if (!env.FIREBASE_ENABLED) return null;
+
+  const serviceAccountBase64 =
+    env.FIREBASE_SERVICE_ACCOUNT_JSON ||
+    process.env.FIREBASE_SERVICE_ACCOUNT_JSON;
   if (serviceAccountBase64) {
-    const serviceAccount = JSON.parse(
-      Buffer.from(serviceAccountBase64, "base64").toString("utf-8"),
-    );
-    return admin.initializeApp({
-      credential: admin.credential.cert(serviceAccount),
-    });
+    try {
+      const serviceAccount = JSON.parse(
+        Buffer.from(serviceAccountBase64, "base64").toString("utf-8"),
+      );
+      return admin.initializeApp({
+        credential: admin.credential.cert(serviceAccount),
+      });
+    } catch {
+      // Fall through
+    }
   }
   try {
     return admin.initializeApp({
-      projectId: process.env.FIREBASE_PROJECT_ID || "indiastoryproject",
+      projectId:
+        env.FIREBASE_PROJECT_ID ||
+        process.env.FIREBASE_PROJECT_ID ||
+        "indiastoryproject",
     });
   } catch {
-    return admin.apps[0]!;
+    return null;
   }
 }
 
 let firebaseApp: admin.app.App | null = null;
-function getAdmin(): admin.app.App {
+function getAdmin(): admin.app.App | null {
   if (!firebaseApp) firebaseApp = getFirebaseApp();
   return firebaseApp;
 }
 
 /** Verify Firebase ID Token from Authorization header */
 export async function verifyFirebaseToken(token: string) {
+  const app = getAdmin();
+  if (!app) return null;
   try {
-    const decoded = await getAdmin().auth().verifyIdToken(token);
+    const decoded = await app.auth().verifyIdToken(token);
     return decoded;
   } catch {
     return null;

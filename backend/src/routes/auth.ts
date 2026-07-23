@@ -19,6 +19,47 @@ authRouter.post(
 );
 
 /**
+ * POST /api/auth/register
+ * Body: { idToken: string, name?: string }
+ * Response: { token: string, user: User }
+ */
+authRouter.post(
+  "/register",
+  asyncHandler(async (req, res) => {
+    const result = await authController.register(req);
+    res.status(200).json(result);
+  }),
+);
+
+/**
+ * POST /api/auth/refresh
+ * Header: Authorization: Bearer <token>
+ * Response: { token: string }
+ */
+authRouter.post(
+  "/refresh",
+  authenticate,
+  asyncHandler(async (req, res) => {
+    const result = await authController.refreshToken(req);
+    res.status(200).json(result);
+  }),
+);
+
+/**
+ * POST /api/auth/logout
+ * Header: Authorization: Bearer <token>
+ * Response: { success: true }
+ */
+authRouter.post(
+  "/logout",
+  authenticate,
+  asyncHandler(async (req, res) => {
+    const result = await authController.logout(req);
+    res.status(200).json(result);
+  }),
+);
+
+/**
  * GET /api/auth/me
  * Header: Authorization: Bearer <token>
  * Response: { id, email, name, avatarUrl, ... }
