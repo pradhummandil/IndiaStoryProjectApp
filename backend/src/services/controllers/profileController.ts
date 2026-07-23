@@ -8,8 +8,9 @@ export const profileController = {
     const userId: string | undefined =
       req.user?.id ?? req.headers["x-user-id"] ?? undefined;
 
-    const profile = await profileRepository.getProfile(userId ?? null);
     if (!userId) throw new UnauthorizedError("Unauthorized");
+
+    const profile = await profileRepository.getProfile(userId);
     if (!profile) throw new NotFoundError("Profile not found");
     return profile;
   },

@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/network/providers.dart';
+import '../../../../core/repositories/notifications_repository.dart';
 import '../../domain/models/notification_models.dart';
 
 // ── Notification List State ──────────────────────────────────────────

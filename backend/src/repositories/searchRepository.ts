@@ -1,3 +1,4 @@
+import crypto from "crypto";
 import { prisma } from "../prisma/prismaClient";
 
 export const searchRepository = {
@@ -51,7 +52,12 @@ export const searchRepository = {
       });
     } else {
       await prisma.searchQueryTracker.create({
-        data: { id: crypto.randomUUID(), query, count: 1 },
+        data: {
+          id: crypto.randomUUID(),
+          query,
+          count: 1,
+          updatedAt: new Date(),
+        },
       });
     }
   },

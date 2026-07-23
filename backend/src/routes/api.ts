@@ -10,6 +10,8 @@ import { publishRouter } from "./publish";
 import { bookmarksRouter } from "./bookmarks";
 import { searchRouter } from "./search";
 import { notificationsRouter } from "./notifications";
+import { historyRouter } from "./history";
+import { authRouter } from "./auth";
 
 export const apiRouter = Router();
 
@@ -23,3 +25,5 @@ apiRouter.use("/writer/publish", publishRouter);
 apiRouter.use("/bookmarks", bookmarksRouter);
 apiRouter.use("/search", searchRouter);
 apiRouter.use("/notifications", notificationsRouter);
+apiRouter.use("/history", historyRouter);
+apiRouter.use("/auth", authRouter);

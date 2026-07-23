@@ -13,6 +13,8 @@ import '../../features/writer_studio/presentation/screens/writer_studio_screen.d
 import '../../features/writer_studio/presentation/screens/ai_assistant_screen.dart';
 import '../../features/writer_studio/presentation/screens/publish_review_screen.dart';
 import '../../features/saved_stories/presentation/screens/saved_stories_screen.dart';
+import '../../features/notifications/presentation/screens/notifications_screen.dart';
+import '../../features/history/presentation/screens/history_screen.dart';
 
 GoRouter buildAppRouter() {
   return GoRouter(
@@ -57,6 +59,14 @@ GoRouter buildAppRouter() {
       GoRoute(
         path: '/saved-stories',
         builder: (context, state) => const SavedStoriesScreen(),
+      ),
+      GoRoute(
+        path: '/notifications',
+        builder: (context, state) => const NotificationsScreen(),
+      ),
+      GoRoute(
+        path: '/history',
+        builder: (context, state) => const HistoryScreen(),
       ),
     ],
     errorBuilder: (context, state) {

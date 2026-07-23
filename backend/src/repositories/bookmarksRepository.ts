@@ -1,3 +1,4 @@
+import crypto from "crypto";
 import { prisma } from "../prisma/prismaClient";
 
 export const bookmarksRepository = {

@@ -2,11 +2,11 @@
 class ApiConstants {
   ApiConstants._();
 
-  /// Base URL for the backend API.
-  /// Update this to your production URL when deploying.
+  /// Production backend URL (Render).
+  /// For local dev, override via --dart-define=API_BASE_URL=http://10.0.2.2:3000
   static const String baseUrl = String.fromEnvironment(
     'API_BASE_URL',
-    defaultValue: 'http://10.0.2.2:3000', // Android emulator -> host localhost
+    defaultValue: 'https://isp-backend-09fw.onrender.com',
   );
 
   /// API prefix
@@ -63,6 +63,12 @@ class ApiConstants {
 
   static const String searchClear = '$apiPrefix/search';
 
+  // -- History endpoints ---------------------------------------------------
+
+  static const String history = '$apiPrefix/history';
+  static String historyDelete(String storyId) => '$apiPrefix/history/$storyId';
+  static const String historyClear = '$apiPrefix/history';
+
   // -- Notifications endpoints --------------------------------------------
 
   static const String notifications = '$apiPrefix/notifications';
@@ -73,8 +79,17 @@ class ApiConstants {
   static const String notificationUnreadCount =
       '$apiPrefix/notifications/unread-count';
 
+  // -- Auth endpoints ------------------------------------------------------
+
+  static const String authLogin = '$apiPrefix/auth/login';
+  static const String authRegister = '$apiPrefix/auth/register';
+  static const String authMe = '$apiPrefix/auth/me';
+  static const String authRefresh = '$apiPrefix/auth/refresh';
+  static const String authLogout = '$apiPrefix/auth/logout';
+
   // -- Timeouts -----------------------------------------------------------
 
-  static const Duration connectTimeout = Duration(seconds: 10);
-  static const Duration receiveTimeout = Duration(seconds: 15);
+  static const Duration connectTimeout = Duration(seconds: 15);
+  static const Duration receiveTimeout = Duration(seconds: 30);
+  static const Duration sendTimeout = Duration(seconds: 15);
 }

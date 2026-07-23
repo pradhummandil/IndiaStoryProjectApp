@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { asyncHandler } from "../core/utils/asyncHandler";
 import { searchController } from "../services/controllers/searchController";
+import { authenticate } from "../core/middleware/auth";
 
 export const searchRouter = Router();
 
@@ -30,6 +31,7 @@ searchRouter.get(
 
 searchRouter.get(
   "/recent",
+  authenticate,
   asyncHandler(async (req, res) => {
     const data = await searchController.getRecentSearches(req);
     res.status(200).json(data);
@@ -38,6 +40,7 @@ searchRouter.get(
 
 searchRouter.delete(
   "/:searchId",
+  authenticate,
   asyncHandler(async (req, res) => {
     const data = await searchController.deleteSearch(req);
     res.status(200).json(data);
@@ -46,6 +49,7 @@ searchRouter.delete(
 
 searchRouter.delete(
   "/",
+  authenticate,
   asyncHandler(async (req, res) => {
     const data = await searchController.clearSearchHistory(req);
     res.status(200).json(data);

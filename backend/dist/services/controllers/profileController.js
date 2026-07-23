@@ -8,9 +8,9 @@ exports.profileController = {
         // Non-breaking: accept user id from header if auth middleware already sets it.
         // Common pattern in existing codebases: req.user?.id
         const userId = req.user?.id ?? req.headers["x-user-id"] ?? undefined;
-        const profile = await profileRepository_1.profileRepository.getProfile(userId ?? null);
         if (!userId)
             throw new apiErrors_1.UnauthorizedError("Unauthorized");
+        const profile = await profileRepository_1.profileRepository.getProfile(userId);
         if (!profile)
             throw new apiErrors_1.NotFoundError("Profile not found");
         return profile;
