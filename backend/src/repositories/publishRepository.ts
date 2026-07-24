@@ -1,4 +1,5 @@
 import { prisma } from "../prisma/prismaClient";
+import { StoryStatus } from "@prisma/client";
 
 export const publishRepository = {
   async getPublishReview(storyId: string, userId: string) {
@@ -140,7 +141,7 @@ export const publishRepository = {
       where: {
         id: { not: story.id },
         deleted: false,
-        status: "Published" as any,
+        status: StoryStatus.Published,
         OR: [
           { stateId: story.stateId },
           ...(tagIds.length > 0
@@ -261,7 +262,7 @@ export const publishRepository = {
     const updated = await prisma.story.update({
       where: { id: storyId },
       data: {
-        status: "Published" as any,
+        status: StoryStatus.Published,
         publishedAt: scheduledAt ? new Date(scheduledAt) : new Date(),
         scheduledAt: scheduledAt ? new Date(scheduledAt) : null,
         version: { increment: 1 },

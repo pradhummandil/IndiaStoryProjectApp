@@ -1,5 +1,4 @@
 import { prisma } from "../prisma/prismaClient";
-import crypto from "crypto";
 
 export const authRepository = {
   async upsertUserProfile(firebaseUser: {
@@ -9,14 +8,20 @@ export const authRepository = {
     photoURL?: string;
   }) {
     const email = firebaseUser.email;
+    const uid = firebaseUser.uid;
     if (!email) throw new Error("Email is required");
+    if (!uid) throw new Error("Firebase UID is required");
 
-    const existing = await prisma.userProfile.findUnique({ where: { email } });
+    // Use Firebase UID as the primary identifier for consistency
+    const existing = await prisma.userProfile.findUnique({
+      where: { id: uid },
+    });
 
     if (existing) {
       return prisma.userProfile.update({
-        where: { email },
+        where: { id: uid },
         data: {
+          email,
           name: firebaseUser.name || undefined,
           avatarUrl: firebaseUser.photoURL || undefined,
           lastActiveAt: new Date(),
@@ -27,7 +32,7 @@ export const authRepository = {
     const now = new Date();
     return prisma.userProfile.create({
       data: {
-        id: crypto.randomUUID(),
+        id: uid, // Use Firebase UID as the user ID
         email,
         name: firebaseUser.name || email.split("@")[0],
         avatarUrl: firebaseUser.photoURL || undefined,

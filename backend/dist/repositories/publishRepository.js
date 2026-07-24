@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.publishRepository = void 0;
 const prismaClient_1 = require("../prisma/prismaClient");
+const client_1 = require("@prisma/client");
 exports.publishRepository = {
     async getPublishReview(storyId, userId) {
         const story = await prismaClient_1.prisma.story.findFirst({
@@ -139,7 +140,7 @@ exports.publishRepository = {
             where: {
                 id: { not: story.id },
                 deleted: false,
-                status: "Published",
+                status: client_1.StoryStatus.Published,
                 OR: [
                     { stateId: story.stateId },
                     ...(tagIds.length > 0
@@ -246,7 +247,7 @@ exports.publishRepository = {
         const updated = await prismaClient_1.prisma.story.update({
             where: { id: storyId },
             data: {
-                status: "Published",
+                status: client_1.StoryStatus.Published,
                 publishedAt: scheduledAt ? new Date(scheduledAt) : new Date(),
                 scheduledAt: scheduledAt ? new Date(scheduledAt) : null,
                 version: { increment: 1 },

@@ -20,8 +20,9 @@ declare global {
   }
 }
 
-const JWT_SECRET =
-  env.JWT_SECRET || process.env.JWT_SECRET || "isp-jwt-secret-dev";
+// In production, JWT_SECRET MUST be set via environment variable.
+// Fallback value is for development only.
+const JWT_SECRET = env.JWT_SECRET || process.env.JWT_SECRET || "isp-jwt-secret-dev";
 const JWT_EXPIRES_IN = "7d";
 
 function getFirebaseApp(): admin.app.App | null {
@@ -86,6 +87,7 @@ export function issueJWT(payload: {
 export function verifyJWT(
   token: string,
 ): { userId: string; uid: string; role: string } | null {
+  if (!JWT_SECRET) return null;
   try {
     return jwt.verify(token, JWT_SECRET) as any;
   } catch {

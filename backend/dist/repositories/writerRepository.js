@@ -2,33 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.writerRepository = void 0;
 const prismaClient_1 = require("../prisma/prismaClient");
+const client_1 = require("@prisma/client");
 exports.writerRepository = {
     async getDashboardStats(userId) {
-        // Fetch all stories by this author (using Story.authorId maps to Author, but
-        // the authenticated user is stored in UserProfile. We query by UserProfile.id
-        // via the Author relation: stories where Author name matches or we use
-        // UserProfile directly. However, Story.authorId references Author.id, not UserProfile.id.
-        // We need to find the Author record associated with this user first.
-        // For now, we query stories where authorId is in the Author table.
-        // The system links UserProfile → Author via name or we accept that
-        // Story.authorId is a separate Author entity. We'll use a pragmatic approach:
-        // find stories by the user's Author record if it exists, otherwise return zeros.
-        const author = await prismaClient_1.prisma.author.findFirst({
-            where: {
-                // Fallback: we don't have a direct userId on Author.
-                // We'll match by name from the UserProfile, or use the UserProfile.id
-                // in a custom mapping. Since the schema doesn't link Author to UserProfile,
-                // we look up by a convention: Author name matches UserProfile name.
-                // This is a pragmatic approach for production.
-                name: {
-                    not: undefined,
-                },
-            },
-        });
-        // Alternative: Use the UserProfile.id directly with a custom query
-        // since the Story model uses authorId referencing Author.id.
-        // For now, get all stories authored by any Author and filter in app layer,
-        // or better: use the userId to find UserProfile and then find Author by name.
         const userProfile = await prismaClient_1.prisma.userProfile.findUnique({
             where: { id: userId },
             select: { id: true, name: true },
@@ -80,7 +56,7 @@ exports.writerRepository = {
                 },
             };
         }
-        // ── All stories by this author ──────────────────────────────────
+        // All stories by this author
         const allStories = await prismaClient_1.prisma.story.findMany({
             where: {
                 authorId: authorId,
@@ -101,14 +77,13 @@ exports.writerRepository = {
                 Author: { select: { id: true, name: true, avatar: true } },
             },
         });
-        const draftStories = allStories.filter((s) => s.status === "Draft");
-        const publishedStories = allStories.filter((s) => s.status === "Published");
-        // ── Compute stats ───────────────────────────────────────────────
+        const draftStories = allStories.filter((s) => s.status === client_1.StoryStatus.Draft);
+        const publishedStories = allStories.filter((s) => s.status === client_1.StoryStatus.Published);
+        // Compute stats
         const totalViews = allStories.reduce((sum, s) => sum + s.viewCount, 0);
         const totalLikes = allStories.reduce((sum, s) => sum + s.StoryLike.length, 0);
         const totalBookmarks = allStories.reduce((sum, s) => sum + s.Bookmark.length, 0);
         const readingProgressEntries = allStories.flatMap((s) => s.ReadingProgress);
-        const totalReadingTimeMinutes = readingProgressEntries.reduce((sum, rp) => sum + (rp.progressPercent || 0), 0);
         const completedReads = readingProgressEntries.filter((rp) => rp.completed).length;
         const completionRate = readingProgressEntries.length > 0
             ? Math.round((completedReads / readingProgressEntries.length) * 100)
@@ -118,7 +93,7 @@ exports.writerRepository = {
                 publishedStories.length)
             : 0;
         const totalReadingTime = allStories.reduce((sum, s) => sum + (s.readingTime || 0) * s.viewCount, 0);
-        // ── Map to response format ──────────────────────────────────────
+        // Map to response format
         const mapStory = (s) => ({
             id: s.id,
             slug: s.slug,
@@ -135,7 +110,7 @@ exports.writerRepository = {
             bookmarksCount: s.Bookmark.length,
         });
         const recentStories = allStories.slice(0, 5).map(mapStory);
-        // ── Analytics (time-based) ──────────────────────────────────────
+        // Analytics (time-based)
         const now = new Date();
         const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
         const startOfWeek = new Date(startOfDay);
@@ -161,7 +136,7 @@ exports.writerRepository = {
         const likesToday = storyLikes.filter((sl) => sl.createdAt >= startOfDay).length;
         const likesThisWeek = storyLikes.filter((sl) => sl.createdAt >= startOfWeek).length;
         const likesThisMonth = storyLikes.filter((sl) => sl.createdAt >= startOfMonth).length;
-        // ── Achievements / XP ───────────────────────────────────────────
+        // Achievements / XP
         const totalStories = allStories.length;
         const xp = totalStories * 10 + totalLikes * 2 + totalBookmarks * 3 + totalViews;
         const level = Math.floor(xp / 100) + 1;

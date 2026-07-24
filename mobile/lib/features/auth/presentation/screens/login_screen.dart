@@ -28,6 +28,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   String? _emailError;
   String? _passwordError;
   bool _isLoading = false;
+  bool _isNavigating = false; // Guard against duplicate navigation
   String? _errorMessage;
   bool _isGoogleSigningIn = false;
 
@@ -54,8 +55,15 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     return _emailError == null && _passwordError == null;
   }
 
+  /// Safe navigation guard to prevent duplicate navigations.
+  void _navigateToHome() {
+    if (_isNavigating || !mounted) return;
+    setState(() => _isNavigating = true);
+    context.go('/home');
+  }
+
   Future<void> _handleLogin() async {
-    if (!_validate()) return;
+    if (!_validate() || _isLoading) return;
 
     setState(() {
       _isLoading = true;
@@ -70,14 +78,26 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             password: _passwordController.text,
           );
 
-      if (mounted) {
-        final authState = ref.read(authStateProvider);
-        if (authState.isAuthenticated) {
-          context.go('/home');
-        } else if (authState.error != null) {
+      if (!mounted) return;
+
+      final authState = ref.read(authStateProvider);
+      if (authState.isAuthenticated) {
+        _navigateToHome();
+      } else if (authState.error != null) {
+        setState(() {
+          _isLoading = false;
+          _errorMessage = authState.error!.replaceFirst('Exception: ', '');
+        });
+      } else {
+        // Still loading or not authenticated — wait briefly then check again
+        await Future.delayed(const Duration(milliseconds: 300));
+        if (!mounted) return;
+        final updatedState = ref.read(authStateProvider);
+        if (updatedState.isAuthenticated) {
+          _navigateToHome();
+        } else {
           setState(() {
             _isLoading = false;
-            _errorMessage = authState.error!.replaceFirst('Exception: ', '');
           });
         }
       }
@@ -92,7 +112,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   }
 
   Future<void> _handleGoogleSignIn() async {
-    if (_isGoogleSigningIn) return;
+    if (_isGoogleSigningIn || _isLoading) return;
 
     setState(() {
       _isGoogleSigningIn = true;
@@ -105,19 +125,32 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     try {
       await ref.read(authStateProvider.notifier).signInWithGoogle();
 
-      if (mounted) {
-        final authState = ref.read(authStateProvider);
-        if (authState.isAuthenticated) {
-          developer.log(
-            'LoginScreen: Google sign-in successful, navigating to /home',
-            name: 'AuthUI',
-          );
-          context.go('/home');
-        } else if (authState.error != null) {
+      if (!mounted) return;
+
+      final authState = ref.read(authStateProvider);
+      if (authState.isAuthenticated) {
+        developer.log(
+          'LoginScreen: Google sign-in successful, navigating to /home',
+          name: 'AuthUI',
+        );
+        _navigateToHome();
+      } else if (authState.error != null) {
+        setState(() {
+          _isGoogleSigningIn = false;
+          _isLoading = false;
+          _errorMessage = authState.error!.replaceFirst('Exception: ', '');
+        });
+      } else {
+        // Wait briefly and recheck
+        await Future.delayed(const Duration(milliseconds: 300));
+        if (!mounted) return;
+        final updatedState = ref.read(authStateProvider);
+        if (updatedState.isAuthenticated) {
+          _navigateToHome();
+        } else {
           setState(() {
             _isGoogleSigningIn = false;
             _isLoading = false;
-            _errorMessage = authState.error!.replaceFirst('Exception: ', '');
           });
         }
       }
@@ -306,7 +339,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             _ContinueDivider(scheme: scheme),
             const SizedBox(height: 20),
             _SocialRow(
-              scheme: scheme,
               onGoogleTap: _handleGoogleSignIn,
               googleLoading: _isGoogleSigningIn,
             ),
@@ -595,38 +627,31 @@ class _ContinueDivider extends StatelessWidget {
 }
 
 class _SocialRow extends StatelessWidget {
-  const _SocialRow({
-    required this.scheme,
-    this.onGoogleTap,
-    this.googleLoading = false,
-  });
-  final ColorScheme scheme;
+  const _SocialRow({this.onGoogleTap, this.googleLoading = false});
   final VoidCallback? onGoogleTap;
   final bool googleLoading;
 
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      crossAxisCount: 2,
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      mainAxisSpacing: 12,
-      crossAxisSpacing: 12,
-      childAspectRatio: 2.1,
-      padding: EdgeInsets.zero,
+    return Row(
       children: [
-        GoogleAppleSocialButton(
-          label: googleLoading ? 'CONTINUING...' : 'GOOGLE',
-          assetPath: 'assets/icons/google.svg',
-          isGoogle: true,
-          onPressed: onGoogleTap ?? () {},
-          isLoading: googleLoading,
+        Expanded(
+          child: GoogleAppleSocialButton(
+            label: googleLoading ? 'CONTINUING...' : 'GOOGLE',
+            assetPath: 'assets/icons/google.svg',
+            isGoogle: true,
+            onPressed: onGoogleTap ?? () {},
+            isLoading: googleLoading,
+          ),
         ),
-        GoogleAppleSocialButton(
-          label: 'APPLE',
-          assetPath: 'assets/icons/apple.svg',
-          isGoogle: false,
-          onPressed: () {},
+        const SizedBox(width: 12),
+        Expanded(
+          child: GoogleAppleSocialButton(
+            label: 'APPLE',
+            assetPath: 'assets/icons/apple.svg',
+            isGoogle: false,
+            onPressed: () {},
+          ),
         ),
       ],
     );

@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.historyRepository = void 0;
 const prismaClient_1 = require("../prisma/prismaClient");
+const client_1 = require("@prisma/client");
 function toPositiveInt(value, fallback, max) {
     const n = typeof value === "string" ? Number(value) : Number(value);
     if (!Number.isFinite(n))
@@ -18,7 +19,7 @@ exports.historyRepository = {
         const skip = (page - 1) * limit;
         const where = {
             userId,
-            Story: { deleted: false, status: "Published" },
+            Story: { deleted: false, status: client_1.StoryStatus.Published },
         };
         // Date filter
         if (params.filter && params.filter !== "all") {

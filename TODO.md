@@ -1,77 +1,38 @@
-# Notifications + History Implementation - Complete
+# Production Readiness Fixes - Implementation Status
 
-## ✅ Backend (Notifications)
-- [x] 1. Add Notification model to Prisma schema
-- [x] 2. Create notifications repository (`src/repositories/notificationsRepository.ts`)
-- [x] 3. Create notifications controller (`src/services/controllers/notificationsController.ts`)
-- [x] 4. Create notifications route (`src/routes/notifications.ts`) + register in `api.ts`
-- [x] 5. Add auth middleware integration
+## Phase 1: Fix Auth ID Consistency
+- [x] 1. Fix `authRepository.ts` - Use Firebase UID as primary ID ✅ DONE
 
-## ✅ Flutter (Notifications)
-- [x] 6. Create notification models (`features/notifications/domain/models/notification_models.dart`)
-- [x] 7. Create notification repository (`core/repositories/notifications_repository.dart`)
-- [x] 8. Add API constants
-- [x] 9. Add providers (`core/network/providers.dart`)
-- [x] 10. Create notifications screen (full UI with tabs, infinite scroll, loading/error/empty states)
-- [x] 11. Create notification state notifier (`features/notifications/presentation/providers/notifications_providers.dart`)
-- [x] 12. Update router + barrel files
-- [x] 13. `flutter analyze` — **0 issues** in new files ✅
+## Phase 2: Fix Prisma Enum Usage - Replace "Published" as any
+- [x] 2. Fix `homeRepository.ts` ✅ DONE
+- [x] 3. Fix `searchRepository.ts` ✅ DONE
+- [x] 4. Fix `storiesRepository.ts` ✅ DONE
+- [x] 5. Fix `historyRepository.ts` ✅ DONE
+- [x] 6. Fix `publishRepository.ts` ✅ DONE
+- [x] 7. Fix `writerRepository.ts` ✅ DONE
 
-## ✅ Backend (History)
-- [x] 14. Create history repository (`src/repositories/historyRepository.ts`)
-- [x] 15. Create history controller (`src/services/controllers/historyController.ts`)
-- [x] 16. Create history route (`src/routes/history.ts`) + register in `api.ts`
+## Phase 3: Fix Login Screen Layout
+- [x] 8. Fix `login_screen.dart` - Replace GridView with Row+Expanded ✅ DONE
 
-## ✅ Flutter (History)
-- [x] 17. Create history models (`features/history/domain/models/history_models.dart`)
-- [x] 18. Create history repository (`core/repositories/history_repository.dart`)
-- [x] 19. Create history providers (`features/history/presentation/providers/history_providers.dart`)
-- [x] 20. Create history screen (`features/history/presentation/screens/history_screen.dart`)
-- [x] 21. Add API constants, barrel files, router
-- [x] 22. `flutter analyze` — **0 issues** in new files ✅
+## Phase 4: Fix Login Navigation Race Condition
+- [x] 9. Fix `login_screen.dart` - Add navigation guard ✅ DONE
 
-## ✅ Android Crash Analysis
-- [x] 23. Root cause: Package mismatch — `com.example.mobile` vs `com.indiastoryproject.app`
-- [x] 24. Fix: Move `MainActivity.kt` to correct package path
-- [x] 25. Verify: namespace, applicationId, AndroidManifest, gradle config all consistent
-- [x] 26. Launcher icons replaced in all mipmap densities
+## Phase 5: Standardize Backend Error Responses
+- [x] 10. Fix `httpErrors.ts` - Standard error format with `success`, `message`, `code`, `details` ✅ DONE
 
-## 📋 Validation Results
-| Component | Status |
-|-----------|--------|
-| `flutter analyze` (new files) | ✅ 0 issues |
-| `flutter analyze` (pre-existing) | ⚠️ `search_screen.dart` has syntax corruption |
-| Backend typecheck | ⏳ Needs `npx prisma generate` + DB connection |
-| Backend build | ⏳ Blocked by typecheck |
+## Phase 6: Verify Production URL
+- [x] 11. Search for localhost references ✅ DONE - No localhost found. Production URL: `https://isp-backend-09fw.onrender.com`
 
-## 📁 Files Created
-### Backend (7 files)
-- `backend/prisma/schema.prisma` (Notification model added)
-- `backend/src/repositories/notificationsRepository.ts`
-- `backend/src/services/controllers/notificationsController.ts`
-- `backend/src/routes/notifications.ts`
-- `backend/src/repositories/historyRepository.ts`
-- `backend/src/services/controllers/historyController.ts`
-- `backend/src/routes/history.ts`
+## Phase 7: Critical Bug Fix - env.ts Zod coerce Boolean Bug
+- [x] 12. Fix `env.ts` - Replace `z.coerce.boolean()` with custom `coerceBoolean()` that correctly parses "false" string ✅ DONE
+- [x] 13. Fix `database.ts` - Make MongoDB optional (no throw when disabled/missing URI) ✅ DONE
+- [x] 14. Fix `firebase.ts` - Graceful handling when Firebase disabled/unconfigured ✅ DONE
+- [x] 15. Fix `cloudinary.ts` - Graceful handling when Cloudinary disabled ✅ DONE
+- [x] 16. Fix `server.ts` - Better startup logging ✅ DONE
+- [x] 17. Fix `auth.ts` middleware - Use env config, graceful Firebase handling ✅ DONE
 
-### Flutter (8 files)
-- `mobile/lib/features/notifications/domain/models/notification_models.dart`
-- `mobile/lib/features/notifications/presentation/providers/notifications_providers.dart`
-- `mobile/lib/features/notifications/presentation/screens/notifications_screen.dart`
-- `mobile/lib/core/repositories/notifications_repository.dart`
-- `mobile/lib/features/history/domain/models/history_models.dart`
-- `mobile/lib/features/history/presentation/providers/history_providers.dart`
-- `mobile/lib/features/history/presentation/screens/history_screen.dart`
-- `mobile/lib/core/repositories/history_repository.dart`
-
-## 📁 Files Modified
-- `backend/prisma/schema.prisma`
-- `backend/src/routes/api.ts`
-- `mobile/lib/core/network/api_client.dart` (added `patch()` method)
-- `mobile/lib/core/network/api_constants.dart`
-- `mobile/lib/core/network/providers.dart`
-- `mobile/lib/core/repositories/repositories.dart`
-- `mobile/lib/app/routing/app_router.dart`
-- `mobile/lib/core/models/models.dart`
-- `mobile/android/app/src/main/kotlin/com/indiastoryproject/app/MainActivity.kt` (re-created at correct path)
-- `android/app/src/main/kotlin/com/example/mobile/MainActivity.kt` (deleted - wrong package)
+## Build & Validate
+- [ ] 18. Backend typecheck (tsc --noEmit)
+- [ ] 19. Backend build (tsc)
+- [ ] 20. Start backend and verify /health endpoint
+- [ ] 21. Verify /api/home, /api/stories, /api/categories endpoints
