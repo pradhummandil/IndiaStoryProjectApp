@@ -12,27 +12,40 @@ exports.optionalAuth = optionalAuth;
 const firebase_admin_1 = __importDefault(require("firebase-admin"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const prismaClient_1 = require("../../prisma/prismaClient");
+const env_1 = require("../../config/env");
 const apiErrors_1 = require("../errors/apiErrors");
-const JWT_SECRET = process.env.JWT_SECRET || "isp-jwt-secret-dev";
+// In production, JWT_SECRET MUST be set via environment variable.
+// Fallback value is for development only.
+const JWT_SECRET = env_1.env.JWT_SECRET || process.env.JWT_SECRET || "isp-jwt-secret-dev";
 exports.JWT_SECRET = JWT_SECRET;
 const JWT_EXPIRES_IN = "7d";
 function getFirebaseApp() {
     if (firebase_admin_1.default.apps.length > 0)
         return firebase_admin_1.default.apps[0];
-    const serviceAccountBase64 = process.env.FIREBASE_SERVICE_ACCOUNT_JSON;
+    if (!env_1.env.FIREBASE_ENABLED)
+        return null;
+    const serviceAccountBase64 = env_1.env.FIREBASE_SERVICE_ACCOUNT_JSON ||
+        process.env.FIREBASE_SERVICE_ACCOUNT_JSON;
     if (serviceAccountBase64) {
-        const serviceAccount = JSON.parse(Buffer.from(serviceAccountBase64, "base64").toString("utf-8"));
-        return firebase_admin_1.default.initializeApp({
-            credential: firebase_admin_1.default.credential.cert(serviceAccount),
-        });
+        try {
+            const serviceAccount = JSON.parse(Buffer.from(serviceAccountBase64, "base64").toString("utf-8"));
+            return firebase_admin_1.default.initializeApp({
+                credential: firebase_admin_1.default.credential.cert(serviceAccount),
+            });
+        }
+        catch {
+            // Fall through
+        }
     }
     try {
         return firebase_admin_1.default.initializeApp({
-            projectId: process.env.FIREBASE_PROJECT_ID || "indiastoryproject",
+            projectId: env_1.env.FIREBASE_PROJECT_ID ||
+                process.env.FIREBASE_PROJECT_ID ||
+                "indiastoryproject",
         });
     }
     catch {
-        return firebase_admin_1.default.apps[0];
+        return null;
     }
 }
 let firebaseApp = null;
@@ -43,8 +56,11 @@ function getAdmin() {
 }
 /** Verify Firebase ID Token from Authorization header */
 async function verifyFirebaseToken(token) {
+    const app = getAdmin();
+    if (!app)
+        return null;
     try {
-        const decoded = await getAdmin().auth().verifyIdToken(token);
+        const decoded = await app.auth().verifyIdToken(token);
         return decoded;
     }
     catch {
@@ -57,6 +73,8 @@ function issueJWT(payload) {
 }
 /** Verify internal JWT */
 function verifyJWT(token) {
+    if (!JWT_SECRET)
+        return null;
     try {
         return jsonwebtoken_1.default.verify(token, JWT_SECRET);
     }

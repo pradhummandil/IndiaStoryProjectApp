@@ -1,4 +1,5 @@
 import { prisma } from "../prisma/prismaClient";
+import { StoryStatus } from "@prisma/client";
 
 type GetStoriesParams = {
   page?: string;
@@ -26,12 +27,11 @@ export const storiesRepository = {
 
     const where: any = {
       deleted: false,
-      status: "Published" as any,
+      status: StoryStatus.Published,
     };
 
     // category -> interpret as Tag.slug or Theme.slug.
     if (params.category) {
-      // prefer Tag.slug
       where.OR = [
         {
           StoryTag: { some: { Tag: { slug: params.category } } },
@@ -49,9 +49,6 @@ export const storiesRepository = {
         { City: { slug: params.region } },
       ];
     }
-
-    // language -> we don't have language column on Story; use excerptHi/contentHi selection in controller layer.
-    // Keep filter no-op for now.
 
     // search -> title/excerpt/seoTitle
     if (params.search) {
@@ -82,7 +79,7 @@ export const storiesRepository = {
         take: limit,
         orderBy,
         include: {
-          Author: { select: { id: true, name: true, avatar: true } as any },
+          Author: { select: { id: true, name: true, avatar: true } },
           StoryImage: {
             take: 1,
             orderBy: { sortOrder: "asc" },
@@ -126,7 +123,7 @@ export const storiesRepository = {
       where: { slug },
       include: {
         Author: {
-          select: { id: true, name: true, bio: true, avatar: true } as any,
+          select: { id: true, name: true, bio: true, avatar: true },
         },
         State: { select: { slug: true, name: true } },
         City: { select: { slug: true, name: true } },
@@ -146,7 +143,7 @@ export const storiesRepository = {
       },
     });
 
-    if (!story || story.deleted || story.status !== ("Published" as any)) {
+    if (!story || story.deleted || story.status !== StoryStatus.Published) {
       return null;
     }
 
@@ -181,7 +178,7 @@ export const storiesRepository = {
     const relatedWhere: any = {
       id: { not: story.id },
       deleted: false,
-      status: "Published" as any,
+      status: StoryStatus.Published,
     };
     if (orConditions.length > 0) {
       relatedWhere.OR = orConditions;
@@ -198,7 +195,7 @@ export const storiesRepository = {
         excerpt: true,
         readingTime: true,
         viewCount: true,
-        Author: { select: { id: true, name: true, avatar: true } as any },
+        Author: { select: { id: true, name: true, avatar: true } },
       },
     });
 

@@ -1,34 +1,8 @@
 import { prisma } from "../prisma/prismaClient";
+import { StoryStatus } from "@prisma/client";
 
 export const writerRepository = {
   async getDashboardStats(userId: string) {
-    // Fetch all stories by this author (using Story.authorId maps to Author, but
-    // the authenticated user is stored in UserProfile. We query by UserProfile.id
-    // via the Author relation: stories where Author name matches or we use
-    // UserProfile directly. However, Story.authorId references Author.id, not UserProfile.id.
-    // We need to find the Author record associated with this user first.
-    // For now, we query stories where authorId is in the Author table.
-    // The system links UserProfile → Author via name or we accept that
-    // Story.authorId is a separate Author entity. We'll use a pragmatic approach:
-    // find stories by the user's Author record if it exists, otherwise return zeros.
-
-    const author = await prisma.author.findFirst({
-      where: {
-        // Fallback: we don't have a direct userId on Author.
-        // We'll match by name from the UserProfile, or use the UserProfile.id
-        // in a custom mapping. Since the schema doesn't link Author to UserProfile,
-        // we look up by a convention: Author name matches UserProfile name.
-        // This is a pragmatic approach for production.
-        name: {
-          not: undefined,
-        },
-      },
-    });
-
-    // Alternative: Use the UserProfile.id directly with a custom query
-    // since the Story model uses authorId referencing Author.id.
-    // For now, get all stories authored by any Author and filter in app layer,
-    // or better: use the userId to find UserProfile and then find Author by name.
     const userProfile = await prisma.userProfile.findUnique({
       where: { id: userId },
       select: { id: true, name: true },
@@ -83,7 +57,7 @@ export const writerRepository = {
       };
     }
 
-    // ── All stories by this author ──────────────────────────────────
+    // All stories by this author
     const allStories = await prisma.story.findMany({
       where: {
         authorId: authorId,
@@ -106,13 +80,13 @@ export const writerRepository = {
     });
 
     const draftStories = allStories.filter(
-      (s) => s.status === ("Draft" as any),
+      (s) => s.status === StoryStatus.Draft,
     );
     const publishedStories = allStories.filter(
-      (s) => s.status === ("Published" as any),
+      (s) => s.status === StoryStatus.Published,
     );
 
-    // ── Compute stats ───────────────────────────────────────────────
+    // Compute stats
     const totalViews = allStories.reduce((sum, s) => sum + s.viewCount, 0);
     const totalLikes = allStories.reduce(
       (sum, s) => sum + s.StoryLike.length,
@@ -124,10 +98,6 @@ export const writerRepository = {
     );
 
     const readingProgressEntries = allStories.flatMap((s) => s.ReadingProgress);
-    const totalReadingTimeMinutes = readingProgressEntries.reduce(
-      (sum, rp) => sum + (rp.progressPercent || 0),
-      0,
-    );
     const completedReads = readingProgressEntries.filter(
       (rp) => rp.completed,
     ).length;
@@ -149,7 +119,7 @@ export const writerRepository = {
       0,
     );
 
-    // ── Map to response format ──────────────────────────────────────
+    // Map to response format
     const mapStory = (s: (typeof allStories)[number]) => ({
       id: s.id,
       slug: s.slug,
@@ -168,7 +138,7 @@ export const writerRepository = {
 
     const recentStories = allStories.slice(0, 5).map(mapStory);
 
-    // ── Analytics (time-based) ──────────────────────────────────────
+    // Analytics (time-based)
     const now = new Date();
     const startOfDay = new Date(
       now.getFullYear(),
@@ -216,7 +186,7 @@ export const writerRepository = {
       (sl) => sl.createdAt >= startOfMonth,
     ).length;
 
-    // ── Achievements / XP ───────────────────────────────────────────
+    // Achievements / XP
     const totalStories = allStories.length;
     const xp =
       totalStories * 10 + totalLikes * 2 + totalBookmarks * 3 + totalViews;

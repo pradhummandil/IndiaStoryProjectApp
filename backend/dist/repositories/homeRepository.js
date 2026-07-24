@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.homeRepository = void 0;
 const prismaClient_1 = require("../prisma/prismaClient");
+const client_1 = require("@prisma/client");
 function parseIntOrUndef(value) {
     if (value === undefined || value === null)
         return undefined;
@@ -32,7 +33,6 @@ exports.homeRepository = {
                         publishedAt: true,
                         featured: true,
                         trendingStory: true,
-                        AudioProgress: false,
                     },
                 },
             },
@@ -40,7 +40,7 @@ exports.homeRepository = {
         const featuredStory = featured[0]?.Story ?? null;
         // latestStories
         const latestStories = await prismaClient_1.prisma.story.findMany({
-            where: { deleted: false, status: "Published" },
+            where: { deleted: false, status: client_1.StoryStatus.Published },
             orderBy: { publishedAt: "desc" },
             take: 10,
             include: {
@@ -48,11 +48,10 @@ exports.homeRepository = {
             },
         });
         // continueReading (based on last ReadingProgress)
-        // Without auth context we return a best-effort list: last updated reading progress (limit 10)
         const readingProgress = await prismaClient_1.prisma.readingProgress.findMany({
             where: {
                 completed: false,
-                Story: { deleted: false, status: "Published" },
+                Story: { deleted: false, status: client_1.StoryStatus.Published },
             },
             orderBy: { lastReadAt: "desc" },
             take: 10,
@@ -81,7 +80,7 @@ exports.homeRepository = {
         const trendingStories = await prismaClient_1.prisma.story.findMany({
             where: {
                 deleted: false,
-                status: "Published",
+                status: client_1.StoryStatus.Published,
                 trendingStory: true,
             },
             orderBy: [{ updatedAt: "desc" }, { viewCount: "desc" }],

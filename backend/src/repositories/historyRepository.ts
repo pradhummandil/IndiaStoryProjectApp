@@ -1,4 +1,5 @@
 import { prisma } from "../prisma/prismaClient";
+import { StoryStatus } from "@prisma/client";
 
 function toPositiveInt(value: unknown, fallback: number, max: number): number {
   const n = typeof value === "string" ? Number(value) : Number(value);
@@ -24,7 +25,7 @@ export const historyRepository = {
 
     const where: any = {
       userId,
-      Story: { deleted: false, status: "Published" as any },
+      Story: { deleted: false, status: StoryStatus.Published },
     };
 
     // Date filter
@@ -76,7 +77,7 @@ export const historyRepository = {
               readingTime: true,
               viewCount: true,
               publishedAt: true,
-              Author: { select: { id: true, name: true, avatar: true } as any },
+              Author: { select: { id: true, name: true, avatar: true } },
               StoryImage: {
                 take: 1,
                 orderBy: { sortOrder: "asc" },

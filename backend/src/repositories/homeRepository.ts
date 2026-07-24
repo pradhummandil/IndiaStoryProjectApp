@@ -1,4 +1,5 @@
 import { prisma } from "../prisma/prismaClient";
+import { StoryStatus } from "@prisma/client";
 
 function parseIntOrUndef(value: unknown): number | undefined {
   if (value === undefined || value === null) return undefined;
@@ -30,7 +31,6 @@ export const homeRepository = {
             publishedAt: true,
             featured: true,
             trendingStory: true,
-            AudioProgress: false as any,
           },
         },
       },
@@ -40,20 +40,19 @@ export const homeRepository = {
 
     // latestStories
     const latestStories = await prisma.story.findMany({
-      where: { deleted: false, status: "Published" as any },
+      where: { deleted: false, status: StoryStatus.Published },
       orderBy: { publishedAt: "desc" },
       take: 10,
       include: {
-        Author: { select: { id: true, name: true, avatar: true } as any },
+        Author: { select: { id: true, name: true, avatar: true } },
       },
     });
 
     // continueReading (based on last ReadingProgress)
-    // Without auth context we return a best-effort list: last updated reading progress (limit 10)
     const readingProgress = await prisma.readingProgress.findMany({
       where: {
         completed: false,
-        Story: { deleted: false, status: "Published" as any },
+        Story: { deleted: false, status: StoryStatus.Published },
       },
       orderBy: { lastReadAt: "desc" },
       take: 10,
@@ -84,13 +83,13 @@ export const homeRepository = {
     const trendingStories = await prisma.story.findMany({
       where: {
         deleted: false,
-        status: "Published" as any,
+        status: StoryStatus.Published,
         trendingStory: true,
       },
       orderBy: [{ updatedAt: "desc" }, { viewCount: "desc" }],
       take: 10,
       include: {
-        Author: { select: { id: true, name: true, avatar: true } as any },
+        Author: { select: { id: true, name: true, avatar: true } },
       },
     });
 

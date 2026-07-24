@@ -1,5 +1,6 @@
 import crypto from "crypto";
 import { prisma } from "../prisma/prismaClient";
+import { StoryStatus } from "@prisma/client";
 
 export const searchRepository = {
   async getRecentSearches(userId: string | null) {
@@ -93,7 +94,7 @@ export const searchRepository = {
     const stories = await prisma.story.findMany({
       where: {
         deleted: false,
-        status: "Published" as any,
+        status: StoryStatus.Published,
         title: { contains: query.trim(), mode: "insensitive" },
       },
       orderBy: { viewCount: "desc" },

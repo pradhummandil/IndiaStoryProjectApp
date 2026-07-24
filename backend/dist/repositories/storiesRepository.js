@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.storiesRepository = void 0;
 const prismaClient_1 = require("../prisma/prismaClient");
+const client_1 = require("@prisma/client");
 function toPositiveInt(value, fallback, max) {
     const n = typeof value === "string" ? Number(value) : Number(value);
     if (!Number.isFinite(n))
@@ -18,11 +19,10 @@ exports.storiesRepository = {
         const skip = (page - 1) * limit;
         const where = {
             deleted: false,
-            status: "Published",
+            status: client_1.StoryStatus.Published,
         };
         // category -> interpret as Tag.slug or Theme.slug.
         if (params.category) {
-            // prefer Tag.slug
             where.OR = [
                 {
                     StoryTag: { some: { Tag: { slug: params.category } } },
@@ -39,8 +39,6 @@ exports.storiesRepository = {
                 { City: { slug: params.region } },
             ];
         }
-        // language -> we don't have language column on Story; use excerptHi/contentHi selection in controller layer.
-        // Keep filter no-op for now.
         // search -> title/excerpt/seoTitle
         if (params.search) {
             const q = params.search.trim();
@@ -128,7 +126,7 @@ exports.storiesRepository = {
                 StoryView: { take: 1, select: { createdAt: true } },
             },
         });
-        if (!story || story.deleted || story.status !== "Published") {
+        if (!story || story.deleted || story.status !== client_1.StoryStatus.Published) {
             return null;
         }
         // reading statistics (best-effort from persisted counters)
@@ -159,7 +157,7 @@ exports.storiesRepository = {
         const relatedWhere = {
             id: { not: story.id },
             deleted: false,
-            status: "Published",
+            status: client_1.StoryStatus.Published,
         };
         if (orConditions.length > 0) {
             relatedWhere.OR = orConditions;

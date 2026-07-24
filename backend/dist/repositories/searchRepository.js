@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.searchRepository = void 0;
 const crypto_1 = __importDefault(require("crypto"));
 const prismaClient_1 = require("../prisma/prismaClient");
+const client_1 = require("@prisma/client");
 exports.searchRepository = {
     async getRecentSearches(userId) {
         if (!userId)
@@ -96,7 +97,7 @@ exports.searchRepository = {
         const stories = await prismaClient_1.prisma.story.findMany({
             where: {
                 deleted: false,
-                status: "Published",
+                status: client_1.StoryStatus.Published,
                 title: { contains: query.trim(), mode: "insensitive" },
             },
             orderBy: { viewCount: "desc" },
